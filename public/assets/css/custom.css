@@ -1,0 +1,37 @@
+/* here you can put your own css to customize and override the theme */
+.tip {display: block;margin-top: 5px;margin-bottom: 10px;color: #737373;}
+.hint {display: inline;color: #737373;}
+.header .navbar-brand{margin-top:0px;padding-top:0px;padding-bottom:0px;width:auto;}
+.header .navbar-brand img{height:40px;}
+.m-r-10{margin-right:10px;}
+.m-r-20{margin-right:20px;}
+.m-l-5{margin-left:5px;}
+.m-l-15{margin-left:15px;}
+.m-b-5{margin-bottom:5px;}
+.m-b-10{margin-bottom:10px;}
+.m-b-20{margin-bottom:20px;}
+.m-b-0{margin-bottom:0px;}
+.m-t-10{margin-top:10px;}
+.m-t-0{margin-top:0px;}
+.m-t-5{margin-top:5px;}
+.m-t-20{margin-top:20px;}
+.m-t-30{margin-top:30px;}
+.p-10{padding:10px;}
+.p-20{padding:20px;}
+.p-t-20{padding-top:20px;}
+.p-b-20{padding-bottom:20px;}
+.padding-l-50 {padding-left:50px;}
+.padding-l-65 {padding-left:65px;}
+.p-r-15{padding-right:15px;}
+.show-alert{position: fixed;top:5px; z-index: 10000; width: auto; border-radius:5px; left:50%; padding:6px 35px 6px 15px; }
+.show-alert .close{top:5px;}
+.portlet > .portlet-title > .caption {font-size: 16px;}
+.portlet > .portlet-title > .caption > i { margin-top: 2px; }
+.re {color: #FF0000;}
+.underline{text-decoration:underline;}
+.o-h{overflow:hidden;}
+.hand{cursor:pointer;}
+.break{
+    word-break: break-all;
+    word-wrap: break-word;
+}
