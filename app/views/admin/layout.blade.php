@@ -5,7 +5,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title><?php echo Lang::get('text.LMS')?> - <?php echo Cache::get('company_name')?></title>
+    <title><?php echo (Cache::has('website_name') ? Cache::get('website_name') : '')?></title>
     <!--[if lt IE 8]>
         <script type="text/javascript">
             window.location.href="<?php echo route('brower')?>";
@@ -91,7 +91,7 @@
         <div class="header-inner">
             <!-- BEGIN LOGO -->  
             <a class="navbar-brand" href="<?php echo asset('admin/index')?>">
-            <img src="<?php echo asset('assets/img/logo.png')?>" alt="logo" class="img-responsive" />
+                <img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" alt="logo" class="img-responsive" />
             </a>
             <!-- END LOGO -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
@@ -156,31 +156,19 @@
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <img alt="" src="<?php echo User::avatar(Auth::user()->id,'small')?>" height='28'/>
-                    <span class="username"><?php echo Auth::user()->username;?></span> 
-                    <?if(Session::has('role') && !is_array(Session::get('role'))):?>
-                        <span class="role">(<?php echo Role::find(Session::get('role'))->name;?>)</span> 
-                    <?endif;?>
-                    <i class="fa fa-angle-down"></i>
+                        <img alt="" src="<?php echo User::avatar(Auth::user()->id,'small')?>" height='28'/>
+                        <span class="username"><?php echo Auth::user()->username;?></span> 
+                        <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo asset('home/index')?>"><i class="fa fa-hand-o-right"></i> <?php echo Lang::get('text.login_to_front')?></a></li>
                         <li>
-                            <?if( get_language() == "zh"):?>
+                            <?if( App::getLocale() == "zh"):?>
                               <a href="<?php echo asset('change-lang/en');?>"><i class="fa fa-stack-exchange"></i> English</a>
                             <?else:?>
                               <a href="<?php echo asset('change-lang/zh');?>"><i class="fa fa-stack-exchange"></i> 中文版</a>
                             <?endif;?>
                         </li>
                         <li class="divider"></li>
-                        <?php $user_roles = User::allRoles(Auth::user()->id);?>
-                        <?if(count($user_roles)> 1):?>
-                            <?foreach($user_roles as $key => $item):?>
-                                <li><a href="<?php echo asset('changerole/'.$item)?>" ><i class="fa fa-user"></i> <?php echo Role::find($item)->name;?></a></li>
-                            <?endforeach;?>
-                            <li class="divider"></li>
-                        <?endif;?>
-                        
                         <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> <?php echo Lang::get('text.full_screen')?></a></li>
                         <li><a href="<?php echo asset('logout');?>"><i class="fa fa-power-off"></i> <?php echo Lang::get('text.exit');?></a></li>
                     </ul>
@@ -212,135 +200,75 @@
                     $a2 = explode('_', $a[0]);
                     $_controller_name = isset($a2[1]) ? $a2[1] : $a2[0];
                 ?>
-                <?if(User::hasPermission('Admin','IndexController','getIndex')):?>
                     <li class="<?if($_controller_name=='IndexController'):?>active<?endif;?> ">
                         <a href="<?php echo asset('admin/index');?>">
                             <i class="fa fa-home"></i> 
                             <span class="title"><?php echo Lang::get('text.dashboard')?></span>
                         </a>
                     </li>
-                <?endif;?>
-                <?if(User::hasPermission('Admin','CourseController','getIndex') || User::hasPermission('Admin','CategoryController','getIndex')):?>
-                    <li class="<?if(in_array($_controller_name, array('CourseController','CategoryController'))):?>open active<?endif;?>">
-                        <a href="<?php echo asset('admin/course');?>">
+                    <li class="<?if(in_array($_controller_name, array('OrderController'))):?>open active<?endif;?>">
+                        <a href="<?php echo asset('admin/order');?>">
                             <i class="fa fa-book"></i> 
-                            <span class="title"><?php echo Lang::get('text.course_manage')?></span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <?if(User::hasPermission('Admin','CourseController','getIndex')):?>
-                                <li class="<?if($_controller_name=='CourseController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/course');?>"><?php echo Lang::get('text.allcourse');?></a>
-                                </li>
-                            <?endif;?>
-                            <?if(User::hasPermission('Admin','CategoryController','getIndex')):?>
-                                <li class="<?if($_controller_name=='CategoryController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/category');?>"><?php echo Lang::get('text.course_category');?></a>
-                                </li>
-                            <?endif;?>
-                        </ul>
-                    </li>
-                <?endif;?>
-                <?if(User::hasPermission('Admin','ExamController','getIndex')):?>
-                    <li class="<?if($_controller_name=='ExamController'):?>open active<?endif;?>">
-                        <a href="<?php echo asset('').'admin/exam';?>">
-                            <i class="fa fa-file-text"></i> 
-                            <span class="title"><?php echo Lang::get('text.comprehensive_exam_manage');?></span>
+                            <span class="title"><?php echo Lang::get('text.order_manage')?></span>
                         </a>
                     </li>
-                <?endif;?>
-                <?if(User::hasPermission('Admin','UserController','getIndex') || User::hasPermission('Admin','DepartmentController','getIndex') || 
-                        User::hasPermission('Admin','PostController','getIndex')):?>
-                    <li class="<?if(in_array($_controller_name, array('UserController','DepartmentController','PostController'))):?>open active<?endif;?>">
+                    <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
                         <a href="javascript:;">
-                            <i class="fa fa-user"></i> 
-                            <span class="title"><?php echo Lang::get('text.user_manage');?></span>
+                            <i class="fa fa-cog"></i> 
+                            <span class="title"><?php echo Lang::get('text.system_manage');?></span>
                             <span class="arrow "></span>
                         </a>
                         <ul class="sub-menu">
-                            <?if(User::hasPermission('Admin','UserController','getIndex')):?>
-                                <li class="<?if($_controller_name=='UserController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/user');?>"><?php echo Lang::get('text.all_user');?></a>
+                                <li class="<?if($_controller_name=='SettingController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/setting')?>"><?php echo Lang::get('text.system_setting')?></a>
                                 </li>
-                            <?endif;?>
-                            <?if(User::hasPermission('Admin','DepartmentController','getIndex')):?>
-                                <li class="<?if($_controller_name=='DepartmentController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/dept');?>"><?php echo Lang::get('text.dept_manage');?></a>
+                                <li class="<?if($_controller_name=='CityController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/city')?>"><?php echo Lang::get('text.city_manage')?></a>
                                 </li>
-                            <?endif;?>
-                            <?if(User::hasPermission('Admin','PostController','getIndex')):?>
-                                <li class="<?if($_controller_name=='PostController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/post');?>"><?php echo Lang::get('text.post_manage')?></a>
+                                <li class="<?if($_controller_name=='AirportController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/airport')?>"><?php echo Lang::get('text.airport_manage');?></a>
                                 </li>
-                            <?endif;?>
+                                <li class="<?if($_controller_name=='LogController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/log');?>"><?php echo Lang::get('text.operate_log');?></a>
+                                </li>
                         </ul>
                     </li>
-                <?endif;?>
-
-                <?if(User::hasPermission('Admin','QueryController','getUser')):?>
-                <li class="<?if(in_array($_controller_name, array('QueryController'))):?>open active<?endif;?>">
-                    <a href="javascript:;">
-                    <i class="fa fa-bar-chart-o"></i> 
-                    <span class="title"><?php echo Lang::get('text.query_statistics');?></span>
-                    <span class="arrow "></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="<?if($_controller_name=='QueryController' && $_action_name=='getUser'):?>active<?endif;?>">
-                            <a href="<?php echo asset('admin/query/user');?>"><?php echo Lang::get('text.query_user_studying');?></a>
-                        </li>
-                        <li class="<?if($_controller_name=='QueryController' && $_action_name=='getCourse'):?>active<?endif;?>">
-                            <a href="<?php echo asset('admin/query/course');?>"><?php echo Lang::get('text.query_course_studying');?></a>
-                        </li>
-                        <li class="<?if($_controller_name=='QueryController' && $_action_name=='getExam'):?>active<?endif;?>">
-                            <a href="<?php echo asset('admin/query/exam');?>"><?php echo Lang::get('text.query_comprehensive_exam');?></a>
-                        </li>
-                    </ul>
-                </li>
-                <?endif;?>
-                
-                <?if(User::hasPermission('Admin','SystemController','getIndex') || User::hasPermission('Admin','NewsController','getIndex') || 
-                        User::hasPermission('Admin','SkinController','getIndex') || User::hasPermission('Admin','QuestionnaireController','getIndex') || 
-                        User::hasPermission('Admin','RoleController','getIndex') || User::hasPermission('Admin','LogController','getIndex')):?>
-                <li class="<?if(in_array($_controller_name, array('SystemController','NewsController','SkinController','QuestionnaireController','RoleController','LogController'))):?>open active<?endif;?>">
-                    <a href="javascript:;">
-                    <i class="fa fa-cog"></i> 
-                    <span class="title"><?php echo Lang::get('text.system_manage');?></span>
-                    <span class="arrow "></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <?if(User::hasPermission('Admin','SystemController','getIndex')):?>
-                            <li class="<?if($_controller_name=='SystemController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/system');?>"><?php echo Lang::get('text.system_setting');?></a>
-                            </li>
-                        <?endif;?>
-                        <?if(User::hasPermission('Admin','NewsController','getIndex')):?>
-                            <li class="<?if($_controller_name=='NewsController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/news')?>"><?php echo Lang::get('text.announcement_settings')?></a>
-                            </li>
-                        <?endif;?>
-                        <?if(User::hasPermission('Admin','SkinController','getIndex')):?>
-                            <li class="<?if($_controller_name=='SkinController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/skin');?>"><?php echo Lang::get('text.skin_settings');?></a>
-                            </li>
-                        <?endif;?>
-                        <?if(User::hasPermission('Admin','QuestionnaireController','getIndex')):?>
-                            <li class="<?if($_controller_name=='QuestionnaireController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/questionnaire')?>"><?php echo Lang::get('text.questionnaire_settings')?></a>
-                            </li>
-                        <?endif;?>
-                        <?if(User::hasPermission('Admin','RoleController','getIndex')):?>
-                            <li class="<?if($_controller_name=='RoleController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/role')?>"><?php echo Lang::get('text.role_settings');?></a>
-                            </li>
-                        <?endif;?>
-                        <?if(User::hasPermission('Admin','LogController','getIndex')):?>
-                            <li class="<?if($_controller_name=='LogController'):?>active<?endif;?>">
-                                <a href="<?php echo asset('admin/log');?>"><?php echo Lang::get('text.admin-log');?></a>
-                            </li>
-                        <?endif;?>
-                    </ul>
-                </li>
-                <?endif;?>
+                    <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
+                        <a href="javascript:;">
+                            <i class="fa fa-cog"></i> 
+                            <span class="title">公司资料</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="<?if($_controller_name=='SettingController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/setting')?>">关于我们</a>
+                                </li>
+                                <li class="<?if($_controller_name=='CityController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/city')?>">联系我们</a>
+                                </li>
+                                <li class="<?if($_controller_name=='AirportController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/airport')?>">加入我们</a>
+                                </li>
+                        </ul>
+                    </li>
+                    <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
+                        <a href="javascript:;">
+                            <i class="fa fa-cog"></i> 
+                            <span class="title">用户指南</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="<?if($_controller_name=='SettingController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/setting')?>">新手指南</a>
+                                </li>
+                                <li class="<?if($_controller_name=='CityController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/city')?>">常见问题</a>
+                                </li>
+                                <li class="<?if($_controller_name=='NewsController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/news')?>"><?php echo Lang::get('text.news');?></a>
+                                </li>
+                        </ul>
+                    </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
@@ -369,7 +297,7 @@
     <!-- BEGIN FOOTER -->
     <div class="footer">
         <div class="footer-inner">
-            <?php echo Cache::get('company_name')?>  &nbsp; &nbsp; &copy; IASPEC
+            <?php echo Cache::get('company_name')?>  &nbsp; &nbsp; &copy; YUEXINGTRIP.COM
         </div>
         <div class="footer-tools">
             <span class="go-top">

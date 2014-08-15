@@ -174,5 +174,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 	),
-
+	'upload' =>  array(
+		'temp' 		=> 	"uploads/temp",
+		'user' 	    => 	"uploads/user"
+	)
 );

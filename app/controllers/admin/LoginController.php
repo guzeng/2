@@ -20,6 +20,11 @@ class Admin_LoginController extends BaseController {
 
 	public function postVerify()
 	{
+        //csrf验证
+        if (Session::token() != Input::get('_token'))
+        {
+            return Response::json(array('code'=>'1004','message'=>Lang::get('msg.deny_request')));
+        }
 		$username = Input::get('username');
 		$pwd = Input::get('pwd');
         $remember = Input::has('remember') ? true : false;

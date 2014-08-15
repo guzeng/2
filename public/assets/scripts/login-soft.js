@@ -63,7 +63,6 @@ var Login = function () {
         	$('.login-form').ajaxSubmit({
         		'dataType':'json',
 		        success:function(json){
-		            $('#submit_btn').show();
 		            $('#_login_form_loading').remove();
 		            if(typeof(json.code) != 'undefined' && json.code == '1000')
 		            {
@@ -71,12 +70,13 @@ var Login = function () {
 		            }
 		            else
 		            {
+                        $('#submit_btn').show();
 		                $('.login-form').find('.alert-danger').find('span').html(json.message);
 		                $('.login-form').find('.alert-danger').show();
 		            }
 		        },
 		        beforeSubmit:function(){
-		            $('.login-form').find('#submit_btn').after("<img id='_login_form_loading' src='"+msg.base_url+"assets/img/input-spinner.gif' height='16'>");
+		            $('.login-form').find('#submit_btn').after("<img class='text-right' id='_login_form_loading' src='"+msg.base_url+"assets/img/input-spinner.gif' height='16'>");
 		            $('#submit_btn').hide();
 		            $('.login-form').find('span.help-block').remove();
 		            $('.login-form').find('.alert-danger').find('span').html('');

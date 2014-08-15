@@ -79,7 +79,7 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-
+define('TIMEZONE','UP8');
 function now()
 {
     $now = time();

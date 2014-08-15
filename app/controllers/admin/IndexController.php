@@ -8,13 +8,14 @@ class Admin_IndexController extends BaseController {
 	|--------------------------------------------------------------------------
 	|
 	*/
-	protected $layout = 'admin.layout';
+	//protected $layout = 'admin.layout';
 
 	public function getIndex()
 	{
-		$data['user_count'] = User::count();
-		$data['order_count'] = Order::count();
-		$data['news_count'] = News::count();
+
+		$data['user_count'] = 0;//User::count();
+		$data['order_count'] = 0;//Order::count();
+		$data['news_count'] = 0;//News::count();
 
 		$today = strtotime(date('Y-m-d',local_to_gmt()));
 		$firstDay = $today-30*24*3600;//30天前时间戳
@@ -22,7 +23,7 @@ class Admin_IndexController extends BaseController {
 		$days = array();
         for($i=30;$i>=0;$i--)
         {
-            $days[date('Y-m-d',$today-$i*86400)] = array('visitors'=>0,'avi_time'=>0,'join_course_num'=>0,'pass_course'=>0,'join_exam'=>0,'pass_exam'=>0,'user_num'=>0);
+            $days[date('Y-m-d',$today-$i*86400)] = array('visitors'=>0,'avi_time'=>0,'order_num'=>0,'user_num'=>0);
         }
 
 		if(!empty($allLogin))
@@ -72,7 +73,7 @@ class Admin_IndexController extends BaseController {
 		}
 		$data['days'] = $days;
 
-		return View::make('admin/index',$data);
+		return View::make('admin.index',$data);
 	}
 
 }

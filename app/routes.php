@@ -20,12 +20,17 @@ Route::controller('admin/login', 'Admin_LoginController');
 
 Route::group(array('before' => 'auth'), function()
 {
-    //Route::controller('admin/index','Admin_IndexController');
+    Route::controller('admin/index','Admin_IndexController');
     //Route::controller('admin/city','Admin_CityController');
     //Route::controller('admin/airport','Admin_AirportController');
     //Route::controller('admin/order','Admin_OrderController');
     //Route::controller('admin/user', 'Admin_UserController');
+    Route::controller('admin/setting', 'Admin_SettingController');
 });
 
 
-    Route::controller('admin/index','Admin_IndexController');
+
+Route::any('uploadHandler/{width?}/{height?}/{width2?}/{height2?}', 'UploadHandlerController@initialize',
+            function($width=null){ return $width;},function($height=null){ return $height;},
+            function($width2=null){ return $width2;},function($height2=null){ return $height2;})
+            ->where(array('width' => '[0-9]+','height' => '[0-9]+','width2' => '[0-9]+','height2' => '[0-9]+'));

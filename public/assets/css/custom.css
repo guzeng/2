@@ -35,3 +35,27 @@
     word-break: break-all;
     word-wrap: break-word;
 }
+.theme-panel {
+  margin-top: 0px;
+  /*margin-right: 20px; 
+  float: right; #c9c9c9*/
+  z-index: 999;
+  width: 30px;
+  position:relative;
+}
+
+.theme-panel > .theme-options {
+
+  display:block;
+  background:#3d3d3d;
+  width:260px;
+  right:-20px;
+  top:-2px;
+}
+.header .navbar-nav > li#header_theme_bar.dropdown .dropdown-toggle{padding:14px 10px 8px;}
+.header .navbar-nav > li#header_theme_bar.dropdown .dropdown-toggle > i{font-size:22px;}
+.header .nav > li#header_theme_bar > .dropdown-menu:before{border-bottom:0px;}
+.header .nav > li#header_theme_bar > .dropdown-menu:after{border-bottom:0px;}
+
+
+.header .navbar-nav .dropdown-menu{margin-top:1px;}
