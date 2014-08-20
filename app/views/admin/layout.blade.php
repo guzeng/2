@@ -233,21 +233,21 @@
                                 </li>
                         </ul>
                     </li>
-                    <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
+                    <li class="<?if(in_array($_controller_name, array('AboutController','JobController'))):?>open active<?endif;?>">
                         <a href="javascript:;">
                             <i class="fa fa-cog"></i> 
-                            <span class="title">公司资料</span>
+                            <span class="title"><?php echo Lang::get('text.about_manage')?></span>
                             <span class="arrow "></span>
                         </a>
                         <ul class="sub-menu">
-                                <li class="<?if($_controller_name=='SettingController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/setting')?>">关于我们</a>
+                                <li class="<?if($_controller_name=='AboutController' && $_action_name=='getAbout'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/about/about')?>"><?php echo Lang::get('text.aboutus');?></a>
                                 </li>
-                                <li class="<?if($_controller_name=='CityController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/city')?>">联系我们</a>
+                                <li class="<?if($_controller_name=='AboutController' && $_action_name=='getContact'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/about/contact')?>"><?php echo Lang::get('text.contact_us')?></a>
                                 </li>
-                                <li class="<?if($_controller_name=='AirportController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/airport')?>">加入我们</a>
+                                <li class="<?if($_controller_name=='JobController'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.joinus');?></a>
                                 </li>
                         </ul>
                     </li>
@@ -276,7 +276,7 @@
 	    @yield('content')
     </div>
     <!-- modal -->
-    <div aria-hidden="true" aria-labelledby="_confirm_dialogLabel" role="dialog" tabindex="-1" class="modal fade" id="_confirm_dialog" >
+    <div aria-hidden="true" aria-labelledby="_confirm_dialogLabel" role="dialog" tabindex="-1" class="modal fade" id="_confirm_dialog" style="z-index:10100 !important;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

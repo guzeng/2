@@ -397,6 +397,7 @@ function Delete(uri)
             success:function(data){
                 if(data.code == '1000')
                 {
+                    unload_modal();
                     showSuccess(data.msg);
                     if(typeof(data.data.id) != 'undefined')
                     {
@@ -708,7 +709,7 @@ function adjustFooter()
     
 }
 
-function load_modal(url)
+function load_modal(url,type)
 {
     if(typeof(url)=='undefined' || url=='' ||  url==null)
     {
@@ -722,7 +723,8 @@ function load_modal(url)
             closeAlert();
             if(json.code=='1000')
             {
-                var html = "<div id='_load_modal' class='modal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='false'>"+json.data+"<div class='clearfix'></div></div>";
+                var size = (typeof(type)!='undefined' && type=='big') ? 'data-target=".bs-example-modal-lg"' : '';
+                var html = "<div id='_load_modal' class='modal' tabindex='-1' role='dialog' "+size+" aria-labelledby='myModalLabel' aria-hidden='false'>"+json.data+"<div class='clearfix'></div></div>";
                 if($('#_load_modal').length > 0)
                 {
                     $('#_load_modal').remove();
@@ -765,7 +767,11 @@ function unload_modal(id)
     {
         id = '_load_modal';
     }
-    $('#_load_modal').fadeOut('slow',function(){$(this).remove()});
+    //$('#_load_modal').fadeOut('slow',function(){$(this).remove()});
+    $('#'+id).modal('hide');
+    $('#'+id).on('hidden.bs.modal', function (e) {
+        $(this).remove();
+    })
     closeAlert();
 }
 

@@ -38,6 +38,17 @@ Route::filter('auth', function()
 	if (Auth::guest()) return Redirect::guest('login');
 });
 
+Route::filter('admin_auth', function()
+{
+	if (Auth::guest())
+    {
+        if (Request::ajax())
+        {
+            return Response::json(array('code'=>'1002','token'=>csrf_token()));
+        }
+        return Redirect::guest('admin/login');
+    }
+});
 
 Route::filter('auth.basic', function()
 {

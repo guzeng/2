@@ -18,4 +18,16 @@ class MyLog extends Eloquent {
 		}
 		parent::__construct($attributes);
 	}
+
+	static public function c($log)
+	{
+		if(!empty($log))
+		{
+			$log['user_id'] = Auth::user()->id;
+			$log['username'] = $user->name;
+			$log['time'] = local_to_gmt(time());
+			$log['ip'] = User::ip();
+			DB::table('log')->insert($log);
+		}
+	}
 }

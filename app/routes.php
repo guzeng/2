@@ -18,16 +18,18 @@ Route::get('/', function()
 Route::get('brower', array('as' => 'brower', 'uses' => 'BaseController@brower'));
 Route::controller('admin/login', 'Admin_LoginController');
 
-Route::group(array('before' => 'auth'), function()
+Route::group(array('before' => 'admin_auth'), function()
 {
     Route::controller('admin/index','Admin_IndexController');
     //Route::controller('admin/city','Admin_CityController');
     //Route::controller('admin/airport','Admin_AirportController');
-    //Route::controller('admin/order','Admin_OrderController');
+    Route::controller('admin/order','Admin_OrderController');
     //Route::controller('admin/user', 'Admin_UserController');
     Route::controller('admin/setting', 'Admin_SettingController');
+    Route::controller('admin/about', 'Admin_AboutController');
+    Route::controller('admin/job', 'Admin_JobController');
+    Route::post('upload-img','BaseController@postUploadImg');
 });
-
 
 
 Route::any('uploadHandler/{width?}/{height?}/{width2?}/{height2?}', 'UploadHandlerController@initialize',

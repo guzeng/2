@@ -15,6 +15,14 @@ class Order extends Eloquent {
 	{
 		return $this->belongsTo('User', 'user_id', 'id');
 	}
+    public function city()
+    {
+        return $this->belongsTo('City', 'city_id', 'id');
+    }
+    public function airport()
+    {
+        return $this->belongsTo('Airport', 'airport_id');
+    }
 }
 /* End of file Order.php */
 /* Location: ./app/models/Order.php */

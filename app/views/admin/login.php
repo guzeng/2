@@ -157,6 +157,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		jQuery(document).ready(function() {     
 		  App.init();
 		  Login.init();
+		  $('input[name=username]').focus();
 		});
 	</script>
 	<!-- END JAVASCRIPTS -->
