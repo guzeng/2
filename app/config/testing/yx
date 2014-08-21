@@ -2,7 +2,8 @@
 SQLyog Community v11.13 (64 bit)
 MySQL - 5.1.38-community-log : Database - yuexing
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -139,6 +140,7 @@ CREATE TABLE `yx_news` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1发布',
   `create_by` int(11) NOT NULL DEFAULT '0' COMMENT '创建人ID',
   `open_time` int(11) NOT NULL DEFAULT '0' COMMENT '发布时间',
+  `category_id` tinyint(1) NOT NULL default '1' COMMENT '类别',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='资讯表';
 

@@ -25,7 +25,7 @@ $lang['post'] = "邮编";
 /**
  * system
  */
-$lang['news_title'] = "Title";
+$lang['title'] = "Title";
 $lang['content'] = "Content";
 $lang['company_message'] = "Enterprise Information";
 $lang['logo'] = "Logo";
@@ -108,7 +108,6 @@ $lang['preview'] = "Preview";
 $lang['jump_to'] = "Jump to";
 $lang['no_limit'] = "Unlimited";
 $lang['completed'] = "Completed";
-$lang['title'] = "Title";
 $lang['news_create'] = "Created on";
 $lang['basic_info'] = "Basic Info";
 $lang['closed'] = "Closed";

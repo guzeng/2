@@ -28,6 +28,7 @@ Route::group(array('before' => 'admin_auth'), function()
     Route::controller('admin/setting', 'Admin_SettingController');
     Route::controller('admin/about', 'Admin_AboutController');
     Route::controller('admin/job', 'Admin_JobController');
+    Route::controller('admin/news', 'Admin_NewsController');
     Route::post('upload-img','BaseController@postUploadImg');
 });
 

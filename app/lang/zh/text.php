@@ -25,7 +25,7 @@ $lang['post'] = "邮编";
 /**
  * system
  */
-$lang['news_title'] = "标题";
+$lang['title'] = "标题";
 $lang['content'] = "内容";
 $lang['company_message'] = "企业信息";
 $lang['logo'] = "Logo";
@@ -108,7 +108,6 @@ $lang['preview'] = "预览";
 $lang['jump_to'] = "跳转至";
 $lang['no_limit'] = "无限";
 $lang['completed'] = "完成";
-$lang['title'] = "标题";
 $lang['news_create'] = "创建时间";
 $lang['basic_info'] = "基本信息";
 $lang['closed'] = "已关闭";
@@ -211,5 +210,8 @@ $lang['all_city'] = "所有城市";
 $lang['add_city'] = "增加城市";
 $lang['city'] = "城市";
 $lang['add_airport'] = "增加机场";
+$lang['user_grude'] = "用户指南";
+$lang['newcomer_grude'] = "新手指南";
+$lang['FAQ'] = "常见问题";
 
 return $lang;

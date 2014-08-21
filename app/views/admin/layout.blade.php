@@ -254,18 +254,18 @@
                     <li class="<?if(in_array($_controller_name, array('NewsController'))):?>open active<?endif;?>">
                         <a href="javascript:;">
                             <i class="fa fa-cog"></i> 
-                            <span class="title">用户指南</span>
+                            <span class="title"><?php echo Lang::get('text.user_grude')?></span>
                             <span class="arrow "></span>
                         </a>
                         <ul class="sub-menu">
-                                <li class="<?if($_controller_name=='SettingController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/setting')?>">新手指南</a>
+                                <li class="<?if($_controller_name=='NewsController' && isset($cid) && $cid=='1'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/news/list/1')?>"><?php echo Lang::get('text.newcomer_grude');?></a>
                                 </li>
-                                <li class="<?if($_controller_name=='CityController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/city')?>">常见问题</a>
+                                <li class="<?if($_controller_name=='NewsController' && isset($cid) && $cid=='2'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/news/list/2')?>"><?php echo Lang::get('text.FAQ');?></a>
                                 </li>
-                                <li class="<?if($_controller_name=='NewsController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/news')?>"><?php echo Lang::get('text.news');?></a>
+                                <li class="<?if($_controller_name=='NewsController' && isset($cid) && $cid=='3'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/news/list/3')?>"><?php echo Lang::get('text.news');?></a>
                                 </li>
                         </ul>
                     </li>

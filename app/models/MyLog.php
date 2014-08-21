@@ -24,7 +24,7 @@ class MyLog extends Eloquent {
 		if(!empty($log))
 		{
 			$log['user_id'] = Auth::user()->id;
-			$log['username'] = $user->name;
+			$log['username'] = Auth::user()->name;
 			$log['time'] = local_to_gmt(time());
 			$log['ip'] = User::ip();
 			DB::table('log')->insert($log);

@@ -15,6 +15,31 @@ class News extends Eloquent {
 	{
 		return $this->belongsTo('User', 'create_by', 'id');
 	}
+
+	static public function category($c='')
+	{
+		$category = array(
+			'1' => Lang::get('text.newcomer_grude'),
+			'2' => Lang::get('text.FAQ'),
+			'3' => Lang::get('text.news')
+		);
+		if($c)
+		{
+			if(array_key_exists($c, $category))
+			{
+				return $category[$c];
+			}
+			else
+			{
+				return '';
+			}
+			
+		}
+		else
+		{
+			return $category;
+		}
+	}
 }
 /* End of file News.php */
 /* Location: ./app/models/News.php */
