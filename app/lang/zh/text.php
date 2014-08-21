@@ -206,4 +206,10 @@ $lang['deadline'] = "截止时间";
 $lang['job_desc'] = "职位描述";
 $lang['job_require'] = "职位要求";
 $lang['add_job'] = "新增职位";
+
+$lang['all_city'] = "所有城市";
+$lang['add_city'] = "增加城市";
+$lang['city'] = "城市";
+$lang['add_airport'] = "增加机场";
+
 return $lang;

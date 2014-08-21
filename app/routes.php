@@ -21,8 +21,8 @@ Route::controller('admin/login', 'Admin_LoginController');
 Route::group(array('before' => 'admin_auth'), function()
 {
     Route::controller('admin/index','Admin_IndexController');
-    //Route::controller('admin/city','Admin_CityController');
-    //Route::controller('admin/airport','Admin_AirportController');
+    Route::controller('admin/city','Admin_CityController');
+    Route::controller('admin/airport','Admin_AirportController');
     Route::controller('admin/order','Admin_OrderController');
     //Route::controller('admin/user', 'Admin_UserController');
     Route::controller('admin/setting', 'Admin_SettingController');

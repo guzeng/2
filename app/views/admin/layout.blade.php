@@ -251,7 +251,7 @@
                                 </li>
                         </ul>
                     </li>
-                    <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
+                    <li class="<?if(in_array($_controller_name, array('NewsController'))):?>open active<?endif;?>">
                         <a href="javascript:;">
                             <i class="fa fa-cog"></i> 
                             <span class="title">用户指南</span>
