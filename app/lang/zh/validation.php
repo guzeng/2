@@ -90,8 +90,8 @@ return array(
             "phone"			=> "错误的电话号码"
         ),
         "username"	=> array(
-        	"unique"		=> "登录名已被使用",
-            "username"		=> "登录名只允许由字母、数字、下划线、横线及.号组成"
+        	"unique"		=> "用户名已被使用",
+            "username"		=> "用户名只允许由字母、数字、下划线、横线及.号组成"
         ),
         "pwd"		=> array(
         	"required"		=> "密码必须填写",
@@ -105,9 +105,14 @@ return array(
         ),
         "role"		=> array(
         	"required"		=> "请选择角色"
+        ),
+        "mobile2"	=> array(
+        	//"unique"		=> "手机号码已被使用",
+            "mobile"		=> "错误的手机号码",
+            //"required"		=> "手机号码必须填写"
         )
     ),
-
+    	"mobile"		=> "错误的手机号码",
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Attributes

@@ -18,6 +18,9 @@ Route::get('/', function()
 Route::get('brower', array('as' => 'brower', 'uses' => 'BaseController@brower'));
 Route::controller('admin/login', 'Admin_LoginController');
 
+Route::controller('login', 'LoginController');
+Route::controller('register', 'RegisterController');
+
 Route::group(array('before' => 'admin_auth'), function()
 {
     Route::controller('admin/index','Admin_IndexController');
