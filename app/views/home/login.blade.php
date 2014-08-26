@@ -44,7 +44,7 @@
                   <div class="form-info">
                     <h2>如果您还不是会员，请注册</h2>
                     <p></p>
-                    <button class="btn btn-primary" type="button">注册</button>
+                    <button class="btn btn-primary" onclick="window.location.href='<?php echo asset('register');?>';" type="button">注册</button>
                   </div>
                 </div>
               </div>

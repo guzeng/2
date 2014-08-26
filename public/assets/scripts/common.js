@@ -814,28 +814,54 @@ function asset(url)
     return msg.base_url+url;
 }
 
-function validateKey(t)
+function validateKey(t,obj)
 {
     var regx=/^1[34578][0-9]{9}$/;
     var tel = $('#'+t).val();
-    if(typeof(t)!='undefined' && tel.match(regx)!=null)
+    if(typeof(obj)!='undefined' && typeof(t)!='undefined' && tel.match(regx)!=null)
     {
+        var p = $(obj).parent();
         $.ajax({
             url:msg.base_url+'validate-key',
             type:'post',
             dataType:'json',
+            data:{'mobile':tel},
             success:function(json)
             {
-
+                if(json.code=='1000')
+                {
+                    var html = msg.validate_again.replace("%s","<span id='validate_key_timeout'>60</span>");
+                    p.html(html);
+                    var s = setInterval(function(){
+                        var t = $('#validate_key_timeout').html();
+                        if(t=='1')
+                        {
+                            clearInterval(s);
+                            p.html(obj);
+                        }
+                        else
+                        {
+                            $('#validate_key_timeout').html(parseInt(t)-1);
+                        }
+                    },1000);
+                }
+                else
+                {
+                    showError(json.msg);
+                }
             },
             error:function()
             {
-                
+                showError();
+            },
+            beforeSend:function()
+            {
+                p.html("<img src='"+msg.base_url+"assets/img/loading.gif'>");
             }
         })
     }
     else
     {
-
+        showError(msg.incorrect_mobile);
     }
 }

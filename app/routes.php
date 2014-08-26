@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('home/index');
 });
 Route::get('brower', array('as' => 'brower', 'uses' => 'BaseController@brower'));
-Route::post('validate-key', array('as' => 'validate-key', 'uses' => 'BaseController@validateKey'));
+Route::post('validate-key', array('as' => 'validate-key', 'uses' => 'BaseController@postValidateKey'));
 Route::controller('admin/login', 'Admin_LoginController');
 
 Route::controller('login', 'LoginController');

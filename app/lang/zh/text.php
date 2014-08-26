@@ -218,4 +218,5 @@ $lang['click_to_get_validate_key'] = "点击获取验证码";
 $lang['register'] = "注册";
 $lang['has_account'] = "已有账户？";
 $lang['valiate_key_in_mobile'] = "请输入手机收到的验证码";
+$lang['valiate_again'] = "%s秒后重新发送";
 return $lang;

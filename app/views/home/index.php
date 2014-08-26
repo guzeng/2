@@ -58,7 +58,11 @@
 							<a href="#">LOGO</a>
 						</div>
 						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right">
-							<a href="#">登录</a> | <a href="#">注册</a>
+							<?php if(Auth::guest()):?>
+							<a href="<?php echo asset('login')?>">登录</a> | <a href="<?php echo asset('register')?>">注册</a>
+							<?php else:?>
+							Welcome，<?php echo Auth::user()->name;?> | <a href="<?php echo asset('login/out')?>"><?php echo Lang::get('text.exit')?></a>
+							<?php endif;?>
 						</div>
 					</div>
 						<!--start-top-nav-->

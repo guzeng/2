@@ -50,7 +50,7 @@ class LoginController extends BaseController {
 		if ($validator->fails())
 		{
 		    $messages = $validator->messages()->all('<div>:message</div>');
-		    return Response::json(array('code' => '1010', 'message'=>implode('', $messages)));
+		    return Response::json(array('code' => '1010', 'msg'=>implode('', $messages)));
 		}
 
         if (Auth::attempt(array('username' => $username, 'pwd' => $pwd,'active'=>1), $remember))
@@ -58,11 +58,11 @@ class LoginController extends BaseController {
             User::saveLogin();
             $path = Session::get('url.intended', '/');
             Session::forget('url.intended');
-            return Response::json(array('code' => '1000','message'=>Lang::get('msg.login_success'), 'url'=>asset($path)));
+            return Response::json(array('code' => '1000','msg'=>Lang::get('msg.login_success'), 'url'=>asset($path)));
         }
         else
         {
-            return Response::json(array('code' => '1010', 'message'=>Lang::get('msg.verify_incorrect')));
+            return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.verify_incorrect')));
         }
 	}
 

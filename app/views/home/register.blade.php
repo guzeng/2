@@ -20,7 +20,7 @@
                             <div class="col-lg-8 col-lg-8 col-sm-8">
                                 <div class="input-group">
                                     <input type="text" id="validate_code" name='validate_code' class="form-control" maxLength='6' placeholder="<?php echo Lang::get('text.valiate_key_in_mobile')?>">
-                                    <span class="input-group-addon"><a><?php echo Lang::get('text.click_to_get_validate_key')?></a></span>
+                                    <span class="input-group-addon"><a href='javascript:void(0)' onclick="validateKey('username',this)"><?php echo Lang::get('text.click_to_get_validate_key')?></a></span>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                   <input type="radio" name="gender" id="male" value="male" checked> <?php echo Lang::get('text.male')?>
                                 </label>
                                 <label class="radio-inline">
-                                  <input type="radio" name="gender" id="female" value="female"> <?php echo Lang::get('female')?>
+                                  <input type="radio" name="gender" id="female" value="female"> <?php echo Lang::get('text.female')?>
                                 </label>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                   <div class="form-info">
                     <h2><?php echo Lang::get('text.has_account');?></h2>
                     <p></p>
-                    <button class="btn btn-primary" type="button"><?php echo Lang::get('text.login')?></button>
+                    <button class="btn btn-primary" type="button" onclick="window.location.href='<?php echo asset('login');?>';"><?php echo Lang::get('text.login')?></button>
                   </div>
                 </div>
               </div>
@@ -79,9 +79,7 @@
 @section('script')
     <?php echo HTML::script('assets/plugins/jquery.form.js');?>
     <script type="text/javascript">
-        function login_success()
-        {
-
-        }
+        msg.validate_again = "<?php echo Lang::get('text.valiate_again')?>";
+        msg.incorrect_mobile = "<?php echo Lang::get('validation.mobile')?>";
     </script>
 @stop
