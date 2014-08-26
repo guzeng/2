@@ -19,6 +19,6 @@ class CustomValidator extends Illuminate\Validation\Validator {
 	}
 	public function validateMobile($attribute, $value, $parameters)
 	{
-		return preg_match('/^[0-9]{11}$/u', $value);
+		return preg_match('/^1[34578][0-9]{9}$/u', $value);
 	}
 }

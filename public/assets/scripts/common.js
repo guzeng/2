@@ -813,3 +813,29 @@ function asset(url)
 {
     return msg.base_url+url;
 }
+
+function validateKey(t)
+{
+    var regx=/^1[34578][0-9]{9}$/;
+    var tel = $('#'+t).val();
+    if(typeof(t)!='undefined' && tel.match(regx)!=null)
+    {
+        $.ajax({
+            url:msg.base_url+'validate-key',
+            type:'post',
+            dataType:'json',
+            success:function(json)
+            {
+
+            },
+            error:function()
+            {
+                
+            }
+        })
+    }
+    else
+    {
+
+    }
+}

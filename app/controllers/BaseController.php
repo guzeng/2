@@ -188,5 +188,53 @@ class BaseController extends Controller {
             echo json_encode(array('error' => 0, 'url' => $file_url));
             exit;
         }
-    }    
+    }
+
+    public function postValidateKey()
+    {
+        $mobile = trim(Input::get('mobile'));
+        $inputs = array(
+            'username' => $username,
+            'code' => $code,
+            'password' => $password,
+            'password_confirmation' => $password_confirmation,
+            'name' => $name,
+            'accept' => $accept
+        );
+        //验证规则
+        $rules = array(
+            'username' => 'required|mobile|unique:account,username',
+            'code' => 'required',
+            'password' => 'required|confirmed|min:6',
+            'name' => 'max:50',
+            'accept' => 'accepted'
+        );
+        $validator = Validator::make(
+            array(
+                'mobile' => $mobile
+            ),
+            array(
+                'mobile' => 'required|mobile'
+            )
+        );
+        if ($validator->fails())
+        {
+            $error['mobile'] = str_replace('mobile', Lang::get('text.mobile'), $validator->messages()->get('mobile'));
+            return Response::json(array('code' => '1010', 'msg'=>$error));
+        }
+        $code = mt_rand(100000,999999);
+        //if(Sms::send($mobile,$msg))
+        //{
+            $_m = new MobileCode();
+            $_m->mobile = $mobile;
+            $_m->code = $code;
+
+            if($_m->save())
+            {
+                return Response::json(array('code' => '1000'));
+            }            
+        //}
+        return Response::json(array('code' => '1010', 'msg'=>$error));
+    }
+
 }

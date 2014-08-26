@@ -7,41 +7,44 @@
 
 <!-- Head BEGIN -->
 <head>
-  <meta charset="utf-8">
-  <title><?php echo (Cache::has('website_name') ? Cache::get('website_name') : '')?></title>
+    <meta charset="utf-8">
+    <title><?php echo (Cache::has('website_name') ? Cache::get('website_name') : '')?></title>
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta content="Metronic Shop UI description" name="description">
-  <meta content="Metronic Shop UI keywords" name="keywords">
-  <meta content="keenthemes" name="author">
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
 
-  <meta property="og:site_name" content="-CUSTOMER VALUE-">
-  <meta property="og:title" content="-CUSTOMER VALUE-">
-  <meta property="og:description" content="-CUSTOMER VALUE-">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-  <meta property="og:url" content="-CUSTOMER VALUE-">
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
 
-  <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 
-  <!-- Global styles START -->
-  <?php echo HTML::style('assets/plugins/font-awesome/css/font-awesome.min.css');?>
-  <?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css');?>
+    <!-- Global styles START -->
+    <?php echo HTML::style('assets/plugins/font-awesome/css/font-awesome.min.css');?>
+    <?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.min.css');?>
 
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  <?php echo HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css');?>
-  <!-- Page level plugin styles END -->
+    <!-- Global styles END --> 
 
-  <!-- Theme styles START -->
-  <?php echo HTML::style('assets/css/frontend/components.css');?>
-  <?php echo HTML::style('assets/css/frontend/style.css');?>
-  <?php echo HTML::style('assets/css/frontend/red.css');?>
-  <?php echo HTML::style('assets/css/frontend/style-responsive.css');?>
+    <!-- Page level plugin styles START -->
+    <?php echo HTML::style('assets/plugins/fancybox/source/jquery.fancybox.css');?>
+    <!-- Page level plugin styles END -->
 
+    <!-- Theme styles START -->
+    <?php echo HTML::style('assets/css/frontend/components.css');?>
+    <?php echo HTML::style('assets/css/frontend/style.css');?>
+    <?php echo HTML::style('assets/css/frontend/red.css');?>
+    <?php echo HTML::style('assets/css/frontend/style-responsive.css');?>
+    <?php echo HTML::style('assets/css/custom.css');?>
+    <!--[if lt IE 8]>
+    <?php echo HTML::style('assets/css/bootstrap-ie7.css');?>
+    <![endif]--> 
   <!-- Theme styles END -->
   <script type="text/javascript">
     var msg = {
@@ -215,13 +218,14 @@
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-    <!--[if lt IE 9]>
-    <?php echo HTML::script('assets/plugins/respond.min.js');?>
-    <![endif]--> 
     <?php echo HTML::script('assets/plugins/jquery-1.10.2.min.js');?>
     <?php echo HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js');?>
     <?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
     <?php echo HTML::script('assets/scripts/frontend/back-to-top.js');?>
+    <!--[if lt IE 9]>
+        <script src="<?php echo asset('assets/plugins/respond.min.js');?>"></script>
+        <script src="<?php echo asset('assets/plugins/excanvas.min.js');?>"></script> 
+    <![endif]-->
     <?php echo HTML::script('assets/scripts/common.js');?>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->

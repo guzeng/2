@@ -26,11 +26,11 @@ class RegisterController extends BaseController {
             return Response::json(array('code'=>'1004','message'=>Lang::get('msg.deny_request')));
         }
 		$username = trim(Input::get('username'));
-		$code = trim(Input::get('code'));
+		$code = trim(Input::get('validate_code'));
 		$password = trim(Input::get('password'));
 		$password_confirmation = trim(Input::get('password_confirmation'));
 		$name = trim(Input::get('name'));
-		$gender = trim(Input::get('gender'));
+		$gender = Input::has('gender')&&in_array(trim(Input::get('gender')),array('male','female')) ? trim(Input::get('gender')) : 'male';
 		$accept = trim(Input::get('accept'));
         if( !$password )
         {
@@ -64,7 +64,7 @@ class RegisterController extends BaseController {
 
 		if ($validator->fails())
 		{
-            $error['username'] = str_replace('username', Lang::get('text.username'), $validator->messages()->get('username'));
+            $error['username'] = str_replace('username', Lang::get('text.mobile'), $validator->messages()->get('username'));
             $error['code'] = str_replace('code', Lang::get('text.validate_key'), $validator->messages()->get('code'));
             $error['password'] = str_replace('password', Lang::get('text.password'), $validator->messages()->get('password'));
             $error['name'] = str_replace('name', Lang::get('text.name'), $validator->messages()->get('name'));
