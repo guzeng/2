@@ -213,5 +213,5 @@ $lang['add_airport'] = "增加机场";
 $lang['user_grude'] = "用户指南";
 $lang['newcomer_grude'] = "新手指南";
 $lang['FAQ'] = "常见问题";
-
+$lang['ship_note'] = "托运说明";
 return $lang;

@@ -52,8 +52,8 @@
                             <td id='status'><?php echo $order->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed');?></td>
                         </tr>
                         <tr>
-                            <td class='b'><?php echo Lang::get('text.users')?></td>
-                            <td colspan='3'><?php echo $order->user ? $order->user->username : ''?></td>
+                            <td class='b'><?php echo Lang::get('text.ship_note')?></td>
+                            <td colspan='3'><?php echo $order->info?></td>
                         </tr>
                     </table>
                 </div>
