@@ -5,8 +5,7 @@
     <div class='row'>
         <div class="col-md-12 col-sm-12">
             <h1><?php echo Lang::get('text.register')?></h1>
-            <div class="content-form-page">
-              <div class="row">
+            <div class="row">
                 <div class="col-md-7 col-sm-7">
                     <form role="form" class="form-horizontal" id='register-form' method='post' action="<?php echo asset('register/verify')?>" >
                         <div class="form-group">
@@ -20,7 +19,9 @@
                             <div class="col-lg-8 col-lg-8 col-sm-8">
                                 <div class="input-group">
                                     <input type="text" id="validate_code" name='validate_code' class="form-control" maxLength='6' placeholder="<?php echo Lang::get('text.valiate_key_in_mobile')?>">
-                                    <span class="input-group-addon"><a href='javascript:void(0)' onclick="validateKey('username',this)"><?php echo Lang::get('text.click_to_get_validate_key')?></a></span>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn blue" onclick="validateKey('username',this)"><?php echo Lang::get('text.click_to_get_validate_key')?></button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +71,6 @@
                     <button class="btn btn-primary" type="button" onclick="window.location.href='<?php echo asset('login');?>';"><?php echo Lang::get('text.login')?></button>
                   </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>

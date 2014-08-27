@@ -48,7 +48,13 @@
   <!-- Theme styles END -->
   <script type="text/javascript">
     var msg = {
-        'base_url':"<?php echo asset('');?>"
+        'base_url':"<?php echo asset('');?>",
+        'success':"<?php echo Lang::get('msg.success')?>",
+        'failed':"<?php echo Lang::get('msg.failed')?>",
+        'loading':"<?php echo Lang::get('msg.loading')?>",
+        'submit_error':"<?php echo Lang::get('msg.submit_error')?>",
+        'error':"<?php echo Lang::get('msg.error')?>",
+        'lang':"<?php echo App::getLocale(); ?>"
     };
   </script>
 </head>

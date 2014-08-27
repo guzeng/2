@@ -219,7 +219,11 @@ class BaseController extends Controller {
                 return Response::json(array('code' => '1000'));
             }
         //}
-        return Response::json(array('code' => '1010', 'msg'=>$error));
+        //else
+        //{
+           // return Response::json(array('code' => '1002','msg'=>Lang::get('msg.send_failed')));
+        //}
+        return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.error')));
     }
 
 }
