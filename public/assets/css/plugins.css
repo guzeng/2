@@ -227,7 +227,7 @@ Form wizard
   text-align: center !important;
   font-size: 16px;
   font-weight: 300;
-  padding: 11px 15px 13px 15px;
+  padding: 13px 15px 13px 15px;
   margin-right: 10px;
   height: 45px;
   width: 45px;
@@ -240,6 +240,7 @@ Form wizard
   display: inline-block;
   font-size: 16px;
   font-weight: 300;
+  color: rgb(13, 99, 143);
 }
  
 .form-wizard .active .step .number {

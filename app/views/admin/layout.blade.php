@@ -212,6 +212,12 @@
                             <span class="title"><?php echo Lang::get('text.order_manage')?></span>
                         </a>
                     </li>
+                    <li class="<?if(in_array($_controller_name, array('UserController'))):?>open active<?endif;?>">
+                        <a href="<?php echo asset('admin/user');?>">
+                            <i class="fa fa-book"></i> 
+                            <span class="title"><?php echo Lang::get('text.user_manage')?></span>
+                        </a>
+                    </li>
                     <li class="<?if(in_array($_controller_name, array('CityController','AirportController','SettingController','LogController'))):?>open active<?endif;?>">
                         <a href="javascript:;">
                             <i class="fa fa-cog"></i> 

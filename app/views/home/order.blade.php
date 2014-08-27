@@ -1,7 +1,7 @@
 @extends('home.layout')
 
 @section('content')
-<div class='container m-t-50 m-b-50'>
+<div class='container m-t-50 m-b-50'  id="form_wizard_1">
     <form action="#" class="form-horizontal" id="submit_form">
         <div class="form-wizard">
             <div class="form-body">
@@ -529,12 +529,28 @@
 </div>
 @stop
 @section('script')
+    <?php echo HTML::style('assets/css/plugins.css');?>
+    <?php echo HTML::style('assets/css/style-metronic.css');?>
     <?php echo HTML::script('assets/plugins/jquery.form.js');?>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <?php echo HTML::script('assets/plugins/jquery-validation/dist/jquery.validate.min.js');?>
-    <?php echo HTML::script('assets/plugins/jquery-validation/dist/additional-methods.min.js');?>
+    <?php echo HTML::script('assets/plugins/jquery-validation/jquery.validate.min.js');?>
+    <?php echo HTML::script('assets/plugins/jquery-validation/additional-methods.min.js');?>
+    <?php echo HTML::script('assets/plugins/jquery-validation/messages_'.App::getLocale().'.js');?>
     <?php echo HTML::script('assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js');?>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <?php echo HTML::script('assets/plugins/select2/select2.min.js');?>
     <!-- END PAGE LEVEL PLUGINS -->
+    <!-- END PAGE LEVEL PLUGINS -->
+    <?php echo HTML::script('assets/scripts/form-wizard.js');?>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function() {       
+           // initiate layout and plugins
+           //App.init();
+           FormWizard.init();
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->   
     <script type="text/javascript">
         msg.validate_again = "<?php echo Lang::get('text.valiate_again')?>";
         msg.incorrect_mobile = "<?php echo Lang::get('validation.mobile')?>";

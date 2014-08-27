@@ -219,4 +219,6 @@ $lang['register'] = "注册";
 $lang['has_account'] = "已有账户？";
 $lang['valiate_key_in_mobile'] = "请输入手机收到的验证码";
 $lang['valiate_again'] = "%s秒后重新发送";
+$lang['register_time'] = "注册时间";
+$lang['lock'] = "锁定";
 return $lang;
