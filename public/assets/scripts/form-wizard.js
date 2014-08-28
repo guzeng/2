@@ -7,12 +7,12 @@ var FormWizard = function () {
             if (!jQuery().bootstrapWizard) {
                 return;
             }
-
+            /*
             function format(state) {
                 if (!state.id) return state.text; // optgroup
                 return "<img class='flag' src='"+msg.base_url+"assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
             }
-            /*
+            
             $("#country_list").select2({
                 placeholder: "Select",
                 allowClear: true,
@@ -34,63 +34,42 @@ var FormWizard = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
                     //account
-                    username: {
-                        minlength: 5,
+                    flight_num: {
+                        length: 6,
                         required: true
                     },
-                    password: {
-                        minlength: 5,
+                    type: {
                         required: true
                     },
-                    rpassword: {
-                        minlength: 5,
-                        required: true,
-                        equalTo: "#submit_form_password"
-                    },
-                    //profile
-                    fullname: {
+                    time: {
                         required: true
                     },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    gender: {
+                    city_id: {
                         required: true
                     },
                     address: {
                         required: true
                     },
-                    city: {
+                    airport_id: {
                         required: true
                     },
-                    country: {
-                        required: true
-                    },
-                    //payment
-                    card_name: {
-                        required: true
-                    },
-                    card_number: {
-                        minlength: 16,
-                        maxlength: 16,
-                        required: true
-                    },
-                    card_cvc: {
+                    normal_luggage_num: {
                         digits: true,
-                        required: true,
-                        minlength: 3,
-                        maxlength: 4
-                    },
-                    card_expiry_date: {
                         required: true
                     },
-                    'payment[]': {
+                    special_luggage_num: {
+                        digits: true,
+                        required: true
+                    },
+                    shipper: {
+                        required: true
+                    },
+                    gender: {
+                        required: true
+                    },
+                    phone: {
                         required: true,
-                        minlength: 1
+                        mobile:true
                     }
                 },
 

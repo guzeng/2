@@ -10,7 +10,10 @@ class OrderController extends BaseController {
 	*/
 	public function getIndex()
 	{
-		return View::make('home.order');
+		$data['allType'] = Order::getType();
+		$data['allCity'] = City::all();
+		$data['allAirport'] = Airport::all();
+		return View::make('home.order',$data);
 	}
 
 

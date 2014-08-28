@@ -16,8 +16,8 @@
                             <td><?php echo $order->flight_num?></td>
                         </tr>
                         <tr>
-                            <td class='b'><?php echo Lang::get('text.type')?></td>
-                            <td><?php echo $order->type == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport')?></td>
+                            <td class='b'><?php echo Lang::get('text.ship_type')?></td>
+                            <td><?php echo Order::getType($order->type);// == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport')?></td>
                             <td class='b'><?php echo Lang::get('text.ship_time')?></td>
                             <td><?php echo date('Y-m-d H:i:s',gmt_to_local($order->time));?></td>
                         </tr>

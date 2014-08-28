@@ -22,6 +22,7 @@
 		max: $.validator.format("May not be greater than {0}."),
 		min: $.validator.format("Must be at least {0}."),
 		username: "Only Letters, Numbers, Underscores, Dashes and '.' are allowed.",
-		phone: "Please enter a valid phone number."
+		mobile: "Please enter a valid mobile phone number.",
+		length: $.validator.format("Just {0} characters")
 	});
 }(jQuery));

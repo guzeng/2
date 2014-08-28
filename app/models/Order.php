@@ -23,6 +23,26 @@ class Order extends Eloquent {
     {
         return $this->belongsTo('Airport', 'airport_id');
     }
+
+    static public function getType($t='')
+    {
+        $arr = array(
+            '1' => Lang::get('text.to_destination'),
+            '2' => Lang::get('text.to_airport')
+        );
+        if($t)
+        {
+            if(array_key_exists($t, $arr))
+            {
+                return $arr[$t];
+            }
+            else
+            {
+                return '';
+            }
+        }
+        return $arr;
+    }
 }
 /* End of file Order.php */
 /* Location: ./app/models/Order.php */

@@ -40,7 +40,7 @@
                                     <label class="checkbox"><input type="checkbox" checked data-column="1"><?php echo Lang::get('text.order_code');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="2"><?php echo Lang::get('text.username');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="3"><?php echo Lang::get('text.flight_num');?></label>
-                                    <label class="checkbox"><input type="checkbox" checked data-column="4"><?php echo Lang::get('text.type');?></label>
+                                    <label class="checkbox"><input type="checkbox" checked data-column="4"><?php echo Lang::get('text.ship_type');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="5"><?php echo Lang::get('text.ship_time');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="6"><?php echo Lang::get('text.ship_city');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="7"><?php echo Lang::get('text.airport');?></label>
@@ -60,7 +60,7 @@
                                     <th><?php echo Lang::get('text.order_code');?></th>
                                     <th><?php echo Lang::get('text.username');?></th>
                                     <th class="hidden-xs"><?php echo Lang::get('text.flight_num');?></th>
-                                    <th class="hidden-xs "><?php echo Lang::get('text.type');?></th>
+                                    <th class="hidden-xs "><?php echo Lang::get('text.ship_type');?></th>
                                     <th class="hidden-xs "><?php echo Lang::get('text.ship_time');?></th>
                                     <th class="hidden-xs"><?php echo Lang::get('text.ship_city');?></th>
                                     <th class="hidden-xs"><?php echo Lang::get('text.airport');?></th>

@@ -44,35 +44,99 @@
                         Your form validation is successful!
                     </div>
                     <div class="tab-pane active" id="tab1">
-                        <h3 class="block">Provide your account details</h3>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Username<span class="required">*</span></label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.flight_num')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="username"/>
-                                <span class="help-block">Provide your username</span>
+                                <input type="text" class="form-control" name="flight_num" id='flight_num'/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Password<span class="required">*</span></label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_type')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="password" class="form-control" name="password" id="submit_form_password"/>
-                                <span class="help-block">Provide your password.</span>
+                                <select name="type" id="type" class="form-control">
+                                    <?php foreach($allType as $key => $v):?>
+                                    <option value="<?php echo $key?>"><?php echo $v;?></option>
+                                    <?endforeach;?>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Confirm Password<span class="required">*</span></label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="password" class="form-control" name="rpassword"/>
-                                <span class="help-block">Confirm your password</span>
+                                <input type="text" class="form-control" name="time" id='time'/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Email<span class="required">*</span></label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="email"/>
-                                <span class="help-block">Provide your email address</span>
+                                <select name="city_id" id="city_id" class="form-control">
+                                    <option><?php echo Lang::get('text.please_choose');?></option>
+                                    <?php foreach($allCity as $key => $v):?>
+                                    <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+                                    <?endforeach;?>
+                                </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.address')?><span class="required">*</span></label>
+                            <div class='col-md-4'>
+                                <input type="text" class="form-control" name="address" id='address'/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.airport')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <select name="airport_id" id="airport_id" class="form-control">
+                                    <?php foreach($allAirport as $key => $v):?>
+                                    <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+                                    <?endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.normal_luggage_num')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="normal_luggage_num" id='normal_luggage_num'/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="special_luggage_num" id='special_luggage_num'/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.shipper')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="shipper" id='shipper'/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.shiper_gender')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <div class="radio-list">
+                                    <label class="radio-inline">
+                                        <div class="radio" id="uniform-optionsRadios25">
+                                            <span><input type="radio" checked="" value="option1" id="optionsRadios25" name="gender"></span>
+                                        </div> <?php echo Lang::get('text.male')?>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <div class="radio" id="uniform-optionsRadios26">
+                                            <span class="checked"><input type="radio" checked="" value="option2" id="optionsRadios26" name="gender"></span>
+                                        </div> <?php echo Lang::get('text.female')?>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.mobile')?><span class="required">*</span></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="phone" id='phone'/>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="tab-pane" id="tab2">
                         <h3 class="block">Provide your profile details</h3>
@@ -529,11 +593,12 @@
 </div>
 @stop
 @section('script')
+    <?php echo HTML::style('assets/plugins/uniform/css/uniform.default.css');?>
     <?php echo HTML::style('assets/css/plugins.css');?>
     <?php echo HTML::style('assets/css/style-metronic.css');?>
     <?php echo HTML::script('assets/plugins/jquery.form.js');?>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <?php echo HTML::script('assets/plugins/jquery-validation/jquery.validate.min.js');?>
+    <?php echo HTML::script('assets/plugins/jquery-validation/jquery.validate.js');?>
     <?php echo HTML::script('assets/plugins/jquery-validation/additional-methods.min.js');?>
     <?php echo HTML::script('assets/plugins/jquery-validation/messages_'.App::getLocale().'.js');?>
     <?php echo HTML::script('assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js');?>
@@ -541,6 +606,7 @@
     <?php echo HTML::script('assets/plugins/select2/select2.min.js');?>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- END PAGE LEVEL PLUGINS -->
+    <?php echo HTML::script('assets/scripts/app.js');?>
     <?php echo HTML::script('assets/scripts/form-wizard.js');?>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>

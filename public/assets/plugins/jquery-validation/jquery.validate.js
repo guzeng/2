@@ -1046,6 +1046,10 @@ $.extend($.validator, {
 			return this.optional(element) || /^\d+$/.test(value);
 		},
 
+		mobile: function(value, element){
+			return this.optional(element) || /^1[34578][0-9]{9}$/.test(value);
+		},
+
 		// http://docs.jquery.com/Plugins/Validation/Methods/creditcard
 		// based on http://en.wikipedia.org/wiki/Luhn
 		creditcard: function( value, element ) {
@@ -1093,6 +1097,11 @@ $.extend($.validator, {
 		rangelength: function( value, element, param ) {
 			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
 			return this.optional(element) || ( length >= param[0] && length <= param[1] );
+		},
+
+		length: function( value, element, param ) {
+			var length = $.isArray( value ) ? value.length : this.getLength($.trim(value), element);
+			return this.optional(element) || length == param;
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/min

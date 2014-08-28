@@ -103,7 +103,7 @@ class Admin_OrderController extends BaseController {
                     $item->code,
                     $item->user ? $item->user->username : '',
                     $item->flight_num,
-                    $item->type == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport'),
+                    Order::getType($item->type),// == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport'),
                     date('Y-m-d H:i:s',gmt_to_local($item->time)),
                     $item->city ? $item->city->name : '',
                     $item->airport ? $item->airport->name : '',

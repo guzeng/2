@@ -22,6 +22,7 @@
 		max: $.validator.format("请输入一个最大为 {0} 的值"),
 		min: $.validator.format("请输入一个最小为 {0} 的值"),
 		username: "登录名只允许由字母、数字、下划线、横线及.号组成",
-		phone: "错误的电话号码"
+		mobile: "错误的手机号码",
+		length: $.validator.format("只允许 {0} 个字符")
 	});
 }(jQuery));
