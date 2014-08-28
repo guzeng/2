@@ -118,12 +118,12 @@
                                 <div class="radio-list">
                                     <label class="radio-inline">
                                         <div class="radio" id="uniform-optionsRadios25">
-                                            <span><input type="radio" checked="" value="option1" id="optionsRadios25" name="gender"></span>
+                                            <span class="checked"><input type="radio" checked="checked" value="option1" id="optionsRadios25" name="gender"></span>
                                         </div> <?php echo Lang::get('text.male')?>
                                     </label>
                                     <label class="radio-inline">
                                         <div class="radio" id="uniform-optionsRadios26">
-                                            <span class="checked"><input type="radio" checked="" value="option2" id="optionsRadios26" name="gender"></span>
+                                            <span><input type="radio"  value="option2" id="optionsRadios26" name="gender"></span>
                                         </div> <?php echo Lang::get('text.female')?>
                                     </label>
                                 </div>
@@ -589,6 +589,7 @@
                 </div>
             </div>
         </div>
+        <input type='hidden' name='_token' value="<?php echo csrf_token(); ?>" >
     </form>
 </div>
 @stop
