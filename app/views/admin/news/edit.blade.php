@@ -50,7 +50,7 @@
                             <label class="control-label col-md-2 col-sm-3 col-xs-12"></label>
                             <div class="col-md-9 col-sm-9 col-xs-12 checkbox-list">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" name="status" value="1" <?php if(isset($item->status) && $item->status==1):?>checked='checked'<?php endif;?> >
+                                    <input type="checkbox" name="status" value="1" <?php if(!isset($item->status) || (isset($item->status) && $item->status==1)):?>checked='checked'<?php endif;?> >
                                     <?php echo Lang::get('text.enable');?>
                                 </label>
                             </div>

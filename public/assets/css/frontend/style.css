@@ -3,7 +3,6 @@ body {
     background: none repeat scroll 0 0 rgb(255, 255, 255);
     color: rgb(62, 77, 92);
     direction: ltr;
-    font: 400 13px 'Open Sans',Arial,sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 10px;
@@ -160,7 +159,7 @@ input.form-control, textarea.form-control {
     border-radius: 0;
     box-shadow: none;
     color: rgb(119, 119, 119);
-    font: 14px Arial,sans-serif;
+    font: 14px;
 }
 input.form-control:focus, textarea.form-control:focus {
     border: 1px solid rgb(219, 219, 219);
@@ -343,7 +342,7 @@ body.page-header-fixed {
 }
 .header-navigation {
     float: left;
-    font: 15px "Open Sans",sans-serif;
+    font: 15px ;
     margin: 0 10px 0 0;
     padding: 0;
     text-transform: uppercase;
@@ -360,6 +359,7 @@ body.page-header-fixed {
     color: rgb(51, 51, 51);
     display: block;
     padding: 29px 12px 30px;
+    font-size:16px;
 }
 .header-navigation ul > li.active > a, .header-navigation ul > li > a:hover, .header-navigation ul > li > a:focus, .header-navigation ul > li.open > a, .header-navigation ul > li.open > a:hover, .header-navigation ul > li.open > a:focus {
     background: none repeat scroll 0 0 rgb(252, 252, 252);
