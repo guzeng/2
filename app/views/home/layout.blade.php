@@ -69,8 +69,7 @@
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>info@keenthemes.com</span></li>
+                        <li><i class="fa fa-phone"></i><span>400 000 0000</span></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
@@ -90,7 +89,7 @@
     <div class="header">
       <div class="container">
         <a class="site-logo" href="index.html">
-            <img src="../../assets/frontend/layout/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+            <img src="../../assets/frontend/layout/img/logos/logo-corp-red.png" alt="Logo">
         </a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -100,7 +99,7 @@
           <ul>
             <li class="">
               <a href="<?php echo asset('')?>">
-                首页
+                <?php echo Lang::get('text.homepage')?>
               </a>
             </li>
             <li class="">
@@ -114,36 +113,20 @@
                 </a>
             </li>
             <li class="">
-                <a href="#">
-                    用户须知
+                <a href="<?php echo asset('news/grude')?>">
+                    <?php echo Lang::get('text.newcomer_grude')?>
                 </a>
             </li>
             <li class="">
-                <a href="#">
-                    常见问题
+                <a href="<?php echo asset('news/faq')?>">
+                    <?php echo Lang::get('text.FAQ')?>
                 </a>
             </li>
             <li class="">
-                <a href="#">
-                    资讯
+                <a href="<?php echo asset('news')?>">
+                    <?php echo Lang::get('text.news')?>
                 </a>
             </li>
-            <!-- BEGIN TOP SEARCH -->
-            <li class="menu-search">
-                <span class="sep"></span>
-                <i class="fa fa-search search-btn"></i>
-                <div class="search-box">
-                    <form action="#">
-                      <div class="input-group">
-                        <input type="text" placeholder="Search" class="form-control">
-                        <span class="input-group-btn">
-                          <button class="btn btn-primary" type="submit">Search</button>
-                        </span>
-                      </div>
-                    </form>
-                </div> 
-            </li>
-            <!-- END TOP SEARCH -->
           </ul>
         </div>
         <!-- END NAVIGATION -->

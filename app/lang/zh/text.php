@@ -222,4 +222,5 @@ $lang['valiate_again'] = "%s秒后重新发送";
 $lang['register_time'] = "注册时间";
 $lang['lock'] = "锁定";
 $lang['shiper_gender'] = "托运人性别";
+$lang['recent'] = "最新";
 return $lang;

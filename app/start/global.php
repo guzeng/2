@@ -174,6 +174,14 @@ function timezones($tz = '')
     return ( ! isset($zones[$tz])) ? 0 : $zones[$tz];
 }
 
+function utf8_strcut($str, $length, $start=0)
+{
+    preg_match_all('/./us', $str, $match);  
+    $chars = is_null($length)? array_slice($match[0], $start ) : array_slice($match[0], $start, $length);  
+    unset($str);
+    return implode('', $chars);
+}
+
 /*
 |--------------------
 | 注册自定义的验证器扩展
