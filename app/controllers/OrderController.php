@@ -10,6 +10,10 @@ class OrderController extends BaseController {
 	*/
 	public function getIndex()
 	{
+		$data['city_id'] = trim(Input::get('city_id'));
+		$data['type'] = trim(Input::get('type'));
+		$data['time'] = trim(Input::get('time'));
+
 		$data['allType'] = Order::getType();
 		$data['allCity'] = City::all();
 		$data['allAirport'] = Airport::all();

@@ -172,6 +172,9 @@ var FormWizard = function () {
                     $('#form_wizard_1').find('.button-submit').hide();
                 }
                 //App.scrollTo($('.page-title'));
+                if(index == 1){
+                    mapInit();
+                }
             }
 
             // default form wizard

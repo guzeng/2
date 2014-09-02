@@ -68,12 +68,12 @@
 						<!--start-top-nav-->
 					<nav class="top-nav">
 						<ul class="">
-							<li class="active"><a href="#home" class="scroll">首页</a></li>
-							<li class="page-scroll"><a href="#about" class="scroll">在线托运</a></li>
-							<li class="page-scroll"><a href="#gal" class="scroll">托运流程</a></li>
-							<li class="page-scroll"><a href="#con" class="scroll">用户须知</a></li>
-							<li class="page-scroll"><a href="#test" class="scroll">常见问题</a></li>
-							<li class="page-scroll"><a href="#contact" class="scroll">资讯</a></li>
+							<li class="active"><a href="#home" class="scroll"><?php echo Lang::get('text.homepage')?></a></li>
+							<li class="page-scroll"><a href="#about" class="scroll"><?php echo Lang::get('text.online_order')?></a></li>
+							<li class="page-scroll"><a href="#gal" class="scroll"><?php echo Lang::get('text.ship_process')?></a></li>
+							<li class="page-scroll"><a href="#con" class="scroll"><?php echo Lang::get('text.user_instructions')?></a></li>
+							<li class="page-scroll"><a href="#test" class="scroll"><?php echo Lang::get('text.FAQ')?></a></li>
+							<li class="page-scroll"><a href="#contact" class="scroll"><?php echo Lang::get('text.news')?></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -95,17 +95,26 @@
 						<div class="panel panel-primary">
 					      	<div class="panel-heading">快速预订</div>
 					      	<div class="panel-body">
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form" method='get' action="<?php echo asset('order')?>">
 									<div class="form-group">
 										<label for="inputEmail3" class="col-md-3 control-label">托运城市</label>
 										<div class="col-md-9">
-											<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+			                                <select name="city_id" id="city_id" class="form-control">
+			                                    <option><?php echo Lang::get('text.please_choose');?></option>
+			                                    <?php foreach($allCity as $key => $v):?>
+			                                    <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+			                                    <?endforeach;?>
+			                                </select>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="inputPassword3" class="col-md-3 control-label">托运类型</label>
 										<div class="col-md-9">
-											<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+			                                <select name="type" id="type" class="form-control">
+			                                    <?php foreach($allType as $key => $v):?>
+			                                    <option value="<?php echo $key?>"><?php echo $v;?></option>
+			                                    <?endforeach;?>
+			                                </select>
 										</div>
 									</div>
 									<div class="form-group">
@@ -169,7 +178,7 @@
 		<div id="con" class="consulation">
 			<div class="container">
 				<div class="head title">
-					用户须知
+					<?php echo Lang::get('text.user_instructions')?>
 				</div>
 				<div class="consulation-grids">
 					<div class='row'>
@@ -195,18 +204,26 @@
 		<!--start-testmonials-->
 		<div id="test" class="testmonials">
 			<div class="container">
-				<div class="head title">
-					常见问题
+				<div class="head ">
+					<div class='pull-right' style="margin-top:10px;margin-right:20px">
+						<a href="<?php echo asset('news/faq')?>"><?php echo Lang::get('text.more');?></a>
+					</div>
+					<div class='title'><?php echo Lang::get('text.FAQ')?></div>
 				</div>
 				<!--start-testmonials-grids-->
 				<div class="testmonials-grids text-left">
 					<ul class="list-group">
-					  <li class="list-group-item">Cras justo odio</li>
-					  <li class="list-group-item">Dapibus ac facilisis in</li>
-					  <li class="list-group-item">Morbi leo risus</li>
-					  <li class="list-group-item">Porta ac consectetur ac</li>
-					  <li class="list-group-item">Vestibulum at eros</li>
+						<?php if(!empty($faq_list)):?>
+						<?php foreach ($faq_list as $key => $value):?>
+					  		<li class="list-group-item">
+					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
+					  				<?php echo $value->title?>
+					  			</a>
+					  		</li>
+					  	<?php endforeach;?>
+					  	<?php endif;?>
 					</ul>
+
 				</div>
 				<!--//End-testmonials-grids-->
 			</div>
@@ -215,16 +232,23 @@
 		<!--start-contact-->
 		<div id="contact" class="contact">
 			<div class="container">
-				<div class="head title">
-					资讯
+				<div class="head ">
+					<div class='pull-right' style="margin-top:10px;margin-right:20px">
+						<a href="<?php echo asset('news')?>"><?php echo Lang::get('text.more');?></a>
+					</div>
+					<div class='title'><?php echo Lang::get('text.news')?></div>
 				</div>
 				<div class="contact-grids">
 					<ul class="list-group">
-					  <li class="list-group-item">Cras justo odio</li>
-					  <li class="list-group-item">Dapibus ac facilisis in</li>
-					  <li class="list-group-item">Morbi leo risus</li>
-					  <li class="list-group-item">Porta ac consectetur ac</li>
-					  <li class="list-group-item">Vestibulum at eros</li>
+						<?php if(!empty($news_list)):?>
+						<?php foreach ($news_list as $key => $value):?>
+					  		<li class="list-group-item">
+					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
+					  				<?php echo $value->title?>
+					  			</a>
+					  		</li>
+					  	<?php endforeach;?>
+					  	<?php endif;?>
 					</ul>
 				</div>
 			</div>

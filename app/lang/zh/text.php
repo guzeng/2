@@ -223,4 +223,7 @@ $lang['register_time'] = "注册时间";
 $lang['lock'] = "锁定";
 $lang['shiper_gender'] = "托运人性别";
 $lang['recent'] = "最新";
+$lang['user_instructions'] = "用户须知";
+$lang['ship_process'] = "托运流程";
+$lang['online_order'] = "在线托运";
 return $lang;

@@ -96,33 +96,40 @@
 
         <!-- BEGIN NAVIGATION -->
         <div class="header-navigation pull-right font-transform-inherit">
+            <?php
+                $action = Route::currentRouteAction();
+                $a = explode('@', $action);
+                $_action_name = $a[1];
+                $a2 = explode('_', $a[0]);
+                $_controller_name = isset($a2[1]) ? $a2[1] : $a2[0];
+            ?>
           <ul>
-            <li class="">
+            <li class="<?php if($_controller_name=='IndexController'):?>active<?endif;?>">
               <a href="<?php echo asset('')?>">
                 <?php echo Lang::get('text.homepage')?>
               </a>
             </li>
-            <li class="">
-                <a href="#">
-                    在线托运
+            <li class="<?php if($_controller_name=='OrderController'):?>active<?endif;?>">
+                <a href="<?php echo asset('order')?>">
+                    <?php echo Lang::get('text.online_order')?>
                 </a>
             </li>
             <li class="">
-                <a href="#">
-                    托运流程
+                <a href="<?php echo asset('')?>#gal">
+                    <?php echo Lang::get('text.ship_process')?>
                 </a>
             </li>
-            <li class="">
+            <li class="<?php if($_controller_name=='NewsController' && $_action_name=='getGrude'):?>active<?endif;?>">
                 <a href="<?php echo asset('news/grude')?>">
                     <?php echo Lang::get('text.newcomer_grude')?>
                 </a>
             </li>
-            <li class="">
+            <li class="<?php if($_controller_name=='NewsController' && $_action_name=='getFaq'):?>active<?endif;?>">
                 <a href="<?php echo asset('news/faq')?>">
                     <?php echo Lang::get('text.FAQ')?>
                 </a>
             </li>
-            <li class="">
+            <li class="<?php if($_controller_name=='NewsController' && $_action_name=='getIndex'):?>active<?endif;?>">
                 <a href="<?php echo asset('news')?>">
                     <?php echo Lang::get('text.news')?>
                 </a>
