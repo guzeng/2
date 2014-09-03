@@ -19,6 +19,8 @@ Route::controller('admin/login', 'Admin_LoginController');
 Route::controller('login', 'LoginController');
 Route::controller('register', 'RegisterController');
 Route::controller('news', 'NewsController');
+Route::controller('about', 'AboutController');
+Route::controller('job', 'JobController');
 
 Route::controller('order', 'OrderController');
 

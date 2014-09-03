@@ -150,10 +150,19 @@
       <div class="container">
         <div class="row">
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat.</p>
-          </div>
+            <div class="col-md-12 col-sm-12 pre-footer-col text-center">
+                <ul class="list-inline">
+                    <li><a href="<?php echo asset('about')?>"><?php echo Lang::get('text.aboutus')?></a></li>
+                    <li> | </li>
+                    <li><a href="<?php echo asset('about/contact')?>"><?php echo Lang::get('text.contact_us')?></a></li>
+                    <li> | </li>
+                    <li><a href="<?php echo asset('job')?>"><?php echo Lang::get('text.joinus')?></a></li>
+                    <li> | </li>
+                    <a href="<?php echo asset('news/grude')?>"><?php echo News::category(1)?></a>
+                    <li> | </li>
+                    <a href="<?php echo asset('news/faq')?>"><?php echo News::category(2)?></a>
+                </ul>
+            </div>
           <!-- END BOTTOM ABOUT BLOCK -->
 
 
