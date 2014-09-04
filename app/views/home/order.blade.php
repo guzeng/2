@@ -9,19 +9,19 @@
                     <li>
                         <a href="#tab1" data-toggle="tab" class="step">
                         <span class="number">1</span>
-                        <span class="desc"><i class="fa fa-check"></i> Account Setup</span>   
+                        <span class="desc"><i class="fa fa-check"></i> 基本信息</span>   
                         </a>
                     </li>
                     <li>
                         <a href="#tab2" data-toggle="tab" class="step">
                         <span class="number">2</span>
-                        <span class="desc"><i class="fa fa-check"></i> Profile Setup</span>   
+                        <span class="desc"><i class="fa fa-check"></i> 路线</span>   
                         </a>
                     </li>
                     <li>
                         <a href="#tab3" data-toggle="tab" class="step">
                         <span class="number">3</span>
-                        <span class="desc"><i class="fa fa-check"></i> Confirm</span>   
+                        <span class="desc"><i class="fa fa-check"></i> 确认提交</span>   
                         </a> 
                     </li>
                 </ul>
@@ -57,7 +57,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="time" id='time'/>
+                                <input type="text" id="stime" name='stime' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd - HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($stime)?$stime:'';?>" >
+                                
                             </div>
                         </div>
                         <div class="form-group">
@@ -130,15 +131,17 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tab2">
-                        <h3 class="block">Provide your profile details</h3>
-                        <div >共<span id='order_distance'></span>公里，共计<span id='order_money'></span></div>
-                        <div class='col-md-9'>
-                            <div id="l-map"></div>
+                        <div class="m-b-20">
+                            <strong>共<span id='order_distance'></span>公里，共计<span id='order_money'></span></strong>
                         </div>
-                        <div class='col-md-3'>
-                            <div  id="r-result" ></div>
+                        <div class='row'>
+                            <div class='col-md-9'>
+                                <div id="l-map"></div>
+                            </div>
+                            <div class='col-md-3'>
+                                <div  id="r-result" ></div>
+                            </div>
                         </div>
-                        <div class='clearfix'></div>
                     </div>
                     <div class="tab-pane" id="tab3">
                         <h3 class="block">Confirm your account</h3>
@@ -251,6 +254,8 @@
             </div>
         </div>
         <input type='hidden' name='_token' value="<?php echo csrf_token(); ?>" >
+        <input type='hidden' name='distance' id='distance' value=''>
+        <input type="hidden" name="time" id='time' value="<?php echo $time;?>" />
     </form>
 </div>
 @stop
@@ -258,6 +263,7 @@
     <?php echo HTML::style('assets/plugins/uniform/css/uniform.default.css');?>
     <?php echo HTML::style('assets/css/plugins.css');?>
     <?php echo HTML::style('assets/css/style-metronic.css');?>
+    <?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
     <?php echo HTML::script('assets/plugins/jquery.form.js');?>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <?php echo HTML::script('assets/plugins/jquery-validation/jquery.validate.js');?>
@@ -266,6 +272,10 @@
     <?php echo HTML::script('assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js');?>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <?php echo HTML::script('assets/plugins/select2/select2.min.js');?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
+    <?php if(App::getLocale()=='zh'):?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
+    <?php endif;?>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- END PAGE LEVEL PLUGINS -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=neYBiVeGaumZAuQT31SRk0RU"></script>
@@ -280,8 +290,16 @@
            // initiate layout and plugins
            //App.init();
             FormWizard.init();
-
-
+            $('.form_datetime').datetimepicker({
+                <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            });
         });
 // 百度地图API功能
 //var map = new BMap.Map("l-map");            // 创建Map实例

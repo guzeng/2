@@ -12,7 +12,13 @@ class OrderController extends BaseController {
 	{
 		$data['city_id'] = trim(Input::get('city_id'));
 		$data['type'] = trim(Input::get('type'));
-		$data['time'] = trim(Input::get('time'));
+		$time = trim(Input::get('time'));
+		if($time)
+		{
+			$t = strtotime($time);
+			$data['stime'] = date('Y-m-d - H:i',$t);
+		}
+		$data['time'] = $time;
 
 		$data['allType'] = Order::getType();
 		$data['allCity'] = City::all();
@@ -92,7 +98,7 @@ class OrderController extends BaseController {
 
 		$order->flight_num = $flight_num;
 		$order->type = $type;
-		$order->time = $time;
+		$order->time = strtotime($time);
 		$order->city_id = $city_id;
 		$order->address = $address;
 		$order->airport_id = $airport_id;
