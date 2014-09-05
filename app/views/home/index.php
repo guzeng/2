@@ -55,7 +55,7 @@
 							400-0000-000
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-4 logo">
-							<a href="#">LOGO</a>
+							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" ></a>
 						</div>
 						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right">
 							<?php if(Auth::guest()):?>

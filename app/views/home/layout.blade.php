@@ -88,8 +88,8 @@
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="index.html">
-            <img src="../../assets/frontend/layout/img/logos/logo-corp-red.png" alt="Logo">
+        <a class="site-logo" href="<?php echo asset('')?>">
+            <img src="<?php echo asset('assets/img/logo.png')?>" alt="Logo">
         </a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
