@@ -19,6 +19,7 @@
 		<!-- start-smoth-scrolling-->
 		 <!-- Custom Theme files -->
 		<?php echo HTML::style('assets/css/theme-style.css');?>
+		<?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
    		 <!-- Custom Theme files -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> 
@@ -44,6 +45,11 @@
 			});
 		</script>
 		<!--//End-top-nav-script-->
+
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
+		<?php if(App::getLocale()=='zh'):?>
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
+		<?php endif;?>
 	</head>
 	<body>
 		<!--start-container-->
@@ -120,7 +126,7 @@
 									<div class="form-group">
 										<label for="inputEmail3" class="col-md-3 control-label">托运日期</label>
 										<div class="col-md-9">
-											<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+											<input type="text" id="inputEmail3" readonly class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input">
 										</div>
 									</div>
 									<div class="form-group">
@@ -128,6 +134,7 @@
 											<button type="submit" class="btn btn-primary">开始预订</button>
 										</div>
 									</div>
+									<input type="hidden" id="time_input" name='time' value="" />
 								</form>
 					      	</div>
 					    </div>
@@ -286,7 +293,17 @@
 					} 
 					window.onresize = function(){   
 					  	adjust();  
-					}  
+					}
+					$('.form_datetime').datetimepicker({
+				        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
+				        weekStart: 1,
+				        todayBtn:  1,
+						autoclose: 1,
+						todayHighlight: 1,
+						startView: 2,
+						forceParse: 0,
+				        showMeridian: 1
+				    });
 				});
 			</script>
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

@@ -41,7 +41,7 @@ var FormWizard = function () {
                     type: {
                         required: true
                     },
-                    time: {
+                    stime: {
                         required: true
                     },
                     city_id: {
