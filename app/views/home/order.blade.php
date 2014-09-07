@@ -2,7 +2,7 @@
 
 @section('content')
 <div class='container m-t-50 m-b-50'  id="form_wizard_1">
-    <form action="#" class="form-horizontal" id="submit_form">
+    <form action="<?php echo asset('order/update')?>" method='post' class="form-horizontal" id="order_form">
         <div class="form-wizard">
             <div class="form-body">
                 <ul class="nav nav-pills nav-justified steps">
@@ -31,17 +31,19 @@
                 <div class="tab-content">
                     <div class="alert alert-danger display-none">
                         <button class="close" data-dismiss="alert"></button>
-                        You have some form errors. Please check below.
+                        <?php echo Lang::get('msg.submit_error');?>
                     </div>
                     <div class="alert alert-success display-none">
+                        <!--
                         <button class="close" data-dismiss="alert"></button>
                         Your form validation is successful!
+                        -->
                     </div>
                     <div class="tab-pane active" id="tab1">
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.flight_num')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="flight_num" id='flight_num'/>
+                                <input type="text" class="form-control" maxLength='6' name="flight_num" id='flight_num'/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -111,14 +113,12 @@
                             <div class="col-md-4">
                                 <div class="radio-list">
                                     <label class="radio-inline">
-                                        <div class="radio" id="uniform-optionsRadios25">
-                                            <span class="checked"><input type="radio" checked="checked" value="option1" id="optionsRadios25" name="gender"></span>
-                                        </div> <?php echo Lang::get('text.male')?>
+                                        <input type="radio" data-title="<?php echo Lang::get('text.male')?>" value="male" name="gender"  style='margin-left:0px;'> &nbsp;
+                                        <?php echo Lang::get('text.male')?>
                                     </label>
                                     <label class="radio-inline">
-                                        <div class="radio" id="uniform-optionsRadios26">
-                                            <span><input type="radio"  value="option2" id="optionsRadios26" name="gender"></span>
-                                        </div> <?php echo Lang::get('text.female')?>
+                                        <input type="radio" data-title="<?php echo Lang::get('text.female')?>" checked="checked" value="famale" name="gender" style='margin-left:0px;'> &nbsp;
+                                        <?php echo Lang::get('text.female')?>
                                     </label>
                                 </div>
                             </div>
@@ -144,92 +144,82 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tab3">
-                        <h3 class="block">Confirm your account</h3>
-                        <h4 class="form-section">Account</h4>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Username:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.flight_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="username"></p>
+                                <p class="form-control-static" data-display="flight_num"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Email:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_type')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="email"></p>
-                            </div>
-                        </div>
-                        <h4 class="form-section">Profile</h4>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Fullname:</label>
-                            <div class="col-md-4">
-                                <p class="form-control-static" data-display="fullname"></p>
+                                <p class="form-control-static" data-display="type"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Gender:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="gender"></p>
+                                <p class="form-control-static" data-display="stime"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Phone:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="phone"></p>
+                                <p class="form-control-static" data-display="city_id"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Address:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.address')?>:</label>
                             <div class="col-md-4">
                                 <p class="form-control-static" data-display="address"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">City/Town:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.airport')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="city"></p>
+                                <p class="form-control-static" data-display="airport_id"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Country:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.normal_luggage_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="country"></p>
+                                <p class="form-control-static" data-display="normal_luggage_num"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Remarks:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="remarks"></p>
-                            </div>
-                        </div>
-                        <h4 class="form-section">Billing</h4>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Card Holder Name:</label>
-                            <div class="col-md-4">
-                                <p class="form-control-static" data-display="card_name"></p>
+                                <p class="form-control-static" data-display="special_luggage_num"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Card Number:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.shipper')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="card_number"></p>
+                                <p class="form-control-static" data-display="shipper"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">CVC:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.shiper_gender')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="card_cvc"></p>
+                                <p class="form-control-static" data-display="gender"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Expiration:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.mobile')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="card_expiry_date"></p>
+                                <p class="form-control-static" data-display="phone"></p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Payment Options:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.distance')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="payment"></p>
+                                <p class="form-control-static" data-display="order_distance"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.money')?>:</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static" data-display="order_money"></p>
                             </div>
                         </div>
                     </div>
@@ -240,13 +230,13 @@
                     <div class="col-md-12">
                         <div class="col-md-offset-3 col-md-9">
                             <a href="javascript:;" class="btn default button-previous">
-                            <i class="m-icon-swapleft"></i> Back 
+                            <i class="m-icon-swapleft"></i> <?php echo Lang::get('text.back')?> 
                             </a>
                             <a href="javascript:;" class="btn blue button-next">
-                            Continue <i class="m-icon-swapright m-icon-white"></i>
+                            <?php echo Lang::get('text.continue')?> <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                             <a href="javascript:;" class="btn green button-submit">
-                            Submit <i class="m-icon-swapright m-icon-white"></i>
+                            <?php echo Lang::get('text.submit')?> <i class="m-icon-swapright m-icon-white"></i>
                             </a>                            
                         </div>
                     </div>
@@ -265,6 +255,7 @@
     <?php echo HTML::style('assets/css/style-metronic.css');?>
     <?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
     <?php echo HTML::script('assets/plugins/jquery.form.js');?>
+    <?php echo HTML::script('assets/plugins/uniform/jquery.uniform.min.js');?>
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <?php echo HTML::script('assets/plugins/jquery-validation/jquery.validate.js');?>
     <?php echo HTML::script('assets/plugins/jquery-validation/additional-methods.min.js');?>
@@ -289,6 +280,12 @@
         jQuery(document).ready(function() {       
            // initiate layout and plugins
            //App.init();
+
+            var test = $("input[type=radio]:not(.toggle, .star)");
+            if (test.size() > 0) {
+                test.each(function () {
+                });
+            }
             FormWizard.init();
             $('.form_datetime').datetimepicker({
                 <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>

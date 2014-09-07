@@ -7,23 +7,8 @@ var FormWizard = function () {
             if (!jQuery().bootstrapWizard) {
                 return;
             }
-            /*
-            function format(state) {
-                if (!state.id) return state.text; // optgroup
-                return "<img class='flag' src='"+msg.base_url+"assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
-            }
-            
-            $("#country_list").select2({
-                placeholder: "Select",
-                allowClear: true,
-                formatResult: format,
-                formatSelection: format,
-                escapeMarkup: function (m) {
-                    return m;
-                }
-            });*/
 
-            var form = $('#submit_form');
+            var form = $('#order_form');
             var error = $('.alert-danger', form);
             var success = $('.alert-success', form);
 
@@ -127,20 +112,16 @@ var FormWizard = function () {
             });
 
             var displayConfirm = function() {
-                $('#tab4 .form-control-static', form).each(function(){
+                $('#tab3 .form-control-static', form).each(function(){
                     var input = $('[name="'+$(this).attr("data-display")+'"]', form);
                     if (input.is(":text") || input.is("textarea")) {
                         $(this).html(input.val());
                     } else if (input.is("select")) {
                         $(this).html(input.find('option:selected').text());
-                    } else if (input.is(":radio") && input.is(":checked")) {
-                        $(this).html(input.attr("data-title"));
-                    } else if ($(this).attr("data-display") == 'payment') {
-                        var payment = [];
-                        $('[name="payment[]"]').each(function(){
-                            payment.push($(this).attr('data-title'));
-                        });
-                        $(this).html(payment.join("<br>"));
+                    } else if (input.is(":radio") ) {
+                        $(this).html($("input[name='"+$(this).attr("data-display")+"']:checked").attr("data-title"));
+                    } else if ($(this).attr("data-display") == 'order_distance' || $(this).attr("data-display") == 'order_money') {
+                        $(this).html($('#'+$(this).attr("data-display")).html());
                     }
                 });
             }
@@ -217,7 +198,8 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
+                //alert('Finished! Hope you like it :)');
+                doSubmit('order_form',this);
             }).hide();
         }
 

@@ -43,9 +43,10 @@ class OrderController extends BaseController {
 		$airport_id = trim(Input::get('airport_id'));
 		$normal_luggage_num = trim(Input::get('normal_luggage_num'));
 		$special_luggage_num = trim(Input::get('special_luggage_num'));
-		$shiper = trim(Input::get('shiper'));
+		$shipper = trim(Input::get('shipper'));
 		$gender = trim(Input::get('gender'));
 		$phone = trim(Input::get('phone'));
+		$distance = trim(Input::get('distance'));
 
 		//需验证字段
 		$inputs = array(
@@ -57,21 +58,21 @@ class OrderController extends BaseController {
 			'airport_id' => $airport_id,
 			'normal_luggage_num' => $normal_luggage_num,
 			'special_luggage_num' => $special_luggage_num,
-			'shiper' => $shiper,
+			'shipper' => $shipper,
 			'gender' => $gender,
 			'phone' => $phone
 		);
 		//验证规则
 		$rules = array(
-			'flight_num' => 'required|length:6',
-			'type' => 'required|digits:1',
+			'flight_num' => 'required|size:6',
+			'type' => 'required|in:1,2',
 			'time' => 'required|date',
 			'city_id' => 'required|exists:City,id',
 			'address' => 'required',
 			'airport_id' => 'required|exists:Airport,id',
-			'normal_luggage_num' => 'required|digits',
-			'special_luggage_num' => 'required|digits',
-			'shiper' => 'required',
+			'normal_luggage_num' => 'required|numeric',
+			'special_luggage_num' => 'required|numeric',
+			'shipper' => 'required',
 			'gender' => 'required',
 			'phone' => 'required|mobile',
 		);
@@ -89,9 +90,11 @@ class OrderController extends BaseController {
             $error['airport_id'] = str_replace('airport_id', Lang::get('text.airport'), $messages->get('airport_id'));
             $error['normal_luggage_num'] = str_replace('normal_luggage_num', Lang::get('text.normal_luggage_num'), $messages->get('normal_luggage_num'));
             $error['special_luggage_num'] = str_replace('special_luggage_num', Lang::get('text.special_luggage_num'), $messages->get('special_luggage_num'));
-            $error['shiper'] = str_replace('shiper', Lang::get('text.shiper'), $messages->get('shiper'));
+            $error['shiper'] = str_replace('shipper', Lang::get('text.shipper'), $messages->get('shipper'));
             $error['gender'] = str_replace('gender', Lang::get('text.shiper_gender'), $messages->get('gender'));
             $error['phone'] = str_replace('phone', Lang::get('text.mobile'), $messages->get('phone'));
+
+        	return Response::json(array('code' => '1010', 'error'=>$error));
 		}
 
 		$order = new Order();
@@ -104,12 +107,13 @@ class OrderController extends BaseController {
 		$order->airport_id = $airport_id;
 		$order->normal_luggage_num = $normal_luggage_num;
 		$order->special_luggage_num = $special_luggage_num;
-		$order->shiper = $shiper;
+		$order->shiper = $shipper;
 		$order->gender = $gender;
 		$order->phone = $phone;
 		$order->user_id = Auth::check()?Auth::user()->id:0;
 		$order->create_time = local_to_gmt();
 		list($usec, $sec) = explode(" ", microtime());
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));
+		return Response::json(array('code' => '1000','url'=>''));
 	}
 }

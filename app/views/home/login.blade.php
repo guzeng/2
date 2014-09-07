@@ -4,31 +4,31 @@
 <div class='container'>
     <div class='row'>
         <div class="col-md-12 col-sm-12">
-            <h1>Login</h1>
+            <h1><?php echo Lang::get('text.login')?></h1>
             <div class="content-form-page">
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <form id='login-form' role="form" class="form-horizontal form-without-legend" method='post' action="<?php echo asset('login/verify');?>">
                         <div class="form-group">
-                          <label class="col-lg-4 control-label" for="username">Username <span class="require">*</span></label>
+                          <label class="col-lg-4 control-label" for="username"><?php echo Lang::get('text.mobile')?> <span class="require">*</span></label>
                           <div class="col-lg-8">
                             <input type="text" id="username" name='username' class="form-control">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-lg-4 control-label" for="password">Password <span class="require">*</span></label>
+                          <label class="col-lg-4 control-label" for="password"><?php echo Lang::get('text.password')?> <span class="require">*</span></label>
                           <div class="col-lg-8">
                             <input id="password" name='password' type='password' class="form-control">
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-8 col-md-offset-4 padding-left-0">
-                            <a href="page-forgotton-password.html">Forget Password?</a>
+                            <a href="<?php echo asset('forget-password')?>"><?php echo Lang::get('text.forget_password')?></a>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
-                            <button class="btn btn-primary" type="button" onclick="doSubmit('login-form',this)">Login</button>
+                            <button class="btn btn-primary" type="button" onclick="doSubmit('login-form',this)"><?php echo Lang::get('text.login')?></button>
                           </div>
                         </div>
                         <div class="row">
