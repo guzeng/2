@@ -56,7 +56,7 @@ class RegisterController extends BaseController {
 			'username' => 'required|mobile|unique:account,username',
 			'code' => 'required',
 			'password' => 'required|confirmed|min:6',
-			'name' => 'max:50',
+			'name' => 'required|max:50',
 			'accept' => 'accepted'
 		);
 
@@ -65,32 +65,36 @@ class RegisterController extends BaseController {
 		if ($validator->fails())
 		{
             $error['username'] = str_replace('username', Lang::get('text.mobile'), $validator->messages()->get('username'));
-            $error['code'] = str_replace('code', Lang::get('text.validate_key'), $validator->messages()->get('code'));
+            $error['validate_code'] = str_replace('code', Lang::get('text.validate_key'), $validator->messages()->get('code'));
             $error['password'] = str_replace('password', Lang::get('text.password'), $validator->messages()->get('password'));
-            $error['name'] = str_replace('name', Lang::get('text.name'), $validator->messages()->get('name'));
-            $error['accept'] = str_replace('accept', Lang::get('text.accept'), $validator->messages()->get('accept'));
+            $error['name'] = str_replace('name', Lang::get('text.user_name'), $validator->messages()->get('name'));
+            $error['accept'] = str_replace('accept', Lang::get('text.register_agreement'), $validator->messages()->get('accept'));
             
 		}
-        if(!$mobileCode)
-        {
-        	$error['validate_code'] = Lang::get('msg.verify_key_incorrect');
-        }
-        else
-        {
-        	if($mobileCode->create_time + 300 < local_to_gmt())//5分钟过期
-        	{
-        		$error['validate_code'] = Lang::get('msg.validate_dated');
-        	}
-        }
+		if(!isset($error['validate_code']) || empty($error['validate_code']))
+		{
+	        if(!$mobileCode)
+	        {
+	        	$error['validate_code'] = Lang::get('msg.verify_key_incorrect');
+	        }
+	        else
+	        {
+	        	if($mobileCode->create_time + 300 < local_to_gmt())//5分钟过期
+	        	{
+	        		$error['validate_code'] = Lang::get('msg.validate_dated');
+	        	}
+	        }
+		}
         if(!empty($error))
         {
-        	return Response::json(array('code' => '1010', 'error'=>$error));
+        	return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.submit_error'), 'error'=>$error));
         }
 
 		$user = new User();
 		$user->username = $username;
 		$user->pwd = Hash::make($password);
 		$user->phone = $username;
+		$user->name = $name;
 		$user->gender = $gender;
 		$user->create_time = local_to_gmt();
 		if($user->save())
@@ -99,6 +103,7 @@ class RegisterController extends BaseController {
 			User::saveLogin();
             $path = Session::get('url.intended', '/');
             Session::forget('url.intended');
+            //Sms::send($username, Lang::get('text.register_success'));
             return Response::json(array('code' => '1000','msg'=>Lang::get('msg.register_success'), 'url'=>asset($path)));
 		}
 		else
@@ -107,20 +112,4 @@ class RegisterController extends BaseController {
 		}
 	}
 
-	public function getOut()
-	{
-        $brower = User::getBrowser();
-        if(Auth::check())
-        {
-            $where = array(
-                'user_id' => Auth::user()->id,
-                'brower' => $brower[0].$brower[1],
-                'ip' => User::ip()
-            );
-            UserLogin::where('user_id',Auth::user()->id)->where('brower',$brower[0].$brower[1])->where('ip',User::ip())->update(array('out_time'=>local_to_gmt()));
-        }
-		Session::flush();
-		Auth::logout();
-		return Redirect::to('/');
-	}
 }

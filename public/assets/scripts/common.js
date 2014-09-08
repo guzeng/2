@@ -356,7 +356,15 @@ function doSubmit(formID,btn, callback)
                                 }
                                 else
                                 {
-                                    $('input[name='+key+']').parent().append("<span class='help-block' for='"+key+"'>"+item+"</span>");
+                                    if(key=='accept')
+                                    {
+                                        $('input[name='+key+']').parent().append("<span class='help-block' for='"+key+"'>"+item+"</span>");
+                                    }
+                                    else
+                                    {
+                                        $('input[name='+key+']').after("<span class='help-block' for='"+key+"'>"+item+"</span>");
+                                    }
+                                    
                                 }
                                 $('input[name='+key+']').closest('.form-group').addClass('has-error').show();
                             }
@@ -832,14 +840,14 @@ function validateKey(t,obj)
                 {
                     if(json.code=='1000')
                     {
-                        var html = msg.validate_again.replace("%s","&nbsp; <span id='validate_key_timeout'>60</span> ");
-                        p.html(html);
+                        var html = msg.validate_again.replace("%s","&nbsp; <span id='validate_key_timeout' style='margin-top:7px;'>60</span> ");
+                        p.html(html).css('padding-top','7px');
                         var s = setInterval(function(){
                             var t = $('#validate_key_timeout').html();
                             if(t=='1')
                             {
                                 clearInterval(s);
-                                p.html(obj);
+                                p.html(obj).css('padding-top','0px');
                             }
                             else
                             {
@@ -878,7 +886,8 @@ function validateKey(t,obj)
                     $('#'+t).parents('.form-group').removeClass('has-error');
                     var input = $(obj).parent().parent().find('input[type=text]');
                     input.val('');
-                    $(obj).parent().next('span[for='+input.attr('name')+']').remove();
+                    input.parents('.form-group').removeClass('has-error');
+                    $(obj).parent().parent().find('span[for='+input.attr('name')+']').remove();
                     p.html("&nbsp; <img src='"+msg.base_url+"assets/img/loading.gif'> ");
                 }
             })            

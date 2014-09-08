@@ -22,6 +22,7 @@ Route::controller('news', 'NewsController');
 Route::controller('about', 'AboutController');
 Route::controller('job', 'JobController');
 Route::controller('forget-password', 'ForgetPasswordController');
+Route::controller('agreement', 'AgreementController');
 
 Route::controller('order', 'OrderController');
 
