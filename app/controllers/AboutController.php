@@ -14,6 +14,7 @@ class AboutController extends BaseController {
         $about = Setting::where('variable', 'about_us')->first();
         $data['item'] = $about;
         $data['right'] = $this->r();
+        $data['cat'] = 'about';
         return View::make('home/about', $data);
     }
 
@@ -22,6 +23,7 @@ class AboutController extends BaseController {
         $contact = Setting::where('variable', 'contact_us')->first();
         $data['item'] = $contact;
         $data['right'] = $this->r();
+        $data['cat'] = 'contact';
         return View::make('home/about', $data);
     }
 

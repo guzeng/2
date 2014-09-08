@@ -14,6 +14,7 @@ class NewsController extends BaseController {
         $news_list = News::where('status', 1)->where('category_id',3)->orderBy('open_time', 'desc')->paginate(10);
         $data['news_list'] = $news_list;
         $data['right'] = $this->r();
+        $data['category'] = "3";
         return View::make('home/news', $data);
     }
 
@@ -22,6 +23,7 @@ class NewsController extends BaseController {
         $news_list = News::where('status', 1)->where('category_id',2)->orderBy('open_time', 'desc')->paginate(10);
         $data['news_list'] = $news_list;
         $data['right'] = $this->r();
+        $data['category'] = "2";
         return View::make('home/news', $data);
     }
 
@@ -30,6 +32,7 @@ class NewsController extends BaseController {
         $news_list = News::where('status', 1)->where('category_id',1)->orderBy('open_time', 'desc')->paginate(10);
         $data['news_list'] = $news_list;
         $data['right'] = $this->r();
+        $data['category'] = "1";
         return View::make('home/news', $data);
     }
 
@@ -48,6 +51,7 @@ class NewsController extends BaseController {
         $news->save();
         $data['news'] = $news;
         $data['right'] = $this->r();
+        $data['category'] = $news->category_id;
         return View::make('home.news-view', $data);
     }
 

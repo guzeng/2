@@ -23,6 +23,8 @@ Route::controller('about', 'AboutController');
 Route::controller('job', 'JobController');
 Route::controller('forget-password', 'ForgetPasswordController');
 Route::controller('agreement', 'AgreementController');
+Route::get('change-lang/{lang}', 'CommonController@changeLang')->where(array('lang','[a-z]{2}'));
+Route::get('error/{n}', 'CommonController@error')->where(array('n','[0-9]{3}'));
 
 Route::controller('order', 'OrderController');
 

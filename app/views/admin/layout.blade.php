@@ -161,6 +161,7 @@
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a href="<?php echo asset('')?>" ><i class="fa fa-home"></i> <?php echo Lang::get('text.login_to_front');?></a></li>
                         <li>
                             <?if( App::getLocale() == "zh"):?>
                               <a href="<?php echo asset('change-lang/en');?>"><i class="fa fa-stack-exchange"></i> English</a>

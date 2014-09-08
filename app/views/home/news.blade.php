@@ -4,9 +4,29 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li class="active">Blog Page</li>
+            <li>
+                <a href="<?php echo asset('')?>">
+                    <?php echo Lang::get('text.homepage')?>
+                </a>
+            </li>
+            <li>
+                <?php $c=''; if($category):?>
+                <?php switch ($category) {
+                    case '1':
+                        $c='grude';
+                        break;
+                    case '2':
+                        $c='faq';
+                        break;
+                    case '3':
+                        $c='index';
+                        break;
+                }?>
+                <a href="<?php echo asset('news/'.$c)?>">
+                    <?php echo News::category($category);?>
+                </a>
+                <?php endif;?>
+            </li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">

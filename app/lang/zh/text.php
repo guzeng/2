@@ -199,8 +199,8 @@ $lang['aboutus'] = "关于我们";
 $lang['about_manage'] = "公司资料";
 $lang['joinus'] = "加入我们";
 $lang['position'] = "职位";
-$lang['require_number'] = "招聘人数";
 $lang['continue'] = "下一步";
+$lang['require_number'] = "招聘人数";
 $lang['location'] = "工作地点";
 $lang['department'] = "部门";
 $lang['deadline'] = "截止时间";
@@ -234,4 +234,5 @@ $lang['register_success'] = "亲爱的悦行网用户，恭喜您注册成功！
 $lang['reset_password_success'] = "密码重置成功，您现在可以使用新密码<a href='".asset('login')."'>登录</a>";
 $lang['accept_agreement'] = "已阅读并接受用户注册协议";
 $lang['register_agreement'] = "用户注册协议";
+$lang['login_to_front'] = "登入前台";
 return $lang;

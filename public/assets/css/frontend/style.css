@@ -316,8 +316,8 @@ body.page-header-fixed {
     font-size: 23px;
     font-weight: 400;
     margin-right: 67px;
-    padding-bottom: 22px;
-    padding-top: 22px;
+    padding-bottom: 16px;
+    padding-top: 18px;
 }
 .site-logo:hover{text-decoration: none;}
 .header .mobi-toggler {

@@ -4,9 +4,22 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li class="active">Blog Page</li>
+            <li>
+                <a href="<?php echo asset('')?>">
+                    <?php echo Lang::get('text.homepage')?>
+                </a>
+            </li>
+            <li>
+                <?php if($cat == 'about'):?>
+                    <a href="<?php echo asset('about')?>">
+                        <?php echo Lang::get('text.aboutus')?>
+                    </a>
+                <?php elseif($cat == 'contact'):?>
+                    <a href="<?php echo asset('about/contact')?>">
+                        <?php echo Lang::get('text.contact_us')?>
+                    </a>
+                <?php endif;?>
+            </li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">

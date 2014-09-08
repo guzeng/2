@@ -143,4 +143,8 @@ $lang['order_processed'] = "订单已处理";
 $lang['order_unprocessed'] = "订单未处理";
 $lang['order_paid'] = "订单已付款";
 $lang['order_unpaid'] = "订单未付款";
+$lang['register_failed'] = "注册失败，请稍候再试";
+$lang['send_failed'] = "发送失败，请稍候再试";
+$lang['register_success'] = "注册成功";
+$lang['validate_dated'] = "验证码已过期";
 return $lang;

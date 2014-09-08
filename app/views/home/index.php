@@ -58,7 +58,7 @@
 				<div class='header' id='header'>
 					<div class="row">
 						<div class="col-md-4 col-sm-4 col-xs-4 contact-no">
-							400-0000-000
+							<?php echo Cache::get('hotline')?>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-4 logo">
 							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" ></a>
@@ -67,7 +67,7 @@
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>">登录</a> | <a href="<?php echo asset('register')?>">注册</a>
 							<?php else:?>
-							Welcome，<?php echo Auth::user()->name;?> | <a href="<?php echo asset('login/out')?>"><?php echo Lang::get('text.exit')?></a>
+							<?php echo Auth::user()->name;?> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
 							<?php endif;?>
 						</div>
 					</div>
@@ -265,7 +265,9 @@
 		<div class="footer text-center">
 			<div class="container">
 				<a href="#" class='logo'> LOGO </a>
-				<p class="copy-right">Copyright &copy; 2014.Company name All rights reserved.</p>
+				<p class="copy-right">
+            		<?php echo Cache::get('copyright')?> <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
+				</p>
 				<script type="text/javascript">
 				$(document).ready(function() {	
 					$().UItoTop({ easingType: 'easeOutQuart' });

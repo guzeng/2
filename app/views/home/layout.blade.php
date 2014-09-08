@@ -45,6 +45,17 @@
     <!--[if lt IE 8]>
     <?php echo HTML::style('assets/css/bootstrap-ie7.css');?>
     <![endif]--> 
+    <?if( App::getLocale() == "en"):?>
+    <style type="text/css">
+    body{
+        margin: 0;
+        padding: 0;
+        background-color:#fafafa;
+        font-family:"Segoe UI",Verdana,Arial,sans-serif;
+    }
+    button,input{font-family:"Segoe UI",Verdana,Arial,sans-serif;}
+    </style>
+<?endif;?>
   <!-- Theme styles END -->
   <script type="text/javascript">
     var msg = {
@@ -69,15 +80,25 @@
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>400 000 0000</span></li>
+                        <li><i class="fa fa-phone"></i><span><?php echo Cache::get('hotline')?></span></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
                 <!-- BEGIN TOP BAR MENU -->
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
+                        <?php if(Auth::guest()):?>
                         <li><a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a></li>
                         <li><a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a></li>
+                        <?php else:?>
+                            <li><a href="<?php echo asset('')?>"><?php echo Auth::user()->name;?></a></li>
+                            <li><a href="<?php echo asset('login/out')?>"><?php echo Lang::get('text.exit')?></a></li>
+                        <?php endif;?>
+                        <?if( App::getLocale() == "zh"):?>
+                            <li><a href="<?php echo asset('change-lang/en');?>">English</a></li>
+                        <?else:?>
+                            <li><a href="<?php echo asset('change-lang/zh');?>">中文版</a></li>
+                        <?endif;?>
                     </ul>
                 </div>
                 <!-- END TOP BAR MENU -->
@@ -89,7 +110,7 @@
     <div class="header">
       <div class="container">
         <a class="site-logo" href="<?php echo asset('')?>">
-            <img src="<?php echo asset('assets/img/logo.png')?>" alt="Logo">
+            <img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" class='logoPic' height='50'>
         </a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -114,11 +135,13 @@
                     <?php echo Lang::get('text.online_order')?>
                 </a>
             </li>
+            <!--
             <li class="">
                 <a href="<?php echo asset('')?>#gal">
                     <?php echo Lang::get('text.ship_process')?>
                 </a>
             </li>
+            -->
             <li class="<?php if($_controller_name=='NewsController' && $_action_name=='getGrude'):?>active<?endif;?>">
                 <a href="<?php echo asset('news/grude')?>">
                     <?php echo Lang::get('text.newcomer_grude')?>
@@ -177,7 +200,7 @@
         <div class="row">
           <!-- BEGIN COPYRIGHT -->
           <div class="col-md-12 col-sm-12 padding-top-10 text-center">
-            2014 © Metronic Shop UI. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            <?php echo Cache::get('copyright')?> <a href="http://www.miitbeian.gov.cn" target='_blank'><?php echo Cache::get('icp');?></a>
           </div>
           <!-- END COPYRIGHT -->
         </div>

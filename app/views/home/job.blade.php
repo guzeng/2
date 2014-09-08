@@ -4,9 +4,16 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li class="active">Blog Page</li>
+            <li>
+                <a href="<?php echo asset('')?>">
+                    <?php echo Lang::get('text.homepage')?>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo asset('job')?>">
+                    <?php echo Lang::get('text.joinus')?>
+                </a>
+            </li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
