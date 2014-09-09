@@ -36,7 +36,7 @@
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-9 col-sm-9 blog-posts">
-                    <h2><?php echo $news->title;?></h2>
+                    <h2><?php echo stripslashes($news->title);?></h2>
                     <div><?php echo $news->content?></div><!--htmlspecialchars(-->
                     <ul class="blog-info">
                         <li><i class="fa fa-user"></i><?php echo $news->view?></li>

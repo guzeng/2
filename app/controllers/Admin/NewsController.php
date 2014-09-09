@@ -73,7 +73,7 @@ class Admin_NewsController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    $item->title,
+                    stripslashes($item->title),
                     date('Y-m-d',gmt_to_local($item->create_time)),
                     $item->status,
                     ''

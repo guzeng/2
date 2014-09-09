@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.deadline');?></label>
                             <div id="datetimepicker" class="col-md-6 col-sm-9 col-xs-12 input-group">
-                                <input type="text" class="form-control" maxLength='10' name="date" id="deadline" value="<?php echo isset($item) ? date('Y-m-d',gmt_to_local($item->date)) : '';?>">
+                                <input type="text" id="deadline" class="form-control form_datetime" name='date' value="<?php echo isset($item) ? date('Y-m-d',gmt_to_local($item->date)) : '';?>" Format="Custom" >
                                 <div class="input-group-addon"><i class='fa fa-calendar'></i></div>
                                 <span class="help-block"></span>
                             </div>
@@ -121,10 +121,24 @@
     <?php else:?>
         <script src="<?php echo asset('assets/plugins/kindeditor-4.1.7/lang/en.js');?>" type="text/javascript"></script>
     <?php endif;?>
-
+<!--
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo asset('assets/plugins/daterangepicker/daterangepicker-bs3.css')?>"/>
     <script type="text/javascript" src="<?php echo asset('assets/plugins/daterangepicker/moment.js')?>"></script>
     <script type="text/javascript" src="<?php echo asset('assets/plugins/daterangepicker/daterangepicker.js')?>"></script>
+
+
+    <?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
+    <?php if(App::getLocale()=='zh'):?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
+    <?php endif;?>
+-->
+    <?php echo HTML::style('assets/plugins/bootstrap-datepicker/css/datepicker.css');?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js');?>
+    <?php if(App::getLocale()=='zh'):?>
+    <?php echo HTML::script('assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js');?>
+    <?php endif;?>
+    bootstrap-datepicker
     
     <script src="<?php echo asset('assets/scripts/admin/job.js');?>" type="text/javascript"></script>
 @stop

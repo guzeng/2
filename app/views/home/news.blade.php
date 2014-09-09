@@ -39,7 +39,7 @@
                     <?php if(!empty($news_list)){foreach($news_list as $item):?>
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <h2><a target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo $item->title?></a></h2>
+                            <h2><a target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo stripslashes($item->title)?></a></h2>
                             <ul class="blog-info">
                                 <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($item->open_time))?></li>
                             </ul>

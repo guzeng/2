@@ -40,12 +40,14 @@ $(function(){
                             'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
             });
         });
-        $('#deadline').daterangepicker({
-              pickDate: true,
-              inputMask: true,
-              format:'YYYY-MM-DD',
-              singleDatePicker: true
+        $('#deadline').datepicker({
+              format: 'yyyy-mm-dd',
+                weekStart: 1,
+                autoclose: true,
+                todayBtn: 'linked',
+                language: (msg.lang=='zh')?'zh-CN':'en'
         });
+        
         //提交表单
         $("#news_edit_btn").on('click',function(){
             $('#description').text(editor2.html());

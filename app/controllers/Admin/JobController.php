@@ -67,7 +67,7 @@ class Admin_JobController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    $item->title,
+                    stripslashes($item->title),
                     $item->number,
                     $item->location,
                     $item->department,

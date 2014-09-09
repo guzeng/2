@@ -23,7 +23,7 @@
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-9 col-sm-9 blog-posts">
-                    <h2 class='m-b-20'><?php echo $job->title;?></h2>
+                    <h2 class='m-b-20'><?php echo stripslashes($job->title);?></h2>
                     <div class='m-b-20'>
                         <div class='row m-b-10'>
                             <div class='col-md-6'>

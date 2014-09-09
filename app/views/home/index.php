@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Home</title>
+		<title><?php echo Cache::get('website_title')?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<?php echo Cache::get('website_keyword')?>" />
+		<meta name="description" content="<?php echo Cache::get('website_description')?>" />
 		<?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.css');?>
 		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
 		 <!-- start-smoth-scrolling-->
@@ -221,7 +223,7 @@
 						<?php foreach ($faq_list as $key => $value):?>
 					  		<li class="list-group-item">
 					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
-					  				<?php echo $value->title?>
+					  				<?php echo stripslashes($value->title)?>
 					  			</a>
 					  		</li>
 					  	<?php endforeach;?>
@@ -248,7 +250,7 @@
 						<?php foreach ($news_list as $key => $value):?>
 					  		<li class="list-group-item">
 					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
-					  				<?php echo $value->title?>
+					  				<?php echo stripslashes($value->title)?>
 					  			</a>
 					  		</li>
 					  	<?php endforeach;?>
