@@ -89,13 +89,10 @@
 		<div id="about" class="about">
 			<div class="container">
 				<div class='row'>
-					<div class="col-md-6 about-left">
-						<p><strong>悦行网</strong>，为旅客提供行李托运服务。</p>
-						<p>我们按照旅客的要求，将行李在指定的时间从始发地托运至机场或从机场到目的地。</p>
-						<p>我们与各机场、酒店、度假村及旅游胜地保持着良好的合作关系。</p>
-						<p>在上海，我们实现浦东、虹桥机场与市内任何地点间的轻松对接。为您的出行提供完整的行李托运解决方案，让繁重的行李不再成为旅途的负担。</p>
-						<p>旅途有我，更轻松！</p>
-						<p>目前，悦行网服务已经覆盖整个上海，更多城市陆续开启......</p>
+					<div class="col-md-6 about-left" style="font-size:16px;line-height:35px;">
+						<p>说走就走的旅行再也不是高富帅和土豪的专利了，全新的旅游增值服务--行李运送服务，悦行网为您呈现！</p>
+						<p>无论是出行前的大箱小包、或是回程时的手信礼物，只需预约悦行网行李运送服务，专业的服务为您解决。</p>
+						<p>环球之旅，悦行开启！</p>
 					</div>
 					<div class="col-md-6 about-right">
 						<div class="panel panel-primary">
@@ -264,7 +261,9 @@
 		<!--start-footer-->
 		<div class="footer text-center">
 			<div class="container">
-				<a href="#" class='logo'> LOGO </a>
+				<a href="#" class='logo'> 
+					<img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" class='logoPic' >
+				</a>
 				<p class="copy-right">
             		<?php echo Cache::get('copyright')?> <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
 				</p>
