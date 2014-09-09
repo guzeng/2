@@ -52,6 +52,7 @@
 		<?php if(App::getLocale()=='zh'):?>
 		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
 		<?php endif;?>
+    	<link rel="shortcut icon" href="favicon.ico">
 	</head>
 	<body>
 		<!--start-container-->

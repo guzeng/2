@@ -23,7 +23,7 @@ class RegisterController extends BaseController {
         //csrf验证
         if (Session::token() != Input::get('_token'))
         {
-            return Response::json(array('code'=>'1004','message'=>Lang::get('msg.deny_request')));
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.deny_request')));
         }
 		$username = trim(Input::get('username'));
 		$code = trim(Input::get('validate_code'));
@@ -40,8 +40,6 @@ class RegisterController extends BaseController {
 
         $error = array();
 
-		$messages = array();
-		//Lang::get('text.username')Lang::get('text.password')
 		//需验证字段
 		$inputs = array(
 			'username' => $username,

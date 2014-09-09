@@ -27,6 +27,10 @@ Route::get('change-lang/{lang}', 'CommonController@changeLang')->where(array('la
 Route::get('error/{n}', 'CommonController@error')->where(array('n','[0-9]{3}'));
 
 Route::controller('order', 'OrderController');
+Route::group(array('before' => 'auth'), function()
+{
+    Route::controller('user','UserController');
+});
 
 Route::group(array('before' => 'admin_auth'), function()
 {

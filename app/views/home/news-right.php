@@ -19,7 +19,7 @@
     <?php if(!empty($recent)):?>
         <?php foreach ($recent as $k => $r):?>
             <div class=" margin-bottom-10" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                <a href='<?php echo asset('news/view/'.$r->id)?>'><?php echo $r->title?></a>
+                <a href='<?php echo asset('news/view/'.$r->id)?>'><?php echo stripslashes($r->title)?></a>
             </div>
         <?php endforeach;?>
     <?endif;?>

@@ -187,8 +187,6 @@
                 </ul>
             </div>
           <!-- END BOTTOM ABOUT BLOCK -->
-
-
         </div>
       </div>
     </div>
