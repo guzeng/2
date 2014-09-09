@@ -841,7 +841,7 @@ function validateKey(t,obj)
                     if(json.code=='1000')
                     {
                         var html = msg.validate_again.replace("%s","&nbsp; <span id='validate_key_timeout' style='margin-top:7px;'>60</span> ");
-                        p.html(html).css('padding-top','7px');
+                        p.html(html);//.css('padding-top','7px');
                         var s = setInterval(function(){
                             var t = $('#validate_key_timeout').html();
                             if(t=='1')

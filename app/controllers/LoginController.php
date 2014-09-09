@@ -56,7 +56,7 @@ class LoginController extends BaseController {
         if (Auth::attempt(array('username' => $username, 'pwd' => $pwd,'active'=>1), $remember))
         {
             User::saveLogin();
-            $path = Session::get('url.intended', '/');
+            $path = Session::get('url.intended', 'user/profile');
             Session::forget('url.intended');
             return Response::json(array('code' => '1000','msg'=>Lang::get('msg.login_success'), 'url'=>asset($path)));
         }
@@ -68,18 +68,9 @@ class LoginController extends BaseController {
 
 	public function getOut()
 	{
-        $brower = User::getBrowser();
-        if(Auth::check())
-        {
-            $where = array(
-                'user_id' => Auth::user()->id,
-                'brower' => $brower[0].$brower[1],
-                'ip' => User::ip()
-            );
-            UserLogin::where('user_id',Auth::user()->id)->where('brower',$brower[0].$brower[1])->where('ip',User::ip())->update(array('out_time'=>local_to_gmt()));
-        }
+        User::saveLogout();
 		Session::flush();
 		Auth::logout();
-		return Redirect::to('/');
+		return Redirect::to('login');
 	}
 }

@@ -91,7 +91,7 @@
                         <li><a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a></li>
                         <li><a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a></li>
                         <?php else:?>
-                            <li><a href="<?php echo asset('')?>"><?php echo Auth::user()->name;?></a></li>
+                            <li><a href="<?php echo asset('user/profile')?>"><?php echo Auth::user()->name;?></a></li>
                             <li><a href="<?php echo asset('login/out')?>"><?php echo Lang::get('text.exit')?></a></li>
                         <?php endif;?>
                         <?if( App::getLocale() == "zh"):?>
