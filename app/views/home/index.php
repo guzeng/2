@@ -266,9 +266,18 @@
 				<a href="#" class='logo'> 
 					<img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" class='logoPic' >
 				</a>
-				<p class="copy-right">
-            		<?php echo Cache::get('copyright')?> <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
-				</p>
+				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+			</div>
+		</div>
+		<div style="background-color:#313030; padding:20px; font-size:14px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 pre-footer-col text-center">
+						<?php echo Cache::get('copyright')?> &nbsp; &nbsp; <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
+					</div>
+				</div>
+			</div>
+		</div>
 				<script type="text/javascript">
 				$(document).ready(function() {	
 					$().UItoTop({ easingType: 'easeOutQuart' });
@@ -308,10 +317,7 @@
 				        showMeridian: 1
 				    });
 				});
-			</script>
-				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-			</div>
-		</div>
+				</script>
 		<!----//End-footer---->
 		<!-----//End-container---->
 
