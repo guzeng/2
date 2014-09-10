@@ -90,7 +90,7 @@ class OrderController extends BaseController {
             $error['airport_id'] = str_replace('airport_id', Lang::get('text.airport'), $messages->get('airport_id'));
             $error['normal_luggage_num'] = str_replace('normal_luggage_num', Lang::get('text.normal_luggage_num'), $messages->get('normal_luggage_num'));
             $error['special_luggage_num'] = str_replace('special_luggage_num', Lang::get('text.special_luggage_num'), $messages->get('special_luggage_num'));
-            $error['shiper'] = str_replace('shipper', Lang::get('text.shipper'), $messages->get('shipper'));
+            $error['shipper'] = str_replace('shipper', Lang::get('text.shipper'), $messages->get('shipper'));
             $error['gender'] = str_replace('gender', Lang::get('text.shiper_gender'), $messages->get('gender'));
             $error['phone'] = str_replace('phone', Lang::get('text.mobile'), $messages->get('phone'));
 
@@ -107,13 +107,20 @@ class OrderController extends BaseController {
 		$order->airport_id = $airport_id;
 		$order->normal_luggage_num = $normal_luggage_num;
 		$order->special_luggage_num = $special_luggage_num;
-		$order->shiper = $shipper;
+		$order->shipper = $shipper;
 		$order->gender = $gender;
 		$order->phone = $phone;
 		$order->user_id = Auth::check()?Auth::user()->id:0;
 		$order->create_time = local_to_gmt();
 		list($usec, $sec) = explode(" ", microtime());
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));
-		return Response::json(array('code' => '1000','url'=>''));
+		if($order->save())
+		{
+			return Response::json(array('code' => '1000','url'=>asset('user/order')));
+		}
+		else
+		{
+			return Response::json(array('code' => '1001','msg'=>Lang::get('msg.failed')));
+		}
 	}
 }

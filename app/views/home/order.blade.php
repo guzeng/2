@@ -9,23 +9,23 @@
                     <li>
                         <a href="#tab1" data-toggle="tab" class="step">
                         <span class="number">1</span>
-                        <span class="desc"><i class="fa fa-check"></i> 基本信息</span>   
+                        <span class="desc"><i class="fa fa-check"></i> <?php echo Lang::get('text.basic_info')?></span>   
                         </a>
                     </li>
                     <li>
                         <a href="#tab2" data-toggle="tab" class="step">
                         <span class="number">2</span>
-                        <span class="desc"><i class="fa fa-check"></i> 路线</span>   
+                        <span class="desc"><i class="fa fa-check"></i> <?php echo Lang::get('text.mileage')?></span>   
                         </a>
                     </li>
                     <li>
                         <a href="#tab3" data-toggle="tab" class="step">
                         <span class="number">3</span>
-                        <span class="desc"><i class="fa fa-check"></i> 确认提交</span>   
+                        <span class="desc"><i class="fa fa-check"></i> <?php echo Lang::get('text.confirm')?></span>   
                         </a> 
                     </li>
                 </ul>
-                <div id="bar" class="progress progress-striped" role="progressbar">
+                <div id="bar" class="progress progress-striped" role="progressbar" style="height:2px;">
                     <div class="progress-bar progress-bar-success"></div>
                 </div>
                 <div class="tab-content">
@@ -59,8 +59,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" id="stime" name='stime' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd - HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($stime)?$stime:'';?>" >
-                                
+                                <input type="text" id="time" name='time' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd - HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($stime)?$stime:'';?>" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -95,17 +94,23 @@
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="normal_luggage_num" id='normal_luggage_num'/>
                             </div>
+                            <div class='col-md-5 text-warning'>
+                                <?php echo Lang::get('text.price_tips_1');?>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?><span class="required">*</span></label>
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="special_luggage_num" id='special_luggage_num'/>
                             </div>
+                            <div class='col-md-5 m-t-5 text-warning'>
+                                <?php echo Lang::get('text.price_tips_2');?>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.shipper')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="shipper" id='shipper'/>
+                                <input type="text" class="form-control" name="shipper" id='shipper' value="<?php echo Auth::check() ? Auth::user()->name : ''?>" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -113,11 +118,11 @@
                             <div class="col-md-4">
                                 <div class="radio-list">
                                     <label class="radio-inline">
-                                        <input type="radio" data-title="<?php echo Lang::get('text.male')?>" value="male" name="gender"  style='margin-left:0px;'> &nbsp;
+                                        <input type="radio" data-title="<?php echo Lang::get('text.male')?>" <?php if(Auth::guest() || (Auth::check() && Auth::user()->gender=='male')):?>checked='checked'<?php endif;?> value="male" name="gender" style='margin-left:0px;'> &nbsp;
                                         <?php echo Lang::get('text.male')?>
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" data-title="<?php echo Lang::get('text.female')?>" checked="checked" value="famale" name="gender" style='margin-left:0px;'> &nbsp;
+                                        <input type="radio" data-title="<?php echo Lang::get('text.female')?>" <?php if(Auth::check() && Auth::user()->gender=='female'):?>checked='checked'<?endif;?> value="famale" name="gender" style='margin-left:0px;'> &nbsp;
                                         <?php echo Lang::get('text.female')?>
                                     </label>
                                 </div>
@@ -126,21 +131,27 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.mobile')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="phone" id='phone'/>
+                                <input type="text" class="form-control" name="phone" id='phone' value="<?php echo Auth::check() ? Auth::user()->username : ''?>"/>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab2">
                         <div class="m-b-20">
-                            <strong>共<span id='order_distance'></span>公里，共计<span id='order_money'></span></strong>
+                            <strong>共<span id='order_distance'></span>公里，共计<span id='order_money'></span>元</strong>
                         </div>
-                        <div class='row'>
+                        <div class='row m-b-30'>
                             <div class='col-md-9'>
                                 <div id="l-map"></div>
                             </div>
                             <div class='col-md-3'>
                                 <div  id="r-result" ></div>
                             </div>
+                        </div>
+                        <div class='row'>
+                                <label class="control-label col-md-2"><?php echo Lang::get('text.remarks')?> </label>
+                                <div class="col-md-9">
+                                    <textarea rows="3" class="form-control" name='info' id='info' maxLength='200'></textarea>
+                                </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab3">
@@ -159,7 +170,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="stime"></p>
+                                <p class="form-control-static" data-display="time"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -222,6 +233,13 @@
                                 <p class="form-control-static" data-display="order_money"></p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.remarks')?>:</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static" data-display="info"></p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -245,7 +263,6 @@
         </div>
         <input type='hidden' name='_token' value="<?php echo csrf_token(); ?>" >
         <input type='hidden' name='distance' id='distance' value=''>
-        <input type="hidden" name="time" id='time' value="<?php echo $time;?>" />
     </form>
 </div>
 @stop

@@ -1,12 +1,8 @@
 var map=null;
-var transit;
+var transit=null;
 window.openInfoWinFuns = null;
-    //var options = ; 
-
 function mapInit()
 {
-    //map = new Object();
-    //console.log(map);
     if(map == null)
     {
         map = new BMap.Map("l-map");            // 创建Map实例
@@ -20,7 +16,7 @@ function mapInit()
 
 function openInfoWindow(point,i)
 {
-    var marker = addMarker(point,i); results.getPoi(i).point
+    var marker = addMarker(point,i); //results.getPoi(i).point
     addInfoWindow(marker,results.getPoi(i),i);
 }
 
@@ -56,7 +52,7 @@ function addInfoWindow(marker,poi,index){
     infoWindowHtml.push('<td style="vertical-align:top;line-height:16px">' + poi.address + ' </td>');
     infoWindowHtml.push('</tr>');
     infoWindowHtml.push('<tr>');
-    infoWindowHtml.push('<td colspan=2><button class="btn blue" onclick="drive(\''+poi.title+'\')">选为目的地</button></td>');
+    infoWindowHtml.push('<td colspan=2><button type="button" class="btn blue" onclick="drive(\''+poi.title+'\')">选为目的地</button></td>');
     infoWindowHtml.push('</tbody></table>');
     var infoWindow = new BMap.InfoWindow(infoWindowHtml.join(""),{title:infoWindowTitle,width:200}); 
     var openInfoWinFun = function(){
@@ -113,18 +109,15 @@ function search(address)
 
 function drive(a)
 {
-    //var output = '';//"从九洲港到"+a+"驾车需要";
     transit = new BMap.DrivingRoute(map, {renderOptions: {map: map},
         onSearchComplete: function (results){
             if (transit.getStatus() != BMAP_STATUS_SUCCESS){
                 return ;
             }
             var plan = results.getPlan(0);
-            //output += plan.getDuration(true) + "\n";                //获取时间
-            //output += "总路程为：" ;
-            //utput += plan.getDistance(true) + "\n";             //获取距离
-            //alert(output);
-            $('#order_distance').html((parseInt(plan.getDistance(false))/1000).toFixed(1));
+            var d = (parseInt(plan.getDistance(false))/1000).toFixed(1);
+            $('#order_distance').html(d);
+            price(d);
         },
         onPolylinesSet: function(){        
             //setTimeout(function(){alert(output)},"1000");
@@ -140,4 +133,34 @@ function drive(a)
     {
         transit.search(a, airport);
     }
+}
+
+function price(d)
+{
+    var price = 0;
+    var normal_luggage_num = $('#normal_luggage_num').val();
+    var special_luggage_num = $('#special_luggage_num').val();
+    if(d <= 40)
+    {
+        if(normal_luggage_num > 0)
+        {
+            price += 60+(parseInt(normal_luggage_num)-1)*40;
+        }
+        if(special_luggage_num > 0)
+        {
+            price += parseInt(special_luggage_num)*80;
+        }
+    }
+    else
+    {
+        if(normal_luggage_num > 0)
+        {
+            price += 60+(parseInt(normal_luggage_num)-1)*40+(parseInt(d)-40);
+        }
+        if(special_luggage_num > 0)
+        {
+            price += parseInt(special_luggage_num)*80+(parseInt(d)-40);
+        }
+    }
+    $('#order_money').html(price);
 }

@@ -16,30 +16,33 @@
                 <!-- END RIGHT SIDEBAR -->       
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-10 col-sm-9 blog-posts">
-                    <h3 class='m-b-20'><?php echo Lang::get('text.my_order');?></h3>
+                    <h3 class='m-b-20'><?php echo Lang::get('text.address_using');?></h3>
                     <hr>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th><?php echo Lang::get('text.order_code');?></th>
                                     <th><?php echo Lang::get('text.shipper');?></th>
-                                    <th><?php echo Lang::get('text.ship_time');?></th>
-                                    <th><?php echo Lang::get('text.money');?></th>
-                                    <th><?php echo Lang::get('text.status');?></th>
+                                    <th><?php echo Lang::get('text.address');?></th>
+                                    <th><?php echo Lang::get('text.mobile');?></th>
                                     <th><?php echo Lang::get('text.operate');?></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(!empty($orders)):?>
-                                <?php foreach($orders as $k => $item):?>
-                                <tr>
-                                    <td><a href="<?php echo asset('user/order-view/'.$item->id)?>"><?php echo $item->code;?></a></td>
+                                <?php if(!empty($address)):?>
+                                <?php foreach($address as $k => $item):?>
+                                <tr id="<?php echo $item->id?>">
                                     <td><?php echo $item->shipper;?></td>
-                                    <td><?php echo date('Y-m-d H:i',gmt_to_local($item->time))?></td>
-                                    <td><?php echo $item->money;?></td>
-                                    <td><?php echo $item->pay>0?($item->status=='1'?Lang::get('text.processed'):Lang::get('text.unprocessed')):Lang::get('text.unpaid');?></td>
-                                    <td><?php if($item->pay==0):?><a href='#' class='btn yellow btn-xs'><?php echo Lang::get('text.pay');?></a><?php endif;?></td>
+                                    <td><?php echo $item->address;?></td>
+                                    <td><?php echo $item->phone;?></td>
+                                    <td>
+                                        <a href="<?php echo asset('user/address-edit/'.$item->id)?>" class='btn blue btn-xs'>
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href='javascript:void(0)' onclick="doDelete('<?php echo asset('user/address-delete/'.$item->id)?>')" class='btn red btn-xs'>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <?php endforeach;?>
                                 <?php endif;?>
@@ -47,7 +50,10 @@
                         </table>
                     </div>
                     <div class='text-right'>
-                        <?php echo $orders->links(); ?>
+                        <?php echo $address->links(); ?>
+                    </div>
+                    <div class='text-right'>
+                        <a href="<?php echo asset('user/address-edit')?>" class='btn blue'><?php echo Lang::get('text.add_address')?></a>
                     </div>
                 </div>
                 <!-- END LEFT SIDEBAR -->

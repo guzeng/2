@@ -132,9 +132,134 @@ class UserController extends BaseController {
         {
             return Response::view('common.404',array(),404); 
         }
-        $data['item'] = $order;
+        $data['order'] = $order;
         $data['left'] = $this->left();
         return View::make('home.user-order-view', $data);
+    }
+    
+    public function getAddress()
+    {
+        $data['left'] = $this->left();
+        $data['address'] = Address::where('user_id',Auth::user()->id)->paginate(10);
+        return View::make('home.user-address-list', $data);
+    }
+
+    public function getAddressDelete($id)
+    {
+        if(!$id)
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.param_error'))); 
+        }
+        $address = Address::find($id);
+        if(!$address || $address->user_id != Auth::user()->id)
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.no_data_exist')));    
+        }
+        if($address->delete())
+        {
+            return Response::json(array('code'=>'1000','msg'=>Lang::get('msg.delete_success')));  
+        }
+        else
+        {
+            return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.delete_failed')));  
+        }
+    }
+
+    public function getAddressEdit($id='')
+    {
+        $data['left'] = $this->left();
+        $data['allCity'] = City::all();
+        if($id)
+        {
+            $address = Address::find($id);
+            if(!$address || $address->user_id != Auth::user()->id)
+            {
+                return Response::view('common.404',array(),404);
+            }
+            $data['address'] = $address;
+        }
+        return View::make('home.user-address-edit', $data);
+    }
+
+    public function postAddressUpdate()
+    {
+        //csrf验证
+        if (Session::token() != Input::get('_token'))
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.deny_request')));
+        }
+        $shipper = trim(Input::get('shipper'));
+        $city_id = trim(Input::get('city_id'));
+        $address = trim(Input::get('address'));
+        $phone = trim(Input::get('phone'));
+        $is_default = trim(Input::get('is_default'));
+        $id = trim(Input::get('id'));
+        if($id)
+        {
+            $_a = Address::find($id);
+            if(!$_a || $_a->user_id != Auth::user()->id)
+            {
+                return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.no_data_exist')));
+            }
+        }
+        else
+        {
+            $_a = new Address();
+            $_a->user_id = Auth::user()->id;
+        }
+        //需验证字段
+        $inputs = array(
+            'shipper' => $shipper,
+            'cityid' => $city_id,
+            'address' => $address,
+            'phone' => $phone
+        );
+        //验证规则
+        $rules = array(
+            'shipper' => 'required|max:50',
+            'cityid' => 'required',
+            'address' => 'required|max:200',
+            'phone' => 'required|max:20|mobile'
+        );
+
+        $validator = Validator::make($inputs, $rules);
+
+        if ($validator->fails())
+        {
+            $error['shipper'] = str_replace('shipper', Lang::get('text.shipper'), $validator->messages()->get('shipper'));
+            $error['city_id'] = str_replace('cityid', Lang::get('text.ship_city'), $validator->messages()->get('cityid'));
+            $error['address'] = str_replace('address', Lang::get('text.address'), $validator->messages()->get('address'));
+            $error['phone'] = str_replace('phone', Lang::get('text.mobile'), $validator->messages()->get('phone'));
+            return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.submit_error'), 'error'=>$error));
+        }
+        $_a->shipper = $shipper;
+        $_a->city_id = $city_id;
+        $_a->address = $address;
+        $_a->phone = $phone;
+        $_a->is_default = $is_default ? $is_default : '0';
+        $_a->create_time = local_to_gmt();
+        if($_a->save())
+        {
+            if($id)
+            {
+                return Response::json(array('code'=>'1000','url'=>asset('user/address'),'msg'=>Lang::get('msg.update_success'))); 
+            }
+            else
+            {
+                return Response::json(array('code'=>'1000','url'=>asset('user/address'),'msg'=>Lang::get('msg.add_success')));
+            }
+        }
+        else
+        {
+            if($id)
+            {
+                return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.update_failed'))); 
+            }
+            else
+            {
+                return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.add_failed')));
+            }
+        }
     }
 
     private function left()
