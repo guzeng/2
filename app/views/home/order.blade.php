@@ -72,6 +72,11 @@
                                     <?endforeach;?>
                                 </select>
                             </div>
+                            <div class='col-md-5 m-t-5'>
+                                <a href="#using_address" data-toggle="modal" class="link">
+                                    <?php echo Lang::get('text.from_address');?>
+                                </a>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.address')?><span class="required">*</span></label>
@@ -265,6 +270,31 @@
         <input type='hidden' name='distance' id='distance' value=''>
     </form>
 </div>
+
+<?php if(Auth::check()):?>
+<div id="using_address" class="modal fade" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"><?php echo Lang::get('text.address_using')?></h4>
+            </div>
+            <div class="modal-body">
+                <?php if(!empty($addressList)):?>
+                <?php foreach($addressList as $k => $item):?>
+                    <p onclick="select_address(this)" class='hand'>
+                        <span class='shipper'><?php echo $item->shipper;?></span> &nbsp; 
+                        <span class='phone'><?php echo $item->phone;?></span> &nbsp; 
+                        <span class='city' data="<?php echo $item->city->id;?>"><?php echo $item->city->name;?></span> &nbsp; 
+                        <span class='address'><?php echo $item->address;?></span>
+                    </p>
+                <?php endforeach;?>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif;?>
 @stop
 @section('script')
     <?php echo HTML::style('assets/plugins/uniform/css/uniform.default.css');?>

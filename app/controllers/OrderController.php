@@ -24,7 +24,10 @@ class OrderController extends BaseController {
 		$data['allCity'] = City::all();
 		$data['allAirport'] = Airport::all();
 
-
+		if(Auth::check())
+		{
+			$data['addressList'] = Address::with('city')->get();
+		}
 		return View::make('home.order',$data);
 	}
 

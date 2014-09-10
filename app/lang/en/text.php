@@ -235,4 +235,16 @@ $lang['reset_password_success'] = "密码重置成功，您现在可以使用新
 $lang['accept_agreement'] = "已阅读并接受用户注册协议";
 $lang['register_agreement'] = "用户注册协议";
 $lang['login_to_front'] = "Switch to Front End";
+$lang['profile'] = "个人资料";
+$lang['address_using'] = "常用地址";
+$lang['security_setting'] = "安全设置";
+$lang['register_tips'] = "如果您还不是会员，请注册";
+$lang['my_order'] = "我的订单";
+$lang['mileage'] = "里程计算";
+$lang['price_tips_1'] = "注：起步里程(0-40km)内第1件60元，超过1件每件加40元。超过40公里，每公里加收1元";
+$lang['price_tips_2'] = "注：起步里程(0-40km)内每件80元";
+$lang['remarks'] = "备注";
+$lang['default_address'] = "默认地址";
+$lang['add_address'] = "增加地址";
+$lang['from_address'] = "从常用地址中选择";
 return $lang;

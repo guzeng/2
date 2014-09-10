@@ -206,3 +206,21 @@ var FormWizard = function () {
     };
 
 }();
+
+function select_address(obj)
+{
+    if(typeof(obj)=='undefined')
+    {
+        return false;
+    }
+    var shipper = $(obj).find('.shipper').html();
+    var phone = $(obj).find('.phone').html();
+    var city = $(obj).find('.city').attr('data');
+    var address = $(obj).find('.address').html();
+    
+    $('#city_id').val(city);
+    $('#address').val(address);
+    $('#shipper').val(shipper);
+    $('#phone').val(phone);
+    $('#using_address').modal('hide');
+}

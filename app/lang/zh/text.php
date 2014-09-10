@@ -246,4 +246,5 @@ $lang['price_tips_2'] = "注：起步里程(0-40km)内每件80元";
 $lang['remarks'] = "备注";
 $lang['default_address'] = "默认地址";
 $lang['add_address'] = "增加地址";
+$lang['from_address'] = "从常用地址中选择";
 return $lang;
