@@ -238,4 +238,5 @@ $lang['login_to_front'] = "登入前台";
 $lang['profile'] = "个人资料";
 $lang['address_using'] = "常用地址";
 $lang['security_setting'] = "安全设置";
+$lang['register_tips'] = "如果您还不是会员，请注册";
 return $lang;

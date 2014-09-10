@@ -1,7 +1,7 @@
 @extends('home.layout')
 
 @section('content')
-<div class='container'>
+<div class='container m-h-500'>
     <div class='row'>
         <div class="col-md-12 col-sm-12">
             <h1><?php echo Lang::get('text.login')?></h1>
@@ -42,9 +42,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6 pull-right">
                   <div class="form-info">
-                    <h2>如果您还不是会员，请注册</h2>
+                    <h2><?php echo Lang::get('text.register_tips');?></h2>
                     <p></p>
-                    <button class="btn btn-primary" onclick="window.location.href='<?php echo asset('register');?>';" type="button">注册</button>
+                    <button class="btn btn-primary" onclick="window.location.href='<?php echo asset('register');?>';" type="button"><?php echo Lang::get('text.register');?></button>
                   </div>
                 </div>
               </div>
