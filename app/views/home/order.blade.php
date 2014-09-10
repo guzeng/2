@@ -72,11 +72,13 @@
                                     <?endforeach;?>
                                 </select>
                             </div>
+                            <?php if(Auth::check()):?>
                             <div class='col-md-5 m-t-5'>
                                 <a href="#using_address" data-toggle="modal" class="link">
                                     <?php echo Lang::get('text.from_address');?>
                                 </a>
                             </div>
+                            <?php endif;?>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.address')?><span class="required">*</span></label>
