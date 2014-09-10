@@ -167,7 +167,7 @@ $lang['skin_prev'] = "上一页";
 $lang['skin_next'] = "下一页";
 $lang['mobile'] = "手机号";
 $lang['processed'] = "已处理";
-$lang['unprocessed'] = "未处理";
+$lang['unprocessed'] = "等待处理";
 /* order */
 $lang['order'] = "订单";
 $lang['order_detail'] = "订单详情";
@@ -239,4 +239,5 @@ $lang['profile'] = "个人资料";
 $lang['address_using'] = "常用地址";
 $lang['security_setting'] = "安全设置";
 $lang['register_tips'] = "如果您还不是会员，请注册";
+$lang['my_order'] = "我的订单";
 return $lang;

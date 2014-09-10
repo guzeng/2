@@ -89,6 +89,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
     //---------------------------------------------------------------------
 
+    static public function saveLogout()
+    {
+        $brower = self::getBrowser();
+        $where = array(
+            'user_id' => Auth::user()->id,
+            'brower' => $brower[0].$brower[1],
+            'ip' => self::ip()
+        );
+        UserLogin::where('user_id',Auth::user()->id)->where('brower',$brower[0].$brower[1])->where('ip',User::ip())->update(array('out_time'=>local_to_gmt()));
+    }
     /**
      * getBrowser
      *

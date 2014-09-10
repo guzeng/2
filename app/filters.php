@@ -48,6 +48,16 @@ Route::filter('admin_auth', function()
         }
         return Redirect::guest('admin/login');
     }
+    else
+    {
+    	if(Auth::user()->type != '1')
+    	{
+	        User::saveLogout();
+			Session::flush();
+			Auth::logout();
+        	return Redirect::guest('admin/login');
+    	}
+    }
 });
 
 Route::filter('auth.basic', function()

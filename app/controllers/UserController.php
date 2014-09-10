@@ -115,6 +115,28 @@ class UserController extends BaseController {
         }
     }
 
+    public function getOrder()
+    {
+        $data['left'] = $this->left();
+        $data['orders'] = Order::where('user_id',Auth::user()->id)->paginate(10);
+        return View::make('home.user-order-list', $data);
+    }
+    public function getOrderView($id)
+    {
+        if(!$id)
+        {
+            return Response::view('common.404',array(),404); 
+        }
+        $order = Order::find($id);
+        if(!$order)
+        {
+            return Response::view('common.404',array(),404); 
+        }
+        $data['item'] = $order;
+        $data['left'] = $this->left();
+        return View::make('home.user-order-view', $data);
+    }
+
     private function left()
     {
         return View::make('home.user-left')->render();

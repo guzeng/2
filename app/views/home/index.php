@@ -70,7 +70,7 @@
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>">登录</a> | <a href="<?php echo asset('register')?>">注册</a>
 							<?php else:?>
-							<?php echo Auth::user()->name;?> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
+							<a href="<?php echo asset('user/profile')?>" style='font-size:16px;'><?php echo Auth::user()->name;?></a> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
 							<?php endif;?>
 						</div>
 					</div>
