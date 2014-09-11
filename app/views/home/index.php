@@ -6,6 +6,9 @@
 		<meta name="keywords" content="<?php echo Cache::get('website_keyword')?>" />
 		<meta name="description" content="<?php echo Cache::get('website_description')?>" />
 		<?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.css');?>
+	    <!--[if lt IE 8]>
+	    <?php echo HTML::style('assets/css/bootstrap-ie7.css');?>
+	    <![endif]--> 
 		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
 		 <!-- start-smoth-scrolling-->
 		<?php echo HTML::script('assets/scripts/home/move-top.js');?>
@@ -27,6 +30,11 @@
 		<script type="application/x-javascript"> 
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 		</script>
+
+	    <!--[if lt IE 9]>
+	        <script src="<?php echo asset('assets/plugins/respond.min.js');?>"></script>
+	        <script src="<?php echo asset('assets/plugins/excanvas.min.js');?>"></script> 
+	    <![endif]-->
 		<!--//webfonts-->
 		<!--start-top-nav-script-->
 		<script>
@@ -60,13 +68,13 @@
 			<div class="container">
 				<div class='header' id='header'>
 					<div class="row">
-						<div class="col-md-4 col-sm-4 col-xs-4 contact-no">
+						<div class="col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
 							<?php echo Cache::get('hotline')?>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-4 logo">
+						<div class="col-md-4 col-sm-4 col-xs-4 logo col-ie7">
 							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" ></a>
 						</div>
-						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right">
+						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right col-ie7">
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>">登录</a> | <a href="<?php echo asset('register')?>">注册</a>
 							<?php else:?>
@@ -92,19 +100,19 @@
 		<div id="about" class="about">
 			<div class="container">
 				<div class='row'>
-					<div class="col-md-6 about-left" style="font-size:16px;line-height:35px;">
+					<div class="col-md-6 about-left col-ie7" style="font-size:16px;line-height:35px;">
 						<p>说走就走的旅行再也不是高富帅和土豪的专利了，全新的旅游增值服务--行李运送服务，悦行网为您呈现！</p>
 						<p>无论是出行前的大箱小包、或是回程时的手信礼物，只需预约悦行网行李运送服务，专业的服务为您解决。</p>
 						<p>环球之旅，悦行开启！</p>
 					</div>
-					<div class="col-md-6 about-right">
+					<div class="col-md-6 about-right col-ie7">
 						<div class="panel panel-primary">
 					      	<div class="panel-heading">快速预订</div>
 					      	<div class="panel-body">
 								<form class="form-horizontal" role="form" method='get' action="<?php echo asset('order')?>">
 									<div class="form-group">
 										<label for="inputEmail3" class="col-md-3 control-label">托运城市</label>
-										<div class="col-md-9">
+										<div class="col-md-7">
 			                                <select name="city_id" id="city_id" class="form-control">
 			                                    <option><?php echo Lang::get('text.please_choose');?></option>
 			                                    <?php foreach($allCity as $key => $v):?>
@@ -115,7 +123,7 @@
 									</div>
 									<div class="form-group">
 										<label for="inputPassword3" class="col-md-3 control-label">托运类型</label>
-										<div class="col-md-9">
+										<div class="col-md-7 ">
 			                                <select name="type" id="type" class="form-control">
 			                                    <?php foreach($allType as $key => $v):?>
 			                                    <option value="<?php echo $key?>"><?php echo $v;?></option>
@@ -125,12 +133,12 @@
 									</div>
 									<div class="form-group">
 										<label for="inputEmail3" class="col-md-3 control-label">托运日期</label>
-										<div class="col-md-9">
-											<input type="text" id="inputEmail3" readonly class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input">
+										<div class="col-md-7">
+											<input type="text" id="inputEmail3" class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input">
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="col-md-offset-3 col-md-9">
+										<div class="col-md-offset-3 col-md-7 ">
 											<button type="submit" class="btn btn-primary">开始预订</button>
 										</div>
 									</div>
@@ -151,7 +159,7 @@
 				</div>
 				<div class="gallery-grids">
 					<div class="gallery-grids-row1">
-						<div class="col-md-8 gallery-grid1 text-center">
+						<div class="col-md-8 gallery-grid1 text-center col-ie7">
 							<a href="#" class="b-link-stripe b-animate-go  thickbox">
 								<img class="port-pic" src="<?php echo asset('assets/img/home/liucheng.jpg')?>" />
 								<div class="b-wrapper">
@@ -161,18 +169,20 @@
 								</div>
 							</a>
 						</div>
-						<div class='col-md-4 gallery-right'>
-							<div class='m-b-10'>
-								<div class='pull-left'>1.</div>
-								<div class='content'>点击“开始预订”，填写您的托运信息或者通过电话向我们的客服人员下订单。</div>
-							</div>
-							<div class='m-b-10'>
-								<div class='pull-left'>2.</div>
-								<div class='content'>如果您的行李是要从机场运至目的地，航班落地后，我们的工作人员将第一时间与您联系，我们将到达机场大厅接收您的行李，填写托运单。</div>
-							</div>
-							<div class='m-b-10'>
-								<div class='pull-left'>3.</div>
-								<div class='content'>如果您的行李是要从酒店、公司或者住宅等运至机场，请在您的航班起飞前尽可能早的跟我们联系托运（提前5小时），我们将在航班起飞前1.5小时将您的行李运至机场，您领取行李。</div>
+						<div class='col-md-4 gallery-right col-ie7'>
+							<div class='con'>
+								<div class='m-b-10'>
+									<div class='pull-left'>1.</div>
+									<div class='content'>点击“开始预订”，填写您的托运信息或者通过电话向我们的客服人员下订单。</div>
+								</div>
+								<div class='m-b-10'>
+									<div class='pull-left'>2.</div>
+									<div class='content'>如果您的行李是要从机场运至目的地，航班落地后，我们的工作人员将第一时间与您联系，我们将到达机场大厅接收您的行李，填写托运单。</div>
+								</div>
+								<div class='m-b-10'>
+									<div class='pull-left'>3.</div>
+									<div class='content'>如果您的行李是要从酒店、公司或者住宅等运至机场，请在您的航班起飞前尽可能早的跟我们联系托运（提前5小时），我们将在航班起飞前1.5小时将您的行李运至机场，您领取行李。</div>
+								</div>
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -189,19 +199,40 @@
 				</div>
 				<div class="consulation-grids">
 					<div class='row'>
+						<!--[if lt IE 8]>
+						<div class="col-md-12 consulation-left col-ie7" style='border-right:0px;'>
+						<![endif]--> 
+						<!--[if gt IE 7]>
 						<div class="col-md-6 consulation-left">
-							<div class='text-center m-b-10'><img src="<?php echo asset('assets/img/home/1.jpg')?>" height='200'></div>
-							<h4>一些关于托运的重要信息</h4>
-							<p><strong>托运至酒店：</strong>上午8点前到达的航班，我们将在中午运送行李至酒店前台，请告知您下榻的酒店。</p>
-							<p><strong>托运至住宅：</strong>上午8点前或晚上11点后抵达的航班，订单将在中午时开始运送。如果您选择签名接收，我们将在您电话通知交付时间后开始托运并交付，若联系不上您，交付将被延后。</p>
-							<p><strong>商务托运：</strong>上午8点或晚上11点后抵达的航班，订单将在中午托运。如果可以，请在下订单时，填写清楚您的企业名称、交付时间、联系人电话和其他特殊要求。</p>
+						<![endif]--> 
+						<!--[if !IE]><!-->
+						<div class="col-md-6 consulation-left ">
+						<!--><![endif]--> 
+
+								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" height='200'></div>
+								<h4>一些关于托运的重要信息</h4>
+								<p><strong>托运至酒店：</strong>上午8点前到达的航班，我们将在中午运送行李至酒店前台，请告知您下榻的酒店。</p>
+								<p><strong>托运至住宅：</strong>上午8点前或晚上11点后抵达的航班，订单将在中午时开始运送。如果您选择签名接收，我们将在您电话通知交付时间后开始托运并交付，若联系不上您，交付将被延后。</p>
+								<p><strong>商务托运：</strong>上午8点或晚上11点后抵达的航班，订单将在中午托运。如果可以，请在下订单时，填写清楚您的企业名称、交付时间、联系人电话和其他特殊要求。</p>
+							
 						</div>
+						<!--[if lt IE 8]>
+						<div class="col-md-12 consulation-right col-ie7">
+						<![endif]--> 
+						<!--[if gt IE 7]>
 						<div class="col-md-6 consulation-right">
-							<div class='text-center m-b-10'><img src="<?php echo asset('assets/img/home/2.jpg')?>" height='200'></div>
-							<h4>优质的服务</h4>
-							<p>当您选择我们之后，请放心您的行李，如果您有问题或需要帮助,您可以随时联系我们，行李网将竭诚为您服务。</p>
-							<p>进入我们的常见问题版面去了解一些常见的问题和解决方法。</p>
-							<p>有任何疑问，欢迎通过客服电话4000-000-000联系我们！</p>
+						<![endif]--> 
+						<!--[if !IE]><!-->
+						<div class="col-md-6 consulation-right ">
+						<!--><![endif]--> 
+						
+							
+								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/2.jpg')?>" height='200'></div>
+								<h4>优质的服务</h4>
+								<p>当您选择我们之后，请放心您的行李，如果您有问题或需要帮助,您可以随时联系我们，行李网将竭诚为您服务。</p>
+								<p>进入我们的常见问题版面去了解一些常见的问题和解决方法。</p>
+								<p>有任何疑问，欢迎通过客服电话4000-000-000联系我们！</p>
+							
 						</div>
 					</div>
 				</div>

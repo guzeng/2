@@ -21,8 +21,16 @@ body a:hover{color:#FFFFFF;}
 	height: 750px;
 }
 .bg{
-	background: url('../img/home/bg.jpg') no-repeat;
-	background-size: 100% 100%;
+    
+/*此部分支持chrome，应该也支持firefox*/
+            background: url('../img/home/bg.jpg') no-repeat center;
+            background-size: 100% 100%;
+/*以下是IE部分，使用滤镜*/
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/home/bg.jpg',sizingMethod='scale');
+            background-repeat: no-repeat;
+            background-positon: 100%, 100%;
+            height: 100%;
+    
 }
 .contact-no{
 	font-size: 24px;

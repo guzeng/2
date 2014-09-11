@@ -28,18 +28,19 @@
                 <?php endif;?>
             </li>
         </ul>
+        <div class='clearfix'></div>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
-          <div class="col-md-12 col-sm-12">
+          <div class="col-md-12 col-sm-12 col-ie7">
             <div class="content-page">
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
-                <div class="col-md-9 col-sm-9 blog-posts">
+                <div class="col-md-9 col-sm-9 blog-posts col-ie7">
                     <?php if(!empty($news_list)){foreach($news_list as $item):?>
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <h2><a target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo stripslashes($item->title)?></a></h2>
+                            <h3><a target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo stripslashes($item->title)?></a></h3>
                             <ul class="blog-info">
                                 <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($item->open_time))?></li>
                             </ul>
@@ -58,7 +59,7 @@
                 <!-- END LEFT SIDEBAR -->
 
                 <!-- BEGIN RIGHT SIDEBAR -->            
-                <div class="col-md-3 col-sm-3 blog-sidebar">
+                <div class="col-md-3 col-sm-3 blog-sidebar col-ie7">
                     <?php echo $right?>
                 </div>
                 <!-- END RIGHT SIDEBAR -->            
