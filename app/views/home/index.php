@@ -159,29 +159,29 @@
 				</div>
 				<div class="gallery-grids">
 					<div class="gallery-grids-row1">
-						<div class="col-md-8 gallery-grid1 text-center col-ie7">
-							<a href="#" class="b-link-stripe b-animate-go  thickbox">
-								<img class="port-pic" src="<?php echo asset('assets/img/home/liucheng.jpg')?>" />
+						<div class="col-md-8 col-sm-12 gallery-grid1 text-center col-ie7">
+							<a href="<?php echo asset('order')?>" class="b-link-stripe b-animate-go  thickbox">
+								<img class=" img-responsive" src="<?php echo asset('assets/img/home/liucheng.jpg')?>" />
 								<div class="b-wrapper">
-									<h2 class="b-animate b-from-left    b-delay03 ">
+									<h2 class="b-animate b-from-left b-delay03 ">
 										<button>开始预订</button>
 									</h2>
 								</div>
 							</a>
 						</div>
-						<div class='col-md-4 gallery-right col-ie7'>
+						<div class='col-md-4 col-sm-12 gallery-right col-ie7'>
 							<div class='con'>
 								<div class='m-b-10'>
 									<div class='pull-left'>1.</div>
-									<div class='content'>点击“开始预订”，填写您的运送信息或者通过电话向我们的客服人员下订单。</div>
+									<div class='content'>在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。</div>
 								</div>
 								<div class='m-b-10'>
 									<div class='pull-left'>2.</div>
-									<div class='content'>如果您的行李是要从机场运至目的地，航班落地后，我们的工作人员将第一时间与您联系，我们将到达机场大厅接收您的行李，填写运送单。</div>
+									<div class='content'>如果您的行李是从机场运送至目的地，航班落地后，我们的配送员将第一时间联系您，并在机场到达厅接收您的行李，填写托运单据。</div>
 								</div>
 								<div class='m-b-10'>
 									<div class='pull-left'>3.</div>
-									<div class='content'>如果您的行李是要从酒店、公司或者住宅等运至机场，请在您的航班起飞前尽可能早的跟我们联系运送（提前5小时），我们将在航班起飞前1.5小时将您的行李运至机场，您领取行李。</div>
+									<div class='content'>如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。</div>
 								</div>
 							</div>
 						</div>
@@ -209,11 +209,10 @@
 						<div class="col-md-6 consulation-left ">
 						<!--><![endif]--> 
 
-								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" height='200'></div>
-								<h4>一些关于运送的重要信息</h4>
-								<p><strong>运送至酒店：</strong>上午8点前到达的航班，我们将在中午运送行李至酒店前台，请告知您下榻的酒店。</p>
-								<p><strong>运送至住宅：</strong>上午8点前或晚上11点后抵达的航班，订单将在中午时开始运送。如果您选择签名接收，我们将在您电话通知交付时间后开始运送并交付，若联系不上您，交付将被延后。</p>
-								<p><strong>商务运送：</strong>上午8点或晚上11点后抵达的航班，订单将在中午运送。如果可以，请在下订单时，填写清楚您的企业名称、交付时间、联系人电话和其他特殊要求。</p>
+								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" style='height:300px'></div>
+								<h4>悦行网行李运送注意事项：</h4>
+								<p><strong>1. </strong>上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送，如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。</p>
+								<p><strong>2. </strong>晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。</p>
 							
 						</div>
 						<!--[if lt IE 8]>
@@ -227,11 +226,10 @@
 						<!--><![endif]--> 
 						
 							
-								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/2.jpg')?>" height='200'></div>
+								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/2.jpg')?>" style='height:300px'></div>
 								<h4>优质的服务</h4>
-								<p>当您选择我们之后，请放心您的行李，如果您有问题或需要帮助,您可以随时联系我们，悦行网将竭诚为您服务。</p>
-								<p>进入我们的常见问题版面去了解一些常见的问题和解决方法。</p>
-								<p>有任何疑问，欢迎通过客服电话4000-000-000联系我们！</p>
+								<p>选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线4000-XXX-XXX联系我们！</p>
+								<p>悦行网将竭诚为您服务。进入新手指南或者常见问题版面去了解更多！</p>
 							
 						</div>
 					</div>
@@ -329,7 +327,7 @@
 					   	}
 					   	else
 					   	{
-					   		$('#header').find('.top-nav').find('a').css({'padding-left':'40px','padding-right':'40px','font-size':'18px'});
+					   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
 					   	}
 					}
 					window.onload=function(){   

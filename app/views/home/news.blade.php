@@ -44,7 +44,7 @@
                             <ul class="blog-info">
                                 <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($item->open_time))?></li>
                             </ul>
-                            <div><?php echo trim(htmlspecialchars(utf8_strcut(strip_tags($item->content),200)))?></div>
+                            <div><?php echo trim(htmlspecialchars(utf8_strcut(strip_tags($item->content),200)))?>...</div>
                             <a class="more" target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo Lang::get('text.more')?> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>

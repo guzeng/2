@@ -326,6 +326,7 @@
 
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
+            var lastPopedPopover;
         jQuery(document).ready(function() {       
            // initiate layout and plugins
            //App.init();
@@ -345,6 +346,16 @@
                 startView: 2,
                 forceParse: 0,
                 showMeridian: 1
+            });
+
+            jQuery('.popovers').popover({
+                html: true
+            });
+            // close last poped popover
+            $(document).on('click.bs.popover.data-api', function (e) {
+                if (lastPopedPopover) {
+                    lastPopedPopover.popover('hide');
+                }
             });
         });
 // 百度地图API功能
