@@ -26,7 +26,9 @@ Route::controller('agreement', 'AgreementController');
 Route::get('change-lang/{lang}', 'CommonController@changeLang')->where(array('lang','[a-z]{2}'));
 Route::get('error/{n}', 'CommonController@error')->where(array('n','[0-9]{3}'));
 
+Route::controller('workflow', 'WorkflowController');
 Route::controller('order', 'OrderController');
+
 Route::group(array('before' => 'auth'), function()
 {
     Route::controller('user','UserController');

@@ -6,7 +6,7 @@ class Admin_NewsController extends BaseController {
 	{
         if(!$cid)
         {
-            return Response::view('common.500', array('msg'=>lang::get('msg.param_incorrect')));
+            return Response::view('common.500', array('msg'=>Lang::get('msg.param_incorrect')));
         }
         $data['cid'] = $cid;
 		return View::make('admin.news.list', $data);
@@ -153,7 +153,7 @@ class Admin_NewsController extends BaseController {
     {
         if(!$cid)
         {
-            return Response::view('common.500', array('msg'=>lang::get('msg.param_incorrect')));
+            return Response::view('common.500', array('msg'=>Lang::get('msg.param_incorrect')));
         }
         $data['cid'] = $cid;
         return View::make('admin.news.edit', $data);
@@ -172,7 +172,7 @@ class Admin_NewsController extends BaseController {
         }
         else
         {
-            return Response::view('common.500', array('msg'=>lang::get('msg.param_incorrect')));
+            return Response::view('common.500', array('msg'=>Lang::get('msg.param_incorrect')));
         }
 
         return View::make('admin.news.edit', array('item' => $news));

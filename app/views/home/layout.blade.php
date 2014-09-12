@@ -135,13 +135,12 @@
                     <?php echo Lang::get('text.online_order')?>
                 </a>
             </li>
-            <!--
-            <li class="">
-                <a href="<?php echo asset('')?>#gal">
+            
+            <li class="<?php if($_controller_name=='WorkflowController'):?>active<?endif;?>">
+                <a href="<?php echo asset('workflow')?>">
                     <?php echo Lang::get('text.ship_process')?>
                 </a>
             </li>
-            -->
             <li class="<?php if($_controller_name=='NewsController' && $_action_name=='getGrude'):?>active<?endif;?>">
                 <a href="<?php echo asset('news/grude')?>">
                     <?php echo Lang::get('text.newcomer_grude')?>
