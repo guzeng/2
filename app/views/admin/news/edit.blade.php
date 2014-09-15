@@ -29,26 +29,79 @@
         <div class="clearfix"></div>
         <!-- BEGIN FORM-->
         <form class="form-horizontal" id="news_update" method="post" action="<?php echo asset('admin/news/update');?>">
+            <div class='row'>
+                <!-- chinese version start -->
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->   
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> <?php echo Lang::get('text.zh')?>
+                            </div>
+                            <div class="tools">
+                                <a class="collapse" href=""></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.title');?></label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='100' name="title" id="title" value="<?php echo isset($item) ? stripslashes($item->title) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12"><?php echo Lang::get('text.content');?></label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <textarea id="con" style="visibility:hidden;"><?=isset($item)?$item->content:'' ?></textarea>
+                                        <textarea id="content" name="content" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- chinese version end -->
+                <!-- english version start -->
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->   
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> <?php echo Lang::get('text.en')?>
+                            </div>
+                            <div class="tools">
+                                <a class="collapse" href=""></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.title');?></label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='200' name="title_en" id="title_en" value="<?php echo isset($item) ? stripslashes($item->title_en) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12"><?php echo Lang::get('text.content');?></label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <textarea id="con_en" style="visibility:hidden;"><?=isset($item)?$item->content_en:'' ?></textarea>
+                                        <textarea id="content_en" name="content_en" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- english version end -->
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.title');?></label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='100' name="title" id="title" value="<?php echo isset($item) ? stripslashes($item->title) : '';?>">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12"><?php echo Lang::get('text.content');?></label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <textarea id="con" style="visibility:hidden;"><?=isset($item)?$item->content:'' ?></textarea>
-                                <textarea id="content" name="content" style="display:none;"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12"></label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 checkbox-list">
+                            <div class="col-md-offset-3 col-md-9 col-sm-9  col-sm-offset-3 col-xs-12 checkbox-list">
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="status" value="1" <?php if(!isset($item->status) || (isset($item->status) && $item->status==1)):?>checked='checked'<?php endif;?> >
                                     <?php echo Lang::get('text.enable');?>

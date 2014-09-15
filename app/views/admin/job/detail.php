@@ -8,15 +8,15 @@
                     <table class='table table-striped table-bordered table-hover dataTable'>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.position')?></td>
-                            <td><?php echo $item->title?></td>
+                            <td><?php echo App::getLocale()=='zh'?$item->title:$item->title_en?></td>
                             <td class='b'><?php echo Lang::get('text.require_number')?></td>
                             <td><?php echo $item->number?></td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.location')?></td>
-                            <td><?php echo $item->location?></td>
+                            <td><?php echo App::getLocale()=='zh'?$item->location:$item->location_en?></td>
                             <td class='b'><?php echo Lang::get('text.department')?></td>
-                            <td><?php echo $item->department;?></td>
+                            <td><?php echo App::getLocale()=='zh'?$item->department:$item->department_en;?></td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.deadline')?></td>
@@ -26,11 +26,11 @@
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.job_desc')?></td>
-                            <td colspan='3'><?php echo $item->description;?></td>
+                            <td colspan='3'><?php echo App::getLocale()=='zh'?stripslashes($item->description):stripslashes($item->description_en) ;?></td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.job_require')?></td>
-                            <td colspan='3'><?php echo $item->requirement;?></td>
+                            <td colspan='3'><?php echo App::getLocale()=='zh'?stripslashes($item->requirement):stripslashes($item->requirement_en);?></td>
                         </tr>
                     </table>
         </div>

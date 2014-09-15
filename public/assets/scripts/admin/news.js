@@ -29,10 +29,23 @@ $(function(){
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                             'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
             });
+            editor2 = K.create('textarea[id="con_en"]', {
+                    resizeType : 1,
+                    width:'100%',
+                    height:400,
+                    allowPreviewEmoticons : false,
+                    allowImageUpload : true,
+                    uploadJson : msg.base_url+"upload-img",
+                    items : [
+                            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+            });
         });
         //提交表单
         $("#news_edit_btn").on('click',function(){
             $('#content').text(editor.html());
+            $('#content_en').text(editor2.html());
             doSubmit('news_update','news_edit_btn');
         });
     }

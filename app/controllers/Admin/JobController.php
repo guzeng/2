@@ -48,8 +48,16 @@ class Admin_JobController extends BaseController {
         $order = in_array($order, array('desc','asc')) ? $order : 'asc';
         if($sSearch)
         {
-            $jobs = Job::where("title", "like", "%".$sSearch."%")->orWhere('number', 'like', '%'.$sSearch.'%')->orWhere('location', 'like', '%'.$sSearch.'%')
-                        ->orWhere('department', 'like', '%'.$sSearch.'%');
+            if(App::getLocale()=='zh')
+            {
+                $jobs = Job::where("title", "like", "%".$sSearch."%")->orWhere('number', 'like', '%'.$sSearch.'%')->orWhere('location', 'like', '%'.$sSearch.'%')
+                            ->orWhere('department', 'like', '%'.$sSearch.'%');
+            }
+            else
+            {
+                $jobs = Job::where("title_en", "like", "%".$sSearch."%")->orWhere('number', 'like', '%'.$sSearch.'%')->orWhere('location_en', 'like', '%'.$sSearch.'%')
+                            ->orWhere('department_en', 'like', '%'.$sSearch.'%');
+            }
             
             $iTotalRecords = $jobs->count();
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
@@ -67,10 +75,10 @@ class Admin_JobController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    stripslashes($item->title),
+                    App::getLocale()=='zh' ? stripslashes($item->title) : stripslashes($item->title_en),
                     $item->number,
-                    $item->location,
-                    $item->department,
+                    App::getLocale()=='zh' ? $item->location : $item->location_en,
+                    App::getLocale()=='zh' ? $item->department : $item->department_en,
                     date('Y-m-d',gmt_to_local($item->date)),
                     $item->status,
                     ''
@@ -192,12 +200,17 @@ class Admin_JobController extends BaseController {
         $log = array();
         $id = Input::get('id');
         $title = Input::get('title');
+        $title_en = Input::get('title_en');
         $number = Input::get('number');
         $location = Input::get('location');
+        $location_en = Input::get('location_en');
         $department = Input::get('department');
+        $department_en = Input::get('department_en');
         $date = Input::get('date');
         $description = Input::get('description');
+        $description_en = Input::get('description_en');
         $requirement = Input::get('requirement');
+        $requirement_en = Input::get('requirement_en');
         $status = Input::get('status', 0);
 
         if($id)
@@ -217,16 +230,22 @@ class Admin_JobController extends BaseController {
         $validator = Validator::make(
             array(
                 'jobtitle' => $title,
+                'enjobtitle' => $title_en,
                 'jobnumber' => $number,
                 'joblocation' => $location,
+                'enjoblocation' => $location_en,
                 'jobdepartment' => $department,
+                'enjobdepartment' => $department_en,
                 'jobdate' => $date
             ),
             array(
                 'jobtitle' => "required|max:50",
+                'enjobtitle' => "required|max:100",
                 'jobnumber' => "required|integer|digitsbetween:0,11",
                 'joblocation' => "max:30",
+                'enjoblocation' => "max:100",
                 'jobdepartment' => "max:30",
+                'enjobdepartment' => "max:100",
                 'jobdate' => "date"
             )
         );
@@ -234,12 +253,15 @@ class Admin_JobController extends BaseController {
         if($validator->fails())
         {
             $data['code'] = '1010';
-            //print_r( $validator->messages()->get('job_title') );exit;
-            $error['title'] = str_replace('jobtitle', Lang::get('text.position'), $validator->messages()->get('jobtitle'));
-            $error['number'] = str_replace('jobnumber', Lang::get('text.require_number'), $validator->messages()->get('jobnumber'));
-            $error['location'] = str_replace('joblocation', Lang::get('text.location'), $validator->messages()->get('joblocation'));
-            $error['department'] = str_replace('jobdepartment', Lang::get('text.department'), $validator->messages()->get('jobdepartment'));
-            $error['date'] = str_replace('jobdate', Lang::get('text.deadline'), $validator->messages()->get('jobdate'));
+            $m = $validator->messages();
+            $error['title'] = str_replace('jobtitle', Lang::get('text.position'), $m->get('jobtitle'));
+            $error['title_en'] = str_replace('enjobtitle', Lang::get('text.position'), $m->get('enjobtitle'));
+            $error['number'] = str_replace('jobnumber', Lang::get('text.require_number'), $m->get('jobnumber'));
+            $error['location'] = str_replace('joblocation', Lang::get('text.location'), $m->get('joblocation'));
+            $error['location_en'] = str_replace('enjoblocation', Lang::get('text.location'), $m->get('enjoblocation'));
+            $error['department'] = str_replace('jobdepartment', Lang::get('text.department'), $m->get('jobdepartment'));
+            $error['department_en'] = str_replace('enjobdepartment', Lang::get('text.department'), $m->get('enjobdepartment'));
+            $error['date'] = str_replace('jobdate', Lang::get('text.deadline'), $m->get('jobdate'));
             $data['error'] = $error;
             $data['msg'] = Lang::get('msg.submit_error');
             return Response::json($data);
@@ -247,12 +269,17 @@ class Admin_JobController extends BaseController {
         else
         {
             $job->title = addslashes($title);
+            $job->title_en = addslashes($title_en);
             $job->number = $number;
             $job->location = $location;
+            $job->location_en = $location_en;
             $job->department = $department;
+            $job->department_en = $department_en;
             $job->date = strtotime($date);
             $job->description = $description;
+            $job->description_en = $description_en;
             $job->requirement = $requirement;
+            $job->requirement_en = $requirement_en;
             $job->status = $status;
             if($id)
             {

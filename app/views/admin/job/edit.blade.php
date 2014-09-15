@@ -30,56 +30,134 @@
         <!-- BEGIN FORM-->
         <form class="form-horizontal" id="news_update" method="post" action="<?php echo asset('admin/job/update');?>">
             <div class="row">
+                <!-- chinese version start -->
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->   
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> <?php echo Lang::get('text.zh')?>
+                            </div>
+                            <div class="tools">
+                                <a class="collapse" href=""></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.position');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='50' name="title" id="title" value="<?php echo isset($item) ? stripslashes($item->title) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.location');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='30' name="location" id="location" value="<?php echo isset($item) ? stripslashes($item->location) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.department');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='30' name="department" id="department" value="<?php echo isset($item) ? stripslashes($item->department) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_desc');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <textarea id="desc" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->description):'' ?></textarea>
+                                        <textarea id="description" name="description" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_require');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <textarea id="requ" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->requirement):'' ?></textarea>
+                                        <textarea id="requirement" name="requirement" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+                <!-- chinese version end -->
+                <!-- english version start -->
+                <div class="col-md-6 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->   
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-reorder"></i> <?php echo Lang::get('text.en')?>
+                            </div>
+                            <div class="tools">
+                                <a class="collapse" href=""></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.position');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='100' name="title_en" id="title_en" value="<?php echo isset($item) ? stripslashes($item->title_en) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.location');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='100' name="location_en" id="location_en" value="<?php echo isset($item) ? stripslashes($item->location_en) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.department');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" maxLength='100' name="department_en" id="department_en" value="<?php echo isset($item) ? stripslashes($item->department_en) : '';?>">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_desc');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <textarea id="desc_en" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->description_en):'' ?></textarea>
+                                        <textarea id="description_en" name="description_en" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_require');?></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <textarea id="requ_en" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->requirement_en):'' ?></textarea>
+                                        <textarea id="requirement_en" name="requirement_en" style="display:none;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+                </div>
+                <!-- english version end -->
+            </div>
+            <div class='row'>
+
                 <div class="col-md-12">
                     <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.position');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='50' name="title" id="title" value="<?php echo isset($item) ? stripslashes($item->title) : '';?>">
-                                <span class="help-block"></span>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.require_number');?></label>
+                                <div class="col-md-6 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" maxLength='11' name="number" id="number" value="<?php echo isset($item) ? stripslashes($item->number) : '';?>">
+                                    <span class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.require_number');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='11' name="number" id="number" value="<?php echo isset($item) ? stripslashes($item->number) : '';?>">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.location');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='30' name="location" id="location" value="<?php echo isset($item) ? stripslashes($item->location) : '';?>">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.department');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='30' name="department" id="department" value="<?php echo isset($item) ? stripslashes($item->department) : '';?>">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.deadline');?></label>
                             <div id="datetimepicker" class="col-md-6 col-sm-9 col-xs-12 input-group">
                                 <input type="text" id="deadline" class="form-control form_datetime" name='date' value="<?php echo isset($item) ? date('Y-m-d',gmt_to_local($item->date)) : '';?>" Format="Custom" >
                                 <div class="input-group-addon"><i class='fa fa-calendar'></i></div>
                                 <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_desc');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <textarea id="desc" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->description):'' ?></textarea>
-                                <textarea id="description" name="description" style="display:none;"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><?php echo Lang::get('text.job_require');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <textarea id="requ" style="visibility:hidden;"><?=isset($item)?htmlspecialchars($item->requirement):'' ?></textarea>
-                                <textarea id="requirement" name="requirement" style="display:none;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

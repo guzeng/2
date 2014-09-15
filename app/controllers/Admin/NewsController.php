@@ -55,7 +55,14 @@ class Admin_NewsController extends BaseController {
         $news = News::where('category_id',$cid);
         if($sSearch)
         {
-            $news->where("title", "like", "%".$sSearch."%");
+            if(App::getLocale()=='zh')
+            {
+                $news->where("title", "like", "%".$sSearch."%");
+            }
+            else
+            {
+                $news->where("title_en", "like", "%".$sSearch."%");
+            }
             
             $iTotalRecords = $news->count();
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
@@ -73,7 +80,7 @@ class Admin_NewsController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    stripslashes($item->title),
+                    App::getLocale()=='zh' ? stripslashes($item->title) : stripslashes($item->title_en),
                     date('Y-m-d',gmt_to_local($item->create_time)),
                     $item->status,
                     ''
@@ -190,7 +197,9 @@ class Admin_NewsController extends BaseController {
         }
         $id = Input::get('id');
         $title = Input::get('title');
+        $title_en = Input::get('title_en');
         $content = Input::get('content');
+        $content_en = Input::get('content_en');
         $status = Input::get('status', 0);
 
         if($id)
@@ -209,10 +218,12 @@ class Admin_NewsController extends BaseController {
         $text_title = Lang::get('text.title');
         $validator = Validator::make(
             array(
-                'jobtitle' => $title
+                'jobtitle' => $title,
+                'enjobtitle' => $title_en
             ),
             array(
-                'jobtitle' => "required|max:100"
+                'jobtitle' => "required|max:100",
+                'enjobtitle' => "required|max:200"
             )
         );
 
@@ -220,6 +231,7 @@ class Admin_NewsController extends BaseController {
         {
             $data['code'] = '1010';
             $error['title'] = str_replace('jobtitle', Lang::get('text.title'), $validator->messages()->get('jobtitle'));
+            $error['title_en'] = str_replace('enjobtitle', Lang::get('text.title'), $validator->messages()->get('enjobtitle'));
             $data['error'] = $error;
             $data['msg'] = Lang::get('msg.submit_error');
             return Response::json($data);
@@ -227,7 +239,9 @@ class Admin_NewsController extends BaseController {
         else
         {
             $news->title = addslashes($title);
+            $news->title_en = addslashes($title_en);
             $news->content = $content;
+            $news->content_en = $content_en;
             $news->status = $status;
             $news->create_by = Auth::user()->id;
             if($id)
@@ -251,9 +265,10 @@ class Admin_NewsController extends BaseController {
                     return Response::json($data);
                 }
                 $log_param['type'] = 'add';
+                $log[] = Lang::get('text.news_create').Lang::get('text.colon').date('Y-m-d', $news->create_time);
             }
         }
-        $log[] = Lang::get('text.title').Lang::get('text.colon').date('Y-m-d', $news->create_time);
+        $log[] = Lang::get('text.title').Lang::get('text.colon').$news->title . (Lang::get('text.en').Lang::get('text.colon').$news->title_en);
         $log[] = Lang::get('text.content').Lang::get('text.colon').$news->content;
         $log[] = Lang::get('text.create_by').Lang::get('text.colon').$news->create_by;
         $log[] = Lang::get('text.status').Lang::get('text.colon').($status ? Lang::get('text.enable') : Lang::get('text.close'));

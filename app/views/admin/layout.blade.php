@@ -235,9 +235,6 @@
                                 <li class="<?if($_controller_name=='AirportController'):?>active<?endif;?>">
                                     <a href="<?php echo asset('admin/airport')?>"><?php echo Lang::get('text.airport_manage');?></a>
                                 </li>
-                                <li class="<?if($_controller_name=='LogController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/log');?>"><?php echo Lang::get('text.operate_log');?></a>
-                                </li>
                         </ul>
                     </li>
                     <li class="<?if(in_array($_controller_name, array('AboutController','JobController'))):?>open active<?endif;?>">
@@ -254,7 +251,7 @@
                                     <a href="<?php echo asset('admin/about/contact')?>"><?php echo Lang::get('text.contact_us')?></a>
                                 </li>
                                 <li class="<?if($_controller_name=='JobController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.joinus');?></a>
+                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.join_us');?></a>
                                 </li>
                         </ul>
                     </li>

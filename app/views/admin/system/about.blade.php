@@ -46,34 +46,61 @@
     	<div class="row">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <input type='hidden' name='type' value='aboutus'>
-            <div class='col-lg-6 col-md-12 col-sm-12 col-xs-12'>
-    			<div class="form-body">
-    				<div class="form-group">
-    					<div class="col-md-12 ">
-                            <p><strong>中文版</strong></p>
-    						<textarea id="content1" style="visibility:hidden;"><?=isset($value)?htmlspecialchars($value):'' ?></textarea>
-                            <textarea id="content" name="content" style="display:none;"></textarea>
-    					</div>
-    				</div>
-    			</div>
-            </div>
-            <div class='col-lg-6 col-md-12 col-sm-12 col-xs-12'>
-                <div class="form-body">
-                    <div class="form-group">
-                        <div class="col-md-12 ">
-                            <p><strong>English</strong></p>
-                            <textarea id="content2" style="visibility:hidden;"><?=isset($value_en)?htmlspecialchars($value_en):'' ?></textarea>
-                            <textarea id="content_en" name="content_en" style="display:none;"></textarea>
+            <!-- chinese version start -->
+            <div class="col-md-6 ">
+                <!-- BEGIN SAMPLE FORM PORTLET-->   
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-reorder"></i> <?php echo Lang::get('text.zh')?>
+                        </div>
+                        <div class="tools">
+                            <a class="collapse" href=""></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <div class="col-md-12 ">
+                                    <textarea id="content1" style="visibility:hidden;"><?=isset($value)?htmlspecialchars(stripslashes($value)):'' ?></textarea>
+                                    <textarea id="content" name="content" style="display:none;"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- chinese version end -->
+            <!-- english version start -->
+            <div class="col-md-6 ">
+                <!-- BEGIN SAMPLE FORM PORTLET-->   
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-reorder"></i> <?php echo Lang::get('text.en')?>
+                        </div>
+                        <div class="tools">
+                            <a class="collapse" href=""></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <div class="col-md-12 ">
+                                    <textarea id="content2" style="visibility:hidden;"><?=isset($value_en)?htmlspecialchars(stripslashes($value_en)):'' ?></textarea>
+                                    <textarea id="content_en" name="content_en" style="display:none;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- english version end -->
     	</div>
     	<div class="row">
             <div class="col-md-12 ">
                 <div class="text-center">
-                    <button id="_submit" type="submit" class="btn green btn-lg"><?php echo Lang::get('text.save');?></button> &nbsp; 
-                    <button id="cancle" class="btn default btn-lg" type="button" onclick="goback()"><?php echo Lang::get('text.cancel')?></button>
+                    <button id="_submit" type="submit" class="btn green btn-lg"><?php echo Lang::get('text.save');?></button>
                 </div>
             </div>
         </div>

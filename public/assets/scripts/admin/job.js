@@ -27,7 +27,31 @@ $(function(){
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                             'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
             });
+            editor3 = K.create('textarea[id="requ_en"]', {
+                    resizeType : 1,
+                    width:'100%',
+                    height:400,
+                    allowPreviewEmoticons : false,
+                    allowImageUpload : true,
+                    uploadJson : msg.base_url+"upload-img",
+                    items : [
+                            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+            });
             editor2 = K.create('textarea[id="desc"]', {
+                    resizeType : 1,
+                    width:'100%',
+                    height:400,
+                    allowPreviewEmoticons : false,
+                    allowImageUpload : true,
+                    uploadJson : msg.base_url+"upload-img",
+                    items : [
+                            'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+            });
+            editor4 = K.create('textarea[id="desc_en"]', {
                     resizeType : 1,
                     width:'100%',
                     height:400,
@@ -51,7 +75,9 @@ $(function(){
         //提交表单
         $("#news_edit_btn").on('click',function(){
             $('#description').text(editor2.html());
+            $('#description_en').text(editor4.html());
             $('#requirement').text(editor.html());
+            $('#requirement_en').text(editor3.html());
             doSubmit('news_update','news_edit_btn');
         });
     }
