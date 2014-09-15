@@ -1,0 +1,9 @@
+alter table yx_airport add column name_en varchar(100) not null default '' after `name`; 
+alter table yx_city add column name_en varchar(100) not null default '' after `name`;
+alter table yx_job add column title_en varchar(100) not null default '' after `title`,
+add column location_en varchar(100) not null default '' after `location`,
+add column department_en varchar(100) not null default '' after `department`,
+add column description_en text after `description`,
+add column requirement_en text after `requirement`; 
+alter table yx_news add column title_en varchar(200) not null default '' after `title`,
+add column content_en text after `content`; 

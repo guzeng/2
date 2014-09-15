@@ -247,4 +247,6 @@ $lang['remarks'] = "备注";
 $lang['default_address'] = "默认地址";
 $lang['add_address'] = "增加地址";
 $lang['from_address'] = "从常用地址中选择";
+$lang['en'] = "英文版";
+$lang['zh'] = "中文版";
 return $lang;
