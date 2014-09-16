@@ -43,8 +43,7 @@ var FormWizard = function () {
                         required: true
                     },
                     special_luggage_num: {
-                        digits: true,
-                        required: true
+                        digits: true
                     },
                     shipper: {
                         required: true

@@ -36,8 +36,8 @@
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-9 col-sm-9 blog-posts">
-                    <h3><?php echo stripslashes($news->title);?></h3>
-                    <div><?php echo $news->content?></div><!--htmlspecialchars(-->
+                    <h3><?php echo App::getLocale()=='zh'?stripslashes($news->title):stripslashes($news->title_en);?></h3>
+                    <div><?php echo App::getLocale()=='zh'?$news->content:$news->content_en; ?></div><!--htmlspecialchars(-->
                     <ul class="blog-info">
                         <li><i class="fa fa-user"></i><?php echo $news->view?></li>
                         <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($news->open_time))?></li>

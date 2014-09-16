@@ -241,7 +241,7 @@ $lang['security_setting'] = "安全设置";
 $lang['register_tips'] = "如果您还不是会员，请注册";
 $lang['my_order'] = "我的订单";
 $lang['mileage'] = "里程计算";
-$lang['price_tips_1'] = "<a data-original-title='' data-content='起步里程：始发地至目的地路线距离0-40公里以内' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>起步里程</a> 以内，第1件60元，超过1件每件加40元。超过40公里，每公里加收1元。";
+$lang['price_tips_1'] = "<a data-original-title='' data-content='起步里程：始发地至目的地路线距离0-40公里以内' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>起步里程</a> 内第1件60元，超过1件每件加40元。超过40公里，每公里加收1元。";
 $lang['price_tips_2'] = "<a data-original-title='' data-content='<div class=m-b-5>根据航空公司行李托运要求，悦行网运送行李规定如下：</div><div class=m-b-5>行李总重量上限：20公斤（44磅），</div><div class=m-b-5>行李体积：不能超过40×60×100厘米，</div><div class=m-b-5>超过规定重量或体积定义为特殊行李托运，</div><div class=m-b-5>请注意，高尔夫装备、自行车、滑板、大型音乐器材等也为特殊行李。</div>' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>特殊行李</a>，起步里程内每件80元";
 $lang['remarks'] = "备注";
 $lang['default_address'] = "默认地址";

@@ -23,19 +23,19 @@
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-9 col-sm-9 blog-posts">
-                    <h3 class='m-b-20'><?php echo stripslashes($job->title);?></h3>
+                    <h3 class='m-b-20'><?php echo App::getLocale()=='zh'?stripslashes($job->title):stripslashes($job->title_en);?></h3>
                     <div class='m-b-20'>
                         <div class='row m-b-10'>
                             <div class='col-md-6'>
                                 <strong><?php echo Lang::get('text.require_number')?></strong> : <?php echo $job->number?>
                             </div>
                             <div class='col-md-6'>
-                                <strong><?php echo Lang::get('text.location')?></strong> : <?php echo $job->location;?>
+                                <strong><?php echo Lang::get('text.location')?></strong> : <?php echo App::getLocale()=='zh'?$job->location:$job->location_en;?>
                             </div>
                         </div>
                         <div class='row m-b-10'>
                             <div class='col-md-6'>
-                                <strong><?php echo Lang::get('text.department')?></strong> : <?php echo $job->department;?>
+                                <strong><?php echo Lang::get('text.department')?></strong> : <?php echo App::getLocale()=='zh'?$job->department:$job->department_en;?>
                             </div>
                             <div class='col-md-6'>
                                 <strong><?php echo Lang::get('text.deadline')?></strong> : <?php echo date('d/m/Y',$job->date);?>
@@ -44,9 +44,9 @@
                     </div>
                     <div>
                         <div class='m-b-10'><strong><?php echo Lang::get('text.job_desc')?></strong></div>
-                        <div class='m-b-20'><?php echo $job->description?></div>
+                        <div class='m-b-20'><?php echo App::getLocale()=='zh'?$job->description:$job->description_en;?></div>
                         <div class='m-b-10'><strong><?php echo Lang::get('text.job_require')?></strong></div>
-                        <div><?php echo $job->requirement?></div>
+                        <div><?php echo App::getLocale()=='zh'?$job->requirement:$job->requirement_en;?></div>
                     </div>
                     <ul class="blog-info">
                         <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($job->create_time))?></li>

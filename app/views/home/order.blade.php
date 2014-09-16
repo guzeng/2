@@ -1,7 +1,8 @@
 @extends('home.layout')
 
 @section('content')
-<div class='container m-t-50 m-b-50'  id="form_wizard_1">
+<div class='container m-t-20 m-b-50'  id="form_wizard_1">
+<div class=' content-page'>
     <form action="<?php echo asset('order/update')?>" method='post' class="form-horizontal" id="order_form">
         <div class="form-wizard">
             <div class="form-body">
@@ -101,16 +102,16 @@
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="normal_luggage_num" id='normal_luggage_num'/>
                             </div>
-                            <div class='col-md-5 text-warning'>
+                            <div class='col-md-5  m-t-10 text-warning f-s-12'>
                                 <?php echo Lang::get('text.price_tips_1');?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?><span class="required">*</span></label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?></label>
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="special_luggage_num" id='special_luggage_num'/>
                             </div>
-                            <div class='col-md-5 m-t-5 text-warning'>
+                            <div class='col-md-5 m-t-10 text-warning f-s-12'>
                                 <?php echo Lang::get('text.price_tips_2');?>
                             </div>
                         </div>
@@ -272,7 +273,7 @@
         <input type='hidden' name='distance' id='distance' value=''>
     </form>
 </div>
-
+</div>
 <?php if(Auth::check()):?>
 <div id="using_address" class="modal fade" tabindex="-1" >
     <div class="modal-dialog">

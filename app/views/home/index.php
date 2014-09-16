@@ -80,6 +80,14 @@
 							<?php else:?>
 							<a href="<?php echo asset('user/profile')?>" style='font-size:16px;'><?php echo Auth::user()->name;?></a> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
 							<?php endif;?>
+							|  
+                            <?if( App::getLocale() == "zh"):?>
+                            	<span class='c-l'>中文版</span> 
+                              	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
+                            <?else:?>
+                              	<a href="<?php echo asset('change-lang/zh');?>" class='c-l'><i class="fa fa-stack-exchange"></i> 中文版</a> 
+                              	<span class='c-l'>English</span>
+                            <?endif;?>
 						</div>
 					</div>
 						<!--start-top-nav-->

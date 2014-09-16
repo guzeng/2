@@ -94,10 +94,10 @@
                             <li><a href="<?php echo asset('user/profile')?>"><?php echo Auth::user()->name;?></a></li>
                             <li><a href="<?php echo asset('login/out')?>"><?php echo Lang::get('text.exit')?></a></li>
                         <?php endif;?>
-                        <?if( App::getLocale() == "zh"):?>
-                            <li><a href="<?php echo asset('change-lang/en');?>">English</a></li>
+                        <?if( App::getLocale() == "zh"):?> 
+                            <li><span class='grey'>中文版</span> &nbsp; <a href="<?php echo asset('change-lang/en');?>">English</a></li>
                         <?else:?>
-                            <li><a href="<?php echo asset('change-lang/zh');?>">中文版</a></li>
+                            <li><a href="<?php echo asset('change-lang/zh');?>">中文版</a> &nbsp; <span class='grey'>English</span></li>
                         <?endif;?>
                     </ul>
                 </div>
