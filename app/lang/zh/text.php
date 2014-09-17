@@ -230,7 +230,6 @@ $lang['ship_process'] = "运送流程";
 $lang['online_order'] = "在线下单";
 
 $lang['verify_to_mobile'] = "用户您好！您注册悦行网的登录用户（手机号）所需的验证码为%s，5分钟内有效。";
-$lang['register_success'] = "亲爱的悦行网用户，恭喜您注册成功！欢迎使用悦行网各项优质服务！请放心，您的信息完全保密。请妥善保管登录密码并定期更新";
 $lang['reset_password_success'] = "密码重置成功，您现在可以使用新密码<a href='".asset('login')."'>登录</a>";
 $lang['accept_agreement'] = "已阅读并接受用户注册协议";
 $lang['register_agreement'] = "用户注册协议";

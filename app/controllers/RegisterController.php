@@ -101,7 +101,7 @@ class RegisterController extends BaseController {
 			User::saveLogin();
             $path = Session::get('url.intended', '/');
             Session::forget('url.intended');
-            Sms::send($username, Lang::get('text.register_success'));
+            Sms::send($username, Lang::get('msg.register_success'));
             return Response::json(array('code' => '1000','msg'=>Lang::get('msg.register_success'), 'url'=>asset($path)));
 		}
 		else

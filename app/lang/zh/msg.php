@@ -145,6 +145,7 @@ $lang['order_paid'] = "订单已付款";
 $lang['order_unpaid'] = "订单未付款";
 $lang['register_failed'] = "注册失败，请稍候再试";
 $lang['send_failed'] = "发送失败，请稍候再试";
-$lang['register_success'] = "注册成功";
+//$lang['register_success'] = "注册成功";
 $lang['validate_dated'] = "验证码已过期";
+$lang['register_success'] = "亲爱的悦行网用户，恭喜您注册成功！欢迎使用悦行网各项优质服务！请放心，您的信息完全保密。请妥善保管登录密码并定期更新";
 return $lang;

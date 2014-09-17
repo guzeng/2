@@ -207,7 +207,7 @@ class BaseController extends Controller {
             return Response::json(array('code' => '1010', 'msg'=>$error));
         }
         $code = mt_rand(100000,999999);
-        if(Sms::send($mobile,$msg))
+        if(Sms::send($mobile,printf(Lang::get('text.verify_to_mobile'),$code)))
         {
             MobileCode::where('mobile',$mobile)->delete();
             $_m = new MobileCode();
