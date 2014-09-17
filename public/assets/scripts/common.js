@@ -180,6 +180,43 @@ function hideLogin()
 }
 //------------------------------------------------------------------------
 
+function login()
+{
+    if($('#_relogin_form').find('#username').val()=='')
+    {
+        return false;
+    }
+    if($('#_relogin_form').find('#password').val()=='')
+    {
+        return false;
+    }
+    $('#_relogin_form').ajaxSubmit({
+        'dataType':'json',
+        success:function(json){
+            $('#relogin_form_submit_btn').show();
+            $('#_login_form_loading').remove();
+            if(json.code == '1000')
+            {
+                showSuccess(json.msg);
+                hideLogin();                
+            }
+            else
+            {
+                $('#error_message').html("<span class='help-block'>"+json.msg+"</span>");
+                $('#error_message').addClass('has-error').show();
+                $('#error_message').parent().show();
+                $('#_relogin_form').find('input[name=password]').val('').focus();    
+            }
+        },
+        beforeSubmit:function(){
+            $('#_login_form').find('#relogin_form_submit_btn').before("<img id='_login_form_loading' src='"+msg.base_url+"assets/img/input-spinner.gif' height='16'>");
+            $('#relogin_form_submit_btn').hide();
+            $('#error_message').find('span.help-block').html('');
+            $('#error_message').removeClass('has-error').hide();
+        }
+    })
+}
+//------------------------------------------------------------------------
 
 function refreshValidateKey()
 {

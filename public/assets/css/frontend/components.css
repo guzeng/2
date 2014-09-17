@@ -1659,7 +1659,6 @@ label {
 }
 .form-control-static {
     display: inline-block;
-    margin: 2px 0;
 }
 .has-success .help-block, .has-success .help-inline, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
     color: rgb(60, 118, 61);

@@ -138,29 +138,34 @@ function drive(a)
 function price(d)
 {
     var price = 0;
-    var normal_luggage_num = $('#normal_luggage_num').val();
-    var special_luggage_num = $('#special_luggage_num').val();
-    if(d <= 40)
+    var normal_luggage_num = parseInt($('#normal_luggage_num').val());
+    var special_luggage_num = parseInt($('#special_luggage_num').val());
+
+    if(normal_luggage_num > 0)
     {
-        if(normal_luggage_num > 0)
+        switch(normal_luggage_num)
         {
-            price += 60+(parseInt(normal_luggage_num)-1)*40;
+            case 1:
+                price = 69;
+                break;
+            case 2:
+                price = 118;
+                break;
         }
-        if(special_luggage_num > 0)
+        if(normal_luggage_num > 2)
         {
-            price += parseInt(special_luggage_num)*80;
+            price += 118+(parseInt(normal_luggage_num)-2)*29;
         }
     }
-    else
+    if(special_luggage_num > 0)
     {
-        if(normal_luggage_num > 0)
-        {
-            price += 60+(parseInt(normal_luggage_num)-1)*40+(parseInt(d)-40);
-        }
-        if(special_luggage_num > 0)
-        {
-            price += parseInt(special_luggage_num)*80+(parseInt(d)-40);
-        }
+        price += parseInt(special_luggage_num)*89;
     }
+
+    if(d > 40)
+    {
+        price += parseInt(d)-40;
+    }
+    $('#distance').val(d);
     $('#order_money').html(price);
 }

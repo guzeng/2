@@ -162,89 +162,89 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="tab3">
-                        <div class="form-group">
+                    <div class="tab-pane form-horizontal form-bordered" id="tab3">
+                        <div class="form-group first">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.flight_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="flight_num"></p>
+                                <div class="form-control-static" data-display="flight_num"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_type')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="type"></p>
+                                <div class="form-control-static" data-display="type"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="time"></p>
+                                <div class="form-control-static" data-display="time"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="city_id"></p>
+                                <div class="form-control-static" data-display="city_id"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.address')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="address"></p>
+                                <div class="form-control-static" data-display="address"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.airport')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="airport_id"></p>
+                                <div class="form-control-static" data-display="airport_id"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.normal_luggage_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="normal_luggage_num"></p>
+                                <div class="form-control-static" data-display="normal_luggage_num"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="special_luggage_num"></p>
+                                <div class="form-control-static" data-display="special_luggage_num"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.shipper')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="shipper"></p>
+                                <div class="form-control-static" data-display="shipper"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.shiper_gender')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="gender"></p>
+                                <div class="form-control-static" data-display="gender"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.mobile')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="phone"></p>
+                                <div class="form-control-static" data-display="phone"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.distance')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="order_distance"></p>
+                                <div class="form-control-static" data-display="order_distance"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.money')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="order_money"></p>
+                                <div class="form-control-static" data-display="order_money"></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.remarks')?>:</label>
                             <div class="col-md-4">
-                                <p class="form-control-static" data-display="info"></p>
+                                <div class="form-control-static" data-display="info"></div>
                             </div>
                         </div>
 

@@ -33,6 +33,7 @@ class OrderController extends BaseController {
 
 	public function postUpdate()
 	{
+		if (Auth::guest()) return Response::json(array('code'=>'1002','token'=>csrf_token()));
         //csrf验证
         if (Session::token() != Input::get('_token'))
         {
@@ -115,6 +116,8 @@ class OrderController extends BaseController {
 		$order->phone = $phone;
 		$order->user_id = Auth::check()?Auth::user()->id:0;
 		$order->create_time = local_to_gmt();
+		$order->distance = $distance;
+		$order->money = Order::price($distance,$normal_luggage_num,$special_luggage_num);
 		list($usec, $sec) = explode(" ", microtime());
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));
 		if($order->save())

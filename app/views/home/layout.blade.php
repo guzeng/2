@@ -205,11 +205,56 @@
     </div>
     <!-- END FOOTER -->
 
+    <!-- 登录表单 -->
+    <div id='_login_form' class='modal hide' role="dialog" tabindex="-1" aria-hidden="false" style='display:none;z-index:2015'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+                    <h4 class="modal-title"><?php echo Lang::get('text.login')?></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" action="<?php echo asset('login/verify')?>" id='_relogin_form'>
+                        <div class="form-group" >
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.username')?> :</label>
+                            <div class="col-md-7">
+                                <input type="text" id="username" name='username' value=""  maxlength='30' class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.password')?> :</label>
+                            <div class="col-md-7">
+                              <input type="password" id="password" name='password' value="" maxlength='20' class="form-control" > 
+                            </div>
+                        </div>
+                        <div class="form-group hide" >
+                            <label class="control-label col-md-3">&nbsp;</label>
+                            <div class="red col-md-8" id='error_message'></div>
+                        </div>
+                        <div class='form-group'>
+                            <label class="control-label col-md-3">&nbsp;</label>
+                            <div class="col-md-8">
+                                <?php echo Lang::get('text.register_tips')?> &nbsp; <a href="<?php echo asset('register');?>" target='_blank'><?php echo Lang::get('text.go_register')?></a>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_token" id='_token' value="<?php echo csrf_token(); ?>">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id='relogin_form_submit_btn' onclick="login();"><?php echo Lang::get('text.login')?></button> &nbsp;
+                    <button class="btn btn-default" data-dismiss="modal"  onclick="hideLogin();"><?php echo Lang::get('text.close')?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 登录表单结束 -->
+
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <?php echo HTML::script('assets/plugins/jquery-1.10.2.min.js');?>
     <?php echo HTML::script('assets/plugins/jquery-migrate-1.2.1.min.js');?>
     <?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
+    <?php echo HTML::script('assets/plugins/jquery.form.js');?>
     <?php echo HTML::script('assets/scripts/frontend/back-to-top.js');?>
     <!--[if lt IE 9]>
         <script src="<?php echo asset('assets/plugins/respond.min.js');?>"></script>

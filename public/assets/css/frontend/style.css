@@ -2557,3 +2557,65 @@ div.content-form-page .checkbox-list {
 .fancybox-overlay {
     z-index: 99999;
 }
+
+
+/* form bordered */
+.form-bordered .form-body {
+  margin: 0;
+  padding: 0;
+}
+
+.form-bordered .form-actions {
+  margin-top: 0;
+}
+
+.form-bordered .form-group {
+    margin: 0;
+    border-bottom: 1px solid #efefef;
+}
+.form-bordered .form-group.first {
+    border-top: 1px solid #efefef;
+}
+.form-bordered .form-group.last {
+    border-bottom: 0;
+}
+
+.form-bordered .help-block {
+  margin-bottom: 0;
+}
+
+.form-bordered .control-label {
+  padding-top: 16px;
+}
+
+.form-bordered .form-group > div {  
+  padding: 10px;
+  border-left: 1px solid #efefef;
+}
+
+.form-bordered .form-actions.fluid > .row > div {
+  padding-left: 10px;
+}
+
+.form-horizontal.form-bordered.form-row-stripped .form-group:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.form-horizontal.form-bordered.form-label-stripped .form-group:nth-child(even) {
+  background-color: #fcfcfc;
+} 
+
+.form-horizontal.form-bordered.form-row-stripped .form-control {
+  background: #fff !important;
+}
+
+.form-horizontal.form-bordered.form-label-stripped .form-group:nth-child(even) > div {
+  background-color: #ffffff;  
+}
+/***
+Bordered form layout
+***/
+
+.form-bordered .form-control {
+  margin: 0;
+}

@@ -43,6 +43,41 @@ class Order extends Eloquent {
         }
         return $arr;
     }
+
+    static public function price($d,$normal_luggage_num=0,$special_luggage_num=0)
+    {
+        if($normal_luggage_num==0 && $special_luggage_num==0)
+        {
+            return false;
+        }
+        $price = 0;
+        if($normal_luggage_num > 0)
+        {
+            switch($normal_luggage_num)
+            {
+                case 1:
+                    $price = 69;
+                    break;
+                case 2:
+                    $price = 118;
+                    break;
+            }
+            if($normal_luggage_num > 2)
+            {
+                $price += 118+(intval($normal_luggage_num)-2)*29;
+            }
+        }
+        if($special_luggage_num > 0)
+        {
+            $price += intval($special_luggage_num)*89;
+        }
+
+        if($d > 40)
+        {
+            $price += intval($d)-40;
+        }
+        return round($price,2);
+    }
 }
 /* End of file Order.php */
 /* Location: ./app/models/Order.php */
