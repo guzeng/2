@@ -310,7 +310,20 @@
 		<div style="background-color:#313030; padding:20px; font-size:14px;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 col-sm-12 pre-footer-col text-center">
+		            <div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
+		                <ul class="list-inline" >
+		                    <li><a href="<?php echo asset('about')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.aboutus')?></a></li>
+		                    <li> | </li>
+		                    <li><a href="<?php echo asset('about/contact')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.contact_us')?></a></li>
+		                    <li> | </li>
+		                    <li><a href="<?php echo asset('job')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.joinus')?></a></li>
+		                    <li> | </li>
+		                    <a href="<?php echo asset('news/grude')?>" style='color:#FFFFFF;'><?php echo News::category(1)?></a>
+		                    <li> | </li>
+		                    <a href="<?php echo asset('news/faq')?>" style='color:#FFFFFF;'><?php echo News::category(2)?></a>
+		                </ul>
+		            </div>
+					<div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 						<?php echo Cache::get('copyright')?> &nbsp; &nbsp; <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
 					</div>
 				</div>

@@ -59,7 +59,7 @@
                             <div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8 ">
                                 <div class="checkbox-inline">
                                     <label>
-                                        <input type="checkbox" name='accept' id='accept' value='1'> <a href="asset('agreement')" class='link' target='_blank'><?php echo Lang::get('text.accept_agreement')?></a>
+                                        <input type="checkbox" name='accept' id='accept' value='1'> <a href="<?php echo asset('agreement')?>" class='link' target='_blank'><?php echo Lang::get('text.accept_agreement')?></a>
                                     </label>
                                 </div>
                             </div>

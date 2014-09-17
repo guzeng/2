@@ -42,7 +42,7 @@
                         <div class="col-md-12 col-sm-12">
                             <h3><a target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo App::getLocale()=='zh'?stripslashes($item->title):stripslashes($item->title_en)?></a></h3>
                             <ul class="blog-info">
-                                <li><i class="fa fa-calendar"></i> <?php echo date('d/m/Y',gmt_to_local($item->open_time))?></li>
+                                <li><i class="fa fa-calendar"></i> <?php echo $item->open_time>0 ? date('d/m/Y',gmt_to_local($item->open_time)) : date('d/m/Y',gmt_to_local($item->create_time))?></li>
                             </ul>
                             <div><?php echo App::getLocale()=='zh' ? trim(htmlspecialchars(utf8_strcut(strip_tags($item->content),200))) : trim(htmlspecialchars(utf8_strcut(strip_tags($item->content_en),200)))?>...</div>
                             <a class="more" target="_blank" href="<?php echo asset('news/view/'.$item->id)?>"><?php echo Lang::get('text.more')?> <i class="fa fa-angle-right"></i></a>
