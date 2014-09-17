@@ -25,8 +25,8 @@ class Sms{
         curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
         $data = curl_exec($ch);//运行curl
         curl_close($ch);
-        //print_r($data);//输出结果
-        if($data === '0')
+
+        if(intval($data) === 0 )
         {
             return true;
         }
