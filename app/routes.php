@@ -32,6 +32,7 @@ Route::controller('order', 'OrderController');
 Route::group(array('before' => 'auth'), function()
 {
     Route::controller('user','UserController');
+    Route::controller('pay', 'PayController');
 });
 
 Route::group(array('before' => 'admin_auth'), function()

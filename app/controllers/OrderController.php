@@ -129,4 +129,28 @@ class OrderController extends BaseController {
 			return Response::json(array('code' => '1001','msg'=>Lang::get('msg.failed')));
 		}
 	}
+
+	public function getPay($n)
+	{    
+		if (Auth::guest()) return Redirect::guest('login');
+        if(!$n)
+        {
+            return Response::view('common.404',array(),404); 
+        }
+        $order = Order::where('code',$n)->first();
+        if(!$order)
+        {
+            return Response::view('common.404',array(),404); 
+        }
+        if($order->user_id != Auth::user()->id)
+        {
+            return Response::view('common.404',array(),404); 
+        }
+        if($order->complete==1)
+        {
+            return Response::view('common.500',array('msg'=>Lang::get('msg.deny_request'))); 
+        }
+        $data['order'] = $order;
+		return View::make('home.pay',$data);
+	}
 }

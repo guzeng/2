@@ -78,6 +78,49 @@ class Order extends Eloquent {
         }
         return round($price,2);
     }
+
+    static public function payType($t='')
+    {
+        $arr = array(
+            '1' => 'alipay',
+            '3' => 'cash'
+        );
+        if($t)
+        {
+            if(array_key_exists($t, $arr))
+            {
+                return $arr[$t];
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return $arr;
+    }
+
+    static public function pay($p)
+    {
+        $result = false;
+        DB::beginTransaction();
+        try
+        {
+            $id = $p['id'];
+            unset($p['id']);
+            $result = DB::table('order')->where('id',$id)->update($p);
+            DB::commit();
+        }
+        // If catch an exception, will roll back so nothing gets messed
+        // up in the database. Then re-throw the exception so it can
+        // be handled how the developer sees fit for their applications.
+        catch (Exception $e)
+        {
+            DB::rollback();
+
+            throw $e;
+        }
+        return $result;
+    }
 }
 /* End of file Order.php */
 /* Location: ./app/models/Order.php */

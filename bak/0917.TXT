@@ -1,1 +1,2 @@
 ALTER TABLE yx_order MODIFY COLUMN distance FLOAT(10,2) NOT NULL DEFAULT 0 COMMENT 'æ‡¿Î';
+alter table add column complete tinyint(3) not null default 0 comment ' «∑ÒÕÍ≥…' after `info`;
