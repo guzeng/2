@@ -136,7 +136,7 @@
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
             editor2 = K.create('textarea[id="content2"]', {
                     resizeType : 1,
@@ -148,7 +148,7 @@
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist','lineheight', '|', 'image', 'link','unlink','|','fullscreen','about']
             });
     });
     $(function(){

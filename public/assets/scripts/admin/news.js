@@ -27,7 +27,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist','lineheight', '|', 'image', 'link','unlink','|','fullscreen','about']
             });
             editor2 = K.create('textarea[id="con_en"]', {
                     resizeType : 1,
@@ -39,7 +39,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
         });
         //提交表单

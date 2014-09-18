@@ -25,7 +25,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
             editor3 = K.create('textarea[id="requ_en"]', {
                     resizeType : 1,
@@ -37,7 +37,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
             editor2 = K.create('textarea[id="desc"]', {
                     resizeType : 1,
@@ -49,7 +49,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
             editor4 = K.create('textarea[id="desc_en"]', {
                     resizeType : 1,
@@ -61,7 +61,7 @@ $(function(){
                     items : [
                             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                            'insertunorderedlist', '|', 'image', 'link','unlink','|','fullscreen','about']
+                            'insertunorderedlist', 'lineheight','|', 'image', 'link','unlink','|','fullscreen','about']
             });
         });
         $('#deadline').datepicker({
