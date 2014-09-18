@@ -23,6 +23,11 @@
               <div class="row">
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-9 col-sm-9 blog-posts col-ie7">
+                    <div>
+                        <p><?php echo Lang::get('text.joinus_tip1')?></p>
+
+                        <p><?php echo Lang::get('text.joinus_tip2')?></p>
+                    </div>
                     <?php if(!empty($job_list)){foreach($job_list as $item):?>
                     <div class="row">
                         <div class="col-md-12 col-sm-12">

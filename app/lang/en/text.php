@@ -249,4 +249,7 @@ $lang['from_address'] = "从常用地址中选择";
 $lang['en'] = "英文版";
 $lang['zh'] = "中文版";
 $lang['go_register'] = "点击注册";
+$lang['pay_for_order'] = "订单支付";
+$lang['joinus_tip1'] = "如果您想加入我们的团队，请发送简历至<a href='mailto:hr@yuexingtrip.com'>hr@yuexingtrip.com</a>";
+$lang['joinus_tip2'] = "热门职位资讯，即将推出，敬请期待！";
 return $lang;
