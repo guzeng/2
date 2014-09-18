@@ -82,11 +82,9 @@
 							<?php endif;?>
 							|  
                             <?if( App::getLocale() == "zh"):?>
-                            	<span class='c-l'>中文版</span> 
                               	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?else:?>
                               	<a href="<?php echo asset('change-lang/zh');?>" class='c-l'><i class="fa fa-stack-exchange"></i> 中文版</a> 
-                              	<span class='c-l'>English</span>
                             <?endif;?>
 						</div>
 					</div>

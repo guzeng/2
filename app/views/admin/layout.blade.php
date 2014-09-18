@@ -251,7 +251,7 @@
                                     <a href="<?php echo asset('admin/about/contact')?>"><?php echo Lang::get('text.contact_us')?></a>
                                 </li>
                                 <li class="<?if($_controller_name=='JobController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.join_us');?></a>
+                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.joinus');?></a>
                                 </li>
                         </ul>
                     </li>
