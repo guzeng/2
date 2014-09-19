@@ -227,7 +227,7 @@ $lang['shiper_gender'] = "运送人性别";
 $lang['recent'] = "最新";
 $lang['user_instructions'] = "用户须知";
 $lang['ship_process'] = "运送流程";
-$lang['online_order'] = "在线运送";
+$lang['online_order'] = "在线预订";
 
 $lang['verify_to_mobile'] = "用户您好！您注册悦行网的登录用户（手机号）所需的验证码为%s，5分钟内有效。";
 $lang['reset_password_success'] = "密码重置成功，您现在可以使用新密码<a href='".asset('login')."'>登录</a>";
