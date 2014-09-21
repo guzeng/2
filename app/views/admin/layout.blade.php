@@ -171,7 +171,7 @@
                         </li>
                         <li class="divider"></li>
                         <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> <?php echo Lang::get('text.full_screen')?></a></li>
-                        <li><a href="<?php echo asset('logout');?>"><i class="fa fa-power-off"></i> <?php echo Lang::get('text.exit');?></a></li>
+                        <li><a href="<?php echo asset('login/out');?>"><i class="fa fa-power-off"></i> <?php echo Lang::get('text.exit');?></a></li>
                     </ul>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->
@@ -251,7 +251,7 @@
                                     <a href="<?php echo asset('admin/about/contact')?>"><?php echo Lang::get('text.contact_us')?></a>
                                 </li>
                                 <li class="<?if($_controller_name=='JobController'):?>active<?endif;?>">
-                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.join_us');?></a>
+                                    <a href="<?php echo asset('admin/job')?>"><?php echo Lang::get('text.joinus');?></a>
                                 </li>
                         </ul>
                     </li>

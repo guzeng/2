@@ -207,8 +207,9 @@ class BaseController extends Controller {
             return Response::json(array('code' => '1010', 'msg'=>$error));
         }
         $code = mt_rand(100000,999999);
-        //if(Sms::send($mobile,$msg))
-        //{
+
+        if(Sms::send($mobile,sprintf(Lang::get('text.verify_to_mobile'),$code)))
+        {
             MobileCode::where('mobile',$mobile)->delete();
             $_m = new MobileCode();
             $_m->mobile = $mobile;
@@ -218,11 +219,11 @@ class BaseController extends Controller {
             {
                 return Response::json(array('code' => '1000'));
             }
-        //}
-        //else
-        //{
-           // return Response::json(array('code' => '1002','msg'=>Lang::get('msg.send_failed')));
-        //}
+        }
+        else
+        {
+            return Response::json(array('code' => '1002','msg'=>Lang::get('msg.send_failed')));
+        }
         return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.error')));
     }
 

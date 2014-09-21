@@ -26,6 +26,7 @@
                                     <th><?php echo Lang::get('text.shipper');?></th>
                                     <th><?php echo Lang::get('text.ship_time');?></th>
                                     <th><?php echo Lang::get('text.money');?></th>
+                                    <th><?php echo Lang::get('text.pay_type');?></th>
                                     <th><?php echo Lang::get('text.status');?></th>
                                     <th><?php echo Lang::get('text.operate');?></th>
                                 </tr>
@@ -38,8 +39,9 @@
                                     <td><?php echo $item->shipper;?></td>
                                     <td><?php echo date('Y-m-d H:i',gmt_to_local($item->time))?></td>
                                     <td><?php echo $item->money;?></td>
-                                    <td><?php echo $item->pay>0?($item->status=='1'?Lang::get('text.processed'):Lang::get('text.unprocessed')):Lang::get('text.unpaid');?></td>
-                                    <td><?php if($item->pay==0):?><a href='#' class='btn yellow btn-xs'><?php echo Lang::get('text.pay');?></a><?php endif;?></td>
+                                    <td><?php echo $item->pay_type>0?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):Lang::get('text.unpaid')?></td>
+                                    <td><?php echo $item->status=='1'?Lang::get('text.processed'):Lang::get('text.unprocessed');?></td>
+                                    <td><?php if($item->complete==0):?><a href='<?php echo asset('order/pay/'.$item->code)?>' class='btn yellow btn-xs' target='_blank'><?php echo Lang::get('text.pay');?></a><?php endif;?></td>
                                 </tr>
                                 <?php endforeach;?>
                                 <?php endif;?>

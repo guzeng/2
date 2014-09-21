@@ -2,7 +2,7 @@
 html, body{
    font-family: "Microsoft YaHei","微软雅黑","宋体","SimHei",Verdana,Arial;
     font-size: 14px;
-    background-color: #FFF;
+    background-color: #FAFAFA;
     color:#666666;
 }
 .tip {display: block;margin-top: 5px;margin-bottom: 10px;color: #737373;}
@@ -27,10 +27,14 @@ html, body{
 .m-t-50{margin-top:50px;}
 .p-10{padding:10px;}
 .p-20{padding:20px;}
+.p-30{padding:30px;}
+.p-l-30{padding-left:30px;}
+.p-r-30{padding-right:30px;}
 .p-t-20{padding-top:20px;}
 .p-b-20{padding-bottom:20px;}
 .padding-l-50 {padding-left:50px;}
 .padding-l-65 {padding-left:65px;}
+.f-s-12{font-size:12px;}
 .p-r-15{padding-right:15px;}
 .show-alert{position: fixed;top:5px; z-index: 10000; width: auto; border-radius:5px; left:50%; padding:6px 35px 6px 15px; }
 .show-alert .close{top:5px;}
@@ -40,6 +44,7 @@ html, body{
 .underline{text-decoration:underline;}
 .o-h{overflow:hidden;}
 .hand{cursor:pointer;}
+.grey{color:#999999;}
 .break{
     word-break: break-all;
     word-wrap: break-word;
@@ -77,4 +82,5 @@ html, body{
 
 a.link{color:rgb(66, 139, 202);}
 .m-h-500{min-height:500px;}
+.bg-white{background-color:#FFFFFF;}
 

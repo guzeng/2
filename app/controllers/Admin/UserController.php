@@ -65,8 +65,8 @@ class Admin_UserController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    $item->name,
                     $item->username,
+                    $item->name,
                     $item->gender,
                     $item->create_time>0 ? date('Y-m-d H:i:s',gmt_to_local($item->create_time)) : '--',
                     $item->active
