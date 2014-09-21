@@ -1,3 +1,14 @@
+jQuery.validator.addMethod("luggageRequire", function(value, element, param) {
+    if($('#one_num').val()=='' && $('#two_num').val()=='' && $('#special_num').val()=='')
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }  
+}, $.validator.format(msg.luggage_require));
+
 var FormWizard = function () {
 
 
@@ -26,7 +37,7 @@ var FormWizard = function () {
                     type: {
                         required: true
                     },
-                    stime: {
+                    time: {
                         required: true
                     },
                     city_id: {
@@ -38,11 +49,14 @@ var FormWizard = function () {
                     airport_id: {
                         required: true
                     },
-                    normal_luggage_num: {
+                    one_num: {
                         digits: true,
-                        required: true
+                        luggageRequire:true
                     },
-                    special_luggage_num: {
+                    two_num: {
+                        digits: true
+                    },
+                    special_num: {
                         digits: true
                     },
                     shipper: {

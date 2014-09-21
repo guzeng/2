@@ -41,10 +41,16 @@
                                     <td><?php echo $order->airport ? $order->airport->name : '';?></td>
                                 </tr>
                                 <tr>
-                                    <td class='b'><?php echo Lang::get('text.normal_luggage_num')?></td>
-                                    <td><?php echo $order->normal_luggage_num;?></td>
-                                    <td class='b'><?php echo Lang::get('text.special_luggage_num')?></td>
-                                    <td><?php echo $order->special_luggage_num;?></td>
+                                    <td class='b'><?php echo Lang::get('text.one_num')?></td>
+                                    <td><?php echo $order->one_num;?></td>
+                                    <td class='b'><?php echo Lang::get('text.two_num')?></td>
+                                    <td><?php echo $order->two_num;?></td>
+                                </tr>
+                                <tr>
+                                    <td class='b'><?php echo Lang::get('text.special_num')?></td>
+                                    <td><?php echo $order->special_num;?></td>
+                                    <td class='b'><?php echo Lang::get('text.distance')?></td>
+                                    <td><?php echo $order->distance;?></td>
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.shipper')?></td>
@@ -55,14 +61,12 @@
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.mobile')?></td>
                                     <td><?php echo $order->phone;?></td>
-                                    <td class='b'><?php echo Lang::get('text.distance')?></td>
-                                    <td><?php echo $order->distance;?></td>
-                                </tr>
-                                <tr>
                                     <td class='b'><?php echo Lang::get('text.create_date')?></td>
                                     <td><?php echo date('Y-m-d H:i:s',gmt_to_local($order->create_time));?></td>
+                                </tr>
+                                <tr>
                                     <td class='b'><?php echo Lang::get('text.status')?></td>
-                                    <td id='status'><?php echo $order->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed');?></td>
+                                    <td id='status' colspan='3'><?php echo $order->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed');?></td>
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.ship_note')?></td>

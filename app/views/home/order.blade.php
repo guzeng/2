@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?><span class="required">*</span></label>
                             <div class="col-md-4">
-                                <input type="text" id="time" name='time' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd - HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($stime)?$stime:'';?>" >
+                                <input type="text" id="time" name='time' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($time)?$time:'';?>" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -97,22 +97,40 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3"><?php echo Lang::get('text.normal_luggage_num')?><span class="required">*</span></label>
+                        <div class="form-group m-b-0" >
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.one_num')?></label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="normal_luggage_num" id='normal_luggage_num'/>
-                            </div>
-                            <div class='col-md-5  m-t-10 text-warning f-s-12'>
-                                <?php echo Lang::get('text.price_tips_1');?>
+                                <input type="text" class="form-control" name="one_num" id='one_num'/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?></label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" name="special_luggage_num" id='special_luggage_num'/>
+                            <label class="control-label col-md-3">&nbsp;</label>
+                            <div class="col-md-9">
+                                <span class='grey'><?php echo Lang::get('text.one_lug_tips');?></span>
                             </div>
-                            <div class='col-md-5 m-t-10 text-warning f-s-12'>
-                                <?php echo Lang::get('text.price_tips_2');?>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.two_num')?></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="two_num" id='two_num'/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">&nbsp;</label>
+                            <div class="col-md-9">
+                                <span class='grey'><?php echo Lang::get('text.two_lug_tips');?></span>
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_num')?></label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="special_num" id='special_num'/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">&nbsp;</label>
+                            <div class="col-md-9">
+                                <span class='grey'><?php echo Lang::get('text.special_lug_tips');?></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -200,15 +218,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3"><?php echo Lang::get('text.normal_luggage_num')?>:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.one_num')?>:</label>
                             <div class="col-md-4">
-                                <div class="form-control-static" data-display="normal_luggage_num"></div>
+                                <div class="form-control-static" data-display="one_num"></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_luggage_num')?>:</label>
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.two_num')?>:</label>
                             <div class="col-md-4">
-                                <div class="form-control-static" data-display="special_luggage_num"></div>
+                                <div class="form-control-static" data-display="two_num"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"><?php echo Lang::get('text.special_num')?>:</label>
+                            <div class="col-md-4">
+                                <div class="form-control-static" data-display="special_num"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -321,6 +345,9 @@
     <!-- END PAGE LEVEL PLUGINS -->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=neYBiVeGaumZAuQT31SRk0RU"></script>
     <?php echo HTML::script('assets/scripts/app.js');?>
+    <script type="text/javascript">
+        msg.luggage_require = "<?php echo Lang::get('msg.luggage_require');?>";
+    </script>
     <?php echo HTML::script('assets/scripts/form-wizard.js');?>
 
     <?php echo HTML::script('assets/scripts/map.js');?>

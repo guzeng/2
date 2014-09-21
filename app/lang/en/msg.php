@@ -149,4 +149,5 @@ $lang['send_failed'] = "发送失败，请稍候再试";
 $lang['validate_dated'] = "验证码已过期";
 $lang['register_success'] = "亲爱的悦行网用户，恭喜您注册成功！欢迎使用悦行网各项优质服务！请放心，您的信息完全保密。请妥善保管登录密码并定期更新。";
 $lang['pay_success'] = "订单已完成";
+$lang['luggage_require'] = "请填写行李数";
 return $lang;

@@ -16,9 +16,9 @@ class OrderController extends BaseController {
 		if($time)
 		{
 			$t = strtotime($time);
-			$data['stime'] = date('Y-m-d - H:i',$t);
+			$data['time'] = date('Y-m-d H:i',$t);
 		}
-		$data['time'] = $time;
+		//$data['time'] = $time;
 
 		$data['allType'] = Order::getType();
 		$data['allCity'] = City::all();
@@ -45,8 +45,9 @@ class OrderController extends BaseController {
 		$city_id = trim(Input::get('city_id'));
 		$address = trim(Input::get('address'));
 		$airport_id = trim(Input::get('airport_id'));
-		$normal_luggage_num = trim(Input::get('normal_luggage_num'));
-		$special_luggage_num = trim(Input::get('special_luggage_num'));
+		$one_num = trim(Input::get('one_num'));
+		$two_num = trim(Input::get('two_num'));
+		$special_num = trim(Input::get('special_num'));
 		$shipper = trim(Input::get('shipper'));
 		$gender = trim(Input::get('gender'));
 		$phone = trim(Input::get('phone'));
@@ -60,8 +61,9 @@ class OrderController extends BaseController {
 			'city_id' => $city_id,
 			'address' => $address,
 			'airport_id' => $airport_id,
-			'normal_luggage_num' => $normal_luggage_num,
-			'special_luggage_num' => $special_luggage_num,
+			'one_num' => $one_num,
+			'two_num' => $two_num,
+			'special_num' => $special_num,
 			'shipper' => $shipper,
 			'gender' => $gender,
 			'phone' => $phone
@@ -74,15 +76,16 @@ class OrderController extends BaseController {
 			'city_id' => 'required|exists:city,id',
 			'address' => 'required',
 			'airport_id' => 'required|exists:airport,id',
-			'normal_luggage_num' => 'required|numeric',
-			'special_luggage_num' => 'required|numeric',
+			'one_num' => 'numeric',
+			'two_num' => 'numeric',
+			'special_num' => 'numeric',
 			'shipper' => 'required',
 			'gender' => 'required',
 			'phone' => 'required|mobile',
 		);
 
 		$validator = Validator::make($inputs, $rules);
-
+		$error = array();
 		if ($validator->fails())
 		{
 			$messages = $validator->messages();
@@ -92,13 +95,20 @@ class OrderController extends BaseController {
             $error['city_id'] = str_replace('city_id', Lang::get('text.ship_city'), $messages->get('city_id'));
             $error['address'] = str_replace('address', Lang::get('text.address'), $messages->get('address'));
             $error['airport_id'] = str_replace('airport_id', Lang::get('text.airport'), $messages->get('airport_id'));
-            $error['normal_luggage_num'] = str_replace('normal_luggage_num', Lang::get('text.normal_luggage_num'), $messages->get('normal_luggage_num'));
-            $error['special_luggage_num'] = str_replace('special_luggage_num', Lang::get('text.special_luggage_num'), $messages->get('special_luggage_num'));
+            $error['one_num'] = str_replace('one_num', Lang::get('text.one_num'), $messages->get('one_num'));
+            $error['two_num'] = str_replace('two_num', Lang::get('text.two_num'), $messages->get('two_num'));
+            $error['special_num'] = str_replace('special_num', Lang::get('text.special_num'), $messages->get('special_num'));
             $error['shipper'] = str_replace('shipper', Lang::get('text.shipper'), $messages->get('shipper'));
             $error['gender'] = str_replace('gender', Lang::get('text.shiper_gender'), $messages->get('gender'));
             $error['phone'] = str_replace('phone', Lang::get('text.mobile'), $messages->get('phone'));
-
-        	return Response::json(array('code' => '1010', 'error'=>$error));
+		}
+		if(intval($one_num)==0 && intval($two_num)==0 && intval($special_num)==0)
+		{
+			$error['one_num'] = Lang::get('msg.luggage_require');
+		}
+		if(!empty($error))
+		{
+			return Response::json(array('code' => '1010', 'error'=>$error));
 		}
 
 		$order = new Order();
@@ -109,20 +119,21 @@ class OrderController extends BaseController {
 		$order->city_id = $city_id;
 		$order->address = $address;
 		$order->airport_id = $airport_id;
-		$order->normal_luggage_num = $normal_luggage_num;
-		$order->special_luggage_num = $special_luggage_num;
+		$order->one_num = intval($one_num);
+		$order->two_num = intval($two_num);
+		$order->special_num = intval($special_num);
 		$order->shipper = $shipper;
 		$order->gender = $gender;
 		$order->phone = $phone;
 		$order->user_id = Auth::check()?Auth::user()->id:0;
 		$order->create_time = local_to_gmt();
 		$order->distance = $distance;
-		$order->money = Order::price($distance,$normal_luggage_num,$special_luggage_num);
+		$order->money = Order::price($distance,$one_num,$two_num,$special_num);
 		list($usec, $sec) = explode(" ", microtime());
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));
 		if($order->save())
 		{
-			return Response::json(array('code' => '1000','url'=>asset('user/order')));
+			return Response::json(array('code' => '1000','url'=>asset('order/pay/'.$order->code)));
 		}
 		else
 		{
