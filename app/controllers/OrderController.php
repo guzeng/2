@@ -127,7 +127,7 @@ class OrderController extends BaseController {
 		$order->phone = $phone;
 		$order->user_id = Auth::check()?Auth::user()->id:0;
 		$order->create_time = local_to_gmt();
-		$order->distance = $distance;
+		$order->distance = round($distance,2);
 		$order->money = Order::price($distance,$one_num,$two_num,$special_num);
 		list($usec, $sec) = explode(" ", microtime());
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));

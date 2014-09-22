@@ -65,7 +65,9 @@
         'loading':"<?php echo Lang::get('msg.loading')?>",
         'submit_error':"<?php echo Lang::get('msg.submit_error')?>",
         'error':"<?php echo Lang::get('msg.error')?>",
-        'lang':"<?php echo App::getLocale(); ?>"
+        'lang':"<?php echo App::getLocale(); ?>",
+        'delete_confirm':"<?php echo Lang::get('msg.delete_confirm');?>",
+        'sure_to_delete':"<?php echo Lang::get('msg.sure_to_delete');?>"
     };
   </script>
 </head>
@@ -248,7 +250,25 @@
         </div>
     </div>
     <!-- 登录表单结束 -->
-
+    <!-- modal -->
+    <div aria-hidden="true" aria-labelledby="_confirm_dialogLabel" role="dialog" tabindex="-1" class="modal fade" id="_confirm_dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id='_confirm_btn'><?php echo Lang::get('text.ensure');?></button>
+                    <button aria-hidden="true" data-dismiss="modal" class="btn btn-default"><?php echo Lang::get('text.cancel');?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal end -->
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <?php echo HTML::script('assets/plugins/jquery-1.10.2.min.js');?>

@@ -1,3 +1,4 @@
 ALTER TABLE yx_order add column one_num int(10) not null default 0 comment '第一类行李数量' after airport_id;
 ALTER TABLE yx_order add column two_num int(10) not null default 0 comment '第一类行李数量' after one_num;
+alter table yx_order drop column normal_luggage_num;
 ALTER TABLE yx_order change column special_luggage_num special_num int(10) not null default 0 comment '特殊行李数量';
