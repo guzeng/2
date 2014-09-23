@@ -376,9 +376,6 @@
                 showMeridian: 1
             });
 
-            jQuery('.popovers').popover({
-                html: true
-            });
             // close last poped popover
             $(document).on('click.bs.popover.data-api', function (e) {
                 if (lastPopedPopover) {

@@ -61,7 +61,7 @@
 						</div>
 						<div class="details">
 							<div class="number"><?php echo $order_count;?></div>
-							<div class="desc"><?php echo Lang::get('text.exams');?></div>
+							<div class="desc"><?php echo Lang::get('text.order');?></div>
 						</div>
 					</div>
 				</a>                 
@@ -74,7 +74,7 @@
 						</div>
 						<div class="details">
 							<div class="number"><?php echo $news_count;?></div>
-							<div class="desc"><?php echo Lang::get('text.system_notice');?></div>
+							<div class="desc"><?php echo Lang::get('text.user_grude');?></div>
 						</div>
 					</div>
 				</a>

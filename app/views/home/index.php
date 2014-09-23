@@ -6,10 +6,11 @@
 		<meta name="keywords" content="<?php echo Cache::get('website_keyword')?>" />
 		<meta name="description" content="<?php echo Cache::get('website_description')?>" />
 		<?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.css');?>
+		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
+		<?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
 	    <!--[if lt IE 8]>
 	    <?php echo HTML::style('assets/css/bootstrap-ie7.css');?>
 	    <![endif]--> 
-		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
 		 <!-- start-smoth-scrolling-->
 		<?php echo HTML::script('assets/scripts/home/move-top.js');?>
 		<?php echo HTML::script('assets/scripts/home/easing.js');?>
@@ -308,6 +309,11 @@
 		<div style="background-color:#313030; padding:20px; font-size:14px;">
 			<div class="container">
 				<div class="row">
+					<div class='pull-right'>
+						<a data-original-title='' data-content="<img src='<?php echo asset('assets/img/weidian.png')?>' height='100'>" class='popovers' href='javascript:;'  data-placement='top' data-trigger='hover'>
+							<img src="<?php echo asset('assets/img/weidian.jpg')?>">
+						</a>
+					</div>
 		            <div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 		                <ul class="list-inline" >
 		                    <li><a href="<?php echo asset('about')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.aboutus')?></a></li>
@@ -321,8 +327,11 @@
 		                    <a href="<?php echo asset('news/faq')?>" style='color:#FFFFFF;'><?php echo News::category(2)?></a>
 		                </ul>
 		            </div>
+		        </div>
+		        <div class="row">
 					<div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 						<?php echo Cache::get('copyright')?> &nbsp; &nbsp; <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
+						
 					</div>
 				</div>
 			</div>
@@ -365,6 +374,9 @@
 						forceParse: 0,
 				        showMeridian: 1
 				    });
+		            jQuery('.popovers').popover({
+		                html: true
+		            });
 				});
 				</script>
 		<!----//End-footer---->

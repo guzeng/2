@@ -13,9 +13,9 @@ class Admin_IndexController extends BaseController {
 	public function getIndex()
 	{
 
-		$data['user_count'] = 0;//User::count();
-		$data['order_count'] = 0;//Order::count();
-		$data['news_count'] = 0;//News::count();
+		$data['user_count'] = User::count();
+		$data['order_count'] = Order::count();
+		$data['news_count'] = News::count();
 
 		$today = strtotime(date('Y-m-d',local_to_gmt()));
 		$firstDay = $today-30*24*3600;//30天前时间戳
