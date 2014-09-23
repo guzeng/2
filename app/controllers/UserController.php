@@ -136,7 +136,32 @@ class UserController extends BaseController {
         $data['left'] = $this->left();
         return View::make('home.user-order-view', $data);
     }
-    
+
+    public function getOrderDelete($id)
+    {
+        if(!$id)
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.param_error'))); 
+        }
+        $order = Order::find($id);
+        if(!$order || $order->user_id != Auth::user()->id)
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.no_data_exist')));    
+        }
+        if($order->complete == 1)
+        {
+            return Response::view('common.500',array('msg'=>Lang::get('msg.deny_request')));
+        }
+        if($order->delete())
+        {
+            return Response::json(array('code'=>'1000','data'=>array('id'=>$id),'msg'=>Lang::get('msg.delete_success')));  
+        }
+        else
+        {
+            return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.delete_failed')));  
+        }
+    }
+
     public function getAddress()
     {
         $data['left'] = $this->left();
