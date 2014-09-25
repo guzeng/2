@@ -172,11 +172,13 @@
     <!-- BEGIN PRE-FOOTER -->
     <div class="pre-footer">
       <div class="container">
+            <!--
             <div class='pull-right'>
                 <a data-original-title='' data-content="<img src='<?php echo asset('assets/img/weidian.png')?>' height='100'>" class='popovers' href='javascript:;'  data-placement='top' data-trigger='hover'>
                     <img src="<?php echo asset('assets/img/weidian.jpg')?>">
                 </a>
             </div>
+            -->
         <div class="row m-t-20">
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
             <div class="col-md-12 col-sm-12 pre-footer-col text-center">

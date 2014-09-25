@@ -309,11 +309,13 @@
 		<div style="background-color:#313030; padding:20px; font-size:14px;">
 			<div class="container">
 				<div class="row">
+					<!--
 					<div class='pull-right'>
 						<a data-original-title='' data-content="<img src='<?php echo asset('assets/img/weidian.png')?>' height='100'>" class='popovers' href='javascript:;'  data-placement='top' data-trigger='hover'>
 							<img src="<?php echo asset('assets/img/weidian.jpg')?>">
 						</a>
 					</div>
+					-->
 		            <div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 		                <ul class="list-inline" >
 		                    <li><a href="<?php echo asset('about')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.aboutus')?></a></li>
