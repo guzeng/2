@@ -9,8 +9,10 @@ function mapInit()
     }
     
     map.centerAndZoom($('#city_id option:selected').text(), 13); //new BMap.Point(116.404, 39.915)
-    search($('#address').val());
-    drive($('#address').val());
+    map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+    _search();
+    drive();
 
 }
 
@@ -70,8 +72,12 @@ function addInfoWindow(marker,poi,index){
     return openInfoWinFun;
 }
 
-function search(address)
+function _search(address)
 {
+    if(typeof(address)=='undefined')
+    {
+        var address = $('#address').val();
+    }
     var local = new BMap.LocalSearch(map, {
         renderOptions:{map: map},
         onSearchComplete: function(results){
@@ -125,6 +131,10 @@ function drive(a)
     });
     var type = $('#type').val();
     var airport = $('#airport_id  option:selected').text();
+    if(typeof(a)=='undefined')
+    {
+        var a = $('#address').val();
+    }
     if(type == 1)
     {
         transit.search(airport, a);
