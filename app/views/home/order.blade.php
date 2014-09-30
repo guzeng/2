@@ -344,14 +344,14 @@
     <?php endif;?>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- END PAGE LEVEL PLUGINS -->
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=neYBiVeGaumZAuQT31SRk0RU"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Z9NgQ2Wlo7LI3LdkqV7lIUWv"></script>
     <?php echo HTML::script('assets/scripts/app.js');?>
     <script type="text/javascript">
         msg.luggage_require = "<?php echo Lang::get('msg.luggage_require');?>";
     </script>
+    <?php echo HTML::script('assets/scripts/map.js');?>
     <?php echo HTML::script('assets/scripts/form-wizard.js');?>
 
-    <?php echo HTML::script('assets/scripts/map.js');?>
 
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>

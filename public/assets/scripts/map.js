@@ -5,15 +5,13 @@ function mapInit()
 {
     if(map == null)
     {
-        map = new BMap.Map("l-map");            // 创建Map实例
+        map = new BMap.Map("l-map");
     }
-    
     map.centerAndZoom($('#city_id option:selected').text(), 13); //new BMap.Point(116.404, 39.915)
     map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
     map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
     _search();
     drive();
-
 }
 
 function openInfoWindow(point,i)
@@ -72,15 +70,11 @@ function addInfoWindow(marker,poi,index){
     return openInfoWinFun;
 }
 
-function _search(address)
+function _search()
 {
-    if(typeof(address)=='undefined')
-    {
-        var address = $('#address').val();
-    }
+    var address = $('#address').val();
     var local = new BMap.LocalSearch(map, {
-        renderOptions:{map: map},
-        onSearchComplete: function(results){
+        onSearchComplete:function(results){
             // 判断状态是否正确
             if (local.getStatus() == BMAP_STATUS_SUCCESS){
                 var s = [];
@@ -113,7 +107,7 @@ function _search(address)
     local.search(address);    
 }
 
-function drive(a)
+function drive(address)
 {
     transit = new BMap.DrivingRoute(map, {renderOptions: {map: map},
         onSearchComplete: function (results){
@@ -131,17 +125,18 @@ function drive(a)
     });
     var type = $('#type').val();
     var airport = $('#airport_id  option:selected').text();
-    if(typeof(a)=='undefined')
+
+    if(typeof(address)=='undefined')
     {
-        var a = $('#address').val();
+        var address = $('#address').val();
     }
     if(type == 1)
     {
-        transit.search(airport, a);
+        transit.search(airport, address);
     }
     else if(type==2)
     {
-        transit.search(a, airport);
+        transit.search(address, airport);
     }
 }
 
