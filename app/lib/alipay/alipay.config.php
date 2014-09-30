@@ -19,11 +19,11 @@
  */
  
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-//合作身份者id，以2088开头的16位纯数字
-$alipay_config['partner']		= '2088002001219957';//2088512896831614
+//合作身份者id，以2088开头的16位纯数字2088002001219957
+$alipay_config['partner']		= '2088512896831614';//
 
-//安全检验码，以数字和字母组成的32位字符
-$alipay_config['key']			= '5zg5kyeqj3rs66txo9gxuhjolmtzgzq2';//oiqrokt0l8leaytiz4ftat6473v9k1dj
+//安全检验码，以数字和字母组成的32位字符5zg5kyeqj3rs66txo9gxuhjolmtzgzq2
+$alipay_config['key']			= 'oiqrokt0l8leaytiz4ftat6473v9k1dj';//
 
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

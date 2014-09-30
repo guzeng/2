@@ -38,7 +38,7 @@
                                     <td><a href="<?php echo asset('user/order-view/'.$item->id)?>"><?php echo $item->code;?></a></td>
                                     <td><?php echo $item->shipper;?></td>
                                     <td><?php echo date('Y-m-d H:i',gmt_to_local($item->time))?></td>
-                                    <td><?php echo $item->money;?></td>
+                                    <td><?php echo round($item->money,2);?></td>
                                     <td><?php echo $item->pay_type>0?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):Lang::get('text.unpaid')?></td>
                                     <td><?php echo $item->status=='1'?Lang::get('text.processed'):Lang::get('text.unprocessed');?></td>
                                     <td>

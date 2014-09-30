@@ -14,7 +14,7 @@
                             <h2><?php echo Lang::get('text.pay_for_order');?></h2>
                             <div class='note m-t-30'>
                                 <p><?php echo Lang::get('text.order_code') ?> : <?php echo $order->code?></p>
-                                <p><?php echo Lang::get('text.money');?> : <?php echo $order->money?></p>
+                                <p><?php echo Lang::get('text.money');?> : <?php echo round($order->money,2)?></p>
                                 <p><?php echo Lang::get('text.order_time');?> : <?php echo date('Y-m-d H:i:s', gmt_to_local($order->create_time))?></p>
                             </div>
                         </div>
