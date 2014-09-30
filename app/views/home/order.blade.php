@@ -348,6 +348,7 @@
     <?php echo HTML::script('assets/scripts/app.js');?>
     <script type="text/javascript">
         msg.luggage_require = "<?php echo Lang::get('msg.luggage_require');?>";
+        msg.search_nothing = "<?php echo Lang::get('msg.search_nothing')?>";
     </script>
     <?php echo HTML::script('assets/scripts/map.js');?>
     <?php echo HTML::script('assets/scripts/form-wizard.js');?>

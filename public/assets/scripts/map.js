@@ -102,6 +102,10 @@ function _search()
                 s.push('</ol></div></div>');
                 document.getElementById("r-result").innerHTML = s.join("");
             }
+            else
+            {
+                alert(msg.search_nothing);
+            }
         }
     });
     local.search(address);    
