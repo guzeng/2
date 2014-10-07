@@ -100,10 +100,6 @@
                                                 <label class="radio-inline">
                                                     <input type="radio" name="bank_name" value="SHRCB" > 上海农商银行
                                                 </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="abc1003" > visa
-                                                </label>
-                                                
                                             </div>
                                         </div>
                                         <label>
