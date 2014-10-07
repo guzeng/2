@@ -6,6 +6,7 @@ class PayController extends BaseController {
 	{    
         $orderId = trim(Input::get('orderid'));
         $pay_type = trim(Input::get('pay_type'));
+        $bank_name = trim(Input::get('bank_name'));
         $payType = Order::payType();
         if(!$orderId || !array_key_exists($pay_type, $payType))
         {
@@ -35,7 +36,7 @@ class PayController extends BaseController {
                 $this->alipay($order);
                 break;
             case 2:
-                $this->bank($order);
+                $this->bank($order,$bank_name);
                 break;
             default:
                 # code...
@@ -127,7 +128,7 @@ class PayController extends BaseController {
 
     }
     // 网银支付
-    private function bank($order)
+    private function bank($order,$bank_name)
     {
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
@@ -167,7 +168,7 @@ class PayController extends BaseController {
         $paymethod = "bankPay";
         //必填
         //默认网银
-        $defaultbank = 'ICBCB2C';
+        $defaultbank = $bank_name ? $bank_name : 'ICBCB2C';
         //必填，银行简码请参考接口技术文档
 
         //商品展示地址

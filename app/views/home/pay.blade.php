@@ -40,6 +40,80 @@
                                             <input type="radio" value="2" id="pay_type_bank" name="pay_type"> &nbsp;
                                             <img class='' src="" >
                                         </label>
+                                        <div id='banks' class='hide'>
+                                            <div class="m-b-20">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="ICBC" checked> 中国工商银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="ABC" > 中国农业银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CCB" > 中国建设银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="BOC" > 中国银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CMB" > 招商银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="PSBC" > 中国邮政储蓄银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="COMM" > 交通银行
+                                                </label>
+                                            </div>
+                                            <div class="m-b-20">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CIB" > 兴业银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="GDB" > 广发银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CMBC" > 中国民生银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CITIC" > 中信银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="SPABANK" > 平安银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="HZCB" > 杭州银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="CEB" > 中国光大银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="SHBANK" > 上海银行
+                                                </label>
+                                            </div>
+                                            <div class="m-b-20">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="SPDB" > 上海浦东发展银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="NBBANK" > 宁波银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="BJRCB" > 北京农村商业银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="FDB" > 富滇银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="BJBANK" > 北京银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="SHRCB" > 上海农商银行
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="bank_name" value="WZCB" > 温州市商业银行
+                                                </label>
+                                            </div>
+                                        </div>
                                         <label>
                                             <input type="radio"  value="3" id="pay_type_cash" name="pay_type"> &nbsp;
                                             <img class='' src="<?php echo asset('assets/img/cash.jpg')?>" >
@@ -65,3 +139,21 @@
     </div>
 </div>
 @stop
+@section('script')
+<script type="text/javascript">
+$(function(){
+    $('input[name=pay_type]').click(function(){
+        console.log('ddddddddd');
+        if($(this).val()==2)
+        {
+            $('#banks').show();
+        }
+        else
+        {
+            $('#banks').hide();
+        }
+    })
+})
+</script>
+@stop
+
