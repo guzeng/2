@@ -36,6 +36,10 @@
                                             <input type="radio" checked="" value="1" id="pay_type_alipay" name="pay_type"> &nbsp;
                                             <img class='' src="<?php echo asset('assets/img/alipay.jpg')?>" >
                                         </label>
+                                        <label class='m-b-20'>
+                                            <input type="radio" value="2" id="pay_type_bank" name="pay_type"> &nbsp;
+                                            <img class='' src="" >
+                                        </label>
                                         <label>
                                             <input type="radio"  value="3" id="pay_type_cash" name="pay_type"> &nbsp;
                                             <img class='' src="<?php echo asset('assets/img/cash.jpg')?>" >

@@ -63,6 +63,7 @@ class Order extends Eloquent {
     {
         $arr = array(
             '1' => 'alipay',
+            '2' => 'bank',
             '3' => 'cash'
         );
         if($t)
