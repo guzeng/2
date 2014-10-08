@@ -89,7 +89,8 @@ class Admin_CityController extends BaseController {
         $log_param = array();
         $log = array();
         $id = Input::get('id');
-        $name = Input::get('name');
+        $name = trim(Input::get('name'));
+        $parent_id = trim(Input::get('parent_id'));
 
         if($id)
         {
@@ -124,6 +125,7 @@ class Admin_CityController extends BaseController {
         else
         {
             $city->name = addslashes($name);
+            $city->parent_id = $parent_id;
             if($id)
             {
                 if(!$city->save())

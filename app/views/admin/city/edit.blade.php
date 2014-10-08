@@ -33,6 +33,18 @@
                 <div class="col-md-12">
                     <div class="form-body">
                         <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.city');?></label>
+                            <div class="col-md-6 col-sm-9 col-xs-12">
+                                <select class="form-control" name='parent_id'>
+                                    <option value='0'><?php echo Lang::get('text.please_choose');?></option>
+                                    <?php if(!empty($citys)){foreach($citys as $key => $c){?>
+                                    <option value="<?php echo $c->id;?>" <?php if(isset($item)&&$item->parent_id == $c->id){?>selected<?php }?> ><?php echo $c->name;?></option>
+                                    <?php }}?>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.name');?></label>
                             <div class="col-md-6 col-sm-9 col-xs-12">
                                 <input type="text" class="form-control" maxLength='20' name="name" id="name" value="<?php echo isset($item) ? stripslashes($item->name) : '';?>">
