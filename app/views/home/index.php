@@ -77,15 +77,15 @@
 						</div>
 						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right col-ie7">
 							<?php if(Auth::guest()):?>
-							<a href="<?php echo asset('login')?>">登录</a> | <a href="<?php echo asset('register')?>">注册</a>
+							<a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a> | <a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a>
 							<?php else:?>
 							<a href="<?php echo asset('user/profile')?>" style='font-size:16px;'><?php echo Auth::user()->name;?></a> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
 							<?php endif;?>
 							|  
-                            <?if( App::getLocale() == "zh"):?>
-                              	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
-                            <?else:?>
+                            <?if( App::getLocale() == "en"):?>
                               	<a href="<?php echo asset('change-lang/zh');?>" class='c-l'><i class="fa fa-stack-exchange"></i> 中文版</a> 
+                            <?else:?>
+                              	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?endif;?>
 						</div>
 					</div>
@@ -108,17 +108,25 @@
 			<div class="container">
 				<div class='row'>
 					<div class="col-md-6 about-left col-ie7" style="font-size:16px;line-height:35px;">
+						<?if(App::getLocale()=='zh'):?>
 						<p>说走就走的旅行再也不是高富帅和土豪的专利了，全新的旅游增值服务--行李运送服务，悦行网为您呈现！</p>
 						<p>无论是出行前的大箱小包、或是回程时的手信礼物，只需预约悦行网行李运送服务，专业的服务为您解决。</p>
 						<p>环球之旅，悦行开启！</p>
+						<?else:?>
+						<p>Impulsive trip is no longer the patent of the diamond bachelor and Tuhao. 
+							Yuexing Trip can give you such a trip with luggage service, an all new tourism value-added service. 
+							You can only reserve the service on Yuexingtrip.com and the professional service will help you to transport the tons of luggages and souvenirs.
+						</p>
+						<p>Yuexing Trip open your would of travel!</p>
+						<?endif;?>
 					</div>
 					<div class="col-md-6 about-right col-ie7">
 						<div class="panel panel-primary">
-					      	<div class="panel-heading">快速预订</div>
+					      	<div class="panel-heading"><?php echo Lang::get('text.quick_booking')?></div>
 					      	<div class="panel-body">
 								<form class="form-horizontal" role="form" method='get' action="<?php echo asset('order')?>">
 									<div class="form-group">
-										<label for="inputEmail3" class="col-md-3 control-label">运送城市</label>
+										<label for="inputEmail3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_city')?></label>
 										<div class="col-md-7">
 			                                <select name="city_id" id="city_id" class="form-control">
 			                                    <option><?php echo Lang::get('text.please_choose');?></option>
@@ -129,7 +137,7 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputPassword3" class="col-md-3 control-label">运送类型</label>
+										<label for="inputPassword3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_type')?></label>
 										<div class="col-md-7 ">
 			                                <select name="type" id="type" class="form-control">
 			                                    <?php foreach($allType as $key => $v):?>
@@ -139,14 +147,14 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputEmail3" class="col-md-3 control-label">运送日期</label>
+										<label for="inputEmail3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_date')?></label>
 										<div class="col-md-7">
 											<input type="text" id="inputEmail3" class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-offset-3 col-md-7 ">
-											<button type="submit" class="btn btn-primary">开始预订</button>
+											<button type="submit" class="btn btn-primary"><?php echo Lang::get('text.start_order')?></button>
 										</div>
 									</div>
 									<input type="hidden" id="time_input" name='time' value="" />
@@ -162,7 +170,7 @@
 		<div id="gal" class="gallery">
 			<div class="container">
 				<div class="head title">
-					运送流程
+					<?php echo Lang::get('text.ship_process')?>
 				</div>
 				<div class="gallery-grids">
 					<div class="gallery-grids-row1">
@@ -171,7 +179,7 @@
 								<img class=" img-responsive" src="<?php echo asset('assets/img/home/liucheng.jpg')?>" />
 								<div class="b-wrapper">
 									<h2 class="b-animate b-from-left b-delay03 ">
-										<button>开始预订</button>
+										<button><?php echo Lang::get('text.start_order')?></button>
 									</h2>
 								</div>
 							</a>
@@ -180,15 +188,33 @@
 							<div class='con'>
 								<div class='m-b-10'>
 									<div class='pull-left'>1.</div>
-									<div class='content'>在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。</div>
+									<div class='content'>
+										<?if(App::getLocale()=='zh'):?>
+										在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。
+										<?else:?>
+										At online self-help order, click on "start on order” and fill in your information, or order by phoning the on line customer service staff.
+										<?endif;?>
+									</div>
 								</div>
 								<div class='m-b-10'>
 									<div class='pull-left'>2.</div>
-									<div class='content'>如果您的行李是从机场运送至目的地，航班落地后，我们的配送员将第一时间联系您，并在机场到达厅接收您的行李，填写托运单据。</div>
+									<div class='content'>
+										<?if(App::getLocale()=='zh'):?>
+										如果您的行李是从机场运送至目的地，航班落地后，我们的配送员将第一时间联系您，并在机场到达厅接收您的行李，填写托运单据。
+										<?else:?>
+										If your luggage is transported from airport to the destination, after the flight lands, our deliveryman will contact you the first time, receives your luggage at the airport arrival hall, and fill in the shipping documents.
+										<?endif;?>
+									</div>
 								</div>
 								<div class='m-b-10'>
 									<div class='pull-left'>3.</div>
-									<div class='content'>如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。</div>
+									<div class='content'>
+										<?if(App::getLocale()=='zh'):?>
+										如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。
+										<?else:?>
+										If your luggage is carried from places such as residence, hotel, or commercial building, to the airport, please drop the order at least 6 hours before your departure, our deliveryman will collect luggage from door to door, and get back luggage which is carried to the departure hall 1.5 hourse before flight departs.
+										<?endif;?>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -217,9 +243,25 @@
 						<!--><![endif]--> 
 
 								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" style='height:300px'></div>
-								<h4>悦行网行李运送注意事项：</h4>
-								<p><strong>1. </strong>上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送，如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。</p>
-								<p><strong>2. </strong>晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。</p>
+								<h4><?if(App::getLocale()=='zh'):?>悦行网行李运送注意事项：<?else:?>Yuexing Trip has the following luggagedelivery notes:<?endif;?></h4>
+								<p><strong>1. </strong>
+									<?if(App::getLocale()=='zh'):?>
+									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送，如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
+									<?else:?>
+									For the flights arriving before 8 a.m, if no special request, the order luggages start to be transported at noon on the day. If the destination is hotel, the luggage will be sent to the front desk; if the destination is commercial building or residence, luggage are sent to the front door. 
+									If you cannot be contacted, delivery can be delayed.
+									<?endif;?>
+								</p>
+								<p><strong>2. </strong>
+									<?if(App::getLocale()=='zh'):?>
+									晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
+									<?else:?>
+									For the flights arriving after 6 p.m, if no special request, the order luggage start to be transported in the morning of the next day. 
+									If the destination is hotel, the luggage will be sent to the front desk.
+									if the destination is commercial building or residence, luggage are sent to the front door. 
+									If you cannot be contacted, delivery can be delayed.
+									<?endif;?>
+								</p>
 							
 						</div>
 						<!--[if lt IE 8]>
@@ -234,9 +276,21 @@
 						
 							
 								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/2.jpg')?>" style='height:300px'></div>
-								<h4>优质的服务</h4>
-								<p>选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线4000-XXX-XXX联系我们！</p>
-								<p>悦行网将竭诚为您服务。进入新手指南或者常见问题版面去了解更多！</p>
+								<h4><?php echo Lang::getLocale()=='zh' ? '优质的服务' : 'High quality service'?></h4>
+								<p>
+									<?if(App::getLocale()=='zh'):?>
+									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线4000-XXX-XXX联系我们！
+									<?else:?>
+									Feel free to turn your luggage to Yuexingtrip.com. if you have questions or need help, please call customer service hotline at 4000 - XXX - XXX to contact us!
+									<?endif;?>
+								</p>
+								<p>
+									<?if(App::getLocale()=='zh'):?>
+									悦行网将竭诚为您服务。进入新手指南或者常见问题版面去了解更多！
+									<?else:?>
+									Yuexingtrip.com will serve you wholeheartedly. Enter the new guide or FAQ page to learn more!
+									<?endif;?>
+								</p>
 							
 						</div>
 					</div>
@@ -260,7 +314,7 @@
 						<?php foreach ($faq_list as $key => $value):?>
 					  		<li class="list-group-item">
 					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
-					  				<?php echo stripslashes($value->title)?>
+					  				<?php echo App::getLocale()=='zh' ? stripslashes($value->title) : stripslashes($value->title_en)?>
 					  			</a>
 					  		</li>
 					  	<?php endforeach;?>
@@ -287,7 +341,7 @@
 						<?php foreach ($news_list as $key => $value):?>
 					  		<li class="list-group-item">
 					  			<a href='<?php echo asset('news/view/'.$value->id);?>' target='_blank'>
-					  				<?php echo stripslashes($value->title)?>
+					  				<?php echo App::getLocale()=='zh' ? stripslashes($value->title) : stripslashes($value->title_en)?>
 					  			</a>
 					  		</li>
 					  	<?php endforeach;?>
