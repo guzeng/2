@@ -84,3 +84,20 @@ a.link{color:rgb(66, 139, 202);}
 .m-h-500{min-height:500px;}
 .bg-white{background-color:#FFFFFF;}
 
+input.bankinput{margin-top:12px;}
+.bank{background-image:url("../img/banks.png"); height:36px; display:inline-block;width:150px; background-repeat:no-repeat;}
+.ICBC{background-position:0 -900px;}
+.ABC{background-position:0 0;}
+.CCB{background-position:0 -254px;}
+.BOCB2C{background-position:0 -72px;}
+.CMB{background-position:0 -396px;}
+.POSTGC{background-position:0 -1116px;}
+.COMM-DEBIT{background-position:0 -468px;}
+.GDB{background-position:0 -612px;}
+.CMBC{background-position:0 -432px;}
+.CITIC{background-position:0 -360px;}
+.SPABANK{background-position:0 -1260px;}
+.CEB-DEBIT{background-position:0 -288px;}
+.SHBANK{background-position:0 -1220px;}
+.SPDB{background-position:0 -1296px}
+.BJBANK{background-position:0 -36px}

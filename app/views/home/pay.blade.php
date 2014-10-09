@@ -38,67 +38,69 @@
                                         </label>
                                         <label class='m-b-20'>
                                             <input type="radio" value="2" id="pay_type_bank" name="pay_type"> &nbsp;
-                                            <img class='' src="" >
+                                            <img class='' src="<?php echo asset('assets/img/unionpay.jpg')?>" >
                                         </label>
                                         <div id='banks' class='hide'>
                                             <div class="m-b-20">
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="ICBCB2C" checked> 中国工商银行
+                                                <label class="radio-inline" style='margin-left:10px;'>
+                                                    <input type="radio" name="bank_name" value="ICBCB2C" checked class='bankinput'> 
+                                                    <span class='bank ICBC' title='<?php echo Lang::get('text.ICBC')?>'></span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="ABC" > 中国农业银行
+                                                    <input type="radio" name="bank_name" value="ABC" class='bankinput'>
+                                                    <span class='bank ABC' title='<?php echo Lang::get('text.ABC')?>'></span> 
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CCB" > 中国建设银行
+                                                    <input type="radio" name="bank_name" value="CCB" class='bankinput'>
+                                                    <span class='bank CCB' title='<?php echo Lang::get('text.CCB')?>'></span>  
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="BOCB2C" > 中国银行
+                                                    <input type="radio" name="bank_name" value="BOCB2C"  class='bankinput'>
+                                                    <span class='bank BOCB2C' title='<?php echo Lang::get('text.BOCB2C')?>'></span>   
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CMB" > 招商银行
+                                                    <input type="radio" name="bank_name" value="CMB"  class='bankinput'> 
+                                                    <span class='bank CMB' title='<?php echo Lang::get('text.CMB')?>'></span>   
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="POSTGC" > 中国邮政储蓄银行
+                                                    <input type="radio" name="bank_name" value="POSTGC"  class='bankinput'>
+                                                    <span class='bank POSTGC' title='<?php echo Lang::get('text.POSTGC')?>'></span>
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="COMM-DEBIT" > 交通银行
-                                                </label>
-                                            </div>
-                                            <div class="m-b-20">
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="GDB" > 广发银行
+                                                    <input type="radio" name="bank_name" value="COMM-DEBIT" class='bankinput'>
+                                                    <span class='bank COMM-DEBIT' title='<?php echo Lang::get('text.COMM-DEBIT')?>'></span> 
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CMBC" > 中国民生银行
+                                                    <input type="radio" name="bank_name" value="GDB"  class='bankinput'>
+                                                    <span class='bank GDB' title='<?php echo Lang::get('text.GDB')?>'></span>  
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CITIC" > 中信银行
+                                                    <input type="radio" name="bank_name" value="CMBC" class='bankinput'>
+                                                    <span class='bank CMBC' title='<?php echo Lang::get('text.CMBC')?>'></span>   
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="SPABANK" > 平安银行
+                                                    <input type="radio" name="bank_name" value="CITIC" class='bankinput'>
+                                                    <span class='bank CITIC' title='<?php echo Lang::get('text.CITIC')?>'></span>    
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CEB-DEBIT" > 中国光大银行
+                                                    <input type="radio" name="bank_name" value="SPABANK"  class='bankinput'>
+                                                    <span class='bank SPABANK' title='<?php echo Lang::get('text.SPABANK')?>'></span>     
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="SHBANK" > 上海银行
-                                                </label>
-                                            </div>
-                                            <div class="m-b-20">
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="SPDB" > 上海浦东发展银行
+                                                    <input type="radio" name="bank_name" value="CEB-DEBIT"  class='bankinput'>
+                                                    <span class='bank CEB-DEBIT' title='<?php echo Lang::get('text.CEB-DEBIT')?>'></span>      
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="BJRCB" > 北京农村商业银行
+                                                    <input type="radio" name="bank_name" value="SHBANK" class='bankinput'>
+                                                    <span class='bank SHBANK' title='<?php echo Lang::get('text.SHBANK')?>'></span>       
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="FDB" > 富滇银行
+                                                    <input type="radio" name="bank_name" value="SPDB" class='bankinput'>
+                                                    <span class='bank SPDB' title='<?php echo Lang::get('text.SPDB')?>'></span>        
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="BJBANK" > 北京银行
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="SHRCB" > 上海农商银行
+                                                    <input type="radio" name="bank_name" value="BJBANK"  class='bankinput'>
+                                                    <span class='bank BJBANK' title='<?php echo Lang::get('text.BJBANK')?>'></span>         
                                                 </label>
                                             </div>
                                         </div>
@@ -131,15 +133,7 @@
 <script type="text/javascript">
 $(function(){
     $('input[name=pay_type]').click(function(){
-        console.log('ddddddddd');
-        if($(this).val()==2)
-        {
-            $('#banks').show();
-        }
-        else
-        {
-            $('#banks').hide();
-        }
+        if($(this).val()==2){$('#banks').show();}else{$('#banks').hide();}
     })
 })
 </script>
