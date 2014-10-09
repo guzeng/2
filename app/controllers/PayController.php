@@ -24,6 +24,8 @@ class PayController extends BaseController {
 
 	public function postIndex()
 	{    
+        if (Auth::guest()) return Redirect::guest('login');
+
         $orderId = trim(Input::get('orderid'));
         $pay_type = trim(Input::get('pay_type'));
         $bank_name = trim(Input::get('bank_name'));
@@ -67,6 +69,7 @@ class PayController extends BaseController {
 
     public function getSuccess()
     {
+        if (Auth::guest()) return Redirect::guest('login');
         return View::make('home.pay-success');
     }
 
