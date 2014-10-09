@@ -79,6 +79,7 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+ini_set('date.timezone', 'Asia/Shanghai');
 define('TIMEZONE','UP8');
 function now()
 {
