@@ -43,7 +43,7 @@
                                         <div id='banks' class='hide'>
                                             <div class="m-b-20">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="ICBCB2C" checked> 中国工商银行
+                                                    <input type="radio" name="bank_name" value="ICBC" checked> 中国工商银行
                                                 </label>
                                                 <label class="radio-inline">
                                                     <input type="radio" name="bank_name" value="ABC" > 中国农业银行
