@@ -51,7 +51,7 @@ class PayController extends BaseController {
             case 3:
                 if(Order::pay(array('pay_type'=>3,'complete'=>1,'id'=>$orderId)))
                 {
-                    return Redirect::to('pay/success');
+                    return Redirect::to('pay/result/success');
                 }
                 break;
             case 1:
@@ -67,10 +67,11 @@ class PayController extends BaseController {
 
 	}
 
-    public function getSuccess()
+    public function getResult($msg)
     {
         if (Auth::guest()) return Redirect::guest('login');
-        return View::make('home.pay-success');
+        $data['msg'] = $msg;
+        return View::make('home.pay-result',$data);
     }
 
     private function alipay($order)
@@ -212,37 +213,32 @@ class PayController extends BaseController {
     public function postAlipaynotify()
     {
         Log::useFiles(storage_path().'/logs/pay.log');
-        Log::debug('接收notify付款返回数据');
+
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
         //require_once($alipayPath."lib/alipay_submit.class.php");
         require_once($alipayPath."lib/alipay_notify.class.php");
-
+foreach($_POST as $key => $value)
+{
+    Log::debug($key.'=>'.$value);
+}
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyNotify();
         if($verify_result) {//验证成功
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代
-
-        Log::debug('付款返回数据-- 验证成功');
-            
             //——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-            
             //获取支付宝的通知返回参数，可参考技术文档中服务器异步通知参数列表
             
             //商户订单号
-
             $out_trade_no = $_POST['out_trade_no'];
 
             //支付宝交易号
-
             $trade_no = $_POST['trade_no'];
 
             //交易状态
             $trade_status = $_POST['trade_status'];
-
-        Log::debug('付款返回所有数据-- '.implode('--', $_POST));
 
             if($trade_status == 'TRADE_FINISHED') {
                 //判断该笔订单是否在商户网站中已经做过处理
@@ -255,11 +251,9 @@ class PayController extends BaseController {
                 //2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
 
                 //调试用，写文本函数记录程序运行情况是否正常
-        Log::debug('付款失败');
-                logResult("订单".$out_trade_no."付款失败");
+                Log::info('订单'.$out_trade_no.'(alipay:'.$trade_no.')'.'交易成功');
             }
             else if ($trade_status == 'TRADE_SUCCESS') {
-        Log::debug('付款成功');
                 //判断该笔订单是否在商户网站中已经做过处理
                     //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                     //如果有做过处理，不执行商户的业务程序
@@ -269,29 +263,36 @@ class PayController extends BaseController {
 
                 //调试用，写文本函数记录程序运行情况是否正常
                 $order = Order::where('code',$out_trade_no)->first();
-                if($order)
+                if($order && $order->pay==0 && $order->pay_code=='' && $order->complete==0 && $order->pay_time<=0)
                 {
-                    if(Order::pay(array('pay_type'=>1,'pay'=>1,'pay_time'=>local_to_gmt(),'pay_code'=>$trade_no,'complete'=>1,'id'=>$order->id)))
+                    $notify_time = $_POST['notify_time'];
+                    $p = array(
+                        'pay_type' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? 2 : 1,
+                        'bank_no' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? $_POST['bank_seq_no'] : '',
+                        'buyer_email' => $_POST['buyer_email'],
+                        'pay' => 1,
+                        'pay_time' => local_to_gmt(strtotime($notify_time)),
+                        'pay_code' => $trade_no,
+                        'complete' => 1,
+                        'id' => $order->id
+                    );
+                    if(Order::pay($p))
                     {
-                        //log
-                        logResult("订单".$out_trade_no."付款成功");
-                        return Redirect::to('pay/success');
+                        Log::info("订单".$out_trade_no.'(alipay:'.$trade_no.')'."支付成功，时间:".$notify_time);
                     }                    
                 }
-
             }
-
+            else
+            {
+                Log::info('订单'.$out_trade_no.'(alipay:'.$trade_no.')'.'交易失败');
+            }
             //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
-                
             echo "success";     //请不要修改或删除
-        Log::debug('success');
-            
         }
         else {
             //验证失败
+            Log::info("订单:".$_POST['out_trade_no']."验证失败，时间:".date("Y-m-d H:i:s"));
             echo "fail";
-
-        Log::debug('fail');
             //调试用，写文本函数记录程序运行情况是否正常
             //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
         }
@@ -300,7 +301,6 @@ class PayController extends BaseController {
     public function getAlipayReturn()
     {
         Log::useFiles(storage_path().'/logs/pay.log');
-        Log::debug('接收return付款返回数据');
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
         //require_once($alipayPath."lib/alipay_submit.class.php");
@@ -325,29 +325,47 @@ class PayController extends BaseController {
             $trade_no = $_GET['trade_no'];
 
             //交易状态
-            $trade_status = $_GET['trade_status'];
+            //$trade_status = $_GET['trade_status'];
 
 
-            if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
+            if($_GET['trade_status'] == 'TRADE_SUCCESS') {
                 //判断该笔订单是否在商户网站中已经做过处理
                     //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                     //如果有做过处理，不执行商户的业务程序
-                echo '成功返回';
+                $order = Order::where('code',$out_trade_no)->first();
+                if($order && $order->pay==0 && $order->pay_code=='' && $order->complete==0 && $order->pay_time<=0)
+                {
+                    $notify_time = $_POST['notify_time'];
+                    $p = array(
+                        'pay_type' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? 2 : 1,
+                        'bank_no' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? $_POST['bank_seq_no'] : '',
+                        'buyer_email' => $_POST['buyer_email'],
+                        'pay' => 1,
+                        'pay_time' => local_to_gmt(strtotime($notify_time)),
+                        'pay_code' => $trade_no,
+                        'complete' => 1,
+                        'id' => $order->id
+                    );
+                    if(Order::pay($p))
+                    {
+                        Log::info("订单".$out_trade_no.'(alipay:'.$trade_no.')'."支付成功，支付时间:".$notify_time);
+                    }
+                }
+            }
+            else if($_GET['trade_status'] == 'TRADE_FINISHED')
+            {
+                Log::info('订单'.$out_trade_no.'(alipay:'.$trade_no.')'.'交易成功');
             }
             else {
-              echo "trade_status=".$_GET['trade_status'];
+                Log::info('订单'.$out_trade_no.'(alipay:'.$trade_no.')'.'交易失败');
             }
-                
-            echo "验证成功<br />";
-
-            //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
-            
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            return Redirect::to('pay/result/success');
         }
         else {
             //验证失败
             //如要调试，请看alipay_notify.php页面的verifyReturn函数
-            echo "验证失败";
+            Log::info("订单:".$_POST['out_trade_no']."验证失败，时间:".date("Y-m-d H:i:s"));
+            return Redirect::to('pay/result/failed');
         }
     }
 }
