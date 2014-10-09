@@ -89,7 +89,7 @@
                                     <td class='b'><?php echo Lang::get('text.pay_code')?></td>
                                     <td>&nbsp;<?php echo $order->pay_code;?></td>
                                     <td class='b'><?php echo Lang::get('text.pay_time');?></td>
-                                    <td colspan='3'><?php echo $order->pay_time>0 ? date('Y-m-d H:i:s',gmt_to_local($order->pay_time)) : '';?></td>
+                                    <td colspan='3'><?php echo $order->notify_time;?></td>
                                 </tr>
                             </table>
                         </div>

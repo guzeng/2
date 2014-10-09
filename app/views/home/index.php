@@ -176,7 +176,7 @@
 					<div class="gallery-grids-row1">
 						<div class="col-md-8 col-sm-12 gallery-grid1 text-center col-ie7">
 							<a href="<?php echo asset('order')?>" class="b-link-stripe b-animate-go  thickbox">
-								<img class=" img-responsive" src="<?php echo asset('assets/img/home/liucheng.jpg')?>" />
+								<img class=" img-responsive" src="<?php echo asset('assets/img/home/liucheng_'.App::getLocale().'.jpg')?>" />
 								<div class="b-wrapper">
 									<h2 class="b-animate b-from-left b-delay03 ">
 										<button><?php echo Lang::get('text.start_order')?></button>

@@ -112,7 +112,7 @@ $lang['error_page_title'] = "Oh, you have a problem.";
 $lang['404_page'] = "Actually, the page you are looking for does not exist.";
 $lang['valid_phone']        = "Please enter a valid phone number.";
 $lang['valid_gender']       = "Please enter either '男','male','m' or '女','female','f'.";
-$lang['file_read_failed'] = "文件读取失败";
+$lang['file_read_failed'] = "Failed to read file.";
 /**
  * 图片
  */
@@ -139,17 +139,17 @@ $lang['theme_tips'] = "Default Header with Fixed Sidebar option is not supported
 /**
  * order 
  */
-$lang['order_processed'] = "订单已处理";
-$lang['order_unprocessed'] = "订单未处理";
-$lang['order_paid'] = "订单已付款";
-$lang['order_unpaid'] = "订单未付款";
-$lang['register_failed'] = "注册失败，请稍候再试";
-$lang['send_failed'] = "发送失败，请稍候再试";
+$lang['order_processed'] = "Order processed";
+$lang['order_unprocessed'] = "Order unprocessed";
+$lang['order_paid'] = "Order paid";
+$lang['order_unpaid'] = "Order unpaid";
+$lang['register_failed'] = "Registration failure, please try again later.";
+$lang['send_failed'] = "Sending failure, please try again later.";
 //$lang['register_success'] = "注册成功";
-$lang['validate_dated'] = "验证码已过期";
+$lang['validate_dated'] = "Verification code is expired";
 $lang['register_success'] = "Dear Yuexingtrip.com user, congratulations on your successful register! Welcome to use Yuexingtrip.com good services! Please be assured that your information is completely confidential. Please keep the login password and updated on a regular basis.";
-$lang['pay_success'] = "订单支付成功";
-$lang['pay_failed'] = "订单支付失败";
-$lang['luggage_require'] = "请填写行李数";
+$lang['pay_success'] = "Order payment success.";
+$lang['pay_failed'] = "Order payment failure.";
+$lang['luggage_require'] = "Please fill out number of luggage pieces";
 $lang['search_nothing'] = " search is empty, Please enter other keywords to retry.";
 return $lang;
