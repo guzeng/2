@@ -62,7 +62,7 @@ class PayController extends BaseController {
         $payment_type = "1";
         //必填，不能修改
         //服务器异步通知页面路径
-        $notify_url = "http://www.yuexingtrip.com/pay/aliapy-notify";
+        $notify_url = "http://www.yuexingtrip.com/pay/alipay-notify";
         //需http://格式的完整路径，不能加?id=123这类自定义参数
 
         //页面跳转同步通知页面路径
@@ -221,11 +221,13 @@ class PayController extends BaseController {
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyNotify();
-
+        Log::useFiles(storage_path().'/logs/pay.log');
+        Log::debug('付款返回数据');
         if($verify_result) {//验证成功
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代
 
+        Log::debug('付款返回数据-- 验证成功');
             
             //——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
             
@@ -242,6 +244,7 @@ class PayController extends BaseController {
             //交易状态
             $trade_status = $_POST['trade_status'];
 
+        Log::debug('付款返回所有数据-- '.implode('--', $_POST));
 
             if($_POST['trade_status'] == 'TRADE_FINISHED') {
                 //判断该笔订单是否在商户网站中已经做过处理
@@ -254,9 +257,11 @@ class PayController extends BaseController {
                 //2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
 
                 //调试用，写文本函数记录程序运行情况是否正常
+        Log::debug('付款失败');
                 logResult("订单".$out_trade_no."付款失败");
             }
             else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
+        Log::debug('付款成功');
                 //判断该笔订单是否在商户网站中已经做过处理
                     //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                     //如果有做过处理，不执行商户的业务程序
