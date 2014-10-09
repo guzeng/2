@@ -217,6 +217,7 @@ class PayController extends BaseController {
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
         require_once($alipayPath."lib/alipay_submit.class.php");
+        require_once($alipayPath."lib/alipay_notify.class.php");
 
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
@@ -286,12 +287,14 @@ class PayController extends BaseController {
             //——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
                 
             echo "success";     //请不要修改或删除
+        Log::debug('success');
             
         }
         else {
             //验证失败
             echo "fail";
 
+        Log::debug('fail');
             //调试用，写文本函数记录程序运行情况是否正常
             //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
         }
@@ -302,6 +305,8 @@ class PayController extends BaseController {
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
         require_once($alipayPath."lib/alipay_submit.class.php");
+        require_once($alipayPath."lib/alipay_notify.class.php");
+
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyReturn();
