@@ -83,13 +83,13 @@
                                     <td class='b'><?php echo Lang::get('text.money')?></td>
                                     <td><?php echo $order->money;?></td>
                                     <td class='b'><?php echo Lang::get('text.pay_type')?></td>
-                                    <td>&nbsp;<?php echo $order->pay_type>0 ? Lang::get('text.pay_type_'.$order->pay_type) : "<a href='".asset('order/pay/'.$order->code)."' target='_blank'>".Lang::get('text.unpaid')."</a>";?></td>
+                                    <td>&nbsp;<?php echo $order->pay_type>0 ? Lang::get('text.pay_type_'.Order::getType($order->pay_type)) : "<a href='".asset('order/pay/'.$order->code)."' target='_blank'>".Lang::get('text.unpaid')."</a>";?></td>
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.pay_code')?></td>
                                     <td>&nbsp;<?php echo $order->pay_code;?></td>
                                     <td class='b'><?php echo Lang::get('text.pay_time');?></td>
-                                    <td colspan='3'><?php echo $order->pay_time>0 ? date('Y-m-d H:i:s',$order->pay_time) : '';?></td>
+                                    <td colspan='3'><?php echo $order->pay_time>0 ? date('Y-m-d H:i:s',gmt_to_local($order->pay_time)) : '';?></td>
                                 </tr>
                             </table>
                         </div>
