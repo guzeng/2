@@ -46,4 +46,5 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 |
 */
 
+ini_set('date.timezone', 'Asia/Shanghai');
 $app->run();

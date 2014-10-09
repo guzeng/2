@@ -258,6 +258,7 @@ $lang['pay_tip1'] = "Out of safety concern, no matter whether you have alipay ac
 $lang['pay_tip2'] = "If you are unable to complete the online payment, you can also pay at site.";
 $lang['next_order'] = "继续下单";
 $lang['pay_type_alipay'] = "支付宝";
+$lang['pay_type_bank'] = "网上银行";
 $lang['pay_type_cash'] = "现金";
 $lang['one_lug_tips'] = "The first kind of luggage refers to the suitcase, which is also called travel cases, rod box. Total of the length, width and height of the luggage must not exceed 158 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start mileage</a> the luggage is charged 59 Yuan RMB each.";
 $lang['two_lug_tips'] = "The second type of luggage is refers to the small suitcase or hand bags without bars. Total of the length, width and height of the luggage must not exceed 115 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start mileag</a> the luggage is charged 39 Yuan each.";

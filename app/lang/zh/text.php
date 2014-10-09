@@ -258,6 +258,7 @@ $lang['pay_tip1'] = "为了安全起见，无论您是否拥有支付宝账号�
 $lang['pay_tip2'] = "假如您无法完成网上支付，您也可以现场向我们支付";
 $lang['next_order'] = "继续下单";
 $lang['pay_type_alipay'] = "支付宝";
+$lang['pay_type_bank'] = "网上银行";
 $lang['pay_type_cash'] = "现金";
 $lang['one_lug_tips'] = "第一类行李是指行李箱，亦称旅行箱、拉杆箱。行李箱的长宽高三边之和不得超过158cm。<a data-original-title='' data-content='始发地至目的地路线距离0-40公里以内，超过40公里，每公里加收1元。' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>起步里程</a>内每件59元。";
 $lang['two_lug_tips'] = "第二类行李是指小型拉杆行李箱或没有拉杆的手提行李包。行李箱的长宽高三边之和不得超过115cm。<a data-original-title='' data-content='始发地至目的地路线距离0-40公里以内，超过40公里，每公里加收1元。' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>起步里程</a>内每件39元。";

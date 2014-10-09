@@ -213,12 +213,8 @@ class PayController extends BaseController {
 
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
-        //require_once($alipayPath."lib/alipay_submit.class.php");
         require_once($alipayPath."lib/alipay_notify.class.php");
-foreach($_POST as $key => $value)
-{
-    Log::debug($key.'=>'.$value);
-}
+
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyNotify();
@@ -268,7 +264,8 @@ foreach($_POST as $key => $value)
                         'bank_no' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? $_POST['bank_seq_no'] : '',
                         'buyer_email' => $_POST['buyer_email'],
                         'pay' => 1,
-                        'pay_time' => local_to_gmt(strtotime($notify_time)),
+                        'notify_time' => $notify_time,
+                        'pay_time' => local_to_gmt(),
                         'pay_code' => $trade_no,
                         'complete' => 1,
                         'id' => $order->id
@@ -338,6 +335,7 @@ foreach($_POST as $key => $value)
                         'bank_no' => (isset($_POST['bank_seq_no'])&&$_POST['bank_seq_no']!='') ? $_POST['bank_seq_no'] : '',
                         'buyer_email' => $_POST['buyer_email'],
                         'pay' => 1,
+                        'notify_time' => $notify_time,
                         'pay_time' => local_to_gmt(strtotime($notify_time)),
                         'pay_code' => $trade_no,
                         'complete' => 1,
