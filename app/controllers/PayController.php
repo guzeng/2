@@ -129,9 +129,6 @@ class PayController extends BaseController {
                 "exter_invoke_ip"   => $exter_invoke_ip,
                 "_input_charset"    => trim(strtolower($alipay_config['input_charset']))
         );
-
-        Log::useFiles(storage_path().'/logs/pay.log');
-        Log::debug('付款请求所有数据-- '.implode('--', $parameter));
         //建立请求
         $alipaySubmit = new AlipaySubmit($alipay_config);
         $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");

@@ -43,7 +43,7 @@
                                         <div id='banks' class='hide'>
                                             <div class="m-b-20">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="ICBC" checked> 中国工商银行
+                                                    <input type="radio" name="bank_name" value="ICBCB2C" checked> 中国工商银行
                                                 </label>
                                                 <label class="radio-inline">
                                                     <input type="radio" name="bank_name" value="ABC" > 中国农业银行
@@ -61,7 +61,7 @@
                                                     <input type="radio" name="bank_name" value="POSTGC" > 中国邮政储蓄银行
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="COMM" > 交通银行
+                                                    <input type="radio" name="bank_name" value="COMM-DEBIT" > 交通银行
                                                 </label>
                                             </div>
                                             <div class="m-b-20">
@@ -78,7 +78,7 @@
                                                     <input type="radio" name="bank_name" value="SPABANK" > 平安银行
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="bank_name" value="CEB" > 中国光大银行
+                                                    <input type="radio" name="bank_name" value="CEB-DEBIT" > 中国光大银行
                                                 </label>
                                                 <label class="radio-inline">
                                                     <input type="radio" name="bank_name" value="SHBANK" > 上海银行

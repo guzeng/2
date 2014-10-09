@@ -117,7 +117,7 @@
 							Yuexing Trip can give you such a trip with luggage service, an all new tourism value-added service. 
 							You can only reserve the service on Yuexingtrip.com and the professional service will help you to transport the tons of luggages and souvenirs.
 						</p>
-						<p>Yuexing Trip open your would of travel!</p>
+						<p>Yuexing Trip open your world of travel!</p>
 						<?endif;?>
 					</div>
 					<div class="col-md-6 about-right col-ie7">
