@@ -2,6 +2,26 @@
 
 class PayController extends BaseController {
 
+        //支付类型
+    private $payment_type = "1";
+        //必填，不能修改
+        //服务器异步通知页面路径
+    private $notify_url = '';//"http://www.yuexingtrip.com/";
+        //需http://格式的完整路径，不能加?id=123这类自定义参数
+
+        //页面跳转同步通知页面路径
+    private $return_url = '';//asset('pay/alipay-return');//"http://www.yuexingtrip.com/pay/alipay-return";
+        //需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
+
+        //卖家支付宝帐户
+    private $seller_email = '2904015624@qq.com';
+        //必填
+    function __construct()
+    {
+        $this->notify_url = asset('pay/alipaynotify');
+        $this->return_url = asset('pay/alipay-return');
+    }
+
 	public function postIndex()
 	{    
         $orderId = trim(Input::get('orderid'));
@@ -58,21 +78,6 @@ class PayController extends BaseController {
 
         /**************************请求参数**************************/
 
-        //支付类型
-        $payment_type = "1";
-        //必填，不能修改
-        //服务器异步通知页面路径
-        $notify_url = "http://www.yuexingtrip.com/pay/alipay-notify";
-        //需http://格式的完整路径，不能加?id=123这类自定义参数
-
-        //页面跳转同步通知页面路径
-        $return_url = "http://www.yuexingtrip.com/pay/alipay-return";
-        //需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
-
-        //卖家支付宝帐户
-        $seller_email = '2904015624@qq.com';
-        //必填
-
         //商户订单号
         $out_trade_no = $order->code;
         //商户网站订单系统中唯一订单号，必填
@@ -107,10 +112,10 @@ class PayController extends BaseController {
         $parameter = array(
                 "service" => "create_direct_pay_by_user",
                 "partner" => trim($alipay_config['partner']),
-                "payment_type"  => $payment_type,
-                "notify_url"    => $notify_url,
-                "return_url"    => $return_url,
-                "seller_email"  => $seller_email,
+                "payment_type"  => $this->payment_type,
+                "notify_url"    => $this->notify_url,
+                "return_url"    => $this->return_url,
+                "seller_email"  => $this->seller_email,
                 "out_trade_no"  => $out_trade_no,
                 "subject"   => $subject,
                 "total_fee" => $total_fee,
@@ -121,6 +126,8 @@ class PayController extends BaseController {
                 "_input_charset"    => trim(strtolower($alipay_config['input_charset']))
         );
 
+        Log::useFiles(storage_path().'/logs/pay.log');
+        Log::debug('付款请求所有数据-- '.implode('--', $parameter));
         //建立请求
         $alipaySubmit = new AlipaySubmit($alipay_config);
         $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
@@ -135,19 +142,6 @@ class PayController extends BaseController {
         require_once($alipayPath."lib/alipay_submit.class.php");
 
         /**************************请求参数**************************/
-        //支付类型
-        $payment_type = "1";
-        //必填，不能修改
-        //服务器异步通知页面路径
-        $notify_url = "http://www.yuexingtrip.com/pay/aliapy-notify";
-        //需http://格式的完整路径，不能加?id=123这类自定义参数
-
-        //页面跳转同步通知页面路径
-        $return_url = "http://www.yuexingtrip.com/pay/alipay-return";
-        //需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
-        //卖家支付宝帐户
-        $seller_email = '2904015624@qq.com';
-        //必填
 
         //商户订单号
         $out_trade_no = $order->code;
@@ -190,10 +184,10 @@ class PayController extends BaseController {
         $parameter = array(
                 "service" => "create_direct_pay_by_user",
                 "partner" => trim($alipay_config['partner']),
-                "payment_type"  => $payment_type,
-                "notify_url"    => $notify_url,
-                "return_url"    => $return_url,
-                "seller_email"  => $seller_email,
+                "payment_type"  => $this->payment_type,
+                "notify_url"    => $this->notify_url,
+                "return_url"    => $this->return_url,
+                "seller_email"  => $this->seller_email,
                 "out_trade_no"  => $out_trade_no,
                 "subject"   => $subject,
                 "total_fee" => $total_fee,
@@ -212,18 +206,18 @@ class PayController extends BaseController {
         echo $html_text;
     }
 
-    public function postAlipayNotify()
+    public function postAlipaynotify()
     {
+        Log::useFiles(storage_path().'/logs/pay.log');
+        Log::debug('接收notify付款返回数据');
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
-        require_once($alipayPath."lib/alipay_submit.class.php");
+        //require_once($alipayPath."lib/alipay_submit.class.php");
         require_once($alipayPath."lib/alipay_notify.class.php");
 
         //计算得出通知验证结果
         $alipayNotify = new AlipayNotify($alipay_config);
         $verify_result = $alipayNotify->verifyNotify();
-        Log::useFiles(storage_path().'/logs/pay.log');
-        Log::debug('付款返回数据');
         if($verify_result) {//验证成功
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //请在这里加上商户的业务逻辑程序代
@@ -247,7 +241,7 @@ class PayController extends BaseController {
 
         Log::debug('付款返回所有数据-- '.implode('--', $_POST));
 
-            if($_POST['trade_status'] == 'TRADE_FINISHED') {
+            if($trade_status == 'TRADE_FINISHED') {
                 //判断该笔订单是否在商户网站中已经做过处理
                     //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
                     //如果有做过处理，不执行商户的业务程序
@@ -261,7 +255,7 @@ class PayController extends BaseController {
         Log::debug('付款失败');
                 logResult("订单".$out_trade_no."付款失败");
             }
-            else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
+            else if ($trade_status == 'TRADE_SUCCESS') {
         Log::debug('付款成功');
                 //判断该笔订单是否在商户网站中已经做过处理
                     //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
@@ -302,9 +296,11 @@ class PayController extends BaseController {
 
     public function getAlipayReturn()
     {
+        Log::useFiles(storage_path().'/logs/pay.log');
+        Log::debug('接收return付款返回数据');
         $alipayPath = app_path().'/lib/alipay/';
         require_once($alipayPath."alipay.config.php");
-        require_once($alipayPath."lib/alipay_submit.class.php");
+        //require_once($alipayPath."lib/alipay_submit.class.php");
         require_once($alipayPath."lib/alipay_notify.class.php");
 
         //计算得出通知验证结果
