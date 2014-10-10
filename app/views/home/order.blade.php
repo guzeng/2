@@ -43,13 +43,13 @@
                     <div class="tab-pane active" id="tab1">
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.flight_num')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" maxLength='6' name="flight_num" id='flight_num'/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_type')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <select name="type" id="type" class="form-control">
                                     <?php foreach($allType as $key => $v):?>
                                     <option <?if(isset($type) && $type==$key):?>selected<?endif;?> value="<?php echo $key?>"><?php echo $v;?></option>
@@ -59,22 +59,26 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_time')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" id="time" name='time' readonly class="form-control form_datetime" CustomFormat="yyyy-MM-dd HH:mm" data-link-field="time" Format="Custom" value="<?php echo isset($time)?$time:'';?>" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?><span class="required">*</span></label>
-                            <div class="col-md-4">
-                                <select name="city_id" id="city_id" class="form-control">
+                            <div class="col-md-3">
+                                <select name="city_id" id="city_id" class="form-control" onchange='getArea()'>
                                     <option value='0'><?php echo Lang::get('text.please_choose');?></option>
                                     <?php foreach($allCity as $key => $v):?>
-                                    <option <?if(isset($city_id) && $city_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+                                    <option <?if(isset($city_id) && $city_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
                                     <?endforeach;?>
                                 </select>
                             </div>
+                            <div class="col-md-3">
+                                <select name="area_id" id="area_id" class="form-control">
+                                </select>
+                            </div>
                             <?php if(Auth::check()):?>
-                            <div class='col-md-5 m-t-5'>
+                            <div class='col-md-3 m-t-5'>
                                 <a href="#using_address" data-toggle="modal" class="link">
                                     <?php echo Lang::get('text.from_address');?>
                                 </a>
@@ -83,13 +87,13 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.address')?><span class="required">*</span></label>
-                            <div class='col-md-4'>
+                            <div class='col-md-6'>
                                 <input type="text" class="form-control" name="address" id='address'/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.airport')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <select name="airport_id" id="airport_id" class="form-control">
                                     <?php foreach($allAirport as $key => $v):?>
                                     <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
@@ -99,7 +103,7 @@
                         </div>
                         <div class="form-group m-b-0" >
                             <label class="control-label col-md-3"><?php echo Lang::get('text.one_num')?></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" name="one_num" id='one_num'/>
                             </div>
                         </div>
@@ -111,7 +115,7 @@
                         </div>
                         <div class="form-group m-b-0">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.two_num')?></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" name="two_num" id='two_num'/>
                             </div>
                         </div>
@@ -123,7 +127,7 @@
                         </div>
                         <div class="form-group m-b-0">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.special_num')?></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" name="special_num" id='special_num'/>
                             </div>
                         </div>
@@ -135,13 +139,13 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.shipper')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" name="shipper" id='shipper' value="<?php echo Auth::check() ? Auth::user()->name : ''?>" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.shiper_gender')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="radio-list">
                                     <label class="radio-inline">
                                         <input type="radio" data-title="<?php echo Lang::get('text.male')?>" <?php if(Auth::guest() || (Auth::check() && Auth::user()->gender=='male')):?>checked='checked'<?php endif;?> value="male" name="gender" style='margin-left:0px;'> &nbsp;
@@ -156,7 +160,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.mobile')?><span class="required">*</span></label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="text" class="form-control" name="phone" id='phone' value="<?php echo Auth::check() ? Auth::user()->username : ''?>"/>
                             </div>
                         </div>
@@ -202,7 +206,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?>:</label>
                             <div class="col-md-4">
-                                <div class="form-control-static" data-display="city_id"></div>
+                                <div class="form-control-static m-r-20" data-display="city_id"></div>
+                                <div class="form-control-static" data-display="area_id"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -313,7 +318,8 @@
                     <p onclick="select_address(this)" class='hand'>
                         <span class='shipper'><?php echo $item->shipper;?></span> &nbsp; 
                         <span class='phone'><?php echo $item->phone;?></span> &nbsp; 
-                        <span class='city' data="<?php echo $item->city->id;?>"><?php echo $item->city->name;?></span> &nbsp; 
+                        <span class='city' data="<?php echo $item->city->id;?>"><?php echo App::getLocale()=='zh'?$item->city->name:$item->city->name_en;?></span> &nbsp; 
+                        <span class='area' data="<?php echo isset($item->area)?$item->area->id:'';?>"><?php echo isset($item->area)? (App::getLocale()=='zh'?$item->area->name:$item->area->name_en):'';?></span> &nbsp; 
                         <span class='address'><?php echo $item->address;?></span>
                     </p>
                 <?php endforeach;?>

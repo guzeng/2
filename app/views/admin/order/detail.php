@@ -23,7 +23,7 @@
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.ship_city')?></td>
-                            <td><?php echo $order->city ? $order->city->name : '';?></td>
+                            <td><?php echo $order->city ? (App::getLocale()=='zh'?$order->city->name:$order->city->name_en) : '';?> <?php echo isset($order->area)?(App::getLocale()=='zh'?$order->area->name:$order->area->name_en):''?></td>
                             <td class='b'><?php echo Lang::get('text.airport')?></td>
                             <td><?php echo $order->airport ? $order->airport->name : '';?></td>
                         </tr>

@@ -11,6 +11,7 @@ class OrderController extends BaseController {
 	public function getIndex()
 	{
 		$data['city_id'] = trim(Input::get('city_id'));
+        $data['area_id'] = trim(Input::get('area_id'));
 		$data['type'] = trim(Input::get('type'));
 		$time = trim(Input::get('time'));
 		if($time)
@@ -21,12 +22,22 @@ class OrderController extends BaseController {
 		//$data['time'] = $time;
 
 		$data['allType'] = Order::getType();
-		$data['allCity'] = City::all();
+		$data['allCity'] = City::where('parent_id',0)->get();
 		$data['allAirport'] = Airport::all();
 
 		if(Auth::check())
 		{
-			$data['addressList'] = Address::with('city')->get();
+            $address = Address::where('user_id',Auth::user()->id)->with('city')->get();
+            if($address)
+            {
+                foreach ($address as $key => $value) {
+                    if($value->area_id)
+                    {
+                        $value->area = City::find($value->area_id);    
+                    }
+                }
+            }
+			$data['addressList'] = $address;
 		}
 		return View::make('home.order',$data);
 	}
@@ -43,6 +54,7 @@ class OrderController extends BaseController {
 		$type = trim(Input::get('type'));
 		$time = trim(Input::get('time'));
 		$city_id = trim(Input::get('city_id'));
+        $area_id = trim(Input::get('area_id'));
 		$address = trim(Input::get('address'));
 		$airport_id = trim(Input::get('airport_id'));
 		$one_num = trim(Input::get('one_num'));
@@ -59,6 +71,7 @@ class OrderController extends BaseController {
 			'type' => $type,
 			'time' => $time,
 			'city_id' => $city_id,
+            'area_id' => $area_id,
 			'address' => $address,
 			'airport_id' => $airport_id,
 			'one_num' => $one_num,
@@ -117,6 +130,7 @@ class OrderController extends BaseController {
 		$order->type = $type;
 		$order->time = strtotime($time);
 		$order->city_id = $city_id;
+        $order->area_id = $area_id;
 		$order->address = $address;
 		$order->airport_id = $airport_id;
 		$order->one_num = intval($one_num);

@@ -54,6 +54,7 @@
 	        		}
 	    		});
 			});
+			var msg = {'lang':"<?php echo App::getLocale();?>",'base_url':"<?php echo asset('')?>"}
 		</script>
 		<!--//End-top-nav-script-->
 
@@ -61,6 +62,7 @@
 		<?php if(App::getLocale()=='zh'):?>
 		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
 		<?php endif;?>
+		<?php echo HTML::script('assets/scripts/common.js');?>
     	<link rel="shortcut icon" href="favicon.ico">
 	</head>
 	<body>
@@ -126,20 +128,24 @@
 					      	<div class="panel-body">
 								<form class="form-horizontal" role="form" method='get' action="<?php echo asset('order')?>">
 									<div class="form-group">
-										<label for="inputEmail3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_city')?></label>
-										<div class="col-md-7">
-			                                <select name="city_id" id="city_id" class="form-control">
-			                                    <option><?php echo Lang::get('text.please_choose');?></option>
+										<label for="inputEmail3" class="col-md-4 control-label"><?php echo Lang::get('text.ship_city')?></label>
+										<div class="col-md-3" style='padding-right:0px;'>
+			                                <select name="city_id" id="city_id" class="form-control" onchange="getArea()" style='width:100%;padding-left:6px;padding-right:6px;'>
+			                                    <option value='0'><?php echo Lang::get('text.please_choose');?></option>
 			                                    <?php foreach($allCity as $key => $v):?>
-			                                    <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+			                                    <option value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
 			                                    <?endforeach;?>
+			                                </select>
+										</div>
+										<div class="col-md-4">
+			                                <select name="area_id" id="area_id" class="form-control" style='width:100%'>
 			                                </select>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputPassword3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_type')?></label>
+										<label for="inputPassword3" class="col-md-4 control-label"><?php echo Lang::get('text.ship_type')?></label>
 										<div class="col-md-7 ">
-			                                <select name="type" id="type" class="form-control">
+			                                <select name="type" id="type" class="form-control" style='width:100%'>
 			                                    <?php foreach($allType as $key => $v):?>
 			                                    <option value="<?php echo $key?>"><?php echo $v;?></option>
 			                                    <?endforeach;?>
@@ -147,13 +153,13 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputEmail3" class="col-md-3 control-label"><?php echo Lang::get('text.ship_date')?></label>
+										<label for="inputEmail3" class="col-md-4 control-label"><?php echo Lang::get('text.ship_date')?></label>
 										<div class="col-md-7">
-											<input type="text" id="inputEmail3" class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input">
+											<input type="text" id="inputEmail3" class="form-control form_datetime" CustomFormat="yyyy/MM/dd - HH:mm" Format="Custom" data-link-field="time_input" style='width:100%'>
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="col-md-offset-3 col-md-7 ">
+										<div class="col-md-offset-4 col-md-7 ">
 											<button type="submit" class="btn btn-primary"><?php echo Lang::get('text.start_order')?></button>
 										</div>
 									</div>

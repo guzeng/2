@@ -152,4 +152,5 @@ $lang['pay_success'] = "Order payment success.";
 $lang['pay_failed'] = "Order payment failure.";
 $lang['luggage_require'] = "Please fill out number of luggage pieces";
 $lang['search_nothing'] = " search is empty, Please enter other keywords to retry.";
+$lang['city_parent_error'] = "You cannot choose the subordinate city as the superior one.";
 return $lang;

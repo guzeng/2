@@ -282,4 +282,8 @@ $lang['CEB-DEBIT'] = "China Everbright Bank";
 $lang['SHBANK'] = "Bank of Shanghai";
 $lang['SPDB'] = "Shanghai Pudong Development Bank";
 $lang['BJBANK'] = "Beijing of Bank";
+$lang['up_level_city'] = "Superior";
+$lang['same_level_city'] = "To keep it in same level";
+$lang['lower_level_city'] = "Subordinate";
+$lang['20_limit'] = "20 characters maximum";
 return $lang;

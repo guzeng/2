@@ -132,6 +132,10 @@ class UserController extends BaseController {
         {
             return Response::view('common.404',array(),404); 
         }
+        if($order->area_id)
+        {
+            $order->area = City::find($order->area_id);
+        }
         $data['order'] = $order;
         $data['left'] = $this->left();
         return View::make('home.user-order-view', $data);
@@ -193,13 +197,17 @@ class UserController extends BaseController {
     public function getAddressEdit($id='')
     {
         $data['left'] = $this->left();
-        $data['allCity'] = City::all();
+        $data['allCity'] = City::where('parent_id',0)->get();
         if($id)
         {
             $address = Address::find($id);
             if(!$address || $address->user_id != Auth::user()->id)
             {
                 return Response::view('common.404',array(),404);
+            }
+            if($address->city_id)
+            {
+                $address->area = City::where('parent_id',$address->city_id)->get();
             }
             $data['address'] = $address;
         }
@@ -215,6 +223,7 @@ class UserController extends BaseController {
         }
         $shipper = trim(Input::get('shipper'));
         $city_id = trim(Input::get('city_id'));
+        $area_id = trim(Input::get('area_id'));
         $address = trim(Input::get('address'));
         $phone = trim(Input::get('phone'));
         $is_default = trim(Input::get('is_default'));
@@ -259,6 +268,7 @@ class UserController extends BaseController {
         }
         $_a->shipper = $shipper;
         $_a->city_id = $city_id;
+        $_a->area_id = $area_id;
         $_a->address = $address;
         $_a->phone = $phone;
         $_a->is_default = $is_default ? $is_default : '0';

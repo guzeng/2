@@ -101,7 +101,7 @@ class Admin_OrderController extends BaseController {
                 $records["aaData"][] = array(
                     $item->id,
                     $item->code,
-                    $item->user ? $item->user->username : '',
+                    $item->user ? $item->user->name : '',
                     $item->flight_num,
                     Order::getType($item->type),// == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport'),
                     date('Y-m-d H:i:s',gmt_to_local($item->time)),
@@ -136,6 +136,10 @@ class Admin_OrderController extends BaseController {
             $data['code'] = '1004';
             $data['msg'] = Lang::get('msg.no_data_exist');
             return Response::json($data);
+        }
+        if($order->area_id)
+        {
+            $order->area = City::find($order->area_id);
         }
 		return array('code' => '1000', 'data'=>View::make('admin.order.detail', array('order'=>$order))->render());
 	}

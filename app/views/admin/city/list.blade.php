@@ -3,10 +3,9 @@
 @section('content')
     <!-- BEGIN PAGE -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
         <div class="row">
             <div class="col-md-12">
-                <!-- BEGIN PAGE TITLE & BREADCRUMB-->   
+                <!-- BEGIN PAGE TITLE & BREADCRUMB--> 
                 <h3 class="page-title">
                     <?php echo Lang::get('text.city_manage');?>
                 </h3>
@@ -29,27 +28,17 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="portlet box green" id='user-list'>
+                <div class="portlet purple box">
                     <div class="portlet-title">
-                        <div class="caption"><i class="fa fa-list"></i><?php echo Lang::get('text.all_city');?></div>
-                        <div class="actions">
-                            <div class="btn-group">
-                                <a class="btn green" href="<?php echo asset('admin/city/edit');?>"><i class="fa fa-plus"></i> <?php echo Lang::get('text.now_add');?></a>
-                                <a class='btn green' id='reload-list'><i class='fa fa-refresh'></i></a>
-                            </div>
+                        <div class="caption"><i class="fa fa-group"></i><?php echo Lang::get('text.all_city');?></div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <table class="table table-striped table-bordered table-hover table-full-width" id="datalist">
-                            <thead>
-                                <tr>
-                                    <th class=''>ID</th>
-                                    <th><?php echo Lang::get('text.name');?></th>
-                                    <th class="hidden-xs"><?php echo Lang::get('text.operate');?></th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <div id='dept_list_view'>
+                            <?php echo $datalist;?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,25 +48,16 @@
     <!-- END PAGE -->
 @stop
 
-@section('script')    
-    <!-- BEGIN PAGE LEVEL STYLES -->
-    <script src="<?php echo asset('assets/plugins/jquery.blockui.min.js')?>" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/plugins/select2/select2_metro.css')?>" />
-    <link rel="stylesheet" href="<?php echo asset('assets/plugins/data-tables/DT_bootstrap.css')?>" />
-    <!-- END PAGE LEVEL STYLES -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script type="text/javascript" src="<?php echo asset('assets/plugins/select2/select2.min.js')?>"></script>
-    <script type="text/javascript" src="<?php echo asset('assets/plugins/data-tables/jquery.dataTables.min.js');?>"></script>
-    <script type="text/javascript" src="<?php echo asset('assets/plugins/data-tables/DT_bootstrap.js')?>"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-
+@section('script')
     <script type="text/javascript">
-        var lang = {
-            'confirm'           : "<?php echo Lang::get('text.confirm');?>",
-            'cancel'            : "<?php echo Lang::get('text.cancel');?>",
-            'edit'            : "<?php echo Lang::get('text.edit');?>",
-            'delete'            : "<?php echo Lang::get('text.delete');?>"
-        };
+        lang = {
+            'save'                  : "<?php echo Lang::get('text.save');?>",
+            'cancel'                : "<?php echo Lang::get('text.cancel');?>",
+            'name_limit' : "<?php echo Lang::get('text.20_limit');?>",
+            'please_choose'         : "<?php echo Lang::get('text.please_choose');?>",
+            'parent_dept'           : "<?php echo Lang::get('text.up_level_city');?>",
+            'child_dept'            : "<?php echo Lang::get('text.lower_level_city');?>"
+        }
     </script>
     <script src="<?php echo asset('assets/scripts/admin/city.js');?>" type="text/javascript"></script>
 @stop

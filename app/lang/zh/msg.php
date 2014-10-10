@@ -152,4 +152,5 @@ $lang['pay_success'] = "订单支付成功";
 $lang['pay_failed'] = "订单支付失败";
 $lang['luggage_require'] = "请填写行李数";
 $lang['search_nothing'] = "未搜索到任何位置，请输入其它关键词重试";
+$lang['city_parent_error'] = "不能选择下级城市作为上级城市";
 return $lang;

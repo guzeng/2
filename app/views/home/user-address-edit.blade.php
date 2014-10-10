@@ -22,29 +22,39 @@
                             <div class="form-body">
                                 <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-3"><?php echo Lang::get('text.shipper')?> <span class="require">*</span></label>
-                                    <div class="col-md-5 col-sm-8">
+                                    <div class="col-md-8 col-sm-8">
                                         <input type="text" class="form-control" name='shipper' maxLength='50' placeholder="" value="<?php echo isset($address)?$address->shipper:'';?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-3"><?php echo Lang::get('text.ship_city')?><span class="required">*</span></label>
-                                    <div class="col-md-5 col-sm-8">
-                                        <select name="city_id" id="city_id" class="form-control">
+                                    <div class="col-md-4 col-sm-8">
+                                        <select name="city_id" id="city_id" class="form-control" onchange='getArea()'>
+                                            <option value='0'><?php echo Lang::get('text.please_choose')?></option>
                                             <?php foreach($allCity as $key => $v):?>
-                                            <option <?if(isset($address) && $address->city_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+                                            <option <?if(isset($address) && $address->city_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
                                             <?endforeach;?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-sm-8">
+                                        <select name="area_id" id="area_id" class="form-control">
+                                            <?php if(isset($address->area) && !empty($address->area)):?>
+                                            <?php foreach($address->area as $key => $v):?>
+                                            <option <?if($address->area_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
+                                            <?php endforeach;?>
+                                            <?php endif;?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-3"><?php echo Lang::get('text.address')?> <span class="require">*</span></label>
-                                    <div class="col-md-5 col-sm-8">
+                                    <div class="col-md-8 col-sm-8">
                                         <input type="text" class="form-control" name='address' maxLength='200' placeholder="" value="<?php echo isset($address)?$address->address:'';?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-2 col-sm-3"><?php echo Lang::get('text.mobile')?> <span class="require">*</span></label>
-                                    <div class="col-md-5 col-sm-8">
+                                    <div class="col-md-8 col-sm-8">
                                         <input type="text" class="form-control" name='phone' maxLength='20' placeholder="" value="<?php echo isset($address)?$address->phone:'';?>">
                                     </div>
                                 </div>

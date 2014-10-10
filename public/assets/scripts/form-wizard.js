@@ -230,8 +230,11 @@ function select_address(obj)
     var phone = $(obj).find('.phone').html();
     var city = $(obj).find('.city').attr('data');
     var address = $(obj).find('.address').html();
+    var area = $(obj).find('.area').attr('data');
     
     $('#city_id').val(city);
+    getArea(area);
+    $('#area_id').val(area);
     $('#address').val(address);
     $('#shipper').val(shipper);
     $('#phone').val(phone);

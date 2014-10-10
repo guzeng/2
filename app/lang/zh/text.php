@@ -282,4 +282,8 @@ $lang['CEB-DEBIT'] = "中国光大银行";
 $lang['SHBANK'] = "上海银行";
 $lang['SPDB'] = "上海浦东发展银行";
 $lang['BJBANK'] = "北京银行";
+$lang['up_level_city'] = "上级";
+$lang['same_level_city'] = "同级";
+$lang['lower_level_city'] = "下级";
+$lang['20_limit'] = "最多20个字符";
 return $lang;

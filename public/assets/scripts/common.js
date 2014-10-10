@@ -943,3 +943,40 @@ function validateKey(t,obj)
         }
     }
 }
+
+function getArea(area)
+{
+    var city_id = $('#city_id').val();
+    if(typeof(city_id)=='undefined')
+    {
+        return false;
+    }
+    if(city_id==0 || city_id=='')
+    {
+        $('#area_id').empty();
+        return false;
+    }
+    $.ajax({
+        'url':msg.base_url+'city/area/'+city_id,
+        'dataType':'json',
+        success:function(json){
+            if(typeof(json) != 'undefined')
+            {
+                $.each(json,function(key,item){
+                    if(typeof(area)!='undefined' && area!='' && item.id == area)
+                    {
+                        $('#area_id').append("<option value='"+item.id+"' selected>"+(msg.lang=='zh'?item.name:item.name_en)+"</option>");
+                    }
+                    else
+                    {
+                        $('#area_id').append("<option value='"+item.id+"'>"+(msg.lang=='zh'?item.name:item.name_en)+"</option>");
+                    }
+                })
+            }
+        },
+        beforeSend:function()
+        {
+            $('#area_id').empty();
+        }
+    })
+}
