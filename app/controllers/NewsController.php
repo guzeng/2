@@ -11,7 +11,7 @@ class NewsController extends BaseController {
 
     public function getIndex()
     {
-        $news_list = News::where('status', 1)->where('category_id',3)->orderBy('open_time', 'desc')->paginate(10);
+        $news_list = News::where('status', 1)->where('category_id',3)->orderBy('id', 'desc')->paginate(10);
         $data['news_list'] = $news_list;
         $data['right'] = $this->r();
         $data['category'] = "3";
