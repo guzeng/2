@@ -32,8 +32,8 @@
                                             <label class='' style='padding-left: 0px;'>
                                                 <?php echo Lang::get('text.en')?>:<input name='child_name_en' class='form-control' id='<?php echo $item['id'] ?>_child_name_en' maxlength='20' type='text' style='padding:0px'>
                                             </label>
-                                            <button d_type='child' d_id='<?php echo $item['id'] ?>' onclick='addDeptName(this)' class='btn blue node_add' type='button'><?php echo Lang::get('text.save');?></button>
                                             </div>
+                                            <button d_type='child' d_id='<?php echo $item['id'] ?>' onclick='addDeptName(this)' class='btn blue node_add' type='button'><?php echo Lang::get('text.save');?></button>
                                             </div>
                                             </div>"
                                 ><i class="fa fa-plus"></i>
