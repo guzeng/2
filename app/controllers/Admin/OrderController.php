@@ -57,7 +57,7 @@ class Admin_OrderController extends BaseController {
         $order = in_array($order, array('desc','asc')) ? $order : 'asc';
         if($sSearch)
         {
-            $_u = User::where('username',$sSearch)->first();
+            $_u = User::where('name',$sSearch)->first();
             if($_u)
             {
                 $user_id = $_u->id;
@@ -218,4 +218,176 @@ class Admin_OrderController extends BaseController {
 
     //-------------------------------------------------------------------------
 
+    public function getExport()
+    {
+        require_once(app_path().'/lib/PHPExcel/PHPExcel.php');
+        require_once(app_path().'/lib/PHPExcel/PHPExcel/IOFactory.php');
+        require_once(app_path().'/lib/PHPExcel/PHPExcel/Writer/IWriter.php');
+        require_once(app_path().'/lib/PHPExcel/PHPExcel/Writer/Excel5.php');
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->getActiveSheet()->setCellValue('a1', Lang::get('text.order_code'));//设置列的值
+        $objPHPExcel->getActiveSheet()->setCellValue('b1', Lang::get('text.flight_num'));
+        $objPHPExcel->getActiveSheet()->setCellValue('c1', Lang::get('text.ship_type'));
+        $objPHPExcel->getActiveSheet()->setCellValue('d1', Lang::get('text.ship_time'));
+        $objPHPExcel->getActiveSheet()->setCellValue('e1', Lang::get('text.ship_city'));
+        $objPHPExcel->getActiveSheet()->setCellValue('f1', Lang::get('text.airport'));
+        $objPHPExcel->getActiveSheet()->setCellValue('g1', Lang::get('text.one_num'));
+        $objPHPExcel->getActiveSheet()->setCellValue('h1', Lang::get('text.two_num'));
+        $objPHPExcel->getActiveSheet()->setCellValue('i1', Lang::get('text.special_num'));
+        $objPHPExcel->getActiveSheet()->setCellValue('j1', Lang::get('text.distance'));
+        $objPHPExcel->getActiveSheet()->setCellValue('K1', Lang::get('text.shipper'));
+        $objPHPExcel->getActiveSheet()->setCellValue('l1', Lang::get('text.gender'));
+        $objPHPExcel->getActiveSheet()->setCellValue('m1', Lang::get('text.mobile'));
+        $objPHPExcel->getActiveSheet()->setCellValue('n1', Lang::get('text.create_date'));
+        $objPHPExcel->getActiveSheet()->setCellValue('o1', Lang::get('text.status'));
+        $objPHPExcel->getActiveSheet()->setCellValue('p1', Lang::get('text.money'));
+        $objPHPExcel->getActiveSheet()->setCellValue('q1', Lang::get('text.pay_type'));
+        $objPHPExcel->getActiveSheet()->setCellValue('r1', Lang::get('text.pay'));
+        $objPHPExcel->getActiveSheet()->setCellValue('s1', Lang::get('text.pay_code'));
+        $objPHPExcel->getActiveSheet()->setCellValue('t1', Lang::get('text.pay_time'));
+        $objPHPExcel->getActiveSheet()->setCellValue('u1', Lang::get('text.ship_note'));
+
+        $orderby = intval(Input::get('iSortCol_0'));
+        $order = trim(Input::get('sSortDir_0'));
+
+        $sSearch = trim(Input::get('sSearch'));
+
+        $records = array();
+        $records["aaData"] = array(); 
+
+        switch ($orderby) {
+            case '0':
+                $orderby = 'id';
+                break;
+            case '1':
+                $orderby = 'code';
+                break;
+            case '2':
+                $orderby = 'user_id';
+                break;
+            case '3':
+                $orderby = 'flight_num';
+                break;
+            case '4':
+                $orderby = 'type';
+                break;
+            case '5':
+                $orderby = 'time';
+                break;
+            case '7':
+                $orderby = 'airport_id';
+                break;
+            case '9':
+                $orderby = 'status';
+                break;
+            case '10':
+                $orderby = 'create_time';
+                break;
+            default:
+                $orderby = 'id';
+                break;
+        }
+        $order = in_array($order, array('desc','asc')) ? $order : 'desc';
+        if($sSearch)
+        {
+            $_u = User::where('username',$sSearch)->first();
+            if($_u)
+            {
+                $user_id = $_u->id;
+            }
+            $_a = Airport::where('name',$sSearch)->get()->toArray();
+            $_a_id = array();
+            if(!empty($_a))
+            {
+                foreach ($_a as $key => $value) {
+                    $_a_id[] = $value['id'];
+                }
+            }
+            $orders = Order::where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
+                        ->orWhere('phone', 'like', '%'.$sSearch.'%');
+            
+            if(isset($user_id))
+            {
+                $orders->orWhere('user_id',$user_id);
+            }
+            if(!empty($_a_id))
+            {
+                $orders->orWhere(function($query)
+                        {
+                            $query->whereIn('airport_id', $_a_id);
+                        });
+            }
+            $iTotalRecords = $orders->count();
+            $list = $orders->orderBy($orderby,$order)->get();
+        }
+        else
+        {
+            $iTotalRecords = Order::count();
+            $list = Order::orderBy($orderby,$order)->get();
+        }
+        if($list)
+        {
+            $areas = City::all();
+            $a = array();
+            if($areas)
+            {
+                foreach ($areas as $key => $value) {
+                    $a[$value->id] = App::getLocale()=='zh'?$value->name:$value->name_en;
+                }
+            }
+            foreach($list as $key => $item)
+            {
+                $city_name = $item->city ? (App::getLocale()=='zh'?$item->city->name:$item->city->name_en) : '';
+                if($item->area_id && array_key_exists($item->area_id, $a))
+                {
+                    $city_name .= ' '.$a[$item->area_id];
+                }
+                $i = $key+2;
+                $objPHPExcel->getActiveSheet()->setCellValue('a'.$i, $item->code);
+                $objPHPExcel->getActiveSheet()->setCellValue('b'.$i, $item->flight_num);
+                $objPHPExcel->getActiveSheet()->setCellValue('c'.$i, Order::getType($item->type));
+                $objPHPExcel->getActiveSheet()->setCellValue('d'.$i, date('Y-m-d H:i:s',gmt_to_local($item->time)));
+                $objPHPExcel->getActiveSheet()->setCellValue('e'.$i, $city_name);
+                $objPHPExcel->getActiveSheet()->setCellValue('f'.$i, $item->airport ? $item->airport->name : '');
+                $objPHPExcel->getActiveSheet()->setCellValue('g'.$i, $item->one_num);
+                $objPHPExcel->getActiveSheet()->setCellValue('h'.$i, $item->two_num);
+                $objPHPExcel->getActiveSheet()->setCellValue('i'.$i, $item->special_num);
+                $objPHPExcel->getActiveSheet()->setCellValue('j'.$i, $item->distance);
+                $objPHPExcel->getActiveSheet()->setCellValue('k'.$i, $item->shipper);
+                $objPHPExcel->getActiveSheet()->setCellValue('l'.$i, Lang::get('text.'.$item->gender));
+                $objPHPExcel->getActiveSheet()->setCellValue('m'.$i, $item->phone);
+                $objPHPExcel->getActiveSheet()->setCellValue('n'.$i, date('Y-m-d H:i:s',gmt_to_local($item->create_time)));
+                $objPHPExcel->getActiveSheet()->setCellValue('o'.$i, $item->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed'));
+                $objPHPExcel->getActiveSheet()->setCellValue('p'.$i, $item->money);
+                $objPHPExcel->getActiveSheet()->setCellValue('q'.$i, $item->pay_type>0 ?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):'');
+                $objPHPExcel->getActiveSheet()->setCellValue('r'.$i, $item->pay=='1' ? Lang::get('text.paid') : Lang::get('text.unpaid'));
+                $objPHPExcel->getActiveSheet()->setCellValue('s'.$i, $item->pay_code);
+                $objPHPExcel->getActiveSheet()->setCellValue('t'.$i, $item->pay_time>0 ? date('Y-m-d H:i:s',$item->pay_time) : '');
+                $objPHPExcel->getActiveSheet()->setCellValue('u'.$i, $item->info);
+
+            }            
+        }
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(25);//设置宽度
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(25);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(15);
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');  //创建表格类型，目前支持老版的excel5,和excel2007,也支持生成html,pdf,csv格式
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-execl");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");
+        header('Content-Disposition:attachment;filename="orders-'.date("Y-m-d-H-i-s").'.xls"');
+        header("Content-Transfer-Encoding:binary");
+        $objWriter->save('php://output');
+    }
 }

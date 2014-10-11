@@ -105,7 +105,7 @@ function initOrderList()
         ],
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
             $(nRow).attr('id',aData[0]);
-        } 
+        }
     });
     initDataTableAction('datalist',uTable);
 }

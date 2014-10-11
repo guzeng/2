@@ -70,7 +70,7 @@
                             <td class='b'><?php echo Lang::get('text.money')?></td>
                             <td><?php echo $order->money;?></td>
                             <td class='b'><?php echo Lang::get('text.pay_type')?></td>
-                            <td>&nbsp;<?php echo $order->pay_type=='1' ? Lang::get('text.alipay') : ($order->pay_type=='2' ? Lang::get('text.unionPay') : '');?></td>
+                            <td>&nbsp;<?php echo $order->pay_type>0 ? Lang::get('text.pay_type_'.Order::payType($order->pay_type)):'';//$order->pay_type=='1' ? Lang::get('text.alipay') : ($order->pay_type=='2' ? Lang::get('text.unionPay') : '');?></td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.pay');?></td>

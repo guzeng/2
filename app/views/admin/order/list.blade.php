@@ -31,6 +31,9 @@
                         <div class="actions">
                             <div class="btn-group">
                                 <a class='btn green' id='reload-list'><i class='fa fa-refresh'></i></a>
+                                <a target="_blank" title="<?php echo Lang::get('text.export')?>" href="<?php echo asset('admin/order/export')?>" class="btn green">
+                                    <i class="fa fa-table"></i>
+                                </a>
                                 <a class="btn green" href="#" data-toggle="dropdown">
                                     <?php echo Lang::get('text.show/hide');?>
                                     <i class="fa fa-angle-down"></i>
@@ -38,7 +41,7 @@
                                 <div id="datalist_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
                                     <label class="checkbox"><input type="checkbox" checked data-column="0">ID</label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="1"><?php echo Lang::get('text.order_code');?></label>
-                                    <label class="checkbox"><input type="checkbox" checked data-column="2"><?php echo Lang::get('text.username');?></label>
+                                    <label class="checkbox"><input type="checkbox" checked data-column="2"><?php echo Lang::get('text.user_name');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="3"><?php echo Lang::get('text.flight_num');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="4"><?php echo Lang::get('text.ship_type');?></label>
                                     <label class="checkbox"><input type="checkbox" checked data-column="5"><?php echo Lang::get('text.ship_time');?></label>
@@ -58,7 +61,7 @@
                                 <tr>
                                     <th class=''>ID</th>
                                     <th><?php echo Lang::get('text.order_code');?></th>
-                                    <th><?php echo Lang::get('text.username');?></th>
+                                    <th><?php echo Lang::get('text.user_name');?></th>
                                     <th class="hidden-xs"><?php echo Lang::get('text.flight_num');?></th>
                                     <th class="hidden-xs "><?php echo Lang::get('text.ship_type');?></th>
                                     <th class="hidden-xs "><?php echo Lang::get('text.ship_time');?></th>
