@@ -167,6 +167,60 @@ class Admin_SettingController extends BaseController
 		}                                   
 		return Response::json($data);
 	}
+
+    public function getSecurity()
+    {
+        return View::make('admin.system.security');
+    }
+
+    public function postPasswordUpdate()
+    {
+        //csrf验证
+        if (Session::token() != Input::get('_token'))
+        {
+            return Response::json(array('code'=>'1004','msg'=>Lang::get('msg.deny_request')));
+        }
+        $old = trim(Input::get('old'));
+        $password = trim(Input::get('password'));
+        $password_confirmation = trim(Input::get('password_confirmation'));
+
+        $error = array();
+
+        //需验证字段
+        $inputs = array(
+            'password' => $password,
+            'password_confirmation' => $password_confirmation
+        );
+        //验证规则
+        $rules = array(
+            'password' => 'required|confirmed|min:6'
+        );
+
+        $validator = Validator::make($inputs, $rules);
+
+        if ($validator->fails())
+        {
+            $error['password'] = str_replace('password', Lang::get('text.password'), $validator->messages()->get('password'));
+        }
+        $user = Auth::user();
+        if(! Hash::check($old,$user->getAuthPassword()))
+        {
+            $error['old'] = Lang::get('msg.pwd4');
+        }
+        if(!empty($error))
+        {
+            return Response::json(array('code' => '1010', 'msg'=>Lang::get('msg.submit_error'), 'error'=>$error));
+        }
+        $user->pwd = Hash::make($password);
+        if($user->save())
+        {
+            return Response::json(array('code' => '1000','msg'=>Lang::get('msg.pwd_changed_success')));
+        }
+        else
+        {
+            return Response::json(array('code' => '1000','msg'=>Lang::get('msg.update_failed')));
+        }
+    }
 }
 
 ?>

@@ -362,7 +362,7 @@ function doSubmit(formID,btn, callback)
             {
                 if(typeof(callback) == 'function')
                 {
-                    callback();
+                    callback(data);
                 }
                 else
                 {

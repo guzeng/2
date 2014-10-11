@@ -169,6 +169,7 @@
                               <a href="<?php echo asset('change-lang/zh');?>"><i class="fa fa-stack-exchange"></i> 中文版</a>
                             <?endif;?>
                         </li>
+                        <li><a href="<?php echo asset('admin/setting/security')?>" ><i class="fa fa-lock"></i> <?php echo Lang::get('text.security_setting');?></a></li>
                         <li class="divider"></li>
                         <li><a href="javascript:;" id="trigger_fullscreen"><i class="fa fa-move"></i> <?php echo Lang::get('text.full_screen')?></a></li>
                         <li><a href="<?php echo asset('login/out');?>"><i class="fa fa-power-off"></i> <?php echo Lang::get('text.exit');?></a></li>
