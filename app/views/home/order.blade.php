@@ -75,9 +75,11 @@
                             </div>
                             <div class="col-md-3">
                                 <select name="area_id" id="area_id" class="form-control">
+                                    <?php if(isset($AllArea) && !empty($AllArea)):?>
                                     <?php foreach($AllArea as $key => $v):?>
                                     <option <?if(isset($area_id) && $area_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
-                                    <?endforeach;?>
+                                    <?php endforeach;?>
+                                    <?php endif;?>
                                 </select>
                             </div>
                             <?php if(Auth::check()):?>
@@ -98,9 +100,11 @@
                             <label class="control-label col-md-3"><?php echo Lang::get('text.airport')?><span class="required">*</span></label>
                             <div class="col-md-6">
                                 <select name="airport_id" id="airport_id" class="form-control">
+                                    <?php if(isset($allAirport) && !empty($allAirport)):?>
                                     <?php foreach($allAirport as $key => $v):?>
                                     <option value="<?php echo $v->id?>" n="<?php echo $v->name?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
                                     <?endforeach;?>
+                                    <?php endif;?>
                                 </select>
                             </div>
                         </div>
