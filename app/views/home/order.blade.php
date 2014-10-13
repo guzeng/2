@@ -66,15 +66,18 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.ship_city')?><span class="required">*</span></label>
                             <div class="col-md-3">
-                                <select name="city_id" id="city_id" class="form-control" onchange='getArea()'>
+                                <select name="city_id" id="city_id" class="form-control" onchange='getArea();getAirport()'>
                                     <option value='0'><?php echo Lang::get('text.please_choose');?></option>
                                     <?php foreach($allCity as $key => $v):?>
-                                    <option <?if(isset($city_id) && $city_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
+                                    <option <?if(isset($city_id) && $city_id==$v->id):?>selected<?endif;?> n="<?php echo $v->name;?>" value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
                                     <?endforeach;?>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <select name="area_id" id="area_id" class="form-control">
+                                    <?php foreach($AllArea as $key => $v):?>
+                                    <option <?if(isset($area_id) && $area_id==$v->id):?>selected<?endif;?> value="<?php echo $v->id?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
+                                    <?endforeach;?>
                                 </select>
                             </div>
                             <?php if(Auth::check()):?>
@@ -96,7 +99,7 @@
                             <div class="col-md-6">
                                 <select name="airport_id" id="airport_id" class="form-control">
                                     <?php foreach($allAirport as $key => $v):?>
-                                    <option value="<?php echo $v->id?>"><?php echo $v->name;?></option>
+                                    <option value="<?php echo $v->id?>" n="<?php echo $v->name?>"><?php echo App::getLocale()=='zh'?$v->name:$v->name_en;?></option>
                                     <?endforeach;?>
                                 </select>
                             </div>
@@ -167,7 +170,7 @@
                     </div>
                     <div class="tab-pane" id="tab2">
                         <div class="m-b-20">
-                            <strong>共<span id='order_distance'></span>公里，共计<span id='order_money'></span>元</strong>
+                            <strong><?php echo Lang::get('text.map_total')?></strong>
                         </div>
                         <div class='row m-b-30'>
                             <div class='col-md-9'>
@@ -261,13 +264,13 @@
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.distance')?>:</label>
                             <div class="col-md-4">
-                                <div class="form-control-static" data-display="order_distance"></div>
+                                <div class="form-control-static" data-display="order_distance"></div> <span><?php echo Lang::get('text.km')?></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3"><?php echo Lang::get('text.money')?>:</label>
                             <div class="col-md-4">
-                                <div class="form-control-static" data-display="order_money"></div>
+                                <div class="form-control-static" data-display="order_money"></div> <span><?php echo Lang::get('text.yuan')?></span>
                             </div>
                         </div>
                         <div class="form-group">

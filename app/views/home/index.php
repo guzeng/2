@@ -198,7 +198,7 @@
 										<?if(App::getLocale()=='zh'):?>
 										在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。
 										<?else:?>
-										At online self-help order, click on "start on order” and fill in your information, or order by phoning the on line customer service staff.
+										At online self-help order, click on "Booking” and fill in your information, or call the customer hot line to place order.
 										<?endif;?>
 									</div>
 								</div>
@@ -208,7 +208,7 @@
 										<?if(App::getLocale()=='zh'):?>
 										如果您的行李是从机场运送至目的地，航班落地后，我们的配送员将第一时间联系您，并在机场到达厅接收您的行李，填写托运单据。
 										<?else:?>
-										If your luggage is transported from airport to the destination, after the flight lands, our deliveryman will contact you the first time, receives your luggage at the airport arrival hall, and fill in the shipping documents.
+										If your luggage is transported from airport to the destination, after landed, our staff will contact you at once, pick up your luggage at the airport arrival hall, and fill the waybill.
 										<?endif;?>
 									</div>
 								</div>
@@ -218,7 +218,7 @@
 										<?if(App::getLocale()=='zh'):?>
 										如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。
 										<?else:?>
-										If your luggage is carried from places such as residence, hotel, or commercial building, to the airport, please drop the order at least 6 hours before your departure, our deliveryman will collect luggage from door to door, and get back luggage which is carried to the departure hall 1.5 hourse before flight departs.
+										If your luggage is carried from places such as residence, hotel, or commercial building, to the airport, please order at least 6 hours before your departure, our staff will collect luggage and you will get the luggage back 1.5 hours before departure at the departure hall.
 										<?endif;?>
 									</div>
 								</div>
@@ -254,7 +254,8 @@
 									<?if(App::getLocale()=='zh'):?>
 									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送，如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
 									<?else:?>
-									For the flights arriving before 8 a.m, if no special request, the order luggages start to be transported at noon on the day. If the destination is hotel, the luggage will be sent to the front desk; if the destination is commercial building or residence, luggage are sent to the front door. 
+									For the flights arrive before 8 am, the order will deliver at noon on the day if there are not special requirements. 
+									If the destination is hotel, the luggage will be sent to the reception. If the destination is commercial building or residence, luggage is sent to the front door. 
 									If you cannot be contacted, delivery can be delayed.
 									<?endif;?>
 								</p>
@@ -262,9 +263,9 @@
 									<?if(App::getLocale()=='zh'):?>
 									晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
 									<?else:?>
-									For the flights arriving after 6 p.m, if no special request, the order luggage start to be transported in the morning of the next day. 
-									If the destination is hotel, the luggage will be sent to the front desk.
-									if the destination is commercial building or residence, luggage are sent to the front door. 
+									For the flights arriving after 6 pm, the order will deliver in the morning of the next day if there are not special requirements. 
+									If the destination is hotel, the luggage will be sent to the reception. 
+									If the destination is commercial building or residence, luggage is sent to the front door. 
 									If you cannot be contacted, delivery can be delayed.
 									<?endif;?>
 								</p>
@@ -287,14 +288,14 @@
 									<?if(App::getLocale()=='zh'):?>
 									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线4000-XXX-XXX联系我们！
 									<?else:?>
-									Feel free to turn your luggage to Yuexingtrip.com. if you have questions or need help, please call customer service hotline at 4000 - XXX - XXX to contact us!
+									Thank you for use our professional service. Please call customer service hotline at 4000 - XXX - XXX if you need any help!
 									<?endif;?>
 								</p>
 								<p>
 									<?if(App::getLocale()=='zh'):?>
 									悦行网将竭诚为您服务。进入新手指南或者常见问题版面去了解更多！
 									<?else:?>
-									Yuexingtrip.com will serve you wholeheartedly. Enter the new guide or FAQ page to learn more!
+									We offer only the best to our customers. Check the Guidelines or FAQs to learn more!
 									<?endif;?>
 								</p>
 							

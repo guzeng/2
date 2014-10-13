@@ -8,7 +8,7 @@ function mapInit()
         map = new BMap.Map("l-map");
     }
     map.clearOverlays();
-    map.centerAndZoom($('#city_id option:selected').text(), 13); //new BMap.Point(116.404, 39.915)
+    map.centerAndZoom($('#city_id option:selected').attr('n'), 13); //new BMap.Point(116.404, 39.915)
     map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
     map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
     _search();
@@ -129,7 +129,7 @@ function drive(address)
         }
     });
     var type = $('#type').val();
-    var airport = $('#airport_id  option:selected').text();
+    var airport = $('#airport_id  option:selected').attr('n');
 
     if(typeof(address)=='undefined')
     {

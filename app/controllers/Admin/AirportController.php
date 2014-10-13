@@ -72,8 +72,8 @@ class Admin_AirportController extends BaseController {
             {
                 $records["aaData"][] = array(
                     $item->id,
-                    $item->name,
-                    $item->city ? $item->city->name : '',
+                    App::getLocale()=='zh'?$item->name:$item->name_en,
+                    $item->city ? (App::getLocale()=='zh'?$item->city->name:$item->city->name_en) : '',
                     ''
                 );
             }
@@ -89,7 +89,7 @@ class Admin_AirportController extends BaseController {
 	{
 		$id = trim(intval($id));
         $data = array();
-        $data['citys'] = City::all();
+        $data['citys'] = City::where('parent_id',0)->get();
 		if($id)
 		{
 			$airport = Airport::find($id);
@@ -109,6 +109,7 @@ class Admin_AirportController extends BaseController {
         $log = array();
         $id = Input::get('id');
         $name = Input::get('name');
+        $name_en = Input::get('name_en');
         $city_id = Input::get('city_id');
         if($city_id)
         {
@@ -138,9 +139,11 @@ class Admin_AirportController extends BaseController {
         $validator = Validator::make(
             array(
                 'airporttitle' => $name,
+                'enairporttitle' => $name_en,
             ),
             array(
                 'airporttitle' => "required|max:30|unique:airport,name,$id",
+                'enairporttitle' => "required|max:100|unique:airport,name_en,$id"
             )
         );
 
@@ -148,6 +151,7 @@ class Admin_AirportController extends BaseController {
         {
             $data['code'] = '1010';
             $error['name'] = str_replace('airporttitle', Lang::get('text.name'), $validator->messages()->get('airporttitle'));
+            $error['name_en'] = str_replace('enairporttitle', Lang::get('text.name'), $validator->messages()->get('enairporttitle'));
             $data['error'] = $error;
             $data['msg'] = Lang::get('msg.submit_error');
             return Response::json($data);
@@ -155,6 +159,7 @@ class Admin_AirportController extends BaseController {
         else
         {
             $airport->name = addslashes($name);
+            $airport->name_en = addslashes($name_en);
             $airport->city_id = $city_id;
             if($id)
             {
@@ -177,7 +182,7 @@ class Admin_AirportController extends BaseController {
                 $log_param['type'] = 'add';
             }
         }
-        $log[] = Lang::get('text.name').Lang::get('text.colon').$airport->name;
+        $log[] = Lang::get('text.name').Lang::get('text.colon').$airport->name.','.$airport->name_en;
         $log[] = Lang::get('text.city').Lang::get('text.colon').(isset($cname)?$cname:'');
         $log_param['object_id'] = $airport->id;
         $log_param['object_type'] = 'airport';

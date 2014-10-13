@@ -198,7 +198,7 @@ $lang['payment'] = "支付情况";
 
 $lang['aboutus'] = "关于我们";
 $lang['about_manage'] = "公司资料";
-$lang['joinus'] = "加入我们";
+$lang['join_us'] = "加入我们";
 $lang['position'] = "职位";
 $lang['continue'] = "下一步";
 $lang['require_number'] = "招聘人数";
@@ -287,4 +287,7 @@ $lang['same_level_city'] = "同级";
 $lang['lower_level_city'] = "下级";
 $lang['20_limit'] = "最多20个字符";
 $lang['export'] = "导出";
+$lang['map_total'] = "共<span id='order_distance'></span>公里，共计<span id='order_money'></span>元";
+$lang['km'] = "公里";
+$lang['yuan'] = "元";
 return $lang;

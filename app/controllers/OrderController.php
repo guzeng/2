@@ -23,7 +23,11 @@ class OrderController extends BaseController {
 
 		$data['allType'] = Order::getType();
 		$data['allCity'] = City::where('parent_id',0)->get();
-		$data['allAirport'] = Airport::all();
+        if($data['city_id'])
+        {
+            $data['AllArea'] = City::where('parent_id',$data['city_id'])->get();
+            $data['allAirport'] = Airport::where('city_id',$data['city_id'])->get();
+        }
 
 		if(Auth::check())
 		{

@@ -33,13 +33,6 @@
                 <div class="col-md-12">
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.name');?></label>
-                            <div class="col-md-6 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" maxLength='30' name="name" id="name" value="<?php echo isset($item) ? stripslashes($item->name) : '';?>">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.city');?></label>
                             <div class="col-md-6 col-sm-9 col-xs-12">
                                 <select class="form-control" name='city_id'>
@@ -48,6 +41,20 @@
                                     <option value="<?php echo $c->id;?>"><?php echo $c->name;?></option>
                                     <?php }}?>
                                 </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.name');?> (<?php echo Lang::get('text.zh')?>)</label>
+                            <div class="col-md-6 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" maxLength='30' name="name" id="name" value="<?php echo isset($item) ? stripslashes($item->name) : '';?>">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="re">* </span><?php echo Lang::get('text.name');?> (<?php echo Lang::get('text.en')?>)</label>
+                            <div class="col-md-6 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" maxLength='100' name="name_en" id="name_en" value="<?php echo isset($item) ? stripslashes($item->name_en) : '';?>">
                                 <span class="help-block"></span>
                             </div>
                         </div>

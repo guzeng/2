@@ -980,3 +980,40 @@ function getArea(area)
         }
     })
 }
+
+function getAirport(area)
+{
+    var city_id = $('#city_id').val();
+    if(typeof(city_id)=='undefined')
+    {
+        return false;
+    }
+    if(city_id==0 || city_id=='')
+    {
+        $('#airport_id').empty();
+        return false;
+    }
+    $.ajax({
+        'url':msg.base_url+'city/airport/'+city_id,
+        'dataType':'json',
+        success:function(json){
+            if(typeof(json) != 'undefined')
+            {
+                $.each(json,function(key,item){
+                    if(typeof(area)!='undefined' && area!='' && item.id == area)
+                    {
+                        $('#airport_id').append("<option value='"+item.id+"' selected n='"+item.name+"'>"+(msg.lang=='zh'?item.name:item.name_en)+"</option>");
+                    }
+                    else
+                    {
+                        $('#airport_id').append("<option value='"+item.id+"'  n='"+item.name+"'>"+(msg.lang=='zh'?item.name:item.name_en)+"</option>");
+                    }
+                })
+            }
+        },
+        beforeSend:function()
+        {
+            $('#airport_id').empty();
+        }
+    })
+}
