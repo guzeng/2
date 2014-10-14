@@ -383,7 +383,7 @@
 		                    <li> | </li>
 		                    <li><a href="<?php echo asset('about/contact')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.contact_us')?></a></li>
 		                    <li> | </li>
-		                    <li><a href="<?php echo asset('job')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.joinus')?></a></li>
+		                    <li><a href="<?php echo asset('job')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.join_us')?></a></li>
 		                    <li> | </li>
 		                    <a href="<?php echo asset('news/grude')?>" style='color:#FFFFFF;'><?php echo News::category(1)?></a>
 		                    <li> | </li>
