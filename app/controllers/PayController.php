@@ -87,7 +87,7 @@ class PayController extends BaseController {
         //商户网站订单系统中唯一订单号，必填
 
         //订单名称
-        $subject = Order::getType($order->type).', '.Lang::get('text.order_code').':'.$order->code;
+        $subject = '悦行通达, '.Lang::get('text.order_code').':'.$order->code;
         //必填
 
         //付款金额
@@ -149,7 +149,7 @@ class PayController extends BaseController {
         //商户网站订单系统中唯一订单号，必填
 
         //订单名称
-        $subject = Order::getType($order->type).', '.Lang::get('text.order_code').':'.$order->code;
+        $subject = '悦行通达, '.Lang::get('text.order_code').':'.$order->code;
         //必填
 
         //付款金额
