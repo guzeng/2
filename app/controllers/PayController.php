@@ -200,7 +200,8 @@ class PayController extends BaseController {
                 "exter_invoke_ip"   => $exter_invoke_ip,
                 "_input_charset"    => trim(strtolower($alipay_config['input_charset']))
         );
-
+        $order->bank = $defaultbank;
+        $order->save();
         //建立请求
         $alipaySubmit = new AlipaySubmit($alipay_config);
         $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");

@@ -3,6 +3,7 @@
 @section('content')
 <div class="main">
     <div class="container p-20">
+        <?php if(App::getLocale()=='zh'):?>
         <div class='text-center m-b-20'>
             <h2>用户注册协议</h2>
         </div>
@@ -36,6 +37,41 @@
         <p>1、以上规定的范围仅限于悦行网；</p>
         <p>2、本网站会员因违反以上规定而触犯有关法律法规，一切后果自负，本网站不承担任何责任；</p>
         <p>3、本规则未涉及之问题参见有关法律法规，当本规定与有关法律法规冲突时，以相应的法律法规为准。在本条款规定范围内，悦行网拥有最终解释权。</p>
+        <?php else:?>
+        <div class='text-center m-b-20'>
+            <h2>User registration agreement</h2>
+        </div>
+        <p><strong>1. Membership</strong></p>
+        <p>After you completely agree with the service terms and complete the registration at Yuexingtrip.com, you can be a member and enjoy the service Yuexingtrip.com provides.</p>
+        <p><strong>2. Membership privileges</strong></p>
+        <p>a. Member can enjoy services provided by this website, which can be referred to the member service content.</p>
+        <p>b. Any members are obligated to comply with this regulation and other network services agreement, regulations, procedures and practices.</p>
+        <p><strong>3. Membership information</strong></p>
+        <p>a. In order to enable us to better provide service for members, please provide detailed and accurate personal information. If there’s any change, please update in time. The consequences OF providing false information shall be borne by the members.</p>
+        <p>b. Registered members have the responsibility to keep your password and change on a regular time to avoid losses.If members lose the password carelessly,.losses shall be borne by the member. Users should take all the legal responsibility for the activities and events with his/her user account.</p>
+        <p><strong>4. The cancellation of the membership</strong></p>
+        <p>If any member with one of the following intentional action was found, this website reserves the right to cancel the use of the service, and do not need to make any compensation:</p>
+        <p>a. May cause this website all or partial services affected, or harm to the web site operation.</p>
+        <p>b. Any fraud to obtain membership.</p>
+        <p>c. Engaged in the illegal commercial behavior, involving sensitive politics, religion, sex or other violation of relevant state laws and government regulations of words, pictures and other information through this website.</p>
+        <p>d. using the network service system for any illegal purposes.</p>
+        <p><strong>5. Rights of Yuexingtrip.com</strong></p>
+        <p>a. Entitled to review and accept or reject the member's application for membership, members shall have the right to cancel or to stop all or part of the service content.</p>
+        <p>b. Eligibleto revise the rights and obligations of members and modify the service content of this website.</p>
+        <p>c. Have the right to revise the member's rights and obligations to inform members in the form of E-mail. If members continue to use service of this website after receiving the notification, it indicates that members agree to abide by the new revised content.</p>
+        <p>d. This website provides services only for personal use of members. Without authorization, members are not allowed transfer the account to a third party. If there is any violation, this website reserves the right to claim losses to the members and reserve the right to have him/her to take the legal responsibility.</p>
+        <p><strong>6. Obligations of Yuexingtrip.com</strong></p>
+        <p>a. Good maintenance in the network and communication system to ensure the smooth and efficient of this website.</p>
+        <p>b. Except from the irresistible factors leading to temporary mal-functioning of the website, such as the need to stop all or part of the website service, we will notice in advance on this website.</p>
+        <p>c. If this website cannot work temporarily due to system maintenance or upgrade, we will be inform members by way of home page, email, etc.</p>
+        <p>d. If any irresistible reason leading to the suspension of the website, any actual or potential losses resulted from the suspension shall not be compensated.</p>
+        <p>e. The websiteis not responsible for any losses resulted from the lose of password by member.</p>
+        <p>f. The website only provide network services, but to the related web services related equipment (such as computers, modems and other device) associated with access to the Internet and the costs of (such as networking fee and pay for access to the Internet) shall be borne by users.</p>
+        <p><strong>7. Supplementary articles</strong></p>
+        <p>a. The above rules are only restricted in Yuexingtrip.com.</p>
+        <p>b. Our members violating the above rules or the relevant laws will bear the consequences themselves. The website does not take any responsibility.</p>
+        <p>c. Any issues our rules have not involved can be referred to the relevant laws and regulations. When our rules conflict with the relevant laws and regulations, the relevant laws and regulations shall prevail. Within the scope of the clauses, Yuexingtrip have the final explanation right.</p>
+        <?php endif;?>
     </div>
 </div>
 @stop

@@ -16,7 +16,7 @@
                 <!-- END RIGHT SIDEBAR -->       
                 <!-- BEGIN LEFT SIDEBAR -->            
                 <div class="col-md-10 col-sm-9 blog-posts">
-                    <h3 class='m-b-20'><?php echo Lang::get('text.my_order');?></h3>
+                    <h3 class='m-b-20'><?php echo $type=='del'?Lang::get('text.canceled_orders'):Lang::get('text.my_order');?></h3>
                     <hr>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -40,13 +40,15 @@
                                     <td><?php echo date('Y-m-d H:i',gmt_to_local($item->time))?></td>
                                     <td><?php echo round($item->money,2);?></td>
                                     <td><?php echo $item->pay_type>0?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):Lang::get('text.unpaid')?></td>
-                                    <td><?php echo $item->status=='1'?Lang::get('text.processed'):Lang::get('text.unprocessed');?></td>
+                                    <td><?php echo Order::getStatus($item->status)?></td>
                                     <td>
+                                        <?php if($type!='del'):?>
                                         <?php if($item->complete==0):?>
                                         <a href='<?php echo asset('order/pay/'.$item->code)?>' class='btn yellow btn-xs' target='_blank'>
                                             <?php echo Lang::get('text.pay');?>
                                         </a> 
-                                        <a href='javascript:void(0)' onclick="doDelete('<?php echo asset('user/order-delete/'.$item->id)?>')" class='btn red btn-xs' title='<?php echo Lang::get('text.cancel')?>'>
+                                        <?php endif;?>
+                                        <a href='javascript:void(0)' onclick="doCancel('<?php echo asset('user/order-delete/'.$item->id)?>')" class='btn red btn-xs' title='<?php echo Lang::get('text.cancel')?>'>
                                             <i class='fa fa-times'></i>
                                         </a>
                                         <?php endif;?>

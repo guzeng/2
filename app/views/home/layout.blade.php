@@ -67,7 +67,9 @@
         'error':"<?php echo Lang::get('msg.error')?>",
         'lang':"<?php echo App::getLocale(); ?>",
         'delete_confirm':"<?php echo Lang::get('msg.delete_confirm');?>",
-        'sure_to_delete':"<?php echo Lang::get('msg.sure_to_delete');?>"
+        'sure_to_delete':"<?php echo Lang::get('msg.sure_to_delete');?>",
+        'cancel_confirm':"<?php echo Lang::get('msg.cancel_confirm');?>",
+        'sure_to_cancel':"<?php echo Lang::get('msg.sure_to_cancel')?>"
     };
   </script>
 </head>

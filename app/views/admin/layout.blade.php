@@ -209,10 +209,18 @@
                         </a>
                     </li>
                     <li class="<?if(in_array($_controller_name, array('OrderController'))):?>open active<?endif;?>">
-                        <a href="<?php echo asset('admin/order');?>">
+                        <a href="javascript:;" >
                             <i class="fa fa-book"></i> 
                             <span class="title"><?php echo Lang::get('text.order_manage')?></span>
                         </a>
+                        <ul class="sub-menu">
+                                <li class="<?if($_controller_name=='OrderController' && $_action_name=='getIndex'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/order');?>"><?php echo Lang::get('text.order_manage')?></a>
+                                </li>
+                                <li class="<?if($_controller_name=='OrderController' && $_action_name=='getCancel'):?>active<?endif;?>">
+                                    <a href="<?php echo asset('admin/order/cancel')?>"><?php echo Lang::get('text.canceled_orders')?></a>
+                                </li>
+                        </ul>
                     </li>
                     <li class="<?if(in_array($_controller_name, array('UserController'))):?>open active<?endif;?>">
                         <a href="<?php echo asset('admin/user');?>">

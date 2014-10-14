@@ -7,7 +7,12 @@ class Admin_OrderController extends BaseController {
 		return View::make('admin.order.list');
 	}
 
-    public function getDatalist()
+    public function getCancel()
+    {
+        $data['type'] = 'del';
+        return View::make('admin.order.list',$data);
+    }
+    public function getDatalist($type='')
     {
 
         $iDisplayLength = intval(Input::get('iDisplayLength'));
@@ -55,6 +60,11 @@ class Admin_OrderController extends BaseController {
                 break;
         }
         $order = in_array($order, array('desc','asc')) ? $order : 'asc';
+        $orders = new Order();
+        if($type=='cancel')
+        {
+            $orders->where('status',3);
+        }
         if($sSearch)
         {
             $_u = User::where('name',$sSearch)->first();
@@ -70,9 +80,8 @@ class Admin_OrderController extends BaseController {
                     $_a_id[] = $value['id'];
                 }
             }
-            $orders = Order::where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
+            $orders->where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
                         ->orWhere('phone', 'like', '%'.$sSearch.'%');
-            
             if(isset($user_id))
             {
                 $orders->orWhere('user_id',$user_id);
@@ -90,10 +99,72 @@ class Admin_OrderController extends BaseController {
         }
         else
         {
-            $iTotalRecords = Order::count();
+            $iTotalRecords = $orders->count();
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
-            $list = Order::take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
+            $list = $orders->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
         }
+        /*
+                if($sSearch)
+        {
+            $select = " from ".$prefix."account as u";
+            $where = " where u.id>0 and ( username like ? or name like ? or email like ?";
+            $group = '';
+            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
+            if(in_array($sSearch, $dd))
+            {
+                $keys = array_keys($dd,$sSearch);
+                if(!empty($keys))
+                {
+                   $d = $keys[0]; 
+                }
+            }
+            if(in_array($sSearch, $pp))
+            {
+                $keys = array_keys($pp,$sSearch);
+                if(!empty($keys))
+                {
+                   $p = $keys[0]; 
+                }
+            }
+            if(in_array($sSearch, $rr))
+            {
+                $keys = array_keys($rr,$sSearch);
+                if(!empty($keys))
+                {
+                   $r = $keys[0]; 
+                }
+            }
+            if(isset($d))
+            {
+                $where .= " or department_id = ?";
+                $v[] = $d;
+            }
+            if(isset($p))
+            {
+                $where .= " or post_id = ?";
+                $v[] = $p;
+            }
+            if(isset($r))
+            {
+                $select .= " right join ".$prefix."user_role_map as ur on u.id=ur.user_id ";
+                $where .= " or ur.role_id=?";
+                $v[] = $r;
+                $group = " group by u.id";
+            }
+            $where .= " )";
+            $c = DB::select("select count(u.id) as count" .$select.$where,$v);
+            $iTotalRecords = $c[0]->count;
+            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength;
+            $list = DB::select("select u.* " .$select.$where.$group ." order by ".$orderby." ".$order." limit ".$iDisplayLength." offset ".$iDisplayStart ,$v);
+        }
+        else
+        {
+            $u = DB::table('account as '.$prefix.'u');
+            $iTotalRecords = $u->count();
+            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
+            $list = $u->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();//with('post', 'department', 'userRole')->
+        }
+        */
         if(!empty($list))
         {
             foreach ($list as $key => $item) 
@@ -108,7 +179,7 @@ class Admin_OrderController extends BaseController {
                     $item->city ? $item->city->name : '',
                     $item->airport ? $item->airport->name : '',
                     $item->shipper,
-                    $item->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed'),
+                    Order::getStatus($item->status),
                     date('Y-m-d H:i:s',gmt_to_local($item->create_time)),
                     ($item->status=='0' && $item->pay == '0') ? 'true' : 'false'
                 );
@@ -163,19 +234,20 @@ class Admin_OrderController extends BaseController {
         {
             return Response::json(array('code' => '1003', 'msg' => Lang::get('msg.order_paid')));    
         }
-		if(!$order->delete())
+        $order->status=3;
+		if(!$order->save())
 		{
-            return Response::json(array('code' => '1001', 'msg' => Lang::get('msg.delete_failed')));
+            return Response::json(array('code' => '1001', 'msg' => Lang::get('msg.failed')));
 		}
 
         $log_param['object_id'] = $id;
         $log_param['object_name'] = $order->code;
         $log_param['object_type'] = 'order';
-        $log_param['type'] = 'delete';
-        $log_param['message'] =Lang::get('text.delete').' '. $order->code;
+        $log_param['type'] = 'cancel';
+        $log_param['message'] =Lang::get('text.canceled').' '. $order->code;
         MyLog::create($log_param);
 
-        return Response::json(array('code'=>'1000', 'msg'=>Lang::get('msg.delete_success'), 'data' => array('id' => $id)));
+        return Response::json(array('code'=>'1000', 'msg'=>Lang::get('msg.cancel_success'), 'data' => array('id' => $id)));
 	}
 
 	public function getChangeStatus($id)

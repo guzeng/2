@@ -426,6 +426,11 @@ function doDelete(uri)
 {
     confirmDialog(msg.delete_confirm, msg.sure_to_delete, Delete, uri);
 }
+
+function doCancel(uri)
+{
+    confirmDialog(msg.cancel_confirm, msg.sure_to_cancel, Delete, uri);
+}
 /**
  * delete
  * @param varchar url

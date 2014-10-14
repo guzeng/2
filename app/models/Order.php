@@ -102,6 +102,27 @@ class Order extends Eloquent {
         }
         return $result;
     }
+    static public function getStatus($status)
+    {
+        $arr = array(
+            '0' => Lang::get('text.unprocessed'),
+            '1' => Lang::get('text.processed'),
+            '2' => Lang::get('text.completed'),
+            '3' => Lang::get('text.canceled')
+        );
+        if($status !== false)
+        {
+            if(array_key_exists($status, $arr))
+            {
+                return $arr[$status];
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return $arr;
+    }
 }
 /* End of file Order.php */
 /* Location: ./app/models/Order.php */

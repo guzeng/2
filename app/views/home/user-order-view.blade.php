@@ -66,7 +66,7 @@
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.status')?></td>
-                                    <td id='status' colspan='3'><?php echo $order->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed');?></td>
+                                    <td id='status' colspan='3'><?php echo Order::getStatus($order->status)?></td>
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.ship_note')?></td>
@@ -83,7 +83,10 @@
                                     <td class='b'><?php echo Lang::get('text.money')?></td>
                                     <td><?php echo $order->money;?></td>
                                     <td class='b'><?php echo Lang::get('text.pay_type')?></td>
-                                    <td>&nbsp;<?php echo $order->pay_type>0 ? Lang::get('text.pay_type_'.Order::payType($order->pay_type)) : "<a href='".asset('order/pay/'.$order->code)."' target='_blank'>".Lang::get('text.unpaid')."</a>";?></td>
+                                    <td>&nbsp;
+                                        <?php echo $order->pay_type>0 ? Lang::get('text.pay_type_'.Order::payType($order->pay_type)) : ($order->status != 3?"<a href='".asset('order/pay/'.$order->code)."' target='_blank'>".Lang::get('text.unpaid')."</a>":Lang::get('text.unpaid'));?>
+                                        <?php if($order->pay_type>0 && $order->bank != ''):?>(<?php echo Lang::get('text.'.$order->bank)?>)<?php endif;?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class='b'><?php echo Lang::get('text.pay_code')?></td>

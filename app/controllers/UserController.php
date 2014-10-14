@@ -115,10 +115,18 @@ class UserController extends BaseController {
         }
     }
 
-    public function getOrder()
+    public function getOrder($type='')
     {
-        $data['left'] = $this->left();
-        $data['orders'] = Order::where('user_id',Auth::user()->id)->paginate(10);
+        $data['left'] = $this->left($type);
+        if($type=='del')
+        {
+            $data['orders'] = Order::where('user_id',Auth::user()->id)->where('status',3)->paginate(10);    
+        }
+        else
+        {
+            $data['orders'] = Order::where('user_id',Auth::user()->id)->where('status','!=',3)->paginate(10);
+        }
+        $data['type'] = $type;
         return View::make('home.user-order-list', $data);
     }
     public function getOrderView($id)
@@ -156,13 +164,20 @@ class UserController extends BaseController {
         {
             return Response::view('common.500',array('msg'=>Lang::get('msg.deny_request')));
         }
-        if($order->delete())
+        $order->status = 3;//删除
+        if($order->save())
         {
-            return Response::json(array('code'=>'1000','data'=>array('id'=>$id),'msg'=>Lang::get('msg.delete_success')));  
+            $log_param['object_id'] = $id;
+            $log_param['object_name'] = $order->code;
+            $log_param['object_type'] = 'order';
+            $log_param['type'] = 'cancel';
+            $log_param['message'] =Lang::get('text.canceled').' '. $order->code;
+            MyLog::create($log_param);
+            return Response::json(array('code'=>'1000','data'=>array('id'=>$id),'msg'=>Lang::get('msg.cancel_success')));  
         }
         else
         {
-            return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.delete_failed')));  
+            return Response::json(array('code'=>'1001','msg'=>Lang::get('msg.failed')));  
         }
     }
 
@@ -297,8 +312,9 @@ class UserController extends BaseController {
         }
     }
 
-    private function left()
+    private function left($type='')
     {
-        return View::make('home.user-left')->render();
+        $data['type'] = $type;
+        return View::make('home.user-left',$data)->render();
     }
 }

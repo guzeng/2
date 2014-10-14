@@ -103,5 +103,9 @@
             'delete'            : "<?php echo Lang::get('text.delete');?>"
         };
     </script>
-    <script src="<?php echo asset('assets/scripts/admin/order.js');?>" type="text/javascript"></script>
+    <?php if(isset($type) && $type=='del'):?>
+        <script src="<?php echo asset('assets/scripts/admin/order_cancel.js');?>" type="text/javascript"></script>
+    <?php else:?>
+        <script src="<?php echo asset('assets/scripts/admin/order.js');?>" type="text/javascript"></script>
+    <?php endif;?>
 @stop

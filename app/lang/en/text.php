@@ -112,6 +112,7 @@ $lang['completed'] = "Completed";
 $lang['news_create'] = "Created on";
 $lang['basic_info'] = "Basic Info";
 $lang['closed'] = "Closed";
+$lang['canceled'] = "Canceled";
 $lang['back'] = "Back";
 /**
  * user
@@ -260,9 +261,9 @@ $lang['next_order'] = "Contiune";
 $lang['pay_type_alipay'] = "Alipay";
 $lang['pay_type_bank'] = "Online Banking";
 $lang['pay_type_cash'] = "Cash";
-$lang['one_lug_tips'] = "The first kind of luggage refers to the suitcase, which is also called travel cases, rod box. Total of the length, width and height of the luggage must not exceed 158 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start mileage</a> the luggage is charged 59 Yuan RMB each.";
-$lang['two_lug_tips'] = "The second type of luggage is refers to the small suitcase or hand bags without bars. Total of the length, width and height of the luggage must not exceed 115 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start mileag</a> the luggage is charged 39 Yuan each.";
-$lang['special_lug_tips'] = "The special luggage refers to cap of 20 kg (44 lb) of the total weight and volume is no more than 40 * 60 * 100 cm, such as heavy suitcase, golf equipment, bicycles, skateboards, large music equipment, etc. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start mileag</a> the luggage is charged 99 Yuan RMB each.";
+$lang['one_lug_tips'] = "The first kind of luggage refers to the suitcase, which is also called travel cases, rod box. Total of the length, width and height of the luggage must not exceed 158 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start kilometres</a> the luggage is charged 59 Yuan RMB each.";
+$lang['two_lug_tips'] = "The second type of luggage is refers to the small suitcase or hand bags without bars. Total of the length, width and height of the luggage must not exceed 115 cm. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start kilometres</a> the luggage is charged 39 Yuan each.";
+$lang['special_lug_tips'] = "The special luggage refers to cap of 20 kg (44 lb) of the total weight and volume is no more than 40 * 60 * 100 cm, such as heavy suitcase, golf equipment, bicycles, skateboards, large music equipment, etc. <a data-original-title='' data-content='Within the start mileage is distance from the starting point to the destination or start from 0 to 40 km. Exceeding 40 kilometers, additional 1 Yuan RMB is charged per kilometer.' class='popovers link' href='javascript:;'  data-placement='bottom' data-trigger='hover'>Within start kilometres</a> the luggage is charged 99 Yuan RMB each.";
 $lang['quick_booking'] = "Quick booking";
 //$lang['ship_city'] = "Delivery of city";
 $lang['ship_date'] = "Delivery date";
@@ -290,4 +291,5 @@ $lang['export'] = "Export";
 $lang['map_total'] = "Total <span id='order_distance'></span> kilometers, total <span id='order_money'></span> yuan.";
 $lang['km'] = "kilometers";
 $lang['yuan'] = "yuan";
+$lang['canceled_orders'] = "Canceled Orders";
 return $lang;

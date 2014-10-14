@@ -112,6 +112,7 @@ $lang['completed'] = "完成";
 $lang['news_create'] = "创建时间";
 $lang['basic_info'] = "基本信息";
 $lang['closed'] = "已关闭";
+$lang['canceled'] = "已取消";
 $lang['back'] = "返回";
 /**
  * user
@@ -290,4 +291,5 @@ $lang['export'] = "导出";
 $lang['map_total'] = "共<span id='order_distance'></span>公里，共计<span id='order_money'></span>元";
 $lang['km'] = "公里";
 $lang['yuan'] = "元";
+$lang['canceled_orders'] = "取消的订单";
 return $lang;
