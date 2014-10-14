@@ -18,7 +18,7 @@
                         <?php echo Lang::get('text.aboutus');?>
                         <i class="fa fa-angle-right"></i>
                     </li>
-                    <li><?php echo Lang::get('text.joinus');?></li>
+                    <li><?php echo Lang::get('text.join_us');?></li>
                     <li class='btn-group'>
                         <button class='btn btn-link' type='button' onclick="goback()"><i class='fa fa-reply'></i> <?php echo Lang::get('text.back')?></button>
                     </li>

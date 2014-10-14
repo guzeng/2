@@ -11,7 +11,7 @@
             </li>
             <li>
                 <a href="<?php echo asset('job')?>">
-                    <?php echo Lang::get('text.joinus')?>
+                    <?php echo Lang::get('text.join_us')?>
                 </a>
             </li>
         </ul>

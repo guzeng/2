@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->   
                 <h3 class="page-title">
-                    <?php echo Lang::get('text.joinus');?>
+                    <?php echo Lang::get('text.join_us');?>
                 </h3>
                 <ul class="page-breadcrumb breadcrumb">
                     <li>
@@ -21,7 +21,7 @@
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                        <?php echo Lang::get('text.joinus');?>
+                        <?php echo Lang::get('text.join_us');?>
                     </li>
                 </ul>
                 <!-- END PAGE TITLE & BREADCRUMB-->
@@ -31,7 +31,7 @@
             <div class="col-md-12">
                 <div class="portlet box green" id='user-list'>
                     <div class="portlet-title">
-                        <div class="caption"><i class="fa fa-list"></i><?php echo Lang::get('text.joinus');?></div>
+                        <div class="caption"><i class="fa fa-list"></i><?php echo Lang::get('text.join_us');?></div>
                         <div class="actions">
                             <div class="btn-group">
                                 <a class="btn green" href="<?php echo asset('admin/job/edit');?>"><i class="fa fa-plus"></i> <?php echo Lang::get('text.add_job');?></a>
