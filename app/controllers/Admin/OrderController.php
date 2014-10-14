@@ -60,11 +60,7 @@ class Admin_OrderController extends BaseController {
                 break;
         }
         $order = in_array($order, array('desc','asc')) ? $order : 'asc';
-        $orders = new Order();
-        if($type=='cancel')
-        {
-            $orders->where('status',3);
-        }
+        //$orders = new Order();
         if($sSearch)
         {
             $_u = User::where('name',$sSearch)->first();
@@ -80,78 +76,67 @@ class Admin_OrderController extends BaseController {
                     $_a_id[] = $value['id'];
                 }
             }
-            $orders->where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
-                        ->orWhere('phone', 'like', '%'.$sSearch.'%');
+            //$orders->where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
+                       // ->orWhere('phone', 'like', '%'.$sSearch.'%');
+
+            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
+            $select = " from ".$prefix."order as u";
+            $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? ";
             if(isset($user_id))
             {
-                $orders->orWhere('user_id',$user_id);
+                //$orders->orWhere('user_id',$user_id);
+                $where .= " or user_id = ?";
+                $v[] = $user_id;
             }
             if(!empty($_a_id))
             {
+                /*
                 $orders->orWhere(function($query)
                         {
                             $query->whereIn('airport_id', $_a_id);
                         });
+                        */
+                $where .= " or airport_id in (".implode(',', $_a_id).")";
             }
-            $iTotalRecords = $orders->count();
-            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
-            $list = $orders->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
+
+            $where .= ")";
+            //$group = '';
+            if($type=='cancel')
+            {
+                $where .= " and status = '3'";
+            }
+            $c = DB::select("select count(u.id) as count" .$select.$where,$v);
+            $iTotalRecords = $c[0]->count;
+            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength;
+            $list = DB::select("select u.* " .$select.$where ." order by ".$orderby." ".$order." limit ".$iDisplayLength." offset ".$iDisplayStart ,$v);
+        
+
+            //$iTotalRecords = $orders->count();
+            //$iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
+            //$list = $orders->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
         }
         else
         {
-            $iTotalRecords = $orders->count();
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
-            $list = $orders->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
+            if($type=='cancel')
+            {
+                $iTotalRecords = Order::where('status',3)->count();
+                $list = Order::where('status',3)->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
+            }
+            else
+            {
+                $iTotalRecords = Order::count();
+                $list = Order::take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
+            }
         }
         /*
-                if($sSearch)
+        if($sSearch)
         {
-            $select = " from ".$prefix."account as u";
-            $where = " where u.id>0 and ( username like ? or name like ? or email like ?";
+            $select = " from ".$prefix."order as u";
+            $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? )";
             $group = '';
+            $where .= "and status = '3'";
             $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
-            if(in_array($sSearch, $dd))
-            {
-                $keys = array_keys($dd,$sSearch);
-                if(!empty($keys))
-                {
-                   $d = $keys[0]; 
-                }
-            }
-            if(in_array($sSearch, $pp))
-            {
-                $keys = array_keys($pp,$sSearch);
-                if(!empty($keys))
-                {
-                   $p = $keys[0]; 
-                }
-            }
-            if(in_array($sSearch, $rr))
-            {
-                $keys = array_keys($rr,$sSearch);
-                if(!empty($keys))
-                {
-                   $r = $keys[0]; 
-                }
-            }
-            if(isset($d))
-            {
-                $where .= " or department_id = ?";
-                $v[] = $d;
-            }
-            if(isset($p))
-            {
-                $where .= " or post_id = ?";
-                $v[] = $p;
-            }
-            if(isset($r))
-            {
-                $select .= " right join ".$prefix."user_role_map as ur on u.id=ur.user_id ";
-                $where .= " or ur.role_id=?";
-                $v[] = $r;
-                $group = " group by u.id";
-            }
-            $where .= " )";
             $c = DB::select("select count(u.id) as count" .$select.$where,$v);
             $iTotalRecords = $c[0]->count;
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength;
