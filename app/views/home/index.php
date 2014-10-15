@@ -447,7 +447,7 @@
 				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F338c853439464c19e18a201f0a7f895c' type='text/javascript'%3E%3C/script%3E"));
 				</script>
-
+				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"让您畅享旅游的服务，环球之旅，悦行开启！现在，快来悦行网体验吧！","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"left","bdTop":"250"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 		<!--End-footer-->
 		<!--End-container-->
 
