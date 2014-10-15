@@ -199,7 +199,7 @@
 										<?if(App::getLocale()=='zh'):?>
 										在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。
 										<?else:?>
-										At online self-help order, click on "Booking” and fill in your information, or call the customer hot line to place order.
+										At online self-help order, click on "Order" and fill in your information, or call the customer hot line to place order.
 										<?endif;?>
 									</div>
 								</div>

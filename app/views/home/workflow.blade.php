@@ -29,7 +29,7 @@
                             <?if(App::getLocale()=='zh'):?>
                             在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。
                             <?else:?>
-                            At online self-help order, click on "start on order” and fill in your information, or order by phoning the on line customer service staff.
+                            At online self-help order, click on "Order" and fill in your information, or order by phoning the on line customer service staff.
                             <?endif;?>
                         </p>
                         <p><strong>2. </strong>
