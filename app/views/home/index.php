@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="keywords" content="<?php echo Cache::get('website_keyword')?>" />
 		<meta name="description" content="<?php echo Cache::get('website_description')?>" />
+		<meta name="badu-site-verification" content="Zgnx2dXUwX" />
 		<?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.css');?>
 		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
 		<?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
