@@ -31,7 +31,7 @@
                         <div class="actions">
                             <div class="btn-group">
                                 <a class='btn green' id='reload-list'><i class='fa fa-refresh'></i></a>
-                                <a target="_blank" title="<?php echo Lang::get('text.export')?>" href="<?php echo asset('admin/order/export')?>" class="btn green">
+                                <a target="_blank" title="<?php echo Lang::get('text.export')?>" href="<?php echo asset('admin/order/export'.(isset($type)?'/'.$type:''))?>" class="btn green">
                                     <i class="fa fa-table"></i>
                                 </a>
                                 <a class="btn green" href="#" data-toggle="dropdown">
@@ -103,7 +103,7 @@
             'delete'            : "<?php echo Lang::get('text.delete');?>"
         };
     </script>
-    <?php if(isset($type) && $type=='del'):?>
+    <?php if(isset($type) && $type=='cancel'):?>
         <script src="<?php echo asset('assets/scripts/admin/order_cancel.js');?>" type="text/javascript"></script>
     <?php else:?>
         <script src="<?php echo asset('assets/scripts/admin/order.js');?>" type="text/javascript"></script>

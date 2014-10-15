@@ -9,7 +9,7 @@ class Admin_OrderController extends BaseController {
 
     public function getCancel()
     {
-        $data['type'] = 'del';
+        $data['type'] = 'cancel';
         return View::make('admin.order.list',$data);
     }
     public function getDatalist($type='')
@@ -60,7 +60,7 @@ class Admin_OrderController extends BaseController {
                 break;
         }
         $order = in_array($order, array('desc','asc')) ? $order : 'asc';
-        //$orders = new Order();
+        $prefix = Config::get('database.connections.mysql.prefix');
         if($sSearch)
         {
             $_u = User::where('name',$sSearch)->first();
@@ -76,31 +76,20 @@ class Admin_OrderController extends BaseController {
                     $_a_id[] = $value['id'];
                 }
             }
-            //$orders->where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
-                       // ->orWhere('phone', 'like', '%'.$sSearch.'%');
-
             $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
             $select = " from ".$prefix."order as u";
             $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? ";
             if(isset($user_id))
             {
-                //$orders->orWhere('user_id',$user_id);
                 $where .= " or user_id = ?";
                 $v[] = $user_id;
             }
             if(!empty($_a_id))
             {
-                /*
-                $orders->orWhere(function($query)
-                        {
-                            $query->whereIn('airport_id', $_a_id);
-                        });
-                        */
                 $where .= " or airport_id in (".implode(',', $_a_id).")";
             }
 
             $where .= ")";
-            //$group = '';
             if($type=='cancel')
             {
                 $where .= " and status = '3'";
@@ -109,11 +98,6 @@ class Admin_OrderController extends BaseController {
             $iTotalRecords = $c[0]->count;
             $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength;
             $list = DB::select("select u.* " .$select.$where ." order by ".$orderby." ".$order." limit ".$iDisplayLength." offset ".$iDisplayStart ,$v);
-        
-
-            //$iTotalRecords = $orders->count();
-            //$iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
-            //$list = $orders->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
         }
         else
         {
@@ -129,27 +113,6 @@ class Admin_OrderController extends BaseController {
                 $list = Order::take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();
             }
         }
-        /*
-        if($sSearch)
-        {
-            $select = " from ".$prefix."order as u";
-            $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? )";
-            $group = '';
-            $where .= "and status = '3'";
-            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
-            $c = DB::select("select count(u.id) as count" .$select.$where,$v);
-            $iTotalRecords = $c[0]->count;
-            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength;
-            $list = DB::select("select u.* " .$select.$where.$group ." order by ".$orderby." ".$order." limit ".$iDisplayLength." offset ".$iDisplayStart ,$v);
-        }
-        else
-        {
-            $u = DB::table('account as '.$prefix.'u');
-            $iTotalRecords = $u->count();
-            $iDisplayLength = $iDisplayLength < 0 ? $iTotalRecords : $iDisplayLength; 
-            $list = $u->take($iDisplayLength)->skip($iDisplayStart)->orderBy($orderby,$order)->get();//with('post', 'department', 'userRole')->
-        }
-        */
         if(!empty($list))
         {
             foreach ($list as $key => $item) 
@@ -275,7 +238,7 @@ class Admin_OrderController extends BaseController {
 
     //-------------------------------------------------------------------------
 
-    public function getExport()
+    public function getExport($type='')
     {
         require_once(app_path().'/lib/PHPExcel/PHPExcel.php');
         require_once(app_path().'/lib/PHPExcel/PHPExcel/IOFactory.php');
@@ -345,9 +308,10 @@ class Admin_OrderController extends BaseController {
                 break;
         }
         $order = in_array($order, array('desc','asc')) ? $order : 'desc';
+        $prefix = Config::get('database.connections.mysql.prefix');
         if($sSearch)
         {
-            $_u = User::where('username',$sSearch)->first();
+            $_u = User::where('name',$sSearch)->first();
             if($_u)
             {
                 $user_id = $_u->id;
@@ -360,27 +324,37 @@ class Admin_OrderController extends BaseController {
                     $_a_id[] = $value['id'];
                 }
             }
-            $orders = Order::where("code", "like", "%".$sSearch."%")->orWhere('flight_num', 'like', '%'.$sSearch.'%')->orWhere('shipper', 'like', '%'.$sSearch.'%')
-                        ->orWhere('phone', 'like', '%'.$sSearch.'%');
-            
+            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
+            $select = " from ".$prefix."order as u";
+            $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? ";
             if(isset($user_id))
             {
-                $orders->orWhere('user_id',$user_id);
+                $where .= " or user_id = ?";
+                $v[] = $user_id;
             }
             if(!empty($_a_id))
             {
-                $orders->orWhere(function($query)
-                        {
-                            $query->whereIn('airport_id', $_a_id);
-                        });
+                $where .= " or airport_id in (".implode(',', $_a_id).")";
             }
-            $iTotalRecords = $orders->count();
-            $list = $orders->orderBy($orderby,$order)->get();
+
+            $where .= ")";
+            if($type=='cancel')
+            {
+                $where .= " and status = '3'";
+            }
+            $list = DB::select("select u.* " .$select.$where ." order by ".$orderby." ".$order, $v);
         }
         else
         {
-            $iTotalRecords = Order::count();
-            $list = Order::orderBy($orderby,$order)->get();
+            if($type=='cancel')
+            {
+                $list = Order::where('status',3)->orderBy($orderby,$order)->get();
+            }
+            else
+            {
+                $iTotalRecords = Order::count();
+                $list = Order::orderBy($orderby,$order)->get();
+            }
         }
         if($list)
         {
@@ -414,7 +388,7 @@ class Admin_OrderController extends BaseController {
                 $objPHPExcel->getActiveSheet()->setCellValue('l'.$i, Lang::get('text.'.$item->gender));
                 $objPHPExcel->getActiveSheet()->setCellValue('m'.$i, $item->phone);
                 $objPHPExcel->getActiveSheet()->setCellValue('n'.$i, date('Y-m-d H:i:s',gmt_to_local($item->create_time)));
-                $objPHPExcel->getActiveSheet()->setCellValue('o'.$i, $item->status=='1' ? Lang::get('text.processed') : Lang::get('text.unprocessed'));
+                $objPHPExcel->getActiveSheet()->setCellValue('o'.$i, Order::getStatus($item->status));
                 $objPHPExcel->getActiveSheet()->setCellValue('p'.$i, $item->money);
                 $objPHPExcel->getActiveSheet()->setCellValue('q'.$i, $item->pay_type>0 ?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):'');
                 $objPHPExcel->getActiveSheet()->setCellValue('r'.$i, $item->pay=='1' ? Lang::get('text.paid') : Lang::get('text.unpaid'));
