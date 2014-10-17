@@ -146,6 +146,7 @@ $lang['order_paid'] = "Order paid";
 $lang['order_unpaid'] = "Order unpaid";
 $lang['register_failed'] = "Registration failure, please try again later.";
 $lang['send_failed'] = "Sending failure, please try again later.";
+$lang['send_success'] = "Sending successfully.";
 //$lang['register_success'] = "注册成功";
 $lang['validate_dated'] = "Verification code is expired";
 $lang['register_success'] = "Dear Yuexingtrip.com user, congratulations on your successful register! Welcome to use Yuexingtrip.com good services! Please be assured that your information is completely confidential. Please keep the login password and updated on a regular basis.";

@@ -292,4 +292,6 @@ $lang['map_total'] = "Total <span id='order_distance'></span> kilometers, total 
 $lang['km'] = "kilometers";
 $lang['yuan'] = "yuan";
 $lang['canceled_orders'] = "Canceled Orders";
+$lang['order_sms'] = "Dear customer, Your order has been created successfully! Order No. %s, delivery date %s，Amount %s yuan. Have a good trip!";
+$lang['send_sms'] = "Send SMS";
 return $lang;

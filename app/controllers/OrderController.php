@@ -151,6 +151,15 @@ class OrderController extends BaseController {
 		$order->code = (Auth::check()?'U':'N').$sec.(round($usec*10000));
 		if($order->save())
 		{
+            if(App::getLocale()=='zh')
+            {
+                $date = date('Y年m月d日',$order->time);
+            }
+            else
+            {
+                $date = date('F d,Y',$order->time);
+            }
+            Sms::send($phone, sprintf(Lang::get('text.order_sms'),$order->code,$date,round($order->money,2)));
 			return Response::json(array('code' => '1000','url'=>asset('order/pay/'.$order->code)));
 		}
 		else
@@ -182,4 +191,36 @@ class OrderController extends BaseController {
         $data['order'] = $order;
 		return View::make('home.pay',$data);
 	}
+
+    public function getSendSms($id)
+    {
+        if(!$id)
+        {
+            echo json_encode(array('code'=>'1001','msg'=>Lang::get('msg.param_incorrect')));
+            exit;
+        }
+        $order = Order::find($id);
+        if(!$order)
+        {
+            echo json_encode(array('code'=>'1001','msg'=>Lang::get('msg.param_incorrect')));
+            exit;
+        }
+        if(App::getLocale()=='zh')
+        {
+            $date = date('Y年m月d日', $order->time);
+        }
+        else
+        {
+            $date = date('F d,Y', $order->time);
+        }
+        if(Sms::send($order->phone, sprintf(Lang::get('text.order_sms'),$order->code,$date,round($order->money,2))))
+        {
+            echo json_encode(array('code'=>'1000','msg'=>Lang::get('msg.send_success')));
+        }
+        else
+        {
+            echo json_encode(array('code'=>'1000','msg'=>Lang::get('msg.send_failed')));
+        }
+        exit;
+    }
 }

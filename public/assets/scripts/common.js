@@ -578,23 +578,14 @@ function initDataTableAction(tableID,table)
  * @param callback  回调函数
  * @param type      请求类型，默认post
  */
-function ajaxRequest(url,data,btnId,callback,type){
-    if(typeof(type)!='undefined' && type!='' && type!='undefined')
-    {
-        type = type;
-    }
-    else
-    {
-        type ="post";
-    }
+function ajaxRequest(url,btn){
     $.ajax({
         url:msg.base_url+url,
-        data:data,
-        type:type,
+        type:'get',
         dataType:'json',
         success:function(json){ 
             closeAlert();
-            $('#'+btnId).attr('disabled',false);
+            $(btn).attr('disabled',false);
             if(typeof(json.code)!='undefined' && json.code == '1002')
             {
                 showLogin(json);
@@ -605,11 +596,6 @@ function ajaxRequest(url,data,btnId,callback,type){
                 {
                     showSuccess(json.msg);
                 }
-                
-                if(typeof(callback)!='undefined' && callback!='' && callback!='undefined')
-                {
-                    callback(json);
-                }
             }
             else
             {
@@ -617,39 +603,15 @@ function ajaxRequest(url,data,btnId,callback,type){
                 {
                     showError(json.msg);
                 }
-                if(typeof(json.error)!='undefined')
-                {
-                    $.each(json.error,function(key,item){
-                        if(item != '') 
-                        {
-                            var tips = "";
-                            for (var i = 0; i < item.length; i++) {
-                                tips = tips + item[i];
-                            }
-                            if($('input[name='+key+']').length > 0)
-                            {
-                                if($('input[name='+key+']').closest('.form-group').find('span.help-block[for='+key+']').length > 0)
-                                {
-                                    $('input[name='+key+']').closest('.form-group').find('span.help-block[for='+key+']').html(item);
-                                }
-                                else
-                                {
-                                    $('input[name='+key+']').after("<span class='help-block' for='"+key+"'>"+item+"</span>");
-                                }
-                                $('input[name='+key+']').closest('.form-group').addClass('has-error').show();
-                            }
-                        }
-                    })                      
-                }
             }
         },
         beforeSend:function(){
             loading();
-            $('#'+btnId).attr('disabled',true);
+            $(btn).attr('disabled',true);
         },
         error:function(){
             showError();
-            $('#'+btnId).attr('disabled',false);
+            $(btn).attr('disabled',false);
         }
     });
 }

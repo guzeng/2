@@ -42,6 +42,9 @@
                                     <td><?php echo $item->pay_type>0?Lang::get('text.pay_type_'.Order::payType($item->pay_type)):Lang::get('text.unpaid')?></td>
                                     <td><?php echo Order::getStatus($item->status)?></td>
                                     <td>
+                                        <a href='javascript:void(0)' title='<?php echo Lang::get('text.send_sms')?>' onclick="ajaxRequest('order/send-sms/<?php echo $item->id?>',this)" class='btn green btn-xs' >
+                                            <i class="fa fa-envelope-o"></i>
+                                        </a>
                                         <?php if($type!='del'):?>
                                         <?php if($item->complete==0):?>
                                         <a href='<?php echo asset('order/pay/'.$item->code)?>' class='btn yellow btn-xs' target='_blank'>
