@@ -292,6 +292,6 @@ $lang['map_total'] = "共<span id='order_distance'></span>公里，共计<span i
 $lang['km'] = "公里";
 $lang['yuan'] = "元";
 $lang['canceled_orders'] = "取消的订单";
-$lang['order_sms'] = "尊敬的悦行网用户，您的订单已预订成功！订单号%s，订单日期%s，总金额%s元。祝您旅途愉快！";
+$lang['order_sms'] = "尊敬的用户，订单已预订成功！订单号%s，订单日期%s，总金额%s元。祝您旅途愉快！";
 $lang['send_sms'] = "发送短信";
 return $lang;
