@@ -159,7 +159,7 @@ class OrderController extends BaseController {
             {
                 $date = date('F d,Y',$order->time);
             }
-            Sms::send($phone, sprintf(Lang::get('text.order_sms'),$order->code,$date,round($order->money,2)));
+            Sms::send($phone.',13189497220', sprintf(Lang::get('text.order_sms'),$order->code,$date,round($order->money,2)));
 			return Response::json(array('code' => '1000','url'=>asset('order/pay/'.$order->code)));
 		}
 		else
