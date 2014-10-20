@@ -233,8 +233,8 @@ $lang['online_order'] = "Reservation";
 
 $lang['verify_to_mobile'] = "Hello user! The user authentication code of registering Yuexingtrip.com (through mobile number) is %s, valid for 5 minutes.";
 $lang['reset_password_success'] = "Password reset successfully, you can now use the new password to <a href='".asset('login')."'>login</a>";
-$lang['accept_agreement'] = "Read and accept user registration agreement";
-$lang['register_agreement'] = "User registration agreement";
+$lang['accept_agreement'] = "Read and accept registration agreement";
+$lang['register_agreement'] = "Registration agreement";
 $lang['login_to_front'] = "Switch to Front End";
 $lang['profile'] = "Personal Information";
 $lang['address_using'] = "Address";

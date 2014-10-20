@@ -15,7 +15,26 @@ class Admin_IndexController extends BaseController {
 
 		$data['user_count'] = User::count();
 		$data['order_count'] = Order::count();
-		$data['news_count'] = News::count();
+		$data['job_count'] = Job::count();
+		$news_count = News::select(DB::raw('count(id) as count,category_id'))->groupBy('category_id')->get();
+		$category = News::category();
+		
+		foreach($category as $key => $c)
+		{
+			$data['news_count_'.$key] = 0;
+			if(!empty($news_count))
+			{
+				foreach ($news_count as $k => $value) {
+					if($key == $value->category_id)
+					{
+						$data['news_count_'.$key] = $value->count;
+						continue;
+					}
+					
+				}
+			}
+		}
+		if($news_count)
 
 		$today = strtotime(date('Y-m-d',local_to_gmt()));
 		$firstDay = $today-30*24*3600;//30天前时间戳

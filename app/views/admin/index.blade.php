@@ -40,7 +40,7 @@
 
 		<!-- BEGIN DASHBOARD STATS -->
 		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
 				<a class="more" href="<?php echo asset('admin/user');?>">
 					<div class="dashboard-stat green zoom p-20">
 						<div class="visual">
@@ -53,7 +53,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
 				<a class="more" href="<?php echo asset('admin/order');?>">
 					<div class="dashboard-stat purple zoom p-20">
 						<div class="visual">
@@ -66,19 +66,58 @@
 					</div>
 				</a>                 
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<a class="more" href="<?php echo asset('admin/news');?>">
-					<div class="dashboard-stat yellow zoom p-20">
+			<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+				<a class="more" href="<?php echo asset('admin/news/list/1');?>">
+					<div class="dashboard-stat blue zoom p-20">
 						<div class="visual">
 							<i class="fa fa-bullhorn"></i>
 						</div>
 						<div class="details">
-							<div class="number"><?php echo $news_count;?></div>
-							<div class="desc"><?php echo Lang::get('text.user_grude');?></div>
+							<div class="number"><?php echo isset($news_count_1)?$news_count_1:0;?></div>
+							<div class="desc"><?php echo Lang::get('text.newcomer_grude');?></div>
 						</div>
 					</div>
 				</a>
 			</div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <a class="more" href="<?php echo asset('admin/news/list/2');?>">
+                    <div class="dashboard-stat blue zoom p-20">
+                        <div class="visual">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"><?php echo isset($news_count_2)?$news_count_2:0;?></div>
+                            <div class="desc"><?php echo Lang::get('text.FAQ');?></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <a class="more" href="<?php echo asset('admin/news/list/3');?>">
+                    <div class="dashboard-stat blue zoom p-20">
+                        <div class="visual">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"><?php echo isset($news_count_3)?$news_count_3:0;?></div>
+                            <div class="desc"><?php echo Lang::get('text.news');?></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                <a class="more" href="<?php echo asset('admin/job');?>">
+                    <div class="dashboard-stat yellow zoom p-20">
+                        <div class="visual">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"><?php echo $job_count;?></div>
+                            <div class="desc"><?php echo Lang::get('text.join_us');?></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
 		</div>
 		<!-- END DASHBOARD STATS -->
 		<div class="clearfix"></div>

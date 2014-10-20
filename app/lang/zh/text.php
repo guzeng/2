@@ -233,8 +233,8 @@ $lang['online_order'] = "在线预订";
 
 $lang['verify_to_mobile'] = "用户您好！您注册悦行网的登录用户（手机号）所需的验证码为%s，5分钟内有效。";
 $lang['reset_password_success'] = "密码重置成功，您现在可以使用新密码<a href='".asset('login')."'>登录</a>";
-$lang['accept_agreement'] = "已阅读并接受用户注册协议";
-$lang['register_agreement'] = "用户注册协议";
+$lang['accept_agreement'] = "已阅读并接受会员注册协议";
+$lang['register_agreement'] = "会员注册协议";
 $lang['login_to_front'] = "登入前台";
 $lang['profile'] = "个人资料";
 $lang['address_using'] = "常用地址";
