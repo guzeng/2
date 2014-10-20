@@ -6,64 +6,15 @@
 		<meta name="keywords" content="<?php echo Cache::get('website_keyword')?>" />
 		<meta name="description" content="<?php echo Cache::get('website_description')?>" />
 		<meta name="baidu-site-verification" content="UGXRwqIM9g" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<?php echo HTML::style('assets/plugins/bootstrap/css/bootstrap.css');?>
-		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
-		<?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
 	    <!--[if lt IE 8]>
 	    <?php echo HTML::style('assets/css/bootstrap-ie7.css');?>
 	    <![endif]--> 
-		 <!-- start-smoth-scrolling-->
-		<?php echo HTML::script('assets/scripts/home/move-top.js');?>
-		<?php echo HTML::script('assets/scripts/home/easing.js');?>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
-		<!-- start-smoth-scrolling-->
 		 <!-- Custom Theme files -->
 		<?php echo HTML::style('assets/css/theme-style.css');?>
 		<?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
    		 <!-- Custom Theme files -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="application/x-javascript"> 
-			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-		</script>
-
-	    <!--[if lt IE 9]>
-	        <script src="<?php echo asset('assets/plugins/respond.min.js');?>"></script>
-	        <script src="<?php echo asset('assets/plugins/excanvas.min.js');?>"></script> 
-	    <![endif]-->
-		<!--//webfonts-->
-		<!--start-top-nav-script-->
-		<script>
-			$(function() {
-				var pull 		= $('#pull');
-					menu 		= $('nav ul');
-					menuHeight	= menu.height();
-				$(pull).on('click', function(e) {
-					e.preventDefault();
-					menu.slideToggle();
-				});
-				$(window).resize(function(){
-	        		var w = $(window).width();
-	        		if(w > 320 && menu.is(':hidden')) {
-	        			menu.removeAttr('style');
-	        		}
-	    		});
-			});
-			var msg = {'lang':"<?php echo App::getLocale();?>",'base_url':"<?php echo asset('')?>"}
-		</script>
-		<!--//End-top-nav-script-->
-
-		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
-		<?php if(App::getLocale()=='zh'):?>
-		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
-		<?php endif;?>
-		<?php echo HTML::script('assets/scripts/common.js');?>
     	<link rel="shortcut icon" href="favicon.ico">
 	</head>
 	<body>
@@ -76,7 +27,7 @@
 							<?php echo Cache::get('hotline')?>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-4 logo col-ie7">
-							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" ></a>
+							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" width='256' height='212'></a>
 						</div>
 						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right col-ie7">
 							<?php if(Auth::guest()):?>
@@ -363,7 +314,7 @@
 		<div class="footer text-center">
 			<div class="container">
 				<a href="#" class='logo'> 
-					<img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" class='logoPic' >
+					<img src="<?php echo file_exists(public_path().DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'logo.png') ? asset('uploads/logo.png') : asset('assets/img/logo.png')?>" class='logoPic' width='120' height='50'>
 				</a>
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 			</div>
@@ -400,54 +351,101 @@
 				</div>
 			</div>
 		</div>
-				<script type="text/javascript">
-				$(document).ready(function() {	
-					$().UItoTop({ easingType: 'easeOutQuart' });
-					function adjust(){ 
-					   	var w  = document.body.clientWidth;
-					   	var h = parseInt(w)*750/1332;
-					   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
-					   	if(w < 970)
-					   	{
-					   		var p = w*40/1170;
-					   		var f = w*18/1170;
-					   		if(f<12)
-					   		{
-					   			f=12;
-					   		}
-					   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
-					   	}
-					   	else
-					   	{
-					   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
-					   	}
-					}
-					window.onload=function(){   
-					  	adjust();  
-					} 
-					window.onresize = function(){   
-					  	adjust();  
-					}
-					$('.form_datetime').datetimepicker({
-				        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
-				        weekStart: 1,
-				        todayBtn:  1,
-						autoclose: 1,
-						todayHighlight: 1,
-						startView: 2,
-						forceParse: 0,
-				        showMeridian: 1
-				    });
-		            jQuery('.popovers').popover({
-		                html: true
-		            });
+
+		<?php echo HTML::script('assets/plugins/jquery.min.js');?>
+		<?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
+		 <!-- start-smoth-scrolling-->
+		<?php echo HTML::script('assets/scripts/home/move-top.js');?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
-				</script>
-				<script type="text/javascript">
-				var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-				document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F338c853439464c19e18a201f0a7f895c' type='text/javascript'%3E%3C/script%3E"));
-				</script>
-				<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"让您畅享旅游的服务，环球之旅，悦行开启！现在，快来悦行网体验吧！","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"left","bdTop":"250"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+			});
+		</script>
+		<!-- start-smoth-scrolling-->
+		<script type="application/x-javascript"> 
+			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+		</script>
+	    <!--[if lt IE 9]>
+	        <script src="<?php echo asset('assets/plugins/respond.min.js');?>"></script>
+	        <script src="<?php echo asset('assets/plugins/excanvas.min.js');?>"></script> 
+	    <![endif]-->
+		<!--//webfonts-->
+		<!--start-top-nav-script-->
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+			var msg = {'lang':"<?php echo App::getLocale();?>",'base_url':"<?php echo asset('')?>"}
+		</script>
+		<!--//End-top-nav-script-->
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
+		<?php if(App::getLocale()=='zh'):?>
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
+		<?php endif;?>
+		<?php echo HTML::script('assets/scripts/common.js');?>
+		<script type="text/javascript">
+			$(document).ready(function() {	
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				function adjust(){ 
+				   	var w  = document.body.clientWidth;
+				   	var h = parseInt(w)*750/1332;
+				   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
+				   	if(w < 970)
+				   	{
+				   		var p = w*40/1170;
+				   		var f = w*18/1170;
+				   		if(f<12)
+				   		{
+				   			f=12;
+				   		}
+				   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
+				   	}
+				   	else
+				   	{
+				   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
+				   	}
+				}
+				window.onload=function(){   
+				  	adjust();  
+				} 
+				window.onresize = function(){   
+				  	adjust();  
+				}
+				$('.form_datetime').datetimepicker({
+			        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
+			        weekStart: 1,
+			        todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+			        showMeridian: 1
+			    });
+	            jQuery('.popovers').popover({
+	                html: true
+	            });
+			});
+		</script>
+		<script type="text/javascript">
+			var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+			document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F338c853439464c19e18a201f0a7f895c' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"让您畅享旅游的服务，环球之旅，悦行开启！现在，快来悦行网体验吧！","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"left","bdTop":"250"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 		<!--End-footer-->
 		<!--End-container-->
 
