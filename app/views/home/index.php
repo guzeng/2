@@ -66,12 +66,14 @@
 						<p>说走就走的旅行再也不是高富帅和土豪的专利了，全新的旅游增值服务--行李运送服务，悦行网为您呈现！</p>
 						<p>无论是出行前的大箱小包、或是回程时的手信礼物，只需预约悦行网行李运送服务，专业的服务为您解决。</p>
 						<p>环球之旅，悦行开启！</p>
+						<p>请注意，为了提供更好的服务质量，试运营暂时服务广州越秀区。不便之处，敬请谅解！</p>
 						<?else:?>
-						<p>Impulsive trip is no longer the patent of the diamond bachelor and Tuhao. 
+						<p>Impulsive trip is no longer for the patent of the diamond bachelor and Tuhao. 
 							Yuexing Trip can give you such a trip with luggage service, an all new tourism value-added service. 
-							You can only reserve the service on Yuexingtrip.com and the professional service will help you to transport the tons of luggages and souvenirs.
+							You can only reserve the service on Yuexingtrip.com and the professional service will help you to transport the tons of luggage and souvenirs.
 						</p>
 						<p>Yuexing Trip open your world of travel!</p>
+						<p>For better service, we serve for Yuexiu District Guangzhou during the trial operation period. Thank you for your kindly understanding!</p>
 						<?endif;?>
 					</div>
 					<div class="col-md-6 about-right col-ie7">
