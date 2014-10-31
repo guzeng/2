@@ -90,6 +90,8 @@
         </div>
         <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default" type="button"><?php echo Lang::get('text.close')?></button>
+            <a class="btn btn-default" target='_blank' href="<?php echo asset('admin/export/order-detail/'.$order->id)?>"><?php echo Lang::get('text.export')?></a>
+
             <?php if($order->status == '0'):?>
             <button class="btn btn-primary" id='change_btn' type="button" onclick="changeStatus('<?php echo $order->id?>')"><?php echo Lang::get('text.processed');?></button>
             <button class="btn btn-danger" id='del_btn' type="button" onclick="doDelete('<?php echo asset('admin/order/delete/'.$order->id);?>')" ><?php echo Lang::get('text.delete');?></button>
