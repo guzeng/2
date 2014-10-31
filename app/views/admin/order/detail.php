@@ -21,11 +21,15 @@
                             <td class='b'><?php echo Lang::get('text.ship_time')?></td>
                             <td><?php echo date('Y-m-d H:i:s',gmt_to_local($order->time));?></td>
                         </tr>
-                        <tr>
-                            <td class='b'><?php echo Lang::get('text.ship_city')?></td>
-                            <td><?php echo $order->city ? (App::getLocale()=='zh'?$order->city->name:$order->city->name_en) : '';?> <?php echo isset($order->area)?(App::getLocale()=='zh'?$order->area->name:$order->area->name_en):''?></td>
+                        <tr>    
                             <td class='b'><?php echo Lang::get('text.airport')?></td>
                             <td><?php echo $order->airport ? (App::getLocale()=='zh'?$order->airport->name:$order->airport->name_en) : '';?></td>
+                            <td class='b'><?php echo Lang::get('text.ship_city')?></td>
+                            <td><?php echo $order->city ? (App::getLocale()=='zh'?$order->city->name:$order->city->name_en) : '';?> <?php echo isset($order->area)?(App::getLocale()=='zh'?$order->area->name:$order->area->name_en):''?></td>
+                        </tr>
+                        <tr>
+                            <td class='b'><?php echo Lang::get('text.address')?></td>
+                            <td colspan='3'><?php echo $order->address?></td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.one_num')?></td>
@@ -37,7 +41,7 @@
                             <td class='b'><?php echo Lang::get('text.special_num')?></td>
                             <td><?php echo $order->special_num;?></td>
                             <td class='b'><?php echo Lang::get('text.distance')?></td>
-                            <td><?php echo $order->distance;?></td>
+                            <td><?php echo round($order->distance,2);?> km</td>
                         </tr>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.shipper')?></td>

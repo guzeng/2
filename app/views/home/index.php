@@ -22,18 +22,19 @@
 		<div class="bg">
 			<div class="container">
 				<div class='header' id='header'>
+
 					<div class="row">
 						<div class="col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
 							<?php echo Cache::get('hotline')?>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-4 logo col-ie7">
-							<a href="#"><img src="<?php echo asset('assets/img/logo-l.png')?>" width='256' height='212'></a>
+						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
+						<img src="<?php echo asset('assets/img/logo-l.png')?>" width='256' class=' img-responsive' style='margin:0 auto;'>
 						</div>
 						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right col-ie7">
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a> | <a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a>
 							<?php else:?>
-							<a href="<?php echo asset('user/profile')?>" style='font-size:16px;'><?php echo Auth::user()->name;?></a> | <a href="<?php echo asset('login/out')?>" style='font-size:16px;'><?php echo Lang::get('text.exit')?></a>
+							<a href="<?php echo asset('user/profile')?>" ><?php echo Auth::user()->name;?></a> | <a href="<?php echo asset('login/out')?>" ><?php echo Lang::get('text.exit')?></a>
 							<?php endif;?>
 							|  
                             <?if( App::getLocale() == "en"):?>
@@ -42,6 +43,10 @@
                               	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?endif;?>
 						</div>
+					</div>
+					<div class="row">
+						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">&nbsp;</div>
+						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">&nbsp;</div>
 					</div>
 						<!--start-top-nav-->
 					<nav class="top-nav">
@@ -364,6 +369,35 @@
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
+				
+				function adjust(){ 
+				   	var w  = document.body.clientWidth;
+				   	var h = parseInt(w)*750/1332;
+				   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
+				   	if(w < 970)
+				   	{
+				   		var p = w*40/1170;
+				   		var f = w*18/1170;
+				   		if(f<12)
+				   		{
+				   			f=12;
+				   		}
+				   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
+				   		$('#header').find('.contact-no').css({'font-size':f+'px'});
+				   		$('#header').find('.contact-order').find('a').css({'font-size':f+'px'});
+				   		$('#header').find('.contact-order').css({'font-size':f+'px'});
+				   	}
+				   	else
+				   	{
+				   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
+				   	}
+				}
+				window.onload=function(){   
+				  	adjust();  
+				} 
+				window.onresize = function(){   
+				  	adjust();  
+				}
 			});
 		</script>
 		<!-- start-smoth-scrolling-->
@@ -403,31 +437,6 @@
 		<script type="text/javascript">
 			$(document).ready(function() {	
 				$().UItoTop({ easingType: 'easeOutQuart' });
-				function adjust(){ 
-				   	var w  = document.body.clientWidth;
-				   	var h = parseInt(w)*750/1332;
-				   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
-				   	if(w < 970)
-				   	{
-				   		var p = w*40/1170;
-				   		var f = w*18/1170;
-				   		if(f<12)
-				   		{
-				   			f=12;
-				   		}
-				   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
-				   	}
-				   	else
-				   	{
-				   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
-				   	}
-				}
-				window.onload=function(){   
-				  	adjust();  
-				} 
-				window.onresize = function(){   
-				  	adjust();  
-				}
 				$('.form_datetime').datetimepicker({
 			        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
 			        weekStart: 1,
