@@ -245,9 +245,9 @@
 								<h4><?php echo Lang::getLocale()=='zh' ? '优质的服务' : 'High quality service'?></h4>
 								<p>
 									<?if(App::getLocale()=='zh'):?>
-									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线4000-XXX-XXX联系我们！
+									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线<?php echo Cache::get('hotline')?>联系我们！
 									<?else:?>
-									Thank you for use our professional service. Please call customer service hotline at 4000 - XXX - XXX if you need any help!
+									Thank you for use our professional service. Please call customer service hotline at <?php echo Cache::get('hotline')?> if you need any help!
 									<?endif;?>
 								</p>
 								<p>
