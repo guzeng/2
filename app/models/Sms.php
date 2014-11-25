@@ -8,7 +8,7 @@ class Sms{
         {
             return false;
         }
-        $username = "bjt";
+        $username = "SDK-BJT-0193";
         $password = "G6EFWQ";
         $sendto = $to;
         $message =urlencode($msg);//内容解码
