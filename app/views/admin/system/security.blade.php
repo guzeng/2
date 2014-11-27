@@ -7,7 +7,7 @@
     		<div class="col-md-12">
     			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
     			<h3 class="page-title">
-    				<?php echo Lang::get('text.contact_us');?>
+    				<?php echo Lang::get('text.security_setting');?>
     			</h3>
     			<ul class="page-breadcrumb breadcrumb">
     				<li>
