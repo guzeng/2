@@ -62,6 +62,18 @@
 				</div>
 			</div>
 		</div>
+		<!-- 公告-->
+		<div class='container' style='margin-top:20px;color:#FF0000'>
+			<div class='row'>
+				<div class='col-md-12 text-center'>
+					<?if(App::getLocale()=='zh'):?>
+					公告：本网站自2014年11月27日-12月05日为内测期，期间所有订单不会进行实际配送。敬请谅解。
+					<?else:?>
+					Note: from Nov. 27 2014 to Dec. 05 2014 this site are in beta, all orders will not delivery, please understand, thank you.
+					<?endif;?>
+				</div>
+			</div>
+		</div>
 		<!---start-about-->
 		<div id="about" class="about">
 			<div class="container">
