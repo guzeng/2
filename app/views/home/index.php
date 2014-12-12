@@ -25,12 +25,13 @@
 
 					<div class="row">
 						<div class="col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
-							<?php echo Cache::get('hotline')?>
+							<img src="<?php echo asset('assets/img/logo-l.png')?>" class=' img-responsive' >
+							<div>
+								<div style='margin-left:38px;'><?php echo Cache::get('hotline')?></div>
+								<div><?php echo Lang::get('text.hotline-time')?>Mon - Sun : 9:00am-8:00pm</div>
+							</div>
 						</div>
-						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
-						<img src="<?php echo asset('assets/img/logo-l.png')?>" width='256' class=' img-responsive' style='margin:0 auto;'>
-						</div>
-						<div class="contact-order col-md-4 col-sm-4 col-xs-4 text-right col-ie7">
+						<div class="contact-order col-md-8 col-sm-8 col-xs-8 text-right col-ie7">
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a> | <a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a>
 							<?php else:?>
@@ -43,10 +44,6 @@
                               	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?endif;?>
 						</div>
-					</div>
-					<div class="row">
-						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">&nbsp;</div>
-						<div class="logo col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">&nbsp;</div>
 					</div>
 						<!--start-top-nav-->
 					<nav class="top-nav">
@@ -169,7 +166,7 @@
 										<?if(App::getLocale()=='zh'):?>
 										在网上自助下单，点击“开始预订”后填写您的相关信息，或者通过电话向网站客服人员下单。
 										<?else:?>
-										At online self-help order, click on "Order" and fill in your information, or call the customer hot line to place order.
+										At online self-help order, click on "order" and fill in your information, or call the customer hot line to place order.
 										<?endif;?>
 									</div>
 								</div>
@@ -223,21 +220,23 @@
 								<h4><?if(App::getLocale()=='zh'):?>悦行网行李运送注意事项：<?else:?>Yuexing Trip has the following luggagedelivery notes:<?endif;?></h4>
 								<p><strong>1. </strong>
 									<?if(App::getLocale()=='zh'):?>
-									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送，如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
+									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送；晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
 									<?else:?>
-									For the flights arrive before 8 am, the order will deliver at noon on the day if there are not special requirements. 
-									If the destination is hotel, the luggage will be sent to the reception. If the destination is commercial building or residence, luggage is sent to the front door. 
-									If you cannot be contacted, delivery can be delayed.
+									For the flights arrive before 8 am, the order will deliver at noon on the day if there are not special requirements. For the flights arriving after 6 pm, the order will deliver in the morning of the next day if there are not special requirements. If the destination is hotel, the luggage will be sent to the reception. If the destination is commercial building or residence, luggage is sent to the front door. If you cannot be contacted, delivery can be delayed.
 									<?endif;?>
 								</p>
 								<p><strong>2. </strong>
 									<?if(App::getLocale()=='zh'):?>
-									晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
+									我们的配送员可全程搬运的行李总重量上限为25公斤，如行李等物件过大不方便搬运的，请您体谅配送员并协调共同搬运。
 									<?else:?>
-									For the flights arriving after 6 pm, the order will deliver in the morning of the next day if there are not special requirements. 
-									If the destination is hotel, the luggage will be sent to the reception. 
-									If the destination is commercial building or residence, luggage is sent to the front door. 
-									If you cannot be contacted, delivery can be delayed.
+									Our staff can handle a total weight of 25 kg luggage, please coordinate to handle If the luggage and other objects are too big to be convenient for conveying.
+									<?endif;?>
+								</p>
+								<p><strong>3</strong>
+									<?if(App::getLocale()=='zh'):?>
+									为了方便运输，请您提前包装好行李。我们拒绝承运违禁品或无完好包装的易碎物品。
+									<?else:?>
+									In order to facilitate the transport, please pack the luggage advance. We refuse to carry the prohibited articles or fragile goods without intact packaging.
 									<?endif;?>
 								</p>
 							
@@ -254,17 +253,17 @@
 						
 							
 								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/2.jpg')?>" style='height:300px'></div>
-								<h4><?php echo Lang::getLocale()=='zh' ? '优质的服务' : 'High quality service'?></h4>
+								<h4><?php echo Lang::getLocale()=='zh' ? '温馨提示' : 'Warm Tips'?></h4>
 								<p>
 									<?if(App::getLocale()=='zh'):?>
-									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线<?php echo Cache::get('hotline')?>联系我们！
+									选择悦行网，请放心把您的行李交给我们，如果您有问题或需要帮助，欢迎拨打客服热线<?php echo Cache::get('hotline')?>联系我们！悦行网将竭诚为您服务。
 									<?else:?>
-									Thank you for use our professional service. Please call customer service hotline at <?php echo Cache::get('hotline')?> if you need any help!
+									Thank you for use our professional service. Please call customer service hotline at <?php echo Cache::get('hotline')?> if you need any help! 
 									<?endif;?>
 								</p>
 								<p>
 									<?if(App::getLocale()=='zh'):?>
-									悦行网将竭诚为您服务。进入新手指南或者常见问题版面去了解更多！
+									进入新手指南或者常见问题版面去了解更多！
 									<?else:?>
 									We offer only the best to our customers. Check the Guidelines or FAQs to learn more!
 									<?endif;?>
@@ -340,15 +339,12 @@
 		</div>
 		<div style="background-color:#313030; padding:20px; font-size:14px;">
 			<div class="container">
-				<div class="row">
-					<!--
-					<div class='pull-right'>
-						<a data-original-title='' data-content="<img src='<?php echo asset('assets/img/weidian.png')?>' height='100'>" class='popovers' href='javascript:;'  data-placement='top' data-trigger='hover'>
-							<img src="<?php echo asset('assets/img/weidian.jpg')?>">
-						</a>
+				<div class='row'>
+					<div class='col-md-3 col-sm-12'>
+						<img width='100' src="<?php echo asset('assets/img/weixin.jpg')?>" class='pull-left img-responsive' > &nbsp; 
+						<img width='100' style='margin-left:10px;' src="<?php echo asset('assets/img/weibo.png')?>" class='pull-left img-responsive' >
 					</div>
-					-->
-		            <div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
+					<div class="col-md-6 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 		                <ul class="list-inline" >
 		                    <li><a href="<?php echo asset('about')?>" style='color:#FFFFFF;'><?php echo Lang::get('text.aboutus')?></a></li>
 		                    <li> | </li>
@@ -360,13 +356,11 @@
 		                    <li> | </li>
 		                    <a href="<?php echo asset('news/faq')?>" style='color:#FFFFFF;'><?php echo News::category(2)?></a>
 		                </ul>
+						<div class=" text-center" style='color:#FFFFFF;'>
+							<?php echo Cache::get('copyright')?> &nbsp; &nbsp; <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
+							
+						</div>
 		            </div>
-		        </div>
-		        <div class="row">
-					<div class="col-md-12 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
-						<?php echo Cache::get('copyright')?> &nbsp; &nbsp; <a href="http://www.miitbeian.gov.cn" style='color:#FFFFFF;' target='_blank'><?php echo Cache::get('icp');?></a>
-						
-					</div>
 				</div>
 			</div>
 		</div>
