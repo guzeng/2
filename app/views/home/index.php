@@ -28,7 +28,7 @@
 							<img src="<?php echo asset('assets/img/logo-l.png')?>" class=' img-responsive' >
 							<div>
 								<div style='margin-left:38px;'><?php echo Cache::get('hotline')?></div>
-								<div><?php echo Lang::get('text.hotline-time')?>Mon - Sun : 9:00am-8:00pm</div>
+								<div>Mon-Sun : 9:00am-8:00pm</div>
 							</div>
 						</div>
 						<div class="contact-order col-md-8 col-sm-8 col-xs-8 text-right col-ie7">
