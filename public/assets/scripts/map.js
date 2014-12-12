@@ -151,7 +151,7 @@ function price(d)
     var one_num = $('#one_num').val()!='' ? parseInt($('#one_num').val()) : 0;
     var two_num = $('#two_num').val()!='' ? parseInt($('#two_num').val()) : 0;
     var special_num = $('#special_num').val()!='' ? parseInt($('#special_num').val()) : 0;
-    price = one_num*59+two_num*39+special_num*79;
+    price = one_num*49+two_num*39+special_num*69;
     if(d > 40)
     {
         price += parseInt(d)-40;

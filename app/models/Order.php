@@ -50,7 +50,7 @@ class Order extends Eloquent {
         {
             return false;
         }
-        $price = intval($one_num)*59+intval($two_num)*39+intval($special_num)*79;
+        $price = intval($one_num)*49+intval($two_num)*39+intval($special_num)*69;
 
         if($d > 40)
         {
