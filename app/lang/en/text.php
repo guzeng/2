@@ -295,4 +295,5 @@ $lang['canceled_orders'] = "Canceled Orders";
 $lang['order_sms'] = "Dear customer, Your order has been created successfully! Order No. %s, delivery date %s，Amount %s yuan. Have a good trip!";
 $lang['send_sms'] = "Send SMS";
 $lang['hotline-time'] = "The customer service hotline time：";
+$lang['cancel-time'] = "Cancel on";
 return $lang;

@@ -55,10 +55,19 @@
                             <td class='b'><?php echo Lang::get('text.create_date')?></td>
                             <td><?php echo date('Y-m-d H:i:s',gmt_to_local($order->create_time));?></td>
                         </tr>
+                        <?php if($order->status==3):?>
+                        <tr>
+                            <td class='b'><?php echo Lang::get('text.status')?></td>
+                            <td id='status'><?php echo Order::getStatus($order->status);?></td>
+                            <td class='b'><?php echo Lang::get('text.cancel-time')?></td>
+                            <td ><?php echo date('Y-m-d H:i:s',gmt_to_local($order->cancel_time));?></td>
+                        </tr>
+                        <?php else:?>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.status')?></td>
                             <td id='status' colspan='3'><?php echo Order::getStatus($order->status);?></td>
                         </tr>
+                        <?php endif;?>
                         <tr>
                             <td class='b'><?php echo Lang::get('text.ship_note')?></td>
                             <td colspan='3'><?php echo $order->info?></td>

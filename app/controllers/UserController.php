@@ -165,8 +165,11 @@ class UserController extends BaseController {
             return Response::view('common.500',array('msg'=>Lang::get('msg.deny_request')));
         }
         $order->status = 3;//删除
+        $order->cancel_time = local_to_gmt();
         if($order->save())
         {
+
+            Sms::send('18922377691', "订单".$order->code."已被用户".Auth::user()->name."取消");
             $log_param['object_id'] = $id;
             $log_param['object_name'] = $order->code;
             $log_param['object_type'] = 'order';

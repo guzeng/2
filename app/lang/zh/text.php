@@ -295,4 +295,5 @@ $lang['canceled_orders'] = "取消的订单";
 $lang['order_sms'] = "尊敬的用户，订单已预订成功！订单号%s，订单日期%s，总金额%s元。祝您旅途愉快！";
 $lang['send_sms'] = "发送短信";
 $lang['hotline-time'] = "客服热线时间：";
+$lang['cancel-time'] = "取消时间";
 return $lang;
