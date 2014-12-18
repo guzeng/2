@@ -24,14 +24,13 @@
 				<div class='header' id='header'>
 
 					<div class="row">
-						<div class="col-md-4 col-sm-4 col-xs-4 contact-no col-ie7">
+						<div class="col-md-2 col-sm-3 col-xs-3 contact-no col-ie7">
 							<img src="<?php echo asset('assets/img/logo-l.png')?>" class=' img-responsive' >
 							<div>
-								<div style='margin-left:38px;'><?php echo Cache::get('hotline')?></div>
-								<div>Mon-Sun : 9:00am-8:00pm</div>
+								<div style='margin-left:0px;'><?php echo Cache::get('hotline')?></div>
 							</div>
 						</div>
-						<div class="contact-order col-md-8 col-sm-8 col-xs-8 text-right col-ie7">
+						<div class="contact-order col-md-10 col-sm-9 col-xs-9 text-right col-ie7">
 							<?php if(Auth::guest()):?>
 							<a href="<?php echo asset('login')?>"><?php echo Lang::get('text.login')?></a> | <a href="<?php echo asset('register')?>"><?php echo Lang::get('text.register')?></a>
 							<?php else:?>
@@ -43,6 +42,11 @@
                             <?else:?>
                               	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?endif;?>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12' style='color:#FFFFFF;'>
+							Mon-Sun : 9:00am-8:00pm
 						</div>
 					</div>
 						<!--start-top-nav-->
@@ -217,7 +221,7 @@
 						<!--><![endif]--> 
 
 								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" style='height:300px'></div>
-								<h4><?if(App::getLocale()=='zh'):?>悦行网行李运送注意事项：<?else:?>Yuexing Trip has the following luggagedelivery notes:<?endif;?></h4>
+								<h4><?if(App::getLocale()=='zh'):?>注意事项：<?else:?>Notes:<?endif;?></h4>
 								<p><strong>1. </strong>
 									<?if(App::getLocale()=='zh'):?>
 									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送；晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
@@ -340,9 +344,15 @@
 		<div style="background-color:#313030; padding:20px; font-size:14px;">
 			<div class="container">
 				<div class='row'>
-					<div class='col-md-3 col-sm-12'>
-						<img width='100' src="<?php echo asset('assets/img/weixin.jpg')?>" class='pull-left img-responsive' > &nbsp; 
-						<img width='100' style='margin-left:10px;' src="<?php echo asset('assets/img/weibo.png')?>" class='pull-left img-responsive' >
+					<div class='col-md-3 col-sm-12' style='color:#FFFFFF;'>
+						<div class='pull-left text-center'>
+							<img width='100' src="<?php echo asset('assets/img/weixin.jpg')?>" class='img-responsive' >
+							<p>微信</p>
+						</div>
+						<div class='pull-left text-center'>
+							<img width='100' style='margin-left:10px;' src="<?php echo asset('assets/img/weibo.png')?>" class='img-responsive' >
+							<p>微博</p>
+						</div>
 					</div>
 					<div class="col-md-6 col-sm-12 pre-footer-col text-center" style='color:#FFFFFF;'>
 		                <ul class="list-inline" >
