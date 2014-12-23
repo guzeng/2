@@ -188,9 +188,9 @@
 									<div class='pull-left'>3.</div>
 									<div class='content'>
 										<?if(App::getLocale()=='zh'):?>
-										如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。
+										如果您的行李是从住宅、酒店、或者商业大厦等地点运送至机场，请在您的航班起飞前至少6小时下单，我们的配送员将在2小时内上门收取行李，并在航班起飞前1.5小时将您的行李运送至机场，以便您领取。
 										<?else:?>
-										If your luggage is carried from places such as residence, hotel, or commercial building, to the airport, please order at least 6 hours before your departure, our staff will collect luggage and you will get the luggage back 1.5 hours before departure at the departure hall.
+										If your luggage is carried from places such as residence, hotel, or commercial building, to the airport, please order at least 6 hours before your departure, our staff will collect luggage within 2 hours and you will get the luggage back 1.5 hours before departure at the departure hall.
 										<?endif;?>
 									</div>
 								</div>
@@ -221,7 +221,7 @@
 						<!--><![endif]--> 
 
 								<div class='text-center m-b-10'><img class='img-responsive' src="<?php echo asset('assets/img/home/1.jpg')?>" style='height:300px'></div>
-								<h4><?if(App::getLocale()=='zh'):?>注意事项：<?else:?>Notes:<?endif;?></h4>
+								<h4><?if(App::getLocale()=='zh'):?>注意事项<?else:?>Notes<?endif;?></h4>
 								<p><strong>1. </strong>
 									<?if(App::getLocale()=='zh'):?>
 									上午8点前到达的航班，如无特殊要求，订单将在当天中午开始运送；晚上6点后到达的航班，如无特殊要求，订单将在隔天上午时开始运送。如目的地为酒店，行李将送至酒店前台；如目的地为商业大厦或住宅小区，行李均送至正门。若联系不上您，交付将被延后。
