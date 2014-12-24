@@ -64,17 +64,6 @@
 			</div>
 		</div>
 		<!-- 公告-->
-		<div class='container' style='margin-top:20px;color:#FF0000'>
-			<div class='row'>
-				<div class='col-md-12 text-center'>
-					<?if(App::getLocale()=='zh'):?>
-					公告：本网站自2014年11月27日-12月05日为内测期，期间所有订单不会进行实际配送。敬请谅解。
-					<?else:?>
-					Note: from Nov. 27 2014 to Dec. 05 2014 this site are in beta, all orders will not delivery, please understand, thank you.
-					<?endif;?>
-				</div>
-			</div>
-		</div>
 		<!---start-about-->
 		<div id="about" class="about">
 			<div class="container">
@@ -236,7 +225,7 @@
 									Our staff can handle a total weight of 25 kg luggage, please coordinate to handle If the luggage and other objects are too big to be convenient for conveying.
 									<?endif;?>
 								</p>
-								<p><strong>3</strong>
+								<p><strong>3. </strong>
 									<?if(App::getLocale()=='zh'):?>
 									为了方便运输，请您提前包装好行李。我们拒绝承运违禁品或无完好包装的易碎物品。
 									<?else:?>
