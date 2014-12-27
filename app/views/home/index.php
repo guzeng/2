@@ -26,9 +26,6 @@
 					<div class="row">
 						<div class="col-md-2 col-sm-3 col-xs-3 contact-no col-ie7">
 							<img src="<?php echo asset('assets/img/logo-l.png')?>" class=' img-responsive' >
-							<div>
-								<div style='margin-left:0px;'><?php echo Cache::get('hotline')?></div>
-							</div>
 						</div>
 						<div class="contact-order col-md-10 col-sm-9 col-xs-9 text-right col-ie7">
 							<?php if(Auth::guest()):?>
@@ -42,6 +39,11 @@
                             <?else:?>
                               	<a href="<?php echo asset('change-lang/en');?>" class='c-l'><i class="fa fa-stack-exchange"></i> English</a>
                             <?endif;?>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-md-12 col-sm-12 col-xs-12' style='color:#FFFFFF;'>
+							<?php echo Cache::get('hotline')?>
 						</div>
 					</div>
 					<div class='row'>
@@ -379,7 +381,29 @@
 				   	var w  = document.body.clientWidth;
 				   	var h = parseInt(w)*750/1332;
 				   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
-				   	if(w < 970)
+				   	console.log(w);
+				   	if(w < 400)
+				   	{
+				   		$('#header').find('.top-nav').find('a').css({'padding':'4px','font-size':'12px'});
+				   		$('#header').find('.contact-no').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').css({'font-size':'12px'});
+				   	}
+				   	else if(w < 500)
+				   	{
+				   		$('#header').find('.top-nav').find('a').css({'padding':'8px','font-size':'12px'});
+				   		$('#header').find('.contact-no').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').css({'font-size':'12px'});
+				   	}
+				   	else if(w < 600)
+				   	{
+				   		$('#header').find('.top-nav').find('a').css({'padding':'10px','font-size':'12px'});
+				   		$('#header').find('.contact-no').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+				   		$('#header').find('.contact-order').css({'font-size':'12px'});
+				   	}
+				   	else if(w < 970)
 				   	{
 				   		var p = w*40/1170;
 				   		var f = w*18/1170;
