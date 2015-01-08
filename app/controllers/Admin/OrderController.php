@@ -76,7 +76,7 @@ class Admin_OrderController extends BaseController {
                     $_a_id[] = $value['id'];
                 }
             }
-            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
+            $v = array('%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%','%'.$sSearch.'%');
             $select = " from ".$prefix."order as u";
             $where = " where ( code like ? or flight_num like ? or shipper like ? or phone like ? ";
             if(isset($user_id))
@@ -120,12 +120,12 @@ class Admin_OrderController extends BaseController {
                 $records["aaData"][] = array(
                     $item->id,
                     $item->code,
-                    $item->user ? $item->user->name : '',
+                    isset($item->user)&&isset($item->user->name) ? $item->user->name : '',
                     $item->flight_num,
                     Order::getType($item->type),// == '1' ? Lang::get('text.to_destination') : Lang::get('text.to_airport'),
                     date('Y-m-d H:i:s',gmt_to_local($item->time)),
-                    $item->city ? $item->city->name : '',
-                    $item->airport ? $item->airport->name : '',
+                    isset($item->city)&&isset($item->city->name) ? $item->city->name : '',
+                    isset($item->airport)&&isset($item->airport->name) ? $item->airport->name : '',
                     $item->shipper,
                     Order::getStatus($item->status),
                     date('Y-m-d H:i:s',gmt_to_local($item->create_time)),
