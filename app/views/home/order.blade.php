@@ -298,7 +298,7 @@
                             <?php echo Lang::get('text.continue')?> <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                             
-                            <a href="javascript:;" class="btn green button-submit disabled"><!-- -->
+                            <a href="javascript:;" class="btn green button-submit "><!-- -->
                             <?php echo Lang::get('text.submit')?> <i class="m-icon-swapright m-icon-white"></i>
                             </a>  
                         </div>
