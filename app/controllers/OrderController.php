@@ -87,7 +87,7 @@ class OrderController extends BaseController {
 		);
 		//验证规则
 		$rules = array(
-			'flight_num' => 'required|size:6',
+			'flight_num' => 'required|between:5,6',
 			'type' => 'required|in:1,2',
 			'time' => 'required|date',
 			'city_id' => 'required|exists:city,id',

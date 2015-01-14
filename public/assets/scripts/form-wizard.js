@@ -31,7 +31,8 @@ var FormWizard = function () {
                 rules: {
                     //account
                     flight_num: {
-                        length: 6,
+                        minlength: 5,
+                        maxlength:6,
                         required: true
                     },
                     type: {
