@@ -16,6 +16,17 @@
 		<?php echo HTML::style('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css');?>
    		 <!-- Custom Theme files -->
     	<link rel="shortcut icon" href="favicon.ico">
+    	<?if(App::getLocale()!='zh'):?>
+    	<style type="text/css">
+	    body{
+	        margin: 0;
+	        padding: 0;
+	        background-color:#fafafa;
+	        font-family:sans-serif;
+	    }
+	    button,input{font-family:sans-serif;}
+    	</style>
+    	<?endif;?>
 	</head>
 	<body>
 		<!--start-container-->

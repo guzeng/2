@@ -51,9 +51,9 @@
         margin: 0;
         padding: 0;
         background-color:#fafafa;
-        font-family:"Segoe UI",Verdana,Arial,sans-serif;
+        font-family:sans-serif;
     }
-    button,input{font-family:"Segoe UI",Verdana,Arial,sans-serif;}
+    button,input{font-family:sans-serif;}
     </style>
 <?endif;?>
   <!-- Theme styles END -->
