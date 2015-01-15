@@ -66,6 +66,17 @@
 			</div>
 		</div>
 		<!-- 公告-->
+		<div class='container'>
+			<div class='row' style='margin-top:20px;color:#FF0000;'>
+				<div class='col-md-12 '>
+					<?if(App::getLocale()=='zh'):?>
+					请注意，为了提供更好的服务质量，试运营暂时服务广州越秀、天河、荔湾、海珠等四区。不便之处，敬请谅解！
+					<?else:?>
+					For better service,we serve for YueXiu,TianHe,LiWan,HaiZhu District Guangzhou during the trial operation period.Thank you for your kindly understanding!
+					<?endif;?>
+				</div>
+			</div>
+		</div>
 		<!---start-about-->
 		<div id="about" class="about">
 			<div class="container">
