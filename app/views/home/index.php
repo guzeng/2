@@ -59,7 +59,7 @@
 					</div>
 					<div class='row'>
 						<div class='col-md-12 col-sm-12 col-xs-12' style='color:#FFFFFF;'>
-							Mon-Sun : 9:00am-8:00pm
+							Mon-Sun : 9:00am-7:00pm
 						</div>
 					</div>
 						<!--start-top-nav-->
