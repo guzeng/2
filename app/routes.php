@@ -28,6 +28,7 @@ Route::get('error/{n}', 'CommonController@error')->where(array('n','[0-9]{3}'));
 
 Route::controller('workflow', 'WorkflowController');
 Route::controller('order', 'OrderController');
+Route::get('haoli', 'IndexController@Haoli');
 
 Route::group(array('before' => 'auth'), function()
 {

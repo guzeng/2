@@ -505,7 +505,17 @@
 		</script>
 		<!--End-footer-->
 		<!--End-container-->
-
+<!--piaofu-->
+<?php echo HTML::script('assets/scripts/home/duicepiao.js');?>
+<div id='CH_NEWS_PF_00001' class='adclass' pushtype='nopv' adid='007WV'>
+<div id='007WV' area='[]'  style='display:none'>
+<a href='<?php echo asset('haoli')?>' target='_blank'>
+	<img src='<?php echo asset('assets/img/home/2015.PNG')?>' width='230' height='200' border='0'>
+</a>
+</div>
+</div>
+<script>duicepiao_piaofu('CH_NEWS_PF_00001');</script>
+<!-- piaofu end -->
 </body>
 </html>
 		<script type="text/javascript">

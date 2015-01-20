@@ -12,4 +12,8 @@ class IndexController extends BaseController {
 		return View::make('home.index',$data);
 	}
 
+	public function Haoli()
+	{
+		return View::make('home.haoli');
+	}
 }
