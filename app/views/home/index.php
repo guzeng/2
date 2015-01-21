@@ -500,6 +500,7 @@
 		<!--End-footer-->
 		<!--End-container-->
 <!--piaofu-->
+<!--
 	<?php echo HTML::script('assets/scripts/home/duicepiao.js');?>
 	<div id='CH_NEWS_PF_00001' class='adclass' pushtype='nopv' adid='007WV'>
 		<div id='007WV' area='[]'  style='display:none'>
@@ -509,6 +510,39 @@
 		</div>
 	</div>
 	<script>duicepiao_piaofu('CH_NEWS_PF_00001');</script>
+-->
+
+<!--添加的JS广告代码-->
+<script type="text/javascript" >
+  //记得加载jquery
+  //作者：yanue
+  //使用参数：1.标题，2.链接地址，3.内容简介
+  window.onload=function(){
+		var pop=new Pop("<img src='<?php echo asset('assets/img/home/2015.PNG')?>' width='260px' height='220px'/>",
+		"<?php echo asset('haoli')?>");
+	}
+</script>
+	<?php echo HTML::script('assets/plugins/jquery.brower.js');?>
+	<?php echo HTML::script('assets/scripts/home/yanue.pop.js');?>
+<div id="pop" style="display:none;">
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	#pop{background:#fff;width:260px;border:1px solid #e0e0e0;font-size:12px;position: fixed;right:0px;bottom:1px;}
+	#popHead{line-height:32px;background:#f6f0f3;border-bottom:1px solid #e0e0e0;position:relative;font-size:12px;padding:0 0 0 10px;}
+	#popHead #popClose{position:absolute;right:5px;top:-5px; color:black;}
+	#popHead a#popClose:hover{color:#f00;cursor:pointer;}
+	#popContent{padding:1px 10px; width:260px; height:220px;}
+	#popTitle{margin-left:-10px;}
+	#popTitle a{line-height:24px;font-size:14px;font-family:'微软雅黑';color:#333;font-weight:bold;text-decoration:none;}
+	#popTitle a:hover{color:#f60;}
+	</style>
+	<div id="popHead">
+	<a id="popClose" title="关闭">关闭</a>
+	</div>
+	<div id="popContent">
+		<div id="popTitle"><a href="" target="_blank">这里是参数</a></div>
+	</div>
+</div>
 <!-- piaofu end -->
 </body>
 </html>
