@@ -392,65 +392,83 @@
 		<?php echo HTML::script('assets/plugins/bootstrap/js/bootstrap.min.js');?>
 		 <!-- start-smoth-scrolling-->
 		<?php echo HTML::script('assets/scripts/home/move-top.js');?>
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
+		<?php if(App::getLocale()=='zh'):?>
+		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
+		<?php endif;?>
 		<script type="text/javascript">
+			var msg = {'lang':"<?php echo App::getLocale();?>",'base_url':"<?php echo asset('')?>"}
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 				});
-				
-				function adjust(){ 
-				   	var w  = document.body.clientWidth;
-				   	var h = parseInt(w)*750/1332;
-				   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
-				   	console.log(w);
-				   	if(w < 400)
-				   	{
-				   		$('#header').find('.top-nav').find('a').css({'padding':'4px','font-size':'12px'});
-				   		$('#header').find('.contact-no').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').css({'font-size':'12px'});
-				   	}
-				   	else if(w < 500)
-				   	{
-				   		$('#header').find('.top-nav').find('a').css({'padding':'8px','font-size':'12px'});
-				   		$('#header').find('.contact-no').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').css({'font-size':'12px'});
-				   	}
-				   	else if(w < 600)
-				   	{
-				   		$('#header').find('.top-nav').find('a').css({'padding':'10px','font-size':'12px'});
-				   		$('#header').find('.contact-no').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
-				   		$('#header').find('.contact-order').css({'font-size':'12px'});
-				   	}
-				   	else if(w < 970)
-				   	{
-				   		var p = w*40/1170;
-				   		var f = w*18/1170;
-				   		if(f<12)
-				   		{
-				   			f=12;
-				   		}
-				   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
-				   		$('#header').find('.contact-no').css({'font-size':f+'px'});
-				   		$('#header').find('.contact-order').find('a').css({'font-size':f+'px'});
-				   		$('#header').find('.contact-order').css({'font-size':f+'px'});
-				   	}
-				   	else
-				   	{
-				   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
-				   	}
-				}
-				window.onload=function(){   
-				  	adjust();  
-				} 
-				window.onresize = function(){   
-				  	adjust();  
-				}
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				$('.form_datetime').datetimepicker({
+			        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
+			        weekStart: 1,
+			        todayBtn:  1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					forceParse: 0,
+			        showMeridian: 1
+			    });
+	            jQuery('.popovers').popover({
+	                html: true
+	            });
 			});
+			function adjust(){ 
+			   	var w  = document.body.clientWidth;
+			   	var h = parseInt(w)*750/1332;
+			   	document.getElementById('header').style.height = (h>750 ? 750 : h) +'px';
+			   	if(w < 400)
+			   	{
+			   		$('#header').find('.top-nav').find('a').css({'padding':'4px','font-size':'12px'});
+			   		$('#header').find('.contact-no').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').css({'font-size':'12px'});
+			   	}
+			   	else if(w < 500)
+			   	{
+			   		$('#header').find('.top-nav').find('a').css({'padding':'8px','font-size':'12px'});
+			   		$('#header').find('.contact-no').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').css({'font-size':'12px'});
+			   	}
+			   	else if(w < 600)
+			   	{
+			   		$('#header').find('.top-nav').find('a').css({'padding':'10px','font-size':'12px'});
+			   		$('#header').find('.contact-no').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').find('a').css({'font-size':'12px'});
+			   		$('#header').find('.contact-order').css({'font-size':'12px'});
+			   	}
+			   	else if(w < 970)
+			   	{
+			   		var p = w*40/1170;
+			   		var f = w*18/1170;
+			   		if(f<12)
+			   		{
+			   			f=12;
+			   		}
+			   		$('#header').find('.top-nav').find('a').css({'padding-left':p+'px','padding-right':p+'px','font-size':f+'px'});
+			   		$('#header').find('.contact-no').css({'font-size':f+'px'});
+			   		$('#header').find('.contact-order').find('a').css({'font-size':f+'px'});
+			   		$('#header').find('.contact-order').css({'font-size':f+'px'});
+			   	}
+			   	else
+			   	{
+			   		$('#header').find('.top-nav').find('a').css({'padding-left':'30px','padding-right':'30px','font-size':'18px'});
+			   	}
+			}
+			window.onload=function(){   
+			  	adjust();  
+			} 
+			window.onresize = function(){   
+			  	adjust();  
+			}
 		</script>
+		<?php echo HTML::script('assets/scripts/common.js');?>
 		<!-- start-smoth-scrolling-->
 		<script type="application/x-javascript"> 
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
@@ -477,44 +495,20 @@
 	        		}
 	    		});
 			});
-			var msg = {'lang':"<?php echo App::getLocale();?>",'base_url':"<?php echo asset('')?>"}
 		</script>
 		<!--//End-top-nav-script-->
-		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js');?>
-		<?php if(App::getLocale()=='zh'):?>
-		<?php echo HTML::script('assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');?>
-		<?php endif;?>
-		<?php echo HTML::script('assets/scripts/common.js');?>
-		<script type="text/javascript">
-			$(document).ready(function() {	
-				$().UItoTop({ easingType: 'easeOutQuart' });
-				$('.form_datetime').datetimepicker({
-			        <?php if(App::getLocale()=='zh'):?>language:  'zh-CN',<?php endif;?>
-			        weekStart: 1,
-			        todayBtn:  1,
-					autoclose: 1,
-					todayHighlight: 1,
-					startView: 2,
-					forceParse: 0,
-			        showMeridian: 1
-			    });
-	            jQuery('.popovers').popover({
-	                html: true
-	            });
-			});
-		</script>
 		<!--End-footer-->
 		<!--End-container-->
 <!--piaofu-->
-<?php echo HTML::script('assets/scripts/home/duicepiao.js');?>
-<div id='CH_NEWS_PF_00001' class='adclass' pushtype='nopv' adid='007WV'>
-<div id='007WV' area='[]'  style='display:none'>
-<a href='<?php echo asset('haoli')?>' target='_blank'>
-	<img src='<?php echo asset('assets/img/home/2015.PNG')?>' width='230' height='200' border='0'>
-</a>
-</div>
-</div>
-<script>duicepiao_piaofu('CH_NEWS_PF_00001');</script>
+	<?php echo HTML::script('assets/scripts/home/duicepiao.js');?>
+	<div id='CH_NEWS_PF_00001' class='adclass' pushtype='nopv' adid='007WV'>
+		<div id='007WV' area='[]'  style='display:none'>
+		<a href='<?php echo asset('haoli')?>' target='_blank'>
+			<img src='<?php echo asset('assets/img/home/2015.PNG')?>' width='230' height='200' border='0'>
+		</a>
+		</div>
+	</div>
+	<script>duicepiao_piaofu('CH_NEWS_PF_00001');</script>
 <!-- piaofu end -->
 </body>
 </html>
